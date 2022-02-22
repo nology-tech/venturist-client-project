@@ -1,5 +1,5 @@
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
@@ -7,6 +7,7 @@ function App() {
       <div>Ollie woz ere 2k22</div>
       <div>Ebrima was here</div>
       <p>I am unhappy with the lack of testing - matt</p>
+      <p>something funny</p>
     </div>
   );
 }
