@@ -1,11 +1,14 @@
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
     <div className="App">
       <div>Ollie woz ere 2k22</div>
-      <div>Sean woz here for Real Now</div>
+      <div>Happi is being happy :)</div>
+      <div>Ebrima was here</div>
+      <p>I am unhappy with the lack of testing - matt</p>
+      <p>something funny</p>
     </div>
   );
 }
