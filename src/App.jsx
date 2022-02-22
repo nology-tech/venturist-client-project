@@ -1,25 +1,22 @@
-import './App.scss';
+import "./App.scss";
 
 function App() {
   return (
     <div className="App">
-      <div>Howsit?</div>
-      
-
-
-      <p>p tags are the best</p>
-      <p>Other stuff</p>
-      <p>Hello,it's Lana</p>
-
-
-      <div>Ollie woz ere 2k22</div>
-      <p>I like this!</p>
-      <div>PLEASE DONT MESS UP HG</div>
-      <div>William was also here</div>
-      <div>Happi is being happy :)</div>
-      <div>Ebrima was here</div>
-      <p>I am unhappy with the lack of testing - matt</p>
-      <p>something funny</p>
+      <section className="intro">
+        <div>Howsit?</div>
+        <div>p tags are the best</div>
+        <div>Other stuff</div>
+        <div>Hello,it's Lana</div>
+        <div>Ollie woz ere 2k22</div>
+        <div>I like this!</div>
+        <div>PLEASE DONT MESS UP HG</div>
+        <div>William was also here</div>
+        <div>Happi is being happy :)</div>
+        <div>Ebrima was here</div>
+        <div>I am unhappy with the lack of testing - matt</div>
+        <div>something funny</div>
+      </section>
     </div>
   );
 }
