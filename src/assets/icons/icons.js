@@ -4,6 +4,8 @@ const icons = [
   { LiveRates: <FontAwesomeIcon icon="fa-solid fa-chart-line" /> },
   { Transfer: <FontAwesomeIcon icon="fa-solid fa-paper-plane" /> },
   { Contacts: <FontAwesomeIcon icon="fa-solid fa-user-group" /> },
+  { SignOut: <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" /> },
+  { dropDownProfile: <FontAwesomeIcon icon="fa-solid fa-chevron-down" /> },
 ];
 
 // Upon saving, double quotes around convert, wallet, live rates, transfer and contacts were removed.
