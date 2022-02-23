@@ -1,0 +1,37 @@
+.tiles{
+  
+  &__fund-box{
+    border: 2px solid black;
+    border-radius: 20px 0px 20px 20px;
+    padding-left: 10px;
+    height: 150px;
+    padding-top: 10px;
+    width: 150px;
+    background-color:#00CED4;
+    color: white;
+    z-index: 0;
+
+    &__header{
+      margin: 5px;
+      z-index: 2;
+    }
+
+    &__amount{
+      margin: 5px;
+      overflow-wrap: break-word;
+      z-index: 2;
+    }
+
+    &__semicicrle{
+      border: 2px red solid;
+      background-color:#79ced1;
+      height: 110%;
+      width: 110%;
+      border-radius: 50%;
+      position: relative;
+      left: 40%;
+      top: -85%;
+      z-index: 1;
+    }
+  }
+}
