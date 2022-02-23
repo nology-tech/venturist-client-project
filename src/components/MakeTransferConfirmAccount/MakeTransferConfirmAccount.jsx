@@ -6,7 +6,7 @@ const MakeTransferConfirm = (props) => {
   const { accountDetails, transferAmount } = props;
 
   return (
-    <div className="make-transfer__confirm">
+    <div className="transfer-page__confirm">
       <h3>Send From</h3>
       <div className="grey-background">
         <h5 className="blue-colouring">Samantha Brooks</h5>
@@ -24,7 +24,7 @@ const MakeTransferConfirm = (props) => {
         </div>
       </div>
       <h3>To</h3>
-      <div className="make-transfer__confirm__recipient">
+      <div className="transfer-page__confirm__recipient">
         <button className="blue-background">Select Recipient</button>
         <button className="white-background">+ Pay Someone New</button>
       </div>
