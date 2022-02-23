@@ -1,0 +1,12 @@
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: lightblue;
+  margin-bottom: 10px;
+
+  &__align-img {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+  }
+}

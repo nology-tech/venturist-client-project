@@ -1,11 +1,13 @@
 import "./mockListItem.scss";
 
 export default function ListItem(props) {
-  const { item } = props;
+  const { item, index } = props;
 
   return (
-    <div>
-      <img src={item.bankIcon} alt={item.bankName} />
+    <div key={index} className="item-grid">
+      <div className="item-grid__align-img">
+        <img src={item.bankIcon} alt={item.bankName} width="50px" />
+      </div>
       <p>{`${item.firstName} ${item.lastName}`}</p>
       <p>{item.sortCode}</p>
       <p>{item.accountNumber}</p>
