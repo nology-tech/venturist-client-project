@@ -21,8 +21,10 @@ const Navbar = () => {
         <h2>VENTURIST</h2>
         </div>
       </div>
-      {buttons}
-      <p>{activeButton}</p>
+
+      <section className="navbar__menu">
+        {buttons}
+      </section>
     </nav>
   );
 };

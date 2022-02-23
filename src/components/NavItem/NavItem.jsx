@@ -1,9 +1,10 @@
 import React from 'react'
+import './NavItem.scss'
 
 const NavItem = (props) => {
   let className = 'navbar__nav-item';
   if (props.activeButton === props.label) {
-    className += "navbar__nav-item--active"
+    className += " navbar__nav-item--active"
   }
   return (
     <div className={className} onClick={() => props.handleClick(props.label)}>

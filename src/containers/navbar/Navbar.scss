@@ -4,7 +4,7 @@
 }
 
 .navbar {
-  border: 2px solid #f3f3f3;
+  border-right: 2px solid #f3f3f3;
   height: 100vh;
   width: 230px;
 
@@ -17,6 +17,9 @@
       justify-content: center;
       color: #343C49;
     }
+  }
 
+  &__menu {
+    color: #A6AFBD;
   }
 }
