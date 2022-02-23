@@ -3,13 +3,20 @@
   padding: 0;
 }
 
-.Navbar {
-  border: 2px solid #F3F3F3;
-  height: 100%;
+.navbar {
+  border: 2px solid #f3f3f3;
+  height: 100vh;
   width: 230px;
+
+  &__header {
+    margin-bottom: 30px;
+
+    &--logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #343C49;
+    }
+
+  }
 }
-
-
-
-
-
