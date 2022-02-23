@@ -11,8 +11,8 @@ const MakeTransferForm = (props) => {
   } = props;
 
   return (
-    <form onSubmit="">
-      <div>
+    <form className='transfer-page__transfer-form' onSubmit="">
+      <div className="">
         <h4>You send</h4>
         <div>
           <p>{exchangeRateSend.currencyFlag}</p>
@@ -27,27 +27,25 @@ const MakeTransferForm = (props) => {
           <p>{exchangeRateRecieve.currencySymbol}</p>
           <input type="number" />
         </div>
-        
-      <div>
-        <div>
-          <p>Rate</p>
-          <p>{rateHere}</p>
-        </div>
-        <div>
-          <p>Fee</p>
-          <p>feeHere</p>
-        </div>
-        <div>
-          <p>Delivery</p>
-          <p>{}</p>
-        </div>
       </div>
       <div>
         <div>
-          <h5>Total</h5>
-          <h5>amountHere</h5>
+          <p>Rate</p>
+          <p>{exchangeRateRecieve.liveRate}</p>
         </div>
-      </div> 
+        <div>
+          <p>Fee</p>
+          <p>{exchangeFee}</p>
+        </div>
+        <div>
+          <p>Delivery</p>
+          <p>{exchangeDeliveryTime}</p>
+        </div>
+      </div>
+      <div>
+        <h5>Total</h5>
+        <h5>Sum</h5>
+      </div>
     </form>
   )
 }
