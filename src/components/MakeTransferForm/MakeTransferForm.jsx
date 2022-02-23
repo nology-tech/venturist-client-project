@@ -18,14 +18,14 @@ const MakeTransferForm = (props) => {
           {/* <p>{exchangeRateSend.currencyFlag}</p>
           <p>{exchangeRateSend.currencyCode} - {exchangeRateSend.currencyName}</p>
           <p>{exchangeRateSend.currencySymbol}</p> */}
-          <input type="text" />
+          <input type="text" required/>
         </div>
         <h4>Recipient gets</h4>
         <div>
           {/* <p>{exchangeRateRecieve.currencyFlag}</p>
           <p>{exchangeRateRecieve.currencyCode} - {exchangeRateRecieve.currencyName}</p>
           <p>{exchangeRateRecieve.currencySymbol}</p> */}
-          <input type="text" />
+          <p>PropsAmount</p>
         </div>
       </div>
       <div>

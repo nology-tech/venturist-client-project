@@ -8,19 +8,19 @@ const AddRecipient = () => {
       <form onSubmit="handleSubmit">
         <div>
           <h4>Recipient Name</h4>
-          <input type="text" name="" id="" />
+          <input type="text" name="" id="" required/>
         </div>
         <div>
           <h4>Account Type</h4>
-          <input type="text" name="" id="" />
+          <input type="text" name="" id="" required/>
         </div>
         <div>
           <h4>Account Number</h4>
-          <input type="text" name="" id="" />
+          <input type="text" name="" id="" required/>
         </div>
         <div>
           <h4>Sort Code</h4>
-          <input type="text" name="" id="" />
+          <input type="text" name="" id="" required/>
         </div>
         <div>
           <p>Cancel</p>
