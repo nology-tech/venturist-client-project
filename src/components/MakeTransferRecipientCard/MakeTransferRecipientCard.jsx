@@ -1,4 +1,5 @@
 import React from 'react'
+import "./MakeTransferChooseRecipientCard.scss";
 
 const MakeTransferRecipientCard = (props) => {
 
