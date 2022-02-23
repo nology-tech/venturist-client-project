@@ -1,4 +1,5 @@
 import "./App.scss";
+import Tiles from "./Component/Tiles/Tiles";
 
 function App() {
   return (
@@ -16,6 +17,11 @@ function App() {
         <div>Ebrima was here</div>
         <div>I am unhappy with the lack of testing - matt</div>
         <div>something funny</div>
+      </section>
+      <section className="welcome-section">
+      <div>
+          <Tiles />
+        </div>
       </section>
     </div>
   );
