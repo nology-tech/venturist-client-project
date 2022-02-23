@@ -1,3 +1,4 @@
+import Tiles from "../Tiles/Tiles";
 import "./WelcomeTiles.scss";
 
 const WelcomeTiles= () => {
@@ -6,6 +7,7 @@ const WelcomeTiles= () => {
   return (
 
     <div className="welcome-tiles">
+      <Tiles />
 
     </div>
   );
