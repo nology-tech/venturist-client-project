@@ -1,0 +1,41 @@
+.navbar {
+
+  &__nav-item {
+
+    padding: 10px;
+    padding-left: 30px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+    &--icon {
+      width: 25px;
+      height: 25px;
+      background-color: red;
+      margin-right: 10px;
+    }
+
+    &--active {
+
+      border-right: 5px solid #00CED4;
+      border-radius: 5px;
+      .navbar__nav-item--icon {
+        background-color: #F1F1F1;;
+        border-radius: 5px;
+      }
+      h3 {
+        color: #00CED4;
+
+      }
+
+    }
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    }
+
+  }
+
+}
