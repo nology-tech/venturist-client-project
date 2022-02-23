@@ -14,9 +14,8 @@ export default function ContactsList() {
         <h3>IBAN</h3>
         <div></div>
       </div>
-
-      {contacts.map((item) => {
-        return <div></div>;
+      {contacts.map((item, index) => {
+        return <ListItem item={item} index={index} />;
       })}
     </section>
   );
