@@ -1,5 +1,6 @@
 import "./App.scss";
 import Tiles from "./Component/Tiles/Tiles";
+import WelcomeTiles from "./Component/WelcomeTiles/WelcomeTiles";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       </section>
       <section className="welcome-section">
       <div>
-          <Tiles />
+          <WelcomeTiles />
         </div>
       </section>
     </div>
