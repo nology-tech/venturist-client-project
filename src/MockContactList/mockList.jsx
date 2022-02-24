@@ -7,7 +7,9 @@ export default function ContactsList() {
   const [filteredData, setFilteredData] = useState(contacts);
 
   return (
-    <section>
+    <section className="page">
+      <nav></nav>
+      <div>
       <div className="headers-grid">
         <div></div>
         <h3>Name</h3>
@@ -28,6 +30,7 @@ export default function ContactsList() {
           />
         );
       })}
+      </div>
     </section>
   );
 }

@@ -3,3 +3,16 @@
   grid-template-columns: repeat(7, 1fr);
   gap: 1rem;
 }
+
+nav {
+  width: 230px;
+  height: 100vh;
+  border: 1px solid black;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 30px;
+}
+
