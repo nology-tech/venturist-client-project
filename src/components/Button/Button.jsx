@@ -2,13 +2,20 @@ import React from "react";
 import "./Button.scss";
 
 const Button = (props) => {
-  const { buttonName, buttonStyle, hasIcon, iconSrc, buttonFunction } = props;
+  const {
+    buttonName,
+    buttonStyle,
+    hasIcon,
+    iconSrc,
+    iconPosition,
+    buttonFunction,
+  } = props;
 
   const renderIcon = () => {
     return <img src={iconSrc} alt={buttonName} />;
   };
 
-  const buttonStyleSelect = (buttonStyle) => {
+  const buttonStyleSelect = () => {
     switch (buttonStyle) {
       case "clear":
         return "button--clear";
@@ -17,11 +24,24 @@ const Button = (props) => {
       default:
         return "button--blue";
     }
-  }
+  };
+  const iconPositionSet = () => {
+    switch (iconPosition) {
+      case "left":
+        return "icon-left";
+      case "right":
+        return "icon-right";
+      default:
+        return "";
+    }
+  };
 
   return (
     <>
-      <button className={`button ${buttonStyleSelect(buttonStyle)}`} onClick={buttonFunction}>
+      <button
+        className={`button ${buttonStyleSelect()} ${iconPositionSet()}`}
+        onClick={buttonFunction}
+      >
         {buttonName}
         {hasIcon && renderIcon()}
       </button>
