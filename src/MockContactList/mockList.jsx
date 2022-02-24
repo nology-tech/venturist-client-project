@@ -3,6 +3,8 @@ import contacts from "./mockData";
 import "./mockList.scss";
 
 export default function ContactsList() {
+  // const items = array.map((item, index) => {});
+
   return (
     <section>
       <div className="headers-grid">
@@ -15,7 +17,7 @@ export default function ContactsList() {
         <div></div>
       </div>
       {contacts.map((item, index) => {
-        return <ListItem item={item} index={index} />;
+        return <ListItem item={item} index={index} key={index} />;
       })}
     </section>
   );

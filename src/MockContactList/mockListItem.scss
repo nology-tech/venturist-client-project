@@ -1,6 +1,7 @@
 .item-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  gap: 1rem;
   background-color: lightblue;
   margin-bottom: 10px;
 
