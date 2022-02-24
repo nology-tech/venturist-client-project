@@ -1,5 +1,5 @@
 import React from 'react'
-import "./MakeTransferPage.scss";
+import "./MakeTransferPage.scss"
 
 const MakeTransferPage = () => {
 
