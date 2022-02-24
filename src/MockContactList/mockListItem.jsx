@@ -13,7 +13,7 @@ export default function ListItem(props) {
   // navBar 230px wide
 
   return (
-    <div key={index} className="item-grid">
+    <div key={index} className="item-grid" data-testid="item-grid">
       <div className="item-grid__align-img">
         <img src={item.bankIcon} alt={item.bankName} width="50px" />
       </div>
