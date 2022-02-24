@@ -1,14 +1,12 @@
-$highlightColour: #00ced4; /*for buttons*/
-$lightestBackgroundGrey: #dddddd;
-$lighterGreyBackground: #fbfbfc;
-$lightGreyBackground: #f3f3f3;
-$accountNumberColour: #6a6a6a;
-$mainColour: #8896a3;
-$fontGrey: #a6afbd; /*slightly darker grey for navbar links & search bar*/
-$menuColour: #343c49;
-$currencyColour: #06020a;
-$redColour: #df1c1c; /*trash can icon / invalid login */
-$loginFieldBackgroundColour: #e2e2e2;
-$loginLabelsColour: #5b6d7d;
-$loginPageBackgroundColour: #f6fcfc;
-$horizontalRule: #f1f1f1;
+$colourOne: #00ced4; /* for buttons, backgrounds, text, landing page text, last continue button, chosen nav link*/
+$colourTwo: #e2e2e2; /* for login page background & input box*/
+$colourThree: #5b6d7d; /* for text, login input labels, transaction headings (bank name, Iban) */
+$colourFour: #8896a3; /* login page text & text in input box, text throughout pages (including transactions), transfer page (account number/sort code values) */
+$colourFive: #0b2251; /* landing page */
+$colourSix: #06020a; /* landing page text, user name at top of pages, subheadings */
+$colourSeven: #df1c1c; /*For trash can icon, invalid login, login doesn't match*/
+$colourEight: #37d8dd; /*For circle on funds square */
+$colourNine: #75e3ea; /* landing page - stripe colours */
+$colourTen: #f1ffff; /* landing and login background */
+$colourEleven: #f1f1f1; /*For horizontal rule on login pages, vertical line on navbar */
+$colourTwelve: #57E141; /* create account validation - success message */
