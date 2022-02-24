@@ -1,7 +1,7 @@
 import React from 'react'
-import "./AddRecipient.scss"
+import "./MakeTransferAddRecipient.scss"
 
-const AddRecipient = () => {
+const MakeTransferAddRecipient = () => {
   return (
     <div className='transfer-page__add-recipient'>
       <h2>Add Recipient</h2>
@@ -31,4 +31,4 @@ const AddRecipient = () => {
   )
 }
 
-export default AddRecipient
+export default MakeTransferAddRecipient
