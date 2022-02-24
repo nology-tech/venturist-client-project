@@ -1,15 +1,18 @@
 import "./Tiles.scss";
 
-const Tiles= () => {
+const Tiles= (props) => {
+ 
+  // Prop = name of account holder, account balance, currency symbol
 
+  const {accountName, accountBalance, currencySymbol} = props;
 
   return (
 
     <div className="tiles">
-      <h1>Hey Samantha</h1>
+      <h1>Hey {accountName}</h1>
       <div className="tiles__fund-box">
         <h3 className="tiles__fund-box__header" >Your funds:</h3>
-        <h1 className="tiles__fund-box__amount">£12000</h1>
+        <h1 className="tiles__fund-box__amount">{currencySymbol}{accountBalance}</h1>
         <div className="tiles__fund-box__semicircle" ></div>
       </div>
     </div>
