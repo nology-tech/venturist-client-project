@@ -5,6 +5,9 @@
   border-radius: 3px;
   padding: 5px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 
   &--blue {
     color: rgb(239, 252, 252);
@@ -27,6 +30,11 @@
   }
   &--icon-right {
     flex-direction: row;
+  }
+  &__icon {
+    font-size: 20px;
+    width: auto;
+    height: 20px;
   }
 }
 
