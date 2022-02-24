@@ -1,5 +1,4 @@
 import "./App.scss";
-import MakeTransferPage from "./components/MakeTransferPage/MakeTransferPage";
 
 function App() {
   return (

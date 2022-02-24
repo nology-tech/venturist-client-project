@@ -1,0 +1,74 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.transfer-page__transfer-form {
+  background: #FBFBFC;
+  border-radius: 8px;
+  width: 626px;
+  height: 596px;
+  padding: 2em;
+}
+
+.transfer-form-bar {
+  &__header {
+    font-size: 24px;
+  }
+
+  &__container {
+    display: flex;
+    width: 350px;
+  }
+
+  &__flag {
+    font-size: 4px;
+  }
+
+  &__currency {
+    font-size: 18px;
+  }
+  
+  &__amount {
+    font-size: 18px;
+  }
+
+  &__input {
+    border: 1.11772px solid #DDDDDD;
+    box-sizing: border-box;
+  }
+}
+
+.transfer-form-info {
+  display: flex;
+  flex-direction: column;
+
+
+  &__rate {
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  &__fee {
+    display: flex;
+    justify-content: space-between;
+
+  }
+  
+  &__delivery {
+    display: flex;
+    justify-content: space-between;
+
+  }
+}
+
+.transfer-form-continue {
+  display: flex;
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
