@@ -11,7 +11,7 @@ const WelcomeTiles= () => {
 
   const renderAccountInfo = Data.map(account => {
     return <Tiles accountName = {account.accountName} accountBalance = {account.accountBalance} currencySymbol = {account.currencySymbol} />
-  }).slice(1, 2)
+  }).slice(0,1)
   
   return (
 
