@@ -1,0 +1,25 @@
+
+.transfer-page__recipient__card {
+  background-color: #FBFBFC;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 10px 53px 10px 22px;
+  display: flex;
+  width: 657px;
+  justify-content: space-between;
+  
+  &--left {
+    display: flex;
+  }
+  &--right {
+    display: flex;
+  }
+}
+
+.bank-image {
+  margin-right: 70px;
+}
+
+.sort-code {
+  margin-right: 60px;
+}
