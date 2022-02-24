@@ -28,9 +28,9 @@ const Button = (props) => {
   const iconPositionSet = () => {
     switch (iconPosition) {
       case "left":
-        return "icon-left";
+        return "button--icon-left";
       case "right":
-        return "icon-right";
+        return "button--icon-right";
       default:
         return "";
     }
