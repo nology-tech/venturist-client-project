@@ -42,6 +42,7 @@ const Button = (props) => {
       <button
         className={`button ${buttonStyleSelect()} ${iconPositionSet()}`}
         onClick={buttonFunction}
+        data-testid="button"
       >
         {buttonName}
         {hasIcon && renderIcon()}

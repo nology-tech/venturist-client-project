@@ -1,6 +1,7 @@
-import { render, screen } from '@testing-library/react';
-import Button from './Button';
+import { render, screen } from "@testing-library/react";
+import Button from "./Button";
 
-test('Test', () => {
-  
+test("Test", () => {
+  render(<Button buttonName="test button" />);
+  expect(screen.getByTestId("button")).toHaveTextContent("test button");
 });
