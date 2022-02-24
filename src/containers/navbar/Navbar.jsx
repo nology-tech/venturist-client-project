@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import NavItem from "../../components/NavItem/NavItem";
-import './Navbar.scss';
+import './NavBar.scss';
 
-const Navbar = () => {
+const NavBar = () => {
 
   const [activeButton,setActiveButton] = useState();
 
@@ -29,4 +29,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;

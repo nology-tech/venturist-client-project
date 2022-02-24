@@ -14,7 +14,6 @@ describe("Tests for NavItem Rendering", () => {
     // Assert
     expect(navItem).toHaveTextContent("test");
 
-
   })
 
   test("Should Render Active, when Active", () => {

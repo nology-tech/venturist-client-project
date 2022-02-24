@@ -1,11 +1,11 @@
 import "./App.scss";
-import Navbar from "./containers/navbar/Navbar";
+import NavBar from "./containers/NavBar/NavBar";
 
 const App = () => {
   return (
     <div className="App">
       
-      <Navbar />
+      <NavBar />
       <section className="intro">
       </section>
     </div>
