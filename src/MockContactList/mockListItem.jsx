@@ -1,7 +1,16 @@
 import "./mockListItem.scss";
 
 export default function ListItem(props) {
-  const { item, index } = props;
+  const { item, index, setFilteredData, filteredData } = props;
+
+  const deleteItem = () => {
+    const removeIndex = index;
+    filteredData.splice(removeIndex, 1);
+    const updatedArr = filteredData.filter((item) => item.index !== index);
+    setFilteredData(updatedArr);
+  };
+
+  // navBar 230px wide
 
   return (
     <div key={index} className="item-grid">
@@ -13,7 +22,14 @@ export default function ListItem(props) {
       <p>{item.accountNumber}</p>
       <p>{item.bankName}</p>
       <p>{item.IBAN}</p>
-      {/* // img bin icon coming from assets (probably) */}
+      <div className="item-grid__align-img">
+        <img
+          src="https://img.icons8.com/material-outlined/344/trash.png"
+          alt="Delete"
+          width="25px"
+          onClick={deleteItem}
+        />
+      </div>
     </div>
   );
 }
