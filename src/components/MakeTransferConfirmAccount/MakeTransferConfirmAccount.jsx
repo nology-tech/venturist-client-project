@@ -1,7 +1,7 @@
 import React from 'react';
 import "./MakeTransferConfirm.scss";
 
-const MakeTransferConfirm = (props) => {
+const MakeTransferConfirmAccount = (props) => {
 
   const { accountDetails, transferAmount } = props;
 
@@ -32,4 +32,4 @@ const MakeTransferConfirm = (props) => {
   )
 }
 
-export default MakeTransferConfirm
+export default MakeTransferConfirmAccount

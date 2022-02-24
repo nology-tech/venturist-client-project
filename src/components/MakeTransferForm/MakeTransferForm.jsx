@@ -3,12 +3,12 @@ import "./MakeTransferForm.scss"
 
 const MakeTransferForm = (props) => {
 
-  const {
-    // exchangeRateSend,
-    // exchangeRateRecieve,
-    // exchangeFee,
-    // exchangeDeliveryTime
-  } = props;
+  // const {
+  //   exchangeRateSend,
+  //   exchangeRateRecieve,
+  //   exchangeFee,
+  //   exchangeDeliveryTime
+  // } = props;
 
   return (
     <form className='transfer-page__transfer-form' onSubmit="handleSubmit">

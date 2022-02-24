@@ -1,4 +1,5 @@
 import React from 'react'
+import "./MakeTransferConfirmation.scss";
 
 const MakeTransferConfirmation = (props) => {
 

@@ -1,7 +1,7 @@
 import React from 'react'
-import "./ConfirmDetails.scss"
+import "./MakeTransferConfirmDetails.scss"
 
-const ConfirmDetails = () => {
+const MakeTransferConfirmDetails = () => {
   return (
     <div className='transfer-page__confirm-details'>
     <h2>Add Recipient</h2>
@@ -31,4 +31,4 @@ const ConfirmDetails = () => {
   )
 }
 
-export default ConfirmDetails
+export default MakeTransferConfirmDetails
