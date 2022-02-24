@@ -1,20 +1,39 @@
 .button {
   min-width: 100px;
-  height: 35px;
+  min-height: 35px;
   border: 0;
   border-radius: 3px;
-
-  &--default {
+  padding: 5px;
+  
+  &--blue {
     color: rgb(239, 252, 252);
     background-color: rgb(0 206 212);
 
   }
 
-  &--blank {
+  &--clear {
     color: rgba(136, 150, 163, 1);
+    background-color: transparent;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+
+
+  }
+
+  &--white {
+    color: rgba(136, 150, 163, 1);
+    background-color: rgb(239, 252, 252);
 
 
   }
 }
 
+.button:hover {
+  cursor: pointer;
+  
+}
+
+.button:active {
+  box-shadow: rgba(50, 50, 93, 0.2) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.2) 0px 18px 36px -18px inset;
+}
 

@@ -10,10 +10,12 @@ const Button = (props) => {
 
   const buttonStyleSelect = (buttonStyle) => {
     switch (buttonStyle) {
-      case "blank":
-        return "button--blank";
+      case "clear":
+        return "button--clear";
+      case "white":
+        return "button--white";
       default:
-        return "button--default";
+        return "button--blue";
     }
   }
 
