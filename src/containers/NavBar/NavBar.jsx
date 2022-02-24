@@ -10,12 +10,11 @@ const NavBar = () => {
     setActiveButton(label);
   }
 
-  const buttonLabels = ["Wallet","Live Rates","Convert","Transfer","Contacts"];
+  const buttonLabels = ["Wallet","Live Rates","Convert","Transfer","Contacts","Deposit"];
 
-  const buttons = buttonLabels.map(label => <NavItem label={label} handleClick={handleClick} activeButton={activeButton}/>)
-
+  const buttons = buttonLabels.map((label,index) => <NavItem label={label} handleClick={handleClick} activeButton={activeButton} index={index}/>)
   return (
-    <nav className="navbar">
+    <nav className="navbar" data-testid="navbar">
       <div className="navbar__header">
         <div className="navbar__header--logo">
         <h2>VENTURIST</h2>
