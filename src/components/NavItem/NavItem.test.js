@@ -3,7 +3,15 @@ import NavItem from "./NavItem";
 
 describe("Tests for NavItem Rendering", () => {
 
-  test("Should Render The Nav Item", () => {
+  test("Should Render a Nav Item", () => {
+    render(<NavItem label="test" handleClick={()=>{}} activeButton= ""/> );
+
+    const navItem = screen.getByTestId("navItem");
+
+    expect(navItem).toBeInTheDocument;
+  })
+
+  test("Should Render Provided Text", () => {
 
     // Arrange
     render(<NavItem label="test" handleClick={()=>{}} activeButton= ""/> );

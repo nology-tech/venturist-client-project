@@ -10,7 +10,7 @@ const NavBar = () => {
     setActiveButton(label);
   }
 
-  const buttonLabels = ["Wallet","Live Rates","Convert","Transfer","Contacts"];
+  const buttonLabels = ["Wallet","Live Rates","Convert","Transfer","Contacts","Deposit"];
 
   const buttons = buttonLabels.map((label,index) => <NavItem label={label} handleClick={handleClick} activeButton={activeButton} index={index}/>)
   return (

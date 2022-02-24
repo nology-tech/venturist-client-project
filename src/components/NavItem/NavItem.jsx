@@ -7,7 +7,7 @@ const NavItem = (props) => {
     className += " navbar__nav-item--active"
   }
   return (
-    <div className={className} onClick={() => props.handleClick(props.label) } key={props.index}>
+    <div className={className} onClick={() => props.handleClick(props.label) } key={props.index} data-testid="navItem">
       <div className='navbar__nav-item--icon'></div>
       <h3>{props.label}</h3>
     </div>
