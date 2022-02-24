@@ -7,5 +7,6 @@ test("Test that button renders with correct inner text", () => {
   //Act
   const button = screen.getByTestId("button");
   //Assert
+  expect(button).toBeInTheDocument();
   expect(button).toHaveTextContent("test button");
 });
