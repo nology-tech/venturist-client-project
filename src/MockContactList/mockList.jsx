@@ -1,9 +1,10 @@
 import ListItem from "./mockListItem";
 import contacts from "./mockData";
 import "./mockList.scss";
+import { useState } from "react";
 
 export default function ContactsList() {
-  // const items = array.map((item, index) => {});
+  const [filteredData, setFilteredData] = useState(contacts);
 
   return (
     <section>
@@ -16,8 +17,16 @@ export default function ContactsList() {
         <h3>IBAN</h3>
         <div></div>
       </div>
-      {contacts.map((item, index) => {
-        return <ListItem item={item} index={index} key={index} />;
+      {filteredData.map((item, index) => {
+        return (
+          <ListItem
+            item={item}
+            index={index}
+            key={index}
+            setFilteredData={setFilteredData}
+            filteredData={filteredData}
+          />
+        );
       })}
     </section>
   );
