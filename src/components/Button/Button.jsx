@@ -13,7 +13,7 @@ const Button = (props) => {
   } = props;
 
   const renderIcon = () => {
-    return <img src={iconSrc} alt={buttonName} />;
+    return <img src={iconSrc} alt={buttonName} data-testid="button-icon" />;
   };
 
   const buttonStyleSelect = () => {
