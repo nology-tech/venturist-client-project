@@ -4,13 +4,14 @@
     position: absolute;
     border-radius: 20px 0px 20px 20px;
     padding-left: 10px;
-    height: 150px;
+    width: 263px;
+    height: 252px;
     padding-top: 10px;
-    width: 150px;
     background-color:#00CED4;
     color: white;
     z-index: 0;
     overflow: hidden;
+    
 
     &__header{
       margin: 5px;
