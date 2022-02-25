@@ -5,21 +5,23 @@
   box-sizing: border-box;
   padding: 10px 53px 10px 22px;
   display: flex;
-  width: 657px;
+  width: 650px;
   justify-content: space-between;
   
   &--left {
     display: flex;
   }
+
   &--right {
     display: flex;
+    text-align: right;
   }
-}
+  
+  &__bank-image {
+    margin-right: 70px;
+  }
 
-.bank-image {
-  margin-right: 70px;
-}
-
-.sort-code {
-  margin-right: 60px;
+  &__sort-code {
+    margin-right: 60px;
+  }
 }

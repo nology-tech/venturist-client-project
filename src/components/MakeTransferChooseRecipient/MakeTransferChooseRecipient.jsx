@@ -4,8 +4,10 @@ import "./MakeTransferChooseRecipient.scss";
 const MakeTransferChooseRecipient = (props) => {
 
   const {userCardList} = props;
+  
+  const userCardComponents = userCardList.map(userCard => <MakeTransferChooseRecipientCard userCard={userCard} />);
 
-  const userCardComponents = userCardList.map(userCard => <MakeTransferChooseRecipientCard userCard={userCard} />)
+  const emptyContactListText = <p>You don't seem to have any contacts yet, try adding one!</p>
 
   return (
     <div className="transfer-page__choose-recipient">
@@ -19,7 +21,10 @@ const MakeTransferChooseRecipient = (props) => {
         <p>Name</p>
         <p>Sort Code</p>
         <p>Account No</p>
-        {userCardComponents}
+        <div className="transfer-page__recipient-list__cards">
+          {!userCardList && emptyContactListText}
+          {userCardList && userCardComponents}
+        </div>
       </div>
     </div>
   )
