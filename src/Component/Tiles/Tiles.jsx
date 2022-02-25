@@ -8,7 +8,7 @@ const Tiles= (props) => {
 
   return (
 
-    <div className="tiles">
+    <div data-testid= "tiles" className="tiles">
       <h1>{`Hey ${accountName} 👋`}</h1>
       <div className="tiles__fund-box">
         <h3 className="tiles__fund-box__header" >Your funds:</h3>

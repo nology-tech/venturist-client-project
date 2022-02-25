@@ -5,9 +5,7 @@ import Data from "../../accountInfo";
 
 const WelcomeTiles= () => {
 
-  const accountMap = Data.map((account) => {
-    return account.accountName
-  })
+
 
   const renderAccountInfo = Data.map(account => {
     return <Tiles accountName = {account.accountName} accountBalance = {account.accountBalance} currencySymbol = {account.currencySymbol} />
@@ -15,7 +13,7 @@ const WelcomeTiles= () => {
   
   return (
 
-    <div className="welcome-tiles">
+    <div data-testid="welcome-tiles" className="welcome-tiles">
      {renderAccountInfo}
     </div>
   );

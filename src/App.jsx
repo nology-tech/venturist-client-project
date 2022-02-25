@@ -1,5 +1,4 @@
 import "./App.scss";
-import Tiles from "./Component/Tiles/Tiles";
 import WelcomeTiles from "./Component/WelcomeTiles/WelcomeTiles";
 
 function App() {
