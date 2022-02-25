@@ -10,26 +10,27 @@ export default function ContactsList() {
     <section className="page" data-testid="page">
       <nav></nav>
       <div>
-      <div className="headers-grid">
-        <div></div>
-        <h3>Name</h3>
-        <h3>Sort Code</h3>
-        <h3>Account No</h3>
-        <h3>Bank</h3>
-        <h3>IBAN</h3>
-        <div></div>
-      </div>
-      {filteredData.map((item, index) => {
-        return (
-          <ListItem
-            item={item}
-            index={index}
-            key={index}
-            setFilteredData={setFilteredData}
-            filteredData={filteredData}
-          />
-        );
-      })}
+        <div className="headers-grid">
+          <div></div>
+          <h3>Name</h3>
+          <h3>Sort Code</h3>
+          <h3>Account No</h3>
+          <h3>Bank</h3>
+          <h3>IBAN</h3>
+          <div></div>
+        </div>
+        {filteredData.map((item, index) => {
+          return (
+            <ListItem
+              data-testid="single-item"
+              item={item}
+              index={index}
+              key={index}
+              setFilteredData={setFilteredData}
+              filteredData={filteredData}
+            />
+          );
+        })}
       </div>
     </section>
   );

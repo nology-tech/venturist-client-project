@@ -1,7 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ListItem from "./mockListItem";
-const testfile = [{
+const testfile = [
+  {
     firstName: "Roberto",
     lastName: "Hoopero",
     bankName: "Bank of New Zealand",
@@ -23,21 +24,24 @@ const testfile = [{
     numberOfTransaction: 2,
     lastTransaction: 1645548731321,
     accountNumber: 10950363,
-  }]
+  },
+];
 
 it("should render the contacts list item", () => {
-    // 1. Arrange
-    render(<ListItem  item={testfile[0]}
-        index={0}
-        key={0}
-        setFilteredData={() => {}}
-        filteredData={testfile} />)
-  
-    // 2. Act
-   const contact = screen.getAllByTestId("item-grid")
-  
-    // 3. Assert
-   expect(contact[0]).toBeInTheDocument()
-  });
-  
-  
+  // 1. Arrange
+  render(
+    <ListItem
+      item={testfile[0]}
+      index={0}
+      key={0}
+      setFilteredData={() => {}}
+      filteredData={testfile}
+    />
+  );
+
+  // 2. Act
+  const contact = screen.getAllByTestId("item-grid");
+
+  // 3. Assert
+  expect(contact[0]).toBeInTheDocument();
+});
