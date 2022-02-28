@@ -1,19 +1,27 @@
 import React from "react";
 import "./Button.scss";
-import icon from "./css3-fill.png";
 
-const Button = (props) => {
-  const {
-    buttonName,
-    buttonStyle,
-    hasIcon,
-    iconSrc,
-    iconPosition,
-    buttonFunction,
-  } = props;
+import { library } from "@fortawesome/fontawesome-svg-core";
+import * as IconsSolid from "@fortawesome/free-solid-svg-icons";
+import * as IconsRegular from "@fortawesome/free-regular-svg-icons";
+
+const iconListSolid = Object.keys(IconsSolid)
+  .filter(key => key !== "fas" && key !== "prefix")
+  .map(icon => IconsSolid[icon]);
+
+library.add(...iconListSolid);
+const iconListRegular = Object.keys(IconsRegular)
+  .filter(key => key !== "far" && key !== "prefix")
+  .map(icon => IconsRegular[icon]);
+
+library.add(...iconListRegular);
+
+const Button = props => {
+  const { buttonName, buttonStyle, hasIcon, iconSrc, iconPosition, buttonFunction } =
+    props;
 
   const renderIcon = () => {
-    return <img src={iconSrc} alt={buttonName} data-testid="button-icon" />;
+    return iconSrc;
   };
 
   const buttonStyleSelect = () => {

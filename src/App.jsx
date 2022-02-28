@@ -1,5 +1,4 @@
 import "./App.scss";
-import Button from "./components/Button/Button";
 
 function App() {
   return (
@@ -18,11 +17,8 @@ function App() {
         <div>Ebrima was here</div>
         <div>I am unhappy with the lack of testing - matt</div>
         <div>something funny</div>
-        <div>
-          
-        </div>
+        <div></div>
       </section>
-      <Button buttonName="Best button ever" buttonStyle="white" buttonFunction={() => alert("yo i been pressed")} />
     </div>
   );
 }

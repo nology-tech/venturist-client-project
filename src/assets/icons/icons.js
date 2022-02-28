@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const icons = {
   Convert: <FontAwesomeIcon icon="fa-solid fa-arrows-rotate" />,
@@ -14,9 +13,9 @@ const icons = {
   TickSuccessful: <FontAwesomeIcon icon="fa-regular fa-check" />,
   Exclamation: <FontAwesomeIcon icon="fa-solid fa-exclamation" />,
   Search: <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />,
-  Deposit: <FontAwesomeIcon icon="fa-solid fa-circle-plus"/>,
-  Withdraw: <FontAwesomeIcon icon="fa-solid fa-money-bill-wave"/>,
-  TrashCan: <FontAwesomeIcon icon="fa-solid fa-trash-can" />
+  Deposit: <FontAwesomeIcon icon="fa-solid fa-circle-plus" />,
+  Withdraw: <FontAwesomeIcon icon="fa-solid fa-money-bill-wave" />,
+  TrashCan: <FontAwesomeIcon icon="fa-solid fa-trash-can" />,
 };
 
 export default icons;
