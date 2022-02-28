@@ -1,5 +1,5 @@
 import ListItem from "./ListItem";
-import contacts from "./ContactsData";
+import contacts from "../assets/data/contactExample";
 import "./List.scss";
 import { useState } from "react";
 
@@ -12,11 +12,11 @@ export default function ContactsList() {
       <div>
         <div className="headers-grid">
           <div></div>
-          <h3>Name</h3>
-          <h3>Sort Code</h3>
-          <h3>Account No</h3>
-          <h3>Bank</h3>
-          <h3>IBAN</h3>
+          <p>Name</p>
+          <p>Sort Code</p>
+          <p>Account No</p>
+          <p>Bank</p>
+          <p>IBAN</p>
           <div></div>
         </div>
         {filteredData.map((item, index) => {
