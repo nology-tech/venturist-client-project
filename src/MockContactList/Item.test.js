@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import ListItem from "./mockListItem";
+import ListItem from "./ListItem";
 const testfile = [
   {
     firstName: "Roberto",

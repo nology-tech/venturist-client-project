@@ -1,6 +1,6 @@
-import ListItem from "./mockListItem";
-import contacts from "./mockData";
-import "./mockList.scss";
+import ListItem from "./ListItem";
+import contacts from "./ContactsData";
+import "./List.scss";
 import { useState } from "react";
 
 export default function ContactsList() {

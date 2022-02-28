@@ -1,4 +1,4 @@
-import "./mockListItem.scss";
+import "./ListItem.scss";
 
 export default function ListItem(props) {
   const { item, index, setFilteredData, filteredData } = props;
