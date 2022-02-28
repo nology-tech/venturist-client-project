@@ -6,6 +6,7 @@ const icons = {
   "Contacts": ["fa-solid", "fa-user-group"],
   "SignOut": ["fa-solid,", "fa-arrow-right-from-bracket"],
   "Deposit": ["fa-solid", "fa-circle-plus"],
+  "Withdraw": ["fa-solid","fa-money-bill-wave"],
   dropDownProfile: ["fa-solid", "fa-chevron-down"],
   eyeShow: ["fa-regular, fa-eye"],
   eyeHide: ["fa-regular", "fa-eye-slash"],
