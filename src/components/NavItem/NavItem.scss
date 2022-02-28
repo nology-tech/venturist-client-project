@@ -13,18 +13,17 @@
     color: $colourThree;
     
     &--icon {
+      padding: 5px;
+      border-radius: 10px;
       margin-right: 10px;
     }
 
     &--active {
 
       border-right: 5px solid $colourOne;
+      color: $colourOne;
       .navbar__nav-item--icon {
         background-color: $colourEleven;
-      }
-      h3 {
-        color: $colourOne;
-
       }
 
     }

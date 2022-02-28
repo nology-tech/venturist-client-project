@@ -21,9 +21,8 @@ const NavBar = () => {
     activeButton={activeButton} 
     index={index}
     icon={icons[label]}    
-    />)
+    />);
 
-  console.log(buttons)
   return (
     <nav className="navbar" data-testid="navbar">
       <div className="navbar__header">
