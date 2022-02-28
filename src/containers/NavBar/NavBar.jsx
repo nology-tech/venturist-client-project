@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import NavItem from "../../components/NavItem/NavItem";
 import './NavBar.scss';
-import {Link} from "react-router-dom"
 import logo from "../../assets/logos/logo.png";
 import icons from "../../assets/icons/icons";
 
@@ -26,10 +25,10 @@ const NavBar = () => {
   return (
     <nav className="navbar" data-testid="navbar">
       <div className="navbar__header" onClick={() => handleClick("/")}>
-        <Link to="/" style={{ textDecoration: 'none' }} className="navbar__header--logo" >
+        <div className="navbar__header--logo" >
           <img src={logo} alt="" />
           <h2>VENTURIST</h2>
-        </Link>
+        </div>
       </div>
 
       <section className="navbar__menu">
