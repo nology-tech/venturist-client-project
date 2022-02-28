@@ -1,19 +1,23 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
 const icons = {
-  "Convert": ['fa-solid', 'fa-arrows-rotate'],
-  "Wallet": ["fa-solid", "fa-wallet"],
-  "Live Rates": ["fa-solid","fa-chart-line"],
-  "Transfer": ["fa-solid","fa-paper-plane"],
-  "Contacts": ["fa-solid", "fa-user-group"],
-  "SignOut": ["fa-solid,", "fa-arrow-right-from-bracket"],
-  "Deposit": ["fa-solid", "fa-circle-plus"],
-  "Withdraw": ["fa-solid","fa-money-bill-wave"],
-  dropDownProfile: ["fa-solid", "fa-chevron-down"],
-  eyeShow: ["fa-regular, fa-eye"],
-  eyeHide: ["fa-regular", "fa-eye-slash"],
-  tickSuccessful: ["fa-regular", "fa-check"],
-  exclamation: ["fa-solid","fa-exclamation"],
-  search: ["fa-solid","fa-magnifying-glass"],
-  };
+  Convert: <FontAwesomeIcon icon="fa-solid fa-arrows-rotate" />,
+  Wallet: <FontAwesomeIcon icon="fa-solid fa-wallet" />,
+  LiveRates: <FontAwesomeIcon icon="fa-solid fa-chart-line" />,
+  Transfer: <FontAwesomeIcon icon="fa-solid fa-paper-plane" />,
+  Contacts: <FontAwesomeIcon icon="fa-solid fa-user-group" />,
+  SignOut: <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" />,
+  DropDownProfile: <FontAwesomeIcon icon="fa-solid fa-chevron-down" />,
+  EyeShow: <FontAwesomeIcon icon="fa-regular fa-eye" />,
+  EyeHide: <FontAwesomeIcon icon="fa-regular fa-eye-slash" />,
+  TickSuccessful: <FontAwesomeIcon icon="fa-regular fa-check" />,
+  Exclamation: <FontAwesomeIcon icon="fa-solid fa-exclamation" />,
+  Search: <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />,
+  Deposit: <FontAwesomeIcon icon="fa-solid fa-circle-plus"/>,
+  Withdraw: <FontAwesomeIcon icon="fa-solid fa-money-bill-wave"/>,
+  TrashCan: <FontAwesomeIcon icon="fa-solid fa-trash-can" />
+};
 
 export default icons;
 

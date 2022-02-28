@@ -19,7 +19,7 @@ const NavBar = () => {
     handleClick={handleClick} 
     activeButton={activeButton} 
     index={index}
-    icon={icons[label]}    
+    icon={icons[label.split(" ").join("")]}    
     />);
 
   return (
@@ -32,7 +32,7 @@ const NavBar = () => {
       </div>
 
       <section className="navbar__menu">
-        {activeButton && buttons }
+        {buttons}
       </section>
     </nav>
   );
