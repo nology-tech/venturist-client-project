@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "node-sass": "^7.0.1",
-    "sass": "^1.49.8",
+    "sass": "^1.49.9",
     "scss": "^0.2.4"
   }
 }
