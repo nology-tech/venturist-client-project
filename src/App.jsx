@@ -1,15 +1,10 @@
 import "./App.scss";
-import WelcomeTiles from "./Component/WelcomeTiles/WelcomeTiles";
+
 
 function App() {
   return (
     <div className="App">
-     
-      <section className="welcome-section">
-      <div>
-          <WelcomeTiles />
-        </div>
-        </section>
+ 
       <section className="intro">
         <div className="currency-flag currency-flag-usd"></div>
         <div>Howsit?</div>
