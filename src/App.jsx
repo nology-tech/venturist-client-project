@@ -4,6 +4,7 @@ function App() {
   return (
     <div className="App">
       <section className="intro">
+        <div className="currency-flag currency-flag-usd"></div>
         <div>Howsit?</div>
         <div>p tags are the best</div>
         <div>Other stuff</div>
@@ -20,4 +21,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
