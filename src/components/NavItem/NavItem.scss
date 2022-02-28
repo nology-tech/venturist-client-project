@@ -1,3 +1,5 @@
+@use "../../assets/sass/global_variables" as *;
+
 .navbar {
 
   &__nav-item {
@@ -8,25 +10,21 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    color: $colourThree;
     
     &--icon {
-      width: 25px;
-      height: 25px;
-      background-color: red;
+      padding: 5px;
+      border-radius: 10px;
       margin-right: 10px;
+      width: 20px;
     }
 
     &--active {
 
-      border-right: 5px solid #00CED4;
-      border-radius: 5px;
+      border-right: 5px solid $colourOne;
+      color: $colourOne;
       .navbar__nav-item--icon {
-        background-color: #F1F1F1;;
-        border-radius: 5px;
-      }
-      h3 {
-        color: #00CED4;
-
+        background-color: $colourEleven;
       }
 
     }

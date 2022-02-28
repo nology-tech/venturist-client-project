@@ -1,25 +1,32 @@
+@use "../../assets/sass/global_variables" as *;
+
 * {
   margin: 0;
   padding: 0;
 }
 
 .navbar {
-  border-right: 2px solid #f3f3f3;
-  height: 100vh;
+  border-right: 2px solid $colourEleven;
+  height: 98vh;
   width: 230px;
 
   &__header {
+    margin-top: 10px;
     margin-bottom: 30px;
 
     &--logo {
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #343C49;
+      gap: 10px;
+      img {
+        width: 32px;
+        height: 32px;
+      }
+      h2 {
+        color: $colourSix;
+      }
     }
   }
 
-  &__menu {
-    color: #A6AFBD;
-  }
 }
