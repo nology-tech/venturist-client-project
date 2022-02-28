@@ -8,8 +8,8 @@ const Tiles= (props) => {
 
   return (
 
-    <div data-testid= "tiles" className="tiles">
-      <h1>{`Hey ${accountName} 👋`}</h1>
+    <div data-testid="tiles" className="tiles">
+      <h1 className="tiles__greeting">{`Hey ${accountName} 👋`}</h1>
       <div className="tiles__fund-box">
         <h3 className="tiles__fund-box__header" >Your funds:</h3>
         <h1 className="tiles__fund-box__amount">{currencySymbol}{accountBalance}</h1>
