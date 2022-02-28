@@ -1,11 +1,12 @@
 import React from 'react';
+import MakeTransferRecipientCard from '../MakeTransferRecipientCard/MakeTransferRecipientCard';
 import "./MakeTransferChooseRecipient.scss";
 
 const MakeTransferChooseRecipient = (props) => {
 
   const {userCardList} = props;
   
-  const userCardComponents = userCardList.map(userCard => <MakeTransferChooseRecipientCard userCard={userCard} />);
+  const userCardComponents = userCardList.map((userCard,index) => <MakeTransferRecipientCard key={index} userCard={userCard} />);
 
   const emptyContactListText = <p>You don't seem to have any contacts yet, try adding one!</p>
 
@@ -18,9 +19,11 @@ const MakeTransferChooseRecipient = (props) => {
       <input type="text" placeholder="Search..."/>
 
       <div className="transfer-page__recipient-list">
-        <p>Name</p>
-        <p>Sort Code</p>
-        <p>Account No</p>
+        <div className="transfer-page__recipient-list__headers">
+          <p>Name</p>
+          <p>Sort Code</p>
+          <p>Account No</p>
+        </div>
         <div className="transfer-page__recipient-list__cards">
           {!userCardList && emptyContactListText}
           {userCardList && userCardComponents}
