@@ -3,7 +3,6 @@ import MakeTransferRecipientCard from '../MakeTransferRecipientCard/MakeTransfer
 import "./MakeTransferChooseRecipient.scss";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
 import * as IconsRegular from '@fortawesome/free-regular-svg-icons';
 import icons from "./../../assets/icons/icons";
