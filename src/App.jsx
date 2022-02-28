@@ -1,11 +1,8 @@
 import "./App.scss";
-import ContactsList from "./MockContactList/mockList";
+import ContactsList from "./MockContactList/List";
 
 function App() {
-  return (
-    <>
-      <ContactsList />
-    </>
-  );
+  return <ContactsList />;
 }
+
 export default App;
