@@ -1,13 +1,16 @@
 import "./App.scss";
 import NavBar from "./containers/NavBar/NavBar";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
   return (
     <div className="App">
-      
-      <NavBar />
-      <section className="intro">
-      </section>
+      <Router>
+        <NavBar />
+        
+        <section className="intro">
+        </section>
+      </Router>
     </div>
   );
 }

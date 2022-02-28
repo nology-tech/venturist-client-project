@@ -1,16 +1,19 @@
-const icons = [
-  { Convert: <FontAwesomeIcon icon="fa-solid fa-arrows-rotate" /> },
-  { Wallet: <FontAwesomeIcon icon="fa-solid fa-wallet" /> },
-  { LiveRates: <FontAwesomeIcon icon="fa-solid fa-chart-line" /> },
-  { Transfer: <FontAwesomeIcon icon="fa-solid fa-paper-plane" /> },
-  { Contacts: <FontAwesomeIcon icon="fa-solid fa-user-group" /> },
-  { SignOut: <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" /> },
-  { dropDownProfile: <FontAwesomeIcon icon="fa-solid fa-chevron-down" /> },
-  { eyeShow: <FontAwesomeIcon icon="fa-regular fa-eye" /> },
-  { eyeHide: <FontAwesomeIcon icon="fa-regular fa-eye-slash" /> },
-  { tickSuccessful: <FontAwesomeIcon icon="fa-regular fa-check" /> },
-  { exclamation: <FontAwesomeIcon icon="fa-solid fa-exclamation" /> },
-  { search: <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> },
-];
+const icons = {
+  "Convert": ['fa-solid', 'fa-arrows-rotate'],
+  "Wallet": ["fa-solid", "fa-wallet"],
+  "Live Rates": ["fa-solid","fa-chart-line"],
+  "Transfer": ["fa-solid","fa-paper-plane"],
+  "Contacts": ["fa-solid", "fa-user-group"],
+  "SignOut": ["fa-solid,", "fa-arrow-right-from-bracket"],
+  "Deposit": ["fa-solid", "fa-circle-plus"],
+  dropDownProfile: ["fa-solid", "fa-chevron-down"],
+  eyeShow: ["fa-regular, fa-eye"],
+  eyeHide: ["fa-regular", "fa-eye-slash"],
+  tickSuccessful: ["fa-regular", "fa-check"],
+  exclamation: ["fa-solid","fa-exclamation"],
+  search: ["fa-solid","fa-magnifying-glass"],
+  };
+
+export default icons;
 
 // Upon saving, double quotes around convert, wallet, live rates, transfer and contacts were removed.
