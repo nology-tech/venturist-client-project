@@ -9,6 +9,9 @@
   border-right: 2px solid $colourEleven;
   height: 98vh;
   width: 230px;
+  display: flex;
+  flex-direction: column;
+
 
   &__header {
     margin-top: 10px;
@@ -31,6 +34,14 @@
         font-size: 24px;
       }
     }
+
+  }
+  &__button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: 50px;
   }
 
 }

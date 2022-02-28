@@ -3,6 +3,7 @@ import NavItem from "../../components/NavItem/NavItem";
 import './NavBar.scss';
 import logo from "../../assets/logos/logo.png";
 import icons from "../../assets/icons/icons";
+import Button from "../../components/Button/Button"
 
 
 const NavBar = () => {
@@ -34,6 +35,10 @@ const NavBar = () => {
       <section className="navbar__menu">
         {buttons}
       </section>
+      <div className="navbar__button">
+        <Button buttonName="Sign Out" hasIcon={true} iconSrc={icons.SignOut}/>
+      </div>
+
     </nav>
   );
 };
