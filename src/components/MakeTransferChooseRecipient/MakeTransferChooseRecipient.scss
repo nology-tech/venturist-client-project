@@ -1,0 +1,36 @@
+@use "../../assets/sass/global_variables" as *;
+.transfer-page__choose-recipient {
+
+  h2 {
+    font-size: 24px;
+  }
+
+  &__recipient-list {
+    width: 650px;
+
+    h5 {
+      font-family: $outfit;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 15px;
+  
+      color: #5B6D7D;
+    }
+
+    &__headers {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      padding-right: 65px;
+      height: 50px;
+
+      &__account-no {
+        margin-left: 67px;
+      }
+
+      &__sort-code {
+        margin-left: 240px;
+      }
+    }
+  }
+}
