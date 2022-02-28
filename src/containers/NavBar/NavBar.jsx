@@ -8,15 +8,15 @@ import icons from "../../assets/icons/icons";
 
 const NavBar = () => {
 
-  const [activeButton,setActiveButton] = useState();
+  const [activeButton,setActiveButton] = useState("/");
 
   const handleClick = (label) => {
     setActiveButton(label);
   }
 
-  const buttonLabels = ["Wallet","Live Rates","Convert","Transfer","Contacts","Deposit"];
+  const buttonLabels = ["Wallet","Live Rates","Convert","Transfer","Contacts","Deposit","Withdraw"];
 
-  const buttons = buttonLabels.map((label,index) => <NavItem label={label} 
+  const buttons = buttonLabels.map((label,index) => <NavItem key={index} label={label} 
     handleClick={handleClick} 
     activeButton={activeButton} 
     index={index}
@@ -25,15 +25,15 @@ const NavBar = () => {
 
   return (
     <nav className="navbar" data-testid="navbar">
-      <div className="navbar__header">
-        <Link to="/" style={{ textDecoration: 'none' }} className="navbar__header--logo">
+      <div className="navbar__header" onClick={() => handleClick("/")}>
+        <Link to="/" style={{ textDecoration: 'none' }} className="navbar__header--logo" >
           <img src={logo} alt="" />
           <h2>VENTURIST</h2>
         </Link>
       </div>
 
       <section className="navbar__menu">
-        {buttons}
+        {activeButton && buttons }
       </section>
     </nav>
   );

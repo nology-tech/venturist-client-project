@@ -12,7 +12,7 @@
 
   &__header {
     margin-top: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 
     &--logo {
       display: flex;
@@ -25,6 +25,9 @@
       }
       h2 {
         color: $colourSix;
+        font-family: $outfit;
+        font-weight: 700;
+        font-size: 24px;
       }
     }
   }

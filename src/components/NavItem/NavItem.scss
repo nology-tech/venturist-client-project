@@ -11,9 +11,15 @@
     justify-content: flex-start;
     align-items: center;
     color: $colourThree;
+
+    font-family: $inter;
+    font-weight: normal;
+    font-size: 16px;
+    font-style: normal;
     
     &--icon {
       padding: 5px;
+      text-align: center;
       border-radius: 10px;
       margin-right: 10px;
       width: 20px;

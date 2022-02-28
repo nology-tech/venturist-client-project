@@ -30,7 +30,7 @@ const NavItem = (props) => {
     <Link to={"/"+props.label.split(" ").join("")} style={{ textDecoration: 'none' }}>
       <div className={className} onClick={() => props.handleClick(props.label) } key={props.index} data-testid="navItem">
         <div className='navbar__nav-item--icon'><FontAwesomeIcon icon={props.icon} /></div>
-        <h3>{props.label}</h3>
+        <p>{props.label}</p>
       </div>
     </Link>
   )
