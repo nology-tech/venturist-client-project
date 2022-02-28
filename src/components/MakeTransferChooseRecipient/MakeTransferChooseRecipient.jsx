@@ -2,6 +2,25 @@ import React from 'react';
 import MakeTransferRecipientCard from '../MakeTransferRecipientCard/MakeTransferRecipientCard';
 import "./MakeTransferChooseRecipient.scss";
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
+import * as IconsRegular from '@fortawesome/free-regular-svg-icons';
+import icons from "./../../assets/icons/icons";
+
+const iconListSolid = Object
+  .keys(IconsSolid)
+  .filter(key => key !== "fas" && key !== "prefix" )
+  .map(icon => IconsSolid[icon])
+
+library.add(...iconListSolid)
+const iconListRegular = Object
+  .keys(IconsRegular)
+  .filter(key => key !== "far" && key !== "prefix" )
+  .map(icon => IconsRegular[icon])
+
+library.add(...iconListRegular)
+
 const MakeTransferChooseRecipient = (props) => {
 
   const {userCardList} = props;
@@ -19,6 +38,7 @@ const MakeTransferChooseRecipient = (props) => {
       <p className="transfer-page__choose-recipient__close-menu">X</p>
       <h4 className="transfer-page__choose-recipient__subheader">Search</h4>
       <input type="text" placeholder="Search..." className="transfer-page__choose-recipient__search"/>
+      {icons.Search}
 
       <div className="transfer-page__choose-recipient__recipient-list">
         <div className="transfer-page__choose-recipient__recipient-list__headers">

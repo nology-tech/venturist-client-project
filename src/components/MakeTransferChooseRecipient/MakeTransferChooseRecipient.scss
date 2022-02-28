@@ -49,6 +49,13 @@
 
   &__search {
     margin-bottom: 50px;
+    padding-left: 60px;
+    height: 50px;
+    width: 360px;
+    background: #FBFBFC;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
   }
 
   &__recipient-list {
@@ -79,4 +86,10 @@
       }
     }
   }
+}
+
+.fa-magnifying-glass {
+  position: absolute;
+  left: 90px;
+  top: 200.5px;
 }
