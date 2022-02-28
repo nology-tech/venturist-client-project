@@ -6,6 +6,7 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 20px;
+  margin-top: 10px;
 
   color: #8896A3;
 }
@@ -14,11 +15,16 @@
   background-color: #FBFBFC;
   border-radius: 8px;
   box-sizing: border-box;
-  padding: 10px 53px 10px 22px;
+  padding: 10px 53px 9px 22px;
   display: flex;
   width: 650px;
   justify-content: space-between;
   margin-bottom: 8px;
+  height: 58px;
+
+  p {
+    @include grey-16px-text;
+  }
   
   &--left {
     display: flex;
@@ -31,9 +37,8 @@
   
   &__bank-image {
     margin-right: 70px;
-    width: 40px;
-    height: 40px;
-    margin-top: 6.5px;
+    width: 39px;
+    height: 39px;
   }
 
   &__sort-code {
@@ -45,7 +50,4 @@
     width: 75px;
   }
 
-  p {
-    @include grey-16px-text;
-  }
 }
