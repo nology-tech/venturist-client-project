@@ -1,4 +1,19 @@
 import "./ListItem.scss";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as IconsSolid from "@fortawesome/free-solid-svg-icons";
+import * as IconsRegular from "@fortawesome/free-regular-svg-icons";
+
+const iconListSolid = Object.keys(IconsSolid)
+  .filter((key) => key !== "fas" && key !== "prefix")
+  .map((icon) => IconsSolid[icon]);
+
+library.add(...iconListSolid);
+const iconListRegular = Object.keys(IconsRegular)
+  .filter((key) => key !== "far" && key !== "prefix")
+  .map((icon) => IconsRegular[icon]);
+
+library.add(...iconListRegular);
 
 export default function ListItem(props) {
   const { item, index, setFilteredData, filteredData } = props;
@@ -23,11 +38,9 @@ export default function ListItem(props) {
       <p>{item.bankName}</p>
       <p>{item.IBAN}</p>
       <div className="item-grid__align-img">
-        <img
-          data-testid="delete-button"
-          src="https://img.icons8.com/material-outlined/344/trash.png"
-          alt="Delete"
-          width="25px"
+        <FontAwesomeIcon
+          className="item-grid__bin"
+          icon="fa-solid fa-trash-can"
           onClick={deleteItem}
         />
       </div>
