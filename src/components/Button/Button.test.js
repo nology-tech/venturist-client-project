@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Button from "./Button";
+import icons from "../../assets/icons/icons"
 
 test("Test that button renders with correct inner text", () => {
   //Arrange
@@ -24,12 +25,12 @@ test("Test that the button onClick={buttonFunction} calls the function passed in
 
 test("Test image tag renders when hasIcon is true", () => {
   //Arrange
-  render(<Button hasIcon={true} />);
+  render(<Button hasIcon={true} iconSrc={icons.Convert}/>);
   //Act
   const button = screen.getByTestId("button");
-  const buttonIcon = screen.getByTestId("button-icon");
+  const buttonIcon = screen.getByTitle("icon")
   //Assert
-  expect(button).toContainElement(buttonIcon);
+  expect(buttonIcon).toBeInTheDocument();
 });
 
 test("Test that an icon does NOT render inside of the button when prop hasIcon is false", () => {

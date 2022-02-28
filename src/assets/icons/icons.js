@@ -1,21 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const icons = {
-  Convert: <FontAwesomeIcon icon="fa-solid fa-arrows-rotate" />,
-  Wallet: <FontAwesomeIcon icon="fa-solid fa-wallet" />,
-  LiveRates: <FontAwesomeIcon icon="fa-solid fa-chart-line" />,
-  Transfer: <FontAwesomeIcon icon="fa-solid fa-paper-plane" />,
-  Contacts: <FontAwesomeIcon icon="fa-solid fa-user-group" />,
-  SignOut: <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" />,
-  DropDownProfile: <FontAwesomeIcon icon="fa-solid fa-chevron-down" />,
-  EyeShow: <FontAwesomeIcon icon="fa-regular fa-eye" />,
-  EyeHide: <FontAwesomeIcon icon="fa-regular fa-eye-slash" />,
-  TickSuccessful: <FontAwesomeIcon icon="fa-regular fa-check" />,
-  Exclamation: <FontAwesomeIcon icon="fa-solid fa-exclamation" />,
-  Search: <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />,
-  Deposit: <FontAwesomeIcon icon="fa-solid fa-circle-plus" />,
-  Withdraw: <FontAwesomeIcon icon="fa-solid fa-money-bill-wave" />,
-  TrashCan: <FontAwesomeIcon icon="fa-solid fa-trash-can" />,
+  Convert: <FontAwesomeIcon icon="fa-solid fa-arrows-rotate" title="icon"/>,
+  Wallet: <FontAwesomeIcon icon="fa-solid fa-wallet" title="icon"/>,
+  LiveRates: <FontAwesomeIcon icon="fa-solid fa-chart-line" title="icon"/>,
+  Transfer: <FontAwesomeIcon icon="fa-solid fa-paper-plane" title="icon"/>,
+  Contacts: <FontAwesomeIcon icon="fa-solid fa-user-group" title="icon"/>,
+  SignOut: <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" title="icon"/>,
+  DropDownProfile: <FontAwesomeIcon icon="fa-solid fa-chevron-down" title="icon"/>,
+  EyeShow: <FontAwesomeIcon icon="fa-regular fa-eye" title="icon"/>,
+  EyeHide: <FontAwesomeIcon icon="fa-regular fa-eye-slash" title="icon"/>,
+  TickSuccessful: <FontAwesomeIcon icon="fa-regular fa-check" title="icon"/>,
+  Exclamation: <FontAwesomeIcon icon="fa-solid fa-exclamation" title="icon"/>,
+  Search: <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" title="icon"/>,
+  Deposit: <FontAwesomeIcon icon="fa-solid fa-circle-plus" title="icon"/>,
+  Withdraw: <FontAwesomeIcon icon="fa-solid fa-money-bill-wave" title="icon"/>,
+  TrashCan: <FontAwesomeIcon icon="fa-solid fa-trash-can" title="icon"/>,
 };
 
 export default icons;
