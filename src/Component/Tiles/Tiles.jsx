@@ -2,8 +2,6 @@ import "./Tiles.scss";
 
 const Tiles= (props) => {
  
-  // Prop = name of account holder, account balance, currency symbol
-
   const {accountName, accountBalance, currencySymbol} = props;
 
   return (
