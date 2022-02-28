@@ -11,6 +11,7 @@ const icons = [
   { tickSuccessful: <FontAwesomeIcon icon="fa-regular fa-check" /> },
   { exclamation: <FontAwesomeIcon icon="fa-solid fa-exclamation" /> },
   { search: <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> },
+  { trashCan: <FontAwesomeIcon icon="fa-solid fa-trash-can" />},
 ];
 
 // Upon saving, double quotes around convert, wallet, live rates, transfer and contacts were removed.
