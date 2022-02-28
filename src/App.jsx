@@ -1,8 +1,10 @@
 import "./App.scss";
 
+
 function App() {
   return (
     <div className="App">
+ 
       <section className="intro">
         <div className="currency-flag currency-flag-usd"></div>
         <div>Howsit?</div>
