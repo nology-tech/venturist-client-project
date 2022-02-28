@@ -28,7 +28,7 @@ test("Test image tag renders when hasIcon is true", () => {
   render(<Button hasIcon={true} iconSrc={icons.Convert}/>);
   //Act
   const button = screen.getByTestId("button");
-  const buttonIcon = screen.getByTitle("icon")
+  const buttonIcon = screen.getByTitle("Convert")
   //Assert
   expect(buttonIcon).toBeInTheDocument();
 });
