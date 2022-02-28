@@ -1,5 +1,5 @@
 import "./App.scss";
-import ContactsList from "./MockContactList/List";
+import ContactsList from "./containers/ContactsList/ContactsList";
 
 function App() {
   return <ContactsList />;

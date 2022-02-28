@@ -1,6 +1,5 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import ListItem from "./ListItem";
+import { render, screen } from "@testing-library/react";
+import ListItem from "./ContactsListItem";
 const testfile = [
   {
     firstName: "Roberto",

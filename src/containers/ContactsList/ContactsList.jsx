@@ -1,14 +1,13 @@
-import ListItem from "./ListItem";
-import contacts from "../assets/data/contactExample";
-import "./List.scss";
+import "./ContactsList.scss";
+import contacts from "../../assets/data/contactExample";
 import { useState } from "react";
+import ListItem from "../../components/ContactsListItem/ContactsListItem";
 
 export default function ContactsList() {
   const [filteredData, setFilteredData] = useState(contacts);
 
   return (
     <section className="page" data-testid="page">
-      <nav></nav>
       <div>
         <div className="headers-grid">
           <div></div>

@@ -1,6 +1,6 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import ContactsList from "./List";
+import ContactsList from "./ContactsList";
 
 it("should render the contacts list", () => {
   // 1. Arrange

@@ -1,4 +1,4 @@
-@use "../assets/sass/global_variables" as *;
+@use "../../assets/sass/global_variables" as *;
 
 .headers-grid {
   display: grid;
@@ -7,12 +7,6 @@
   font-size: 18px;
   line-height: 20px;
   color: $colourThree;
-}
-
-nav {
-  width: 230px;
-  height: 100vh;
-  border: 1px solid black;
 }
 
 .page {

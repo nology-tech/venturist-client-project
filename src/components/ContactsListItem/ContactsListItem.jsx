@@ -1,4 +1,4 @@
-import "./ListItem.scss";
+import "./ContactsListItem.scss";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as IconsSolid from "@fortawesome/free-solid-svg-icons";
