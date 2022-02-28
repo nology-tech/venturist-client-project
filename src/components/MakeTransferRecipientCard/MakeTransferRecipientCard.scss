@@ -1,3 +1,14 @@
+@use "./../../assets/sass/global_variables" as *;
+
+@mixin grey-16px-text {
+  font-family: $outfit;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+
+  color: #8896A3;
+}
 
 .transfer-page__recipient__card {
   background-color: #FBFBFC;
@@ -7,6 +18,7 @@
   display: flex;
   width: 650px;
   justify-content: space-between;
+  margin-bottom: 8px;
   
   &--left {
     display: flex;
@@ -19,9 +31,21 @@
   
   &__bank-image {
     margin-right: 70px;
+    width: 40px;
+    height: 40px;
+    margin-top: 6.5px;
   }
 
   &__sort-code {
     margin-right: 60px;
+    width: 60px;
+  }
+
+  &__account-number {
+    width: 75px;
+  }
+
+  p {
+    @include grey-16px-text;
   }
 }
