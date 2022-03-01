@@ -1,5 +1,6 @@
 import React from 'react'
 import "./MakeTransferForm.scss"
+import mockData from "../../assets/data/liveRatesExample"
 
 const MakeTransferForm = (props) => {
 
@@ -9,6 +10,8 @@ const MakeTransferForm = (props) => {
   //   exchangeFee,
   //   exchangeDeliveryTime
   // } = props;
+
+  console.log(mockData[0].currencySymbol)
 
   return (
     <form className='transfer-page__transfer-form' onSubmit="handleSubmit">
@@ -20,8 +23,8 @@ const MakeTransferForm = (props) => {
           <p>{exchangeRateSend.currencySymbol}</p> */}
           <p className="transfer-form-bar__flag">FLAG</p>
           <p className="transfer-form-bar__currency">GBP - British Pounds</p>
-          <p className="transfer-form-bar__amount">£1000.00</p>
-          <input className="transfer-form-bar__input" type="text" required/>
+          {/* <p className="transfer-form-bar__amount">£1000.00</p> */}
+          <input className="transfer-form-bar__input" type="text" placeholder={mockData[0].currencySymbol + "1000"} required/>
         </div>
         <h4 className="transfer-form-bar__header">Recipient gets</h4>
         <div className="transfer-form-bar__container">
@@ -30,7 +33,7 @@ const MakeTransferForm = (props) => {
           <p>{exchangeRateRecieve.currencySymbol}</p> */}
           <p>FLAG</p>
           <p className="transfer-form-bar__currency">USD - US Dollars</p>
-          <p className="transfer-form-bar__amount">$1250.00</p>
+          <p className="transfer-form-bar__amount" >{mockData[1].currencySymbol}1250.00</p>
         </div>
       </div>
       <div className="transfer-form-info">
