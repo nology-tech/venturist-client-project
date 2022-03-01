@@ -8,6 +8,7 @@ import liveRatesArr from "../../assets/data/liveRatesExample";
 const ConvertPage = () => {
   console.log(userProfile);
   console.log(liveRatesArr);
+  <p>live rates</p>
 
   return (
     <div>ConvertPage</div>
