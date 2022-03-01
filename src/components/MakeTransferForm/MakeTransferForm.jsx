@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./MakeTransferForm.scss";
 import mockData from "../../assets/data/liveRatesExample";
 
@@ -10,17 +10,12 @@ const MakeTransferForm = props => {
   //   exchangeDeliveryTime
   // } = props;
 
-
-  const numberOrDot = new RegExp([0-9], ".");
-
   console.log(mockData[0].currencySymbol);
 
   // const [handleInput, setHandleInput] = useState("");
 
   // const handleInput =(e) => {
   //   let amount = e.target.value;
-
-
 
   //   setHandleInput(!handleInput)
   // }
@@ -49,7 +44,7 @@ const MakeTransferForm = props => {
           <input
             className="transfer-form-bar__input"
             type="text"
-            pattern={numberOrDot}
+            pattern="[0-9.]+"
             // onChange={onlyNumber}
             placeholder={mockData[0].currencySymbol + "1000"}
             required
