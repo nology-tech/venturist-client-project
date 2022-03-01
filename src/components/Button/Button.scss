@@ -1,0 +1,51 @@
+@use "../../assets/sass/global_variables" as *;
+
+.button {
+  min-width: 100px;
+  min-height: 35px;
+  border: 0;
+  border-radius: 3px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-family: $inter;
+
+  &--blue {
+    color: $colourTen;
+    background-color: $colourOne;
+  }
+
+  &--clear {
+    color: $colourFour;
+    background-color: transparent;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+  }
+
+  &--white {
+    color: $colourFour;
+    background-color: $colourTen;
+  }
+  &--icon-left {
+    flex-direction: row-reverse;
+  }
+  &--icon-right {
+    flex-direction: row;
+  }
+  &__icon {
+    font-size: 20px;
+    width: auto;
+    height: 20px;
+  }
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button:active {
+  box-shadow: rgba(50, 50, 93, 0.2) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.2) 0px 18px 36px -18px inset;
+}
