@@ -3,8 +3,7 @@ import "./MakeTransferForm.scss"
 
 const MakeTransferForm = (props) => {
 
-  const {exchangeFrom, exchangeTo, handleChangeCurrency} = props;
-  console.log(exchangeFrom);
+  const {exchangeFrom, exchangeTo, handleChangeCurrency, handleChangeAmount, exchangeAmount} = props;
 
   return (
     <form className='transfer-page__transfer-form' onSubmit="handleSubmit">
@@ -13,17 +12,13 @@ const MakeTransferForm = (props) => {
         <div className="transfer-form-bar__container">
           <img src={exchangeFrom.currencyFlag} className="transfer-form-bar__flag" onClick={handleChangeCurrency} alt="Currency flag"></img>
           <p className="transfer-form-bar__currency" onClick={handleChangeCurrency}>{exchangeFrom.currencyCode} - {exchangeFrom.currencyName}</p>
-          <p className="transfer-form-bar__amount">{exchangeFrom.currencySymbol} 1000.00</p>
-          <input className="transfer-form-bar__input" type="text" required/>
+          <p className="transfer-form-bar__amount">{exchangeFrom.currencySymbol} <input type="number" onChange={handleChangeAmount} /> </p>
         </div>
         <h4 className="transfer-form-bar__header">Recipient gets</h4>
         <div className="transfer-form-bar__container">
-          {/* <p>{exchangeRateRecieve.currencyFlag}</p>
-          <p>{exchangeRateRecieve.currencyCode} - {exchangeRateRecieve.currencyName}</p>
-          <p>{exchangeRateRecieve.currencySymbol}</p> */}
-          <p>FLAG</p>
-          <p className="transfer-form-bar__currency">USD - US Dollars</p>
-          <p className="transfer-form-bar__amount">$1250.00</p>
+        <img src={exchangeTo.currencyFlag} className="transfer-form-bar__flag" onClick={handleChangeCurrency} alt="Currency flag"></img>
+          <p className="transfer-form-bar__currency" onClick={handleChangeCurrency}>{exchangeTo.currencyCode} - {exchangeTo.currencyName}</p>
+          <p className="transfer-form-bar__amount">{exchangeTo.currencySymbol} {exchangeTo.liveRate*exchangeAmount}</p>
         </div>
       </div>
       <div className="transfer-form-info">
