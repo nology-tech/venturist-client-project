@@ -3,24 +3,17 @@ import "./MakeTransferForm.scss"
 
 const MakeTransferForm = (props) => {
 
-  // const {
-  //   exchangeRateSend,
-  //   exchangeRateRecieve,
-  //   exchangeFee,
-  //   exchangeDeliveryTime
-  // } = props;
+  const {exchangeFrom, exchangeTo, handleChangeCurrency} = props;
+  console.log(exchangeFrom);
 
   return (
     <form className='transfer-page__transfer-form' onSubmit="handleSubmit">
       <div className="transfer-form-bar">
         <h4 className="transfer-form-bar__header">You send</h4>
         <div className="transfer-form-bar__container">
-          {/* <p>{exchangeRateSend.currencyFlag}</p>
-          <p>{exchangeRateSend.currencyCode} - {exchangeRateSend.currencyName}</p>
-          <p>{exchangeRateSend.currencySymbol}</p> */}
-          <p className="transfer-form-bar__flag">FLAG</p>
-          <p className="transfer-form-bar__currency">GBP - British Pounds</p>
-          <p className="transfer-form-bar__amount">£1000.00</p>
+          <img src={exchangeFrom.currencyFlag} className="transfer-form-bar__flag" onClick={handleChangeCurrency} alt="Currency flag"></img>
+          <p className="transfer-form-bar__currency" onClick={handleChangeCurrency}>{exchangeFrom.currencyCode} - {exchangeFrom.currencyName}</p>
+          <p className="transfer-form-bar__amount">{exchangeFrom.currencySymbol} 1000.00</p>
           <input className="transfer-form-bar__input" type="text" required/>
         </div>
         <h4 className="transfer-form-bar__header">Recipient gets</h4>
