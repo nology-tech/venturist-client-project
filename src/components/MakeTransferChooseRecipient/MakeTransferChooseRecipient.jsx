@@ -31,6 +31,7 @@ const MakeTransferChooseRecipient = (props) => {
   const emptyContactListText = <p className="transfer-page__choose-recipient__recipient-list__empty">You don't seem to have any contacts yet, try adding one!</p>;
 
   return (
+    <>
     <div className="transfer-page__choose-recipient">
       <h2 className="transfer-page__choose-recipient__header">Choose Recipient</h2>
       {/* <img src="close-cross" alt="Close menu" className="transfer-page__choose-recipient__close-menu"/> onClick={}*/}
@@ -49,8 +50,10 @@ const MakeTransferChooseRecipient = (props) => {
           {!userCardListUsed && emptyContactListText}
           {userCardListUsed && userCardComponents}
         </div>
-      </div>
+      </div>      
     </div>
+    <div className='transfer-page__choose-recipient__overlay'> </div>
+    </>
   )
 }
 

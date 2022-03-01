@@ -83,3 +83,5 @@ const liveRatesArr = [
     currencyCode: "¥"
   },
 ]
+
+export default liveRatesArr;
