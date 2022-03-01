@@ -3,21 +3,37 @@
 * {
   padding: 0;
   margin: 0;
+  
 }
 
 .transfer-page__choose-recipient {
-
   padding: 50px 50px 0 65px;
   box-sizing: border-box;
-
   position: absolute;
   width: 774px;
   height: 735px;
   left: 477px;
   top: 191px;
-
+  z-index: 2;
+  
   background-color: #FFFFFF;
   border-radius: 8px;
+
+  &__overlay {
+    z-index: 1;
+    fill: $colourTwo;
+    background-color: rgba(0, 0, 0, 0.15);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    
+    
+
+
+  }
 
   &__close-menu {
     position: absolute;
@@ -43,7 +59,6 @@
     font-weight: normal;
     font-size: 16px;
     line-height: 20px;
-
     margin-bottom: 11px;
   }
 
@@ -68,6 +83,8 @@
       line-height: 15px;
   
       color: #5B6D7D;
+
+  
     }
 
     &__headers {
@@ -84,6 +101,7 @@
       &__sort-code {
         margin-left: 235px;
       }
+    
     }
   }
 }
