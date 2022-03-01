@@ -1,10 +1,14 @@
 import "./App.scss";
-import Header from "./components/Header/Header";
+import Currency from "./components/Currency/Currency";
+import TransferPage from "./components/TransferPage/TransferPage";
 
 function App() {
+
   return (
     <div className="App">
-      <Header />
+      <TransferPage />
+      <Currency />
+      {/* <Header h5={"Convert"} h1={"Currency Converter"}/> */}
       <section className="intro">
         <div className="currency-flag currency-flag-usd"></div>
       </section>
