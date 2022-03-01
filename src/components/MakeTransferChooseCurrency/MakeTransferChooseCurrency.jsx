@@ -1,12 +1,12 @@
 import React from 'react';
-// import MakeTransfercurrencyCard from '../MakeTransfercurrencyCard/MakeTransferCurrencyCard';
 import "./MakeTransferChooseCurrency.scss";
+import MakeTransferCurrencyCard from '../MakeTransferCurrencyCard/MakeTransferCurrencyCard';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
 import * as IconsRegular from '@fortawesome/free-regular-svg-icons';
 import icons from "../../assets/icons/icons";
-import MakeTransferCurrencyCard from '../MakeTransferCurrencyCard/MakeTransferCurrencyCard';
+import cross from "./../../assets/icons/black-cross.png"
 import { useState } from "react";
 
 const iconListSolid = Object
@@ -36,8 +36,7 @@ const MakeTransferChooseCurrency = (props) => {
     <>
     <div className="transfer-page__choose-currency">
       <h2 className="transfer-page__choose-currency__header">Choose Currency</h2>
-      {/* <img src="close-cross" alt="Close menu" className="transfer-page__choose-currency__close-menu"/> onClick={}*/}
-      <p className="transfer-page__choose-currency__close-menu" onClick={()=>alert("clicked")}>X</p>
+      <img src={cross} alt="cross" className="transfer-page__choose-currency__close-menu" onClick={()=>alert("clicked")}/>
       <h4 className="transfer-page__choose-currency__subheader">Search</h4>
       {icons.Search}
       <input type="text" placeholder="Search..." className="transfer-page__choose-currency__search" onChange={handleSearch} />
