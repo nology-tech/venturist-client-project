@@ -1,0 +1,47 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.transfer-page__add-recipient {
+  background-color: #ffff;
+  border-radius: 0.5em;
+  padding: 2em 2em;
+  width: fit-content;
+
+  &__header {
+    padding: 1em 0em;
+    border-bottom: #EEEEEE solid 1px;
+
+  }
+}
+
+.add-recipient-form {
+  width: 337px;
+  padding: 1em 0em;
+
+  &__header {
+    font-size: 16px;
+    padding: 0.5em 0em;
+  }
+  
+  &__input {
+    width: 337px;
+    height: 45px;
+    background: #FBFBFC;
+    border: 1px solid #E2E2E2;
+    box-sizing: border-box;
+    border-radius: 8px;
+  }
+
+  &__submit {
+    font-size: 16px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 1em 0em;
+    gap: 1em;
+    padding: 1.5em 0em;
+    border-top: #EEEEEE solid 1px;
+  }
+}
+

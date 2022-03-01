@@ -1,11 +1,14 @@
+import "./App.scss";
+import NavBar from "./containers/NavBar/NavBar";
 
-import './App.scss';
-
-function App() {
+const App = () => {
   return (
     <div className="App">
       
+      <NavBar />
+        
     </div>
   );
 }
+
 export default App;
