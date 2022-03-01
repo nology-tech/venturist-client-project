@@ -10,25 +10,27 @@ const MakeTransferForm = props => {
   //   exchangeDeliveryTime
   // } = props;
 
-  console.log(mockData[0].currencySymbol);
+  const onlyNumber = event => {
+    let amountInputField = document.getElementById("amountInput").value;
 
-  // const [handleInput, setHandleInput] = useState("");
+    if (
+      !/[0-9.]/.test(event.key) ||
+      (amountInputField.includes(".") && event.key === ".") //|| amountInputField.split(".")[1].length === 2
+    ) {
+      event.preventDefault();
+    }
+  };
 
-  // const handleInput =(e) => {
-  //   let amount = e.target.value;
-
-  //   setHandleInput(!handleInput)
+  // var validate = function(e) {
+  //   var t = e.value;
+  //   e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."), 3)) : t;
   // }
 
-  // const onlyNumber = event => {
-  //   if (event.target.value.contains === /[0-9]/) {
-  //     setHandleInput(!handleInput);
-  //     console.log(handleInput)
-  //   }
-  //   if (handleInput === true) {
-  //     alert("twat")
-  //   }
-  // };
+  // const only2dp = e => {
+  //   let t = e.value;
+
+  //   e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."), 3)) : t;
+  // }
 
   return (
     <form className="transfer-page__transfer-form" onSubmit="handleSubmit">
@@ -42,11 +44,13 @@ const MakeTransferForm = props => {
           <p className="transfer-form-bar__currency">GBP - British Pounds</p>
           {/* <p className="transfer-form-bar__amount">£1000.00</p> */}
           <input
+            id="amountInput"
             className="transfer-form-bar__input"
             type="text"
-            pattern="[0-9.]+"
-            // onChange={onlyNumber}
-            placeholder={mockData[0].currencySymbol + "1000"}
+            // pattern="[0-9.]+"
+            // onInput={only2dp}
+            onKeyPress={onlyNumber}
+            placeholder="0.00"
             required
           />
         </div>
