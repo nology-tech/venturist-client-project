@@ -39,6 +39,7 @@ export default function ListItem(props) {
       <p>{item.IBAN}</p>
       <div className="item-grid__align-img">
         <FontAwesomeIcon
+          data-testid="delete-button"
           className="item-grid__bin"
           icon="fa-solid fa-trash-can"
           onClick={deleteItem}
