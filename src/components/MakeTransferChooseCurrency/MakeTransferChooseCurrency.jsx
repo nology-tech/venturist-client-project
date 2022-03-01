@@ -24,15 +24,16 @@ library.add(...iconListRegular)
 
 const MakeTransferChooseCurrency = (props) => {
 
-  const {currencyCardList} = props;
+  const {currencyData} = props;
 
   const handleSearch = () => {
 
   }
 
-  const currencyCardComponents = currencyCardList.map((currency,index) => <MakeTransferCurrencyCard key={index} currency={currency} />)
+  const currencyCardComponents = currencyData.map((currency,index) => <MakeTransferCurrencyCard key={index} currency={currency} />)
 
   return (
+    <>
     <div className="transfer-page__choose-currency">
       <h2 className="transfer-page__choose-currency__header">Choose Currency</h2>
       {/* <img src="close-cross" alt="Close menu" className="transfer-page__choose-currency__close-menu"/> onClick={}*/}
@@ -51,6 +52,8 @@ const MakeTransferChooseCurrency = (props) => {
         </div>
       </div>
     </div>
+    <div className="overlay-background"></div>
+    </>
   )
 }
 

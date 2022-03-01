@@ -1,7 +1,6 @@
 import "./App.scss";
-import MakeTransferChooseRecipient from "./components/MakeTransferChooseRecipient/MakeTransferChooseRecipient";
 import NavBar from "./containers/NavBar/NavBar";
-import Data from "./assets/data/contactExample";
+import Data from "./assets/data/liveRatesExample";
 
 
 const App = () => {
