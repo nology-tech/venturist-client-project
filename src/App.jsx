@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div className="App">
       
-      <MakeTransferChooseRecipient userCardList = {Data} />
+      
       <NavBar />
       
         

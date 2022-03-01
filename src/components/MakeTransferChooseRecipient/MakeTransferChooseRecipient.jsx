@@ -6,6 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
 import * as IconsRegular from '@fortawesome/free-regular-svg-icons';
 import icons from "./../../assets/icons/icons";
+import cross from "./../../assets/icons/black-cross.png"
 
 const iconListSolid = Object
   .keys(IconsSolid)
@@ -35,7 +36,8 @@ const MakeTransferChooseRecipient = (props) => {
     <div className="transfer-page__choose-recipient">
       <h2 className="transfer-page__choose-recipient__header">Choose Recipient</h2>
       {/* <img src="close-cross" alt="Close menu" className="transfer-page__choose-recipient__close-menu"/> onClick={}*/}
-      <p className="transfer-page__choose-recipient__close-menu" onClick={()=>alert("clicked")}>X</p>
+      <img src={cross} alt="cross" className="transfer-page__choose-recipient__close-menu" onClick={()=>alert("clicked")}/>
+      {/* <p className="transfer-page__choose-recipient__close-menu" onClick={()=>alert("clicked")}>X</p> */}
       <h4 className="transfer-page__choose-recipient__subheader">Search</h4>
       {icons.Search}
       <input type="text" placeholder="Search..." className="transfer-page__choose-recipient__search" onChange={()=>alert("clicked")}/>
