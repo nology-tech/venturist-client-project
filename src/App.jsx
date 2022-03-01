@@ -1,10 +1,12 @@
 import "./App.scss";
+import NavBar from "./containers/NavBar/NavBar";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <section className="intro">
-      </section>
+      
+      <NavBar />
+        
     </div>
   );
 }
