@@ -2,6 +2,8 @@ import React from "react";
 import LiveRatesItem from "../../components/LiveRatesItem/LiveRatesItem";
 
 const LiveRates = () => {
+  //flagImg, currency, amount, rate
+
   return (
     <table>
       <tr>
