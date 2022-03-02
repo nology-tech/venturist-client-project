@@ -8,6 +8,11 @@
   padding: 40px 76px;
   margin-top: 30px;
   margin-left: 45px;
+  box-sizing: border-box;
+}
+
+h4 {
+  margin-bottom: 15px;
 }
 
 .transfer-form-bar {
@@ -22,6 +27,10 @@
   &__container {
     display: flex;
     width: 100%;
+    border: 1px solid #DDDDDD;
+    height: 50px;
+    width: 472px;
+    margin-bottom: 40px;
   }
 
   &__flag {
@@ -47,7 +56,13 @@
 .transfer-form-info {
   display: flex;
   flex-direction: column;
-
+  justify-content: space-between;
+  padding-top: 30px;
+  border-top: 1px solid #E5E5F0;
+  border-bottom: 1px solid #E5E5F0;
+  height: 150px;
+  padding-bottom: 32px;
+  box-sizing: border-box;
 
   &__rate {
     display: flex;
