@@ -3,7 +3,9 @@ import "./CurrencyConverter.scss"
 
 const CurrencyConverter = (props) => {
   return (
-    <div>CurrencyConverter</div>
+    <section className="currency-converter">
+      
+    </section>
   )
 }
 

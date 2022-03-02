@@ -3,22 +3,22 @@ import "./ConvertPage.scss";
 import userProfile from "../../assets/data/samanthaBrooksProfile";
 import liveRatesArr from "../../assets/data/liveRatesExample";
 import CurrencyConverter from '../CurrencyConverter/CurrencyConverter';
-
-
+import Header from '../../components/Header/Header'
 
 const ConvertPage = () => {
 
   useEffect(() => {},userProfile,liveRatesArr)
 
-  [profile,setProfile] = useState({...userProfile});
-  [rates,setRates] = useState([...liveRatesArr]);
+  const [profile,setProfile] = useState({...userProfile});
+  const [rates,setRates] = useState([...liveRatesArr]);
 
   console.log(userProfile);
   console.log(liveRatesArr);
 
   return (
-    <section>
-      <CurrencyConverter profile={Profile} rates={rates} />
+    <section className='convert-page'>
+      <Header title="Convert" pageFunctionHeading="Currency Converter" textDescription="Buy and exchange currencies with ease" />
+      <CurrencyConverter profile={profile} rates={rates} />
     </section>
   )
 }
