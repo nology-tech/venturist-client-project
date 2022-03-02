@@ -3,17 +3,14 @@ import "./App.scss";
 import MakeTransferPage from "./components/MakeTransferPage/MakeTransferPage";
 // import MakeTransferRecipientCard from './components/MakeTransferRecipientCard/MakeTransferRecipientCard';
 import NavBar from "./containers/NavBar/NavBar";
+import MakeTransferForm from "./components/MakeTransferForm/MakeTransferForm";
 
 
 const App = () => {
   return (
     <div className="App">
-      {/* <MakeTransferRecipientCard /> */}
-      {/* <MakeTransferChooseRecipient /> */}
-      <MakeTransferPage />
-      <NavBar />
-      
-        
+      <NavBar /> 
+      <MakeTransferForm />
     </div>
   );
 }

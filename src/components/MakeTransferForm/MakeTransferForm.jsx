@@ -1,29 +1,73 @@
-import React from 'react'
-import "./MakeTransferForm.scss"
+import React from "react";
+import "./MakeTransferForm.scss";
+import mockData from "../../assets/data/liveRatesExample";
 
-const MakeTransferForm = (props) => {
+const MakeTransferForm = props => {
+  // const {
+  //   exchangeRateSend,
+  //   exchangeRateRecieve,
+  //   exchangeFee,
+  //   exchangeDeliveryTime
+  // } = props;
 
-  const {exchangeFrom, exchangeTo, handleChangeCurrency, handleChangeAmount, exchangeAmount} = props;
+  const onlyNumber = event => {
+    let amountInputField = document.getElementById("amountInput").value;
+
+    if (
+      !/[0-9.]/.test(event.key) ||
+      (amountInputField.includes(".") && event.key === ".") //|| amountInputField.split(".")[1].length === 2
+    ) {
+      event.preventDefault();
+    }
+  };
+
+  // var validate = function(e) {
+  //   var t = e.value;
+  //   e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."), 3)) : t;
+  // }
+
+  // const only2dp = e => {
+  //   let t = e.value;
+
+  //   e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."), 3)) : t;
+  // }
 
   return (
-    <form className='transfer-page__transfer-form' onSubmit="handleSubmit">
+    <form className="transfer-page__transfer-form" onSubmit="handleSubmit">
       <div className="transfer-form-bar">
         <h4 className="transfer-form-bar__header">You send</h4>
         <div className="transfer-form-bar__container">
-          <img src={exchangeFrom.currencyFlag} className="transfer-form-bar__flag" onClick={handleChangeCurrency} alt="Currency flag"></img>
-          <p className="transfer-form-bar__currency" onClick={handleChangeCurrency}>{exchangeFrom.currencyCode} - {exchangeFrom.currencyName}</p>
-          <p className="transfer-form-bar__amount">{exchangeFrom.currencySymbol} <input type="number" onChange={handleChangeAmount} /> </p>
+          {/* <p>{exchangeRateSend.currencyFlag}</p>
+          <p>{exchangeRateSend.currencyCode} - {exchangeRateSend.currencyName}</p>
+          <p>{exchangeRateSend.currencySymbol}</p> */}
+          <p className="transfer-form-bar__flag">FLAG</p>
+          <p className="transfer-form-bar__currency">GBP - British Pounds</p>
+          {/* <p className="transfer-form-bar__amount">£1000.00</p> */}
+          <input
+            id="amountInput"
+            className="transfer-form-bar__input"
+            type="number"
+            step="0.01"
+            // pattern="[0-9.]+"
+            // onInput={only2dp}
+            onKeyPress={onlyNumber}
+            placeholder="0.00"
+            required
+          />
         </div>
         <h4 className="transfer-form-bar__header">Recipient gets</h4>
         <div className="transfer-form-bar__container">
-        <img src={exchangeTo.currencyFlag} className="transfer-form-bar__flag" onClick={handleChangeCurrency} alt="Currency flag"></img>
-          <p className="transfer-form-bar__currency" onClick={handleChangeCurrency}>{exchangeTo.currencyCode} - {exchangeTo.currencyName}</p>
-          <p className="transfer-form-bar__amount">{exchangeTo.currencySymbol} {exchangeTo.liveRate*exchangeAmount}</p>
+          {/* <p>{exchangeRateRecieve.currencyFlag}</p>
+          <p>{exchangeRateRecieve.currencyCode} - {exchangeRateRecieve.currencyName}</p>
+          <p>{exchangeRateRecieve.currencySymbol}</p> */}
+          <p>FLAG</p>
+          <p className="transfer-form-bar__currency">USD - US Dollars</p>
+          <p className="transfer-form-bar__amount">{mockData[1].currencySymbol}1250.00</p>
         </div>
       </div>
       <div className="transfer-form-info">
         <div className="transfer-form-info__rate">
-          <p >Rate</p>
+          <p>Rate</p>
           {/* <p>{exchangeRateRecieve.liveRate}</p> */}
           <p>1.3589</p>
         </div>
@@ -46,7 +90,7 @@ const MakeTransferForm = (props) => {
         <button>Continue</button>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default MakeTransferForm
+export default MakeTransferForm;
