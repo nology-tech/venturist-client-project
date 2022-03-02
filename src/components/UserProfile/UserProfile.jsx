@@ -17,7 +17,7 @@ const iconListRegular = Object.keys(IconsRegular)
 library.add(...iconListRegular);
 
 const UserProfile = (props) => {
-  const { imageIcon, name } = props;
+  // const { imageIcon, name } = props;
   return (
     <div className="user-grid" data-testid="user">
       <h3>
