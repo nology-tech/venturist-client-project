@@ -46,7 +46,8 @@ const MakeTransferForm = props => {
           <input
             id="amountInput"
             className="transfer-form-bar__input"
-            type="text"
+            type="number"
+            step="0.01"
             // pattern="[0-9.]+"
             // onInput={only2dp}
             onKeyPress={onlyNumber}
