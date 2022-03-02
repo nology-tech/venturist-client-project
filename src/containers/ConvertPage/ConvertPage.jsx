@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./ConvertPage.scss";
 import userProfile from "../../assets/data/samanthaBrooksProfile";
 import liveRatesArr from "../../assets/data/liveRatesExample";
-// import Header from "../../components/Header/Header";
-import LiveRates from "../LiveRates/LiveRates";
+import CurrencyConverter from "../CurrencyConverter/CurrencyConverter";
+import Header from "../../components/Header/Header";
 
 const ConvertPage = () => {
   useEffect(() => {}, userProfile, liveRatesArr);
@@ -11,15 +11,17 @@ const ConvertPage = () => {
   const [profile, setProfile] = useState({ ...userProfile });
   const [rates, setRates] = useState([...liveRatesArr]);
 
+  console.log(userProfile);
+  console.log(liveRatesArr);
+
   return (
     <section className="convert-page">
-      {/* <Header
+      <Header
         title="Convert"
         pageFunctionHeading="Currency Converter"
         textDescription="Buy and exchange currencies with ease"
-      /> */}
-
-      <LiveRates />
+      />
+      <CurrencyConverter profile={profile} rates={rates} />
     </section>
   );
 };
