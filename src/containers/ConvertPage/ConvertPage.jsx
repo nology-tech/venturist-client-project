@@ -11,10 +11,7 @@ const ConvertPage = () => {
 
   const [profile,setProfile] = useState({...userProfile});
   const [rates,setRates] = useState([...liveRatesArr]);
-
-  console.log(userProfile);
-  console.log(liveRatesArr);
-
+  
   return (
     <section className='convert-page'>
       <Header title="Convert" pageFunctionHeading="Currency Converter" textDescription="Buy and exchange currencies with ease" />
