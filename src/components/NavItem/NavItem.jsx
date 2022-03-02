@@ -17,8 +17,6 @@ const iconListRegular = Object
 
 library.add(...iconListRegular)
 
-
-
 const NavItem = (props) => {
   let className = 'navbar__nav-item';
   if (props.activeButton === props.label) {
