@@ -21,6 +21,8 @@
   justify-content: space-between;
   margin-bottom: 8px;
   height: 58px;
+  
+  position: relative;
 
   p {
     @include grey-16px-text;
@@ -36,8 +38,18 @@
     height: 39px;
   }
 
-  &__account-number {
+  &__rate {
     width: 75px;
     text-align: right;
+  }
+
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 99;
   }
 }
