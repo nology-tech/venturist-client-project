@@ -3,7 +3,8 @@ import "./MakeTransferPage.scss"
 import { useState } from "react"
 import Button from '../Button/Button'
 import MakeTransferChooseRecipient from "../MakeTransferChooseRecipient/MakeTransferChooseRecipient"
-import Data from "../../assets/data/samanthaBrooksProfile";
+import profileData from "../../assets/data/samanthaBrooksProfile";
+import Data from "../../assets/data/contactExample";
 
 const MakeTransferPage = (props) => {
 
@@ -23,11 +24,11 @@ const MakeTransferPage = (props) => {
 
           <h2 className='make-transfer__page__sendContainer__header'>Send From</h2>
           <div  className='make-transfer__page__sendContainer__details'>
-            <h6 className='make-transfer__page__sendContainer__details__name'>{Data.firstName} {Data.lastName}</h6>
-            <p className='make-transfer__page__sendContainer__details__text'>Account Number: {Data.accountNumber}</p>
-            <p className='make-transfer__page__sendContainer__details__text' >Sort Code:  {Data.sortCode}</p>
+            <h6 className='make-transfer__page__sendContainer__details__name'>{profileData.firstName} {profileData.lastName}</h6>
+            <p className='make-transfer__page__sendContainer__details__text'>Account Number: {profileData.accountNumber}</p>
+            <p className='make-transfer__page__sendContainer__details__text' >Sort Code:  {profileData.sortCode}</p>
 
-            <h6 className='make-transfer__page__sendContainer__details__total'>Total {Data.holdings.GBP}</h6>
+            <h6 className='make-transfer__page__sendContainer__details__total'>Total {profileData.holdings.GBP}</h6>
             <p className='make-transfer__page__sendContainer__details__funds'>Funds Remaining: £14,210.00 </p>
           </div>
 
