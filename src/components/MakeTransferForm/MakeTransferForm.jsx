@@ -21,6 +21,28 @@ const MakeTransferForm = (props) => {
     event.preventDefault();
   }
 
+  const onlyNumber = (event) => {
+    let amountInputField = document.getElementById("amountInput").value; // CHANGE TO event.target.value
+
+    if (
+      !/[0-9.]/.test(event.key) ||
+      (amountInputField.includes(".") && event.key === ".") //|| amountInputField.split(".")[1].length === 2
+    ) {
+      event.preventDefault();
+    }
+  };
+
+  // var validate = function(e) {
+  //   var t = e.value;
+  //   e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."), 3)) : t;
+  // }
+
+  // const only2dp = e => {
+  //   let t = e.value;
+
+  //   e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."), 3)) : t;
+  // }
+
   return (
     <form className='transfer-page__transfer-form'>
       <div className="transfer-form-bar">
@@ -30,7 +52,20 @@ const MakeTransferForm = (props) => {
             <CurrencyFlag currency={exchangeFrom.currencyCode} width={36} onClick={handleChangingCurrency} />
             <p className="transfer-form-bar__currency transfer-form-bar__currency-from" onClick={handleChangingCurrency}>{exchangeFrom.currencyCode} - {exchangeFrom.currencyName}</p>
           </div>
-          <p className="transfer-form-bar__amount">{exchangeFrom.currencySymbol} <input type="number" onChange={handleChangeAmount} id="transfer-form-bar__amount" defaultValue={1000.00}/> </p>
+          <p className="transfer-form-bar__amount">{exchangeFrom.currencySymbol}
+            <input
+            id="amountInput"
+            className="transfer-form-bar__input"
+            type="number"
+            step={0.01}
+            // pattern="[0-9.]+"
+            // onInput={only2dp}
+            onChange={handleChangeAmount}
+            placeholder="00.00"
+            defaultValue={1000}
+            required
+            /> 
+          </p>
         </div>
         <h4 className="transfer-form-bar__header">Recipient gets</h4>
         <div className="transfer-form-bar__container">
@@ -67,7 +102,7 @@ const MakeTransferForm = (props) => {
         buttonFunction={handleContinueButton}/>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default MakeTransferForm
+export default MakeTransferForm;
