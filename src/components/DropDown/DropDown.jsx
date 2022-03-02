@@ -1,14 +1,21 @@
-import React from 'react'
+import React from 'react';
+import CurrencyFlag from 'react-currency-flags';
+import "./DropDown.scss";
+
 
 const DropDown = (props) => {
  
   
-  const options = props.options.map(option => <option value={option}>{option}</option> )
+  const options = props.options.map(option => 
+  <option value= {option}>
+    <CurrencyFlag currency={option} size="sm" />
+    {option}
+  </option> );
 
 
   return (
-    <div>
-      <select name="drop-down" id="drop-down">
+    <div className='drop-down'>
+      <select name="drop-down" id="drop-down" className='drop-down__option'>
         {options}
       </select>
     </div>
