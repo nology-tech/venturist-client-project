@@ -1,11 +1,15 @@
 import React from "react";
 
-const LiveRatesItem = () => {
+const LiveRatesItem = (props) => {
+  const { flagImg, currency, amount, rate } = props;
+
   return (
     <tr>
-      <td>USD</td>
-      <td>1.3</td>
-      <td>+0.5%</td>
+      <td>
+        <img src={flagImg} alt={currency} /> {currency}{" "}
+      </td>
+      <td>{amount}</td>
+      <td>{rate}</td>
     </tr>
   );
 };
