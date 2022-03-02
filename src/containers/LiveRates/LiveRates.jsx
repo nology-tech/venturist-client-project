@@ -1,4 +1,5 @@
 import React from "react";
+import LiveRatesItem from "../../components/LiveRatesItem/LiveRatesItem";
 
 const LiveRates = () => {
   return (
@@ -8,6 +9,11 @@ const LiveRates = () => {
         <th>Amount</th>
         <th>Rate</th>
       </tr>
+      <LiveRatesItem />
+      <LiveRatesItem />
+      <LiveRatesItem />
+      <LiveRatesItem />
+      <LiveRatesItem />
     </table>
   );
 };
