@@ -1,7 +1,4 @@
-* {
-  padding: 0;
-  margin: 0;
-}
+@use "./../../assets/sass/global_variables" as *;
 
 .transfer-page__add-recipient {
   background-color: #ffff;
