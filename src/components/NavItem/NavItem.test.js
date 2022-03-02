@@ -8,7 +8,7 @@ describe("Tests for NavItem Rendering", () => {
 
     const navItem = screen.getByTestId("navItem");
 
-    expect(navItem).toBeInTheDocument;
+    expect(navItem).toBeInTheDocument();
   })
 
   test("Should Render Provided Text", () => {
@@ -21,7 +21,6 @@ describe("Tests for NavItem Rendering", () => {
 
     // Assert
     expect(navItem).toHaveTextContent("test");
-
 
   })
 

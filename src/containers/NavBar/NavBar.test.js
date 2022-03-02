@@ -23,6 +23,7 @@ describe("Testing the Navbar", () => {
     // Act
     const navItems = screen.getAllByTestId("navItem");
 
+    // Assert
     for (let i = 0; i < buttonLabels.length; i++) {
       expect(navItems[i]).toBeInTheDocument();
       expect(navItems[i]).toHaveTextContent(buttonLabels[i]);
