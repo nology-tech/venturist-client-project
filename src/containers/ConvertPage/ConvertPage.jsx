@@ -4,6 +4,7 @@ import userProfile from "../../assets/data/samanthaBrooksProfile";
 import liveRatesArr from "../../assets/data/liveRatesExample";
 import CurrencyConverter from "../CurrencyConverter/CurrencyConverter";
 import Header from "../../components/Header/Header";
+import LiveRates from "../LiveRates/LiveRates";
 
 const ConvertPage = () => {
   useEffect(() => {}, userProfile, liveRatesArr);
@@ -22,6 +23,8 @@ const ConvertPage = () => {
         textDescription="Buy and exchange currencies with ease"
       />
       <CurrencyConverter profile={profile} rates={rates} />
+
+      <LiveRates />
     </section>
   );
 };
