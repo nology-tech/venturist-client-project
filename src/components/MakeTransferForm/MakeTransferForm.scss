@@ -9,6 +9,12 @@
   margin-top: 30px;
   margin-left: 45px;
   box-sizing: border-box;
+  font-family: $outfit;
+  
+  button {
+    font-size: 16px;
+    font-weight: 600;
+  }
 }
 
 h4 {
@@ -26,11 +32,30 @@ h4 {
 
   &__container {
     display: flex;
-    width: 100%;
+    justify-content: space-between;
     border: 1px solid #DDDDDD;
     height: 50px;
     width: 472px;
     margin-bottom: 40px;
+    padding: 13px 24px 15px 21px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+
+    &--left {
+      display: flex;
+      cursor: pointer;
+    }
+
+    p {
+      margin-left: 0;
+    }
+
+    input {
+      min-width: 60px;
+      width: 80px;
+      border: none;
+      font-family: $outfit;
+    }
   }
 
   &__flag {
@@ -40,11 +65,14 @@ h4 {
 
   &__currency {
     font-size: 18px;
-    margin-right: 135px;
+    margin: auto 0;
   }
   
   &__amount {
     font-size: 18px;
+    margin-right: 0;
+    text-align: right;
+    right: 0;
   }
 
   &__input {
@@ -53,21 +81,25 @@ h4 {
   }
 }
 
+
+span {
+  margin-right: 14px;
+}
+
 .transfer-form-info {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding-top: 30px;
   border-top: 1px solid #E5E5F0;
   border-bottom: 1px solid #E5E5F0;
   height: 150px;
   padding-bottom: 32px;
   box-sizing: border-box;
+  justify-content: space-between;
 
   &__rate {
     display: flex;
     justify-content: space-between;
-
   }
 
   &__fee {
@@ -85,10 +117,23 @@ h4 {
 
 .transfer-form-continue {
   display: flex;
+  justify-content: space-between;
+  margin-top: 27px;
 
   &__total {
     display: flex;
     flex-direction: column;
+    font-size: 20px;
+    line-height: 25px;
+
+    p {
+      font-family: $inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px;
+      color: #8896A3;
+    }
   }
 
 }

@@ -80,7 +80,7 @@ const liveRatesArr = [
     currencyCode: "CNY",
     liveRate: 140.5367,
     changeOfRate: 0.173,
-    currencyCode: "¥"
+    currencySymbol: "¥"
   },
 ]
 

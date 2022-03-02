@@ -1,5 +1,6 @@
 import React from 'react'
 import "./MakeTransferCurrencyCard.scss";
+import CurrencyFlag from 'react-currency-flags';
 
 const MakeTransferCurrencyCard = (props) => {
 
@@ -8,7 +9,7 @@ const MakeTransferCurrencyCard = (props) => {
   return (
     <div className="transfer-page__currency__card">
       <div className="transfer-page__currency__card--left">
-        <img src={currency.currencyFlag} alt={currency.currencyName} className="transfer-page__currency__card__flag"></img>
+        <CurrencyFlag currency={currency.currencyCode} width={40} onClick={handleChangingCurrency} className="transfer-page__currency__card__flag" />
         <p>{currency.currencyName}</p>
       </div>
       <div className="transfer-page__currency__card--right">
