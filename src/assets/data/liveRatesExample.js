@@ -25,8 +25,8 @@ const liveRatesArr = [
     currencySymbol: "€"
   },
   {
-    currencyName: "../../assets/countryFlags/chf.png",
-    currencyFlag: "url",
+    currencyName: "Swiss Franc",
+    currencyFlag: "../../assets/countryFlags/chf.png",
     currencyCode: "CHF",
     liveRate: 1.5367,
     changeOfRate: 0.024,
@@ -83,3 +83,5 @@ const liveRatesArr = [
     currencyCode: "¥"
   },
 ]
+
+export default liveRatesArr;
