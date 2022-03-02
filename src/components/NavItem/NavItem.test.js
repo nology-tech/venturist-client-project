@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import NavItem from "./NavItem";
 
-describe("Tests for NavItem Rendering", () => {
+xdescribe("Tests for NavItem Rendering", () => {
 
   test("Should Render a Nav Item", () => {
     render(<NavItem label="test" handleClick={()=>{}} activeButton= ""/> );
