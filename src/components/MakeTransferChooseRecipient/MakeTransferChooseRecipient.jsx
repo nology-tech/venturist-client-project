@@ -35,9 +35,7 @@ const MakeTransferChooseRecipient = (props) => {
     <>
     <div className="transfer-page__choose-recipient">
       <h2 className="transfer-page__choose-recipient__header">Choose Recipient</h2>
-      {/* <img src="close-cross" alt="Close menu" className="transfer-page__choose-recipient__close-menu"/> onClick={}*/}
-      <img src={cross} alt="cross" className="transfer-page__choose-recipient__close-menu" onClick={()=>alert("clicked")}/>
-      {/* <p className="transfer-page__choose-recipient__close-menu" onClick={()=>alert("clicked")}>X</p> */}
+      <img src={cross} alt="Close menu" className="transfer-page__choose-recipient__close-menu" onClick={()=>alert("clicked")}/>
       <h4 className="transfer-page__choose-recipient__subheader">Search</h4>
       {icons.Search}
       <input type="text" placeholder="Search..." className="transfer-page__choose-recipient__search" onChange={()=>alert("clicked")}/>
