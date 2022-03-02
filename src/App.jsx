@@ -6,7 +6,7 @@ const App = () => {
     <div className="App">
       
       <NavBar />
-        
+      
     </div>
   );
 }
