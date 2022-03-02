@@ -1,1 +1,1 @@
-Venturist
+Venturist is the name of our student project app. This is a financial app with account and foreign exchange functionalities. We will use the agile/scrum method to develope the software. We will update this readme as we progress in its build. 
