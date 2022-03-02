@@ -1,13 +1,4 @@
-// @use "../../assets/variables";
-
-* {
-  font-family: Arial;
-  font-style: normal;
-  font-weight: normal;
-  margin: 0;
-  padding: 0;
-  color: #06020A;
-}
+@use "./../../assets/sass/global_variables" as *;
 
 .transfer-page__confirm {
   position: absolute;
