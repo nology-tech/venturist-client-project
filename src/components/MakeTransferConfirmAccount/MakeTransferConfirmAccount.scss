@@ -1,89 +1,83 @@
-@use "./../../assets/sass/global_variables" as *;
+@use "../../assets/sass/global_variables" as *;
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: $outfit;
+}
 
 .transfer-page__confirm {
-  position: absolute;
-  width: 626px;
-  height: 482px;
-  left: 302px;
-  top: 313px;
-  
+    position: absolute;
+    margin-left: 45px;
+    margin-top: 35px;
+    width: 512px;
 
-  h3 {
-    font-size: 24px;
-  }
+    &__transfer{
+        color: $colourOne;
+    }
 
-  h5 {
-    font-size: 16px;
+    &__sendContainer {
+        border: 1px solid #FBFBFC;
+        margin-top: 68px;
+        height: 482px;
+        width: 626px;
+        border-radius: 10px;
+        background-color: #FBFBFC;
 
-  }
+        &__header{
+            margin-top: 44px;
+            margin-bottom: 15px;
+            margin-left: 75px;
+            font-weight: 500;
+        }
 
-  p {
-    font-size: 12px;
-  }
+        &__details {
+            margin-left: 75px;
+            border-radius: 10px;
+            height: 187px;
+            width: 475px;
+            background-color: #F3F3F3;
 
-  &__recipient {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #E9E9E9;
-    padding-bottom: 27px;
-  }
-}
+            &__name {
+                margin-left: 35px;
+                padding-top: 25px;
+                padding-bottom: 16px;
+                color: $colourOne;
+                font-size: 1.2em;
+                font-weight: 400;
+            }
+            &__text{
+                margin-left: 35px;
+                font-size: .9em;
+                color: $colourThree;                
+            }
+            &__total {
+                padding-top: 30px;
+                padding-bottom: 4px;
+                margin-left: 35px;
+                font-size: 1.2em;
+                font-weight: 400;
+            }
+            &__funds {
+                margin-left: 35px;
+                font-size: .6em;
+                color: $colourThree;
+            }
+        }
 
-button {
-  width: 177px;
-  height: 48px;
-}
+        &__divider {
+            color: #c2c2c2;
+            font: inherit;
+            font-weight: 100;
+            font-size: 2em;
+        }
 
-.middle-divider {
-  padding-right: 58px;
-  border-right: 1px solid #E9E9E9;
-}
+        &__button {
+            margin-right: 123px;
+            margin-left: 20px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+    }
 
-.grey-background {
-  background-color: #FBFBFC;
-  border-radius: 8px;
-  padding: 44px 76px 54px 76px;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  justify-content: space-between;
-}
-
-.dark-grey-background {
-  background-color: #F3F3F3;
-  padding: 22px 40px 25px 33px;
-  margin: 15px 0 31px 0;
-  border-radius: 8px;
-  width: 475px;
-  height: 187px;
-  box-sizing: border-box;
-}
-
-.account-details {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.split-between {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.blue-colouring {
-  color: #00CED4;
-  font-weight: 500;
-  margin-bottom: 15px;
-}
-
-.total {
-  border-top: 1px solid #E9E9E9;
-  height: 34px;
-  margin-top: 18px;
-  padding-top: 16px;
-}
-
-.sub-text {
-  margin-top: 4px;
 }

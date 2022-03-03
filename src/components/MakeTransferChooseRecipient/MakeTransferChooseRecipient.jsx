@@ -6,7 +6,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
 import * as IconsRegular from '@fortawesome/free-regular-svg-icons';
 import icons from "./../../assets/icons/icons";
-import cross from "./../../assets/icons/black-cross.png"
+import cross from "../../assets/icons/black-cross.png";
+
 
 const iconListSolid = Object
   .keys(IconsSolid)
@@ -23,7 +24,7 @@ library.add(...iconListRegular)
 
 const MakeTransferChooseRecipient = (props) => {
 
-  const {userCardList} = props;
+  const {userCardList, toggleChooseRecipients} = props;
 
   const userCardListUsed = (userCardList.length !== 0);
   
@@ -35,10 +36,12 @@ const MakeTransferChooseRecipient = (props) => {
     <>
     <div className="transfer-page__choose-recipient">
       <h2 className="transfer-page__choose-recipient__header">Choose Recipient</h2>
-      <img src={cross} alt="Close menu" className="transfer-page__choose-recipient__close-menu" onClick={()=>alert("clicked")}/>
+
+      <img src={cross} alt="cross" className="transfer-page__choose-recipient__close-menu" onClick={toggleChooseRecipients}/>
+
       <h4 className="transfer-page__choose-recipient__subheader">Search</h4>
       {icons.Search}
-      <input type="text" placeholder="Search..." className="transfer-page__choose-recipient__search" onChange={()=>alert("clicked")}/>
+      <input type="text" placeholder="Search..." className="transfer-page__choose-recipient__search" onChange={() => {}}/>
 
       <div className="transfer-page__choose-recipient__recipient-list">
         <div className="transfer-page__choose-recipient__recipient-list__headers">
@@ -52,9 +55,12 @@ const MakeTransferChooseRecipient = (props) => {
         </div>
       </div>      
     </div>
-    <div className='transfer-page__choose-recipient__overlay'> </div>
+    <div className='transfer-page__choose-recipient__overlay' onClick={() => {}}> </div>
     </>
   )
 }
+
+
+
 
 export default MakeTransferChooseRecipient

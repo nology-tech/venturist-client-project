@@ -1,47 +1,43 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./MakeTransferConfirmAccount.scss";
+import MakeTransferChooseRecipient from '../MakeTransferChooseRecipient/MakeTransferChooseRecipient';
+import Button from "./../Button/Button";
 
 const MakeTransferConfirmAccount = (props) => {
 
-  // const { accountDetails, transferAmount } = props;
-  const {transferAmount} = props;
+  const {profileData, data, exchangeInfo} = props;
+
+  const [showChooseRecipients, setShowChooseRecipients] = useState(false);
+  
+  const toggleChooseRecipients = () => {
+    setShowChooseRecipients(!showChooseRecipients);
+  };
 
   return (
-    <div className="transfer-page__confirm grey-background">
-      <h3>Send From</h3>
-      <div className="dark-grey-background account-details-full">
-        <h5 className="blue-colouring">Samantha Brooks</h5>
-        <div className="account-details">
-          <div className="account-number split-between">
-            <p>Account Number:</p>
-            {/* <p>{accountDetails.accountNumber}</p> */}
-            <p>10840366</p>
-          </div>
-          <div className="sort-code split-between">
-            <p>Sort Code:</p>
-            <p>110053</p>
-            {/* <p>{accountDetails.sortCode}</p> */}
-          </div>
+    <div className="transfer-page__confirm">
+      <div className='transfer-page__confirm__sendContainer'>
+
+        <h2 className='transfer-page__confirm__sendContainer__header'>Send From</h2>
+        <div  className='transfer-page__confirm__sendContainer__details'>
+          <h6 className='transfer-page__confirm__sendContainer__details__name'>{profileData.firstName} {profileData.lastName}</h6>
+          <p className='transfer-page__confirm__sendContainer__details__text'>Account Number: {profileData.accountNumber}</p>
+          <p className='transfer-page__confirm__sendContainer__details__text' >Sort Code:  {profileData.sortCode}</p>
+
+          <h6 className='transfer-page__confirm__sendContainer__details__total'>Total {profileData.holdings.GBP}</h6>
+          <p className='transfer-page__confirm__sendContainer__details__funds'>Funds Remaining: £14,210.00 </p>
         </div>
-        <div className="total">
-          <div className="split-between">
-            <h5>Total</h5>
-            <h5>{transferAmount}</h5>
-          </div>
-          <div className="balance split-between">
-            <p className="sub-text">Funds Remaining:</p>
-            {/* <p>{accountDetails.balance}</p> */}
-            <p>100</p>
-          </div>
+
+        <h2 className='transfer-page__confirm__sendContainer__header'>To</h2>
+
+        <div className="transfer-page__confirm__sendContainer__button">
+        <Button  buttonName="Select Recipient" buttonFunction={toggleChooseRecipients} />
+        <h1 className="transfer-page__confirm__sendContainer__divider">|</h1>
+        <Button  buttonName="+ Pay Someone New" buttonStyle="clear" buttonFunction={() => {}} />
         </div>
       </div>
-      <h3>To</h3>
-      <div className="transfer-page__confirm__recipient">
-        <div className="middle-divider">
-          <button className="blue-background">Select Recipient</button>
-        </div>
-        <button className="white-background">+ Pay Someone New</button>
-      </div>
+
+        {showChooseRecipients && <MakeTransferChooseRecipient userCardList = {data} toggleChooseRecipients={toggleChooseRecipients}  />}
+
     </div>
   )
 }

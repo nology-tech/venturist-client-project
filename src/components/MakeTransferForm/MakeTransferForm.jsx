@@ -10,7 +10,7 @@ const MakeTransferForm = (props) => {
   const [exchangeAmount,setExchangeAmount] = useState(1000.00);
 
   const handleChangeAmount = (event) => {
-    setExchangeAmount(event.target.value);
+    
   }
 
   const calculateConversion = () => {
@@ -23,6 +23,7 @@ const MakeTransferForm = (props) => {
 
   const onlyNumber = (event) => {
     let amountInputField = document.getElementById("amountInput").value; // CHANGE TO event.target.value
+    setExchangeAmount(event.target.value);
 
     if (
       !/[0-9.]/.test(event.key) ||
@@ -58,11 +59,11 @@ const MakeTransferForm = (props) => {
             className="transfer-form-bar__input"
             type="number"
             step={0.01}
+            max={10}
             // pattern="[0-9.]+"
             // onInput={only2dp}
-            onChange={handleChangeAmount}
+            onKeyPress={onlyNumber}
             placeholder="00.00"
-            defaultValue={1000}
             required
             /> 
           </p>
