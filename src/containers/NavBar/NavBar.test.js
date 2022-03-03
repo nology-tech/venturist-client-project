@@ -1,14 +1,17 @@
 import { getAllByTestId, render,screen } from "@testing-library/react";
 import Navbar from "./NavBar";
+import {BrowserRouter as Router} from "react-router-dom";
 
 const buttonLabels = ["Wallet","Live Rates","Convert","Transfer","Contacts","Deposit"];
 
-xdescribe("Testing the Navbar", () => {
+describe("Testing the Navbar", () => {
 
   test("Check to see if Navbar Renders", () => {
     // Arrange
     render(
+      <Router >
       <Navbar />
+      </Router>
     );
 
     // Act
@@ -20,7 +23,11 @@ xdescribe("Testing the Navbar", () => {
 
   test("Check if Nav Item Renders", () => {
     // Arrange
-    render(<Navbar />);
+    render(
+      <Router >
+      <Navbar />
+      </Router>
+    );
 
     // Act
     const navItems = screen.getAllByTestId("navItem");
@@ -34,7 +41,11 @@ xdescribe("Testing the Navbar", () => {
 
   test("Check to see if Header Renders", () => {
     // Arrange
-    render(<Navbar />);
+    render(
+      <Router >
+      <Navbar />
+      </Router>
+    );
 
     // Act
     const header = screen.getAllByRole("heading");
@@ -45,7 +56,11 @@ xdescribe("Testing the Navbar", () => {
 
   test("Check for all button headers", () => {
     // Arrange
-    render(<Navbar />);
+    render(
+      <Router >
+      <Navbar />
+      </Router>
+    );
 
     // Act
     const header = screen.getAllByRole("heading");
