@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import "./MakeTransferConfirmAccount.scss";
 import MakeTransferChooseRecipient from '../MakeTransferChooseRecipient/MakeTransferChooseRecipient';
-import Button from "./../Button/Button";
+import Button from "../../Button/Button";
 
 const MakeTransferConfirmAccount = (props) => {
 
