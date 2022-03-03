@@ -31,7 +31,7 @@ const MakeTransferForm = (props) => {
         <h4 className="transfer-form-bar__header">You send</h4>
         <div className="transfer-form-bar__container">
           <div className="transfer-form-bar__container--left">
-            <CurrencyFlag currency={exchangeFrom.currencyCode} width={36} onClick={handleChangingCurrency} />
+            <CurrencyFlag currency={exchangeFrom.currencyCode} className="transfer-form-bar__currency-from" width={36} onClick={handleChangingCurrency} />
             <p className="transfer-form-bar__currency transfer-form-bar__currency-from" onClick={handleChangingCurrency}>{exchangeFrom.currencyCode} - {exchangeFrom.currencyName}</p>
           </div>
           <p className="transfer-form-bar__amount">{exchangeFrom.currencySymbol}
@@ -51,7 +51,7 @@ const MakeTransferForm = (props) => {
         <h4 className="transfer-form-bar__header">Recipient gets</h4>
         <div className="transfer-form-bar__container">
           <div className="transfer-form-bar__container--left">
-            <CurrencyFlag currency={exchangeTo.currencyCode} width={36} onClick={handleChangingCurrency} />
+            <CurrencyFlag currency={exchangeTo.currencyCode} className="transfer-form-bar__currency-to" width={36} onClick={handleChangingCurrency} />
             <p className="transfer-form-bar__currency transfer-form-bar__currency-to" onClick={handleChangingCurrency}>{exchangeTo.currencyCode} - {exchangeTo.currencyName}</p>
           </div>
           <p className="transfer-form-bar__amount">{exchangeTo.currencySymbol} {(calculateConversion()*exchangeAmount).toFixed(2)}</p>
