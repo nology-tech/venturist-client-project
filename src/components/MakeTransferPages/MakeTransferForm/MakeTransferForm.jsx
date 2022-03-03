@@ -31,7 +31,7 @@ const MakeTransferForm = props => {
         <h4 className="transfer-form-bar__header">You send</h4>
         <div className="transfer-form-bar__container">
           <div className="transfer-form-bar__container--left">
-            <CurrencyFlag
+            <CurrencyFlag 
               currency={exchangeFrom.currencyCode}
               width={36}
               onClick={handleChangingCurrency}

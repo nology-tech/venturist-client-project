@@ -49,8 +49,14 @@ h4 {
       margin-left: 0;
     }
     
+    &__input{
+      width: 105px;
+      text-align: right;
+      border: solid 1px #DDDDDD;
+      padding: 3px;
+    }
   }
-
+  
   &__flag {
     font-size: 4px;
     margin-right: 15px;
@@ -68,9 +74,6 @@ h4 {
     right: 0;
   }
 
-  &__input{
-    width: 100px;
-  }
 }
 
 
