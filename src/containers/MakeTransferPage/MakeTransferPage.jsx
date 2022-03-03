@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useState} from 'react'
 import Header from '../../components/Header/Header';
 import MakeTransferConfirmAccount from '../../components/MakeTransferConfirmAccount/MakeTransferConfirmAccount';
@@ -46,6 +47,18 @@ const MakeTransferPage = (props) => {
         <MakeTransferConfirmAccount profileData={profileData} data={contactData} />
     </div>
 
+=======
+// import React, {useState} from 'react'
+import React from 'react';
+import Header from '../../components/Header/Header';
+import "./MakeTransferPage.scss";
+
+const MakeTransferPage = () => {
+  return (
+    <div className='make-transfer'>
+        <Header title="Transfer" pageFunctionHeading="Make Transfer" textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus." />
+    </div>
+>>>>>>> ec7f0c3e4a5b4075ce7c741d3f722d7afd9ef713
   )
 }
 
