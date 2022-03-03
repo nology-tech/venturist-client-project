@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import LiveRatesItem from "../../components/LiveRatesItem/LiveRatesItem";
 
 const LiveRates = (props) => {
@@ -15,25 +15,29 @@ const LiveRates = (props) => {
     currencySymbol: "£" 
   }
   */
+  const [baseCurrency, setBaseCurrency] = useState("GBP");
 
-  const baseCurrency = "GBP";
+  const renderBaseCurrency = () => {};
 
   const renderList = () => {
-    rates.filter((currency, index) => {
-      const filterted = { ...(currency.currencyCode !== baseCurrency) };
-      const { currencyFlag, currencyCode, liveRate, changeOfRate } = filterted;
-      return (
-        <LiveRatesItem
-          key={index}
-          flagImg={currencyFlag}
-          currency={currencyCode}
-          amount={liveRate}
-          rate={changeOfRate}
-          buttonName="Send"
-        />
-      );
+    return rates.map((currency, index) => {
+      const { currencyFlag, currencyCode, liveRate, changeOfRate } = currency;
+      if (currency.currencyCode !== baseCurrency) {
+        return (
+          <LiveRatesItem
+            key={index}
+            flagImg={currencyFlag}
+            currency={currencyCode}
+            amount={liveRate}
+            rate={changeOfRate}
+            buttonName="Send"
+          />
+        );
+      }
     });
   };
+
+  console.log(rates);
 
   return (
     <table>
@@ -42,7 +46,6 @@ const LiveRates = (props) => {
         <th>Amount</th>
         <th>Rate</th>
       </tr>
-
       {renderList()}
     </table>
   );
