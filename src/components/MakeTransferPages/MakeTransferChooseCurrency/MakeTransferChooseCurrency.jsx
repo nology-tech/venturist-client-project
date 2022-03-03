@@ -7,7 +7,6 @@ import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
 import * as IconsRegular from '@fortawesome/free-regular-svg-icons';
 import icons from "../../../assets/icons/icons";
 import cross from "./../../../assets/icons/black-cross.png"
-// import { useState } from "react";
 
 const iconListSolid = Object
   .keys(IconsSolid)

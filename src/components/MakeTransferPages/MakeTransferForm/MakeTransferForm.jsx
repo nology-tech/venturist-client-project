@@ -35,16 +35,17 @@ const MakeTransferForm = (props) => {
             <p className="transfer-form-bar__currency transfer-form-bar__currency-from" onClick={handleChangingCurrency}>{exchangeFrom.currencyCode} - {exchangeFrom.currencyName}</p>
           </div>
           <p className="transfer-form-bar__amount">{exchangeFrom.currencySymbol}
-            <input
-            id="amountInput"
-            className="transfer-form-bar__input"
-            type="number"
-            step={0.01}
-            max={10}
-            onKeyPress={onlyNumber}
-            placeholder="00.00"
-            required
-            /> 
+          <input
+              id="amountInput"
+              className="transfer-form-bar__input"
+              type="number"
+              step={0.01}
+              min={0}
+              pattern="[0-9.]+"
+              onChange={onlyNumber}
+              placeholder="00.00"
+              required
+            />
           </p>
         </div>
         <h4 className="transfer-form-bar__header">Recipient gets</h4>
@@ -73,7 +74,9 @@ const MakeTransferForm = (props) => {
       <div className="transfer-form-continue">
         <div className="transfer-form-continue__total">
           <h5>Total</h5>
-          <p>{exchangeFrom.currencySymbol} {Number(exchangeAmount).toLocaleString('en-us')}</p>
+          <p>
+            {exchangeFrom.currencySymbol} {Number(exchangeAmount).toFixed(2).toLocaleString("en-us")}
+          </p>
         </div>
         <Button 
         buttonName={"Continue"} 
