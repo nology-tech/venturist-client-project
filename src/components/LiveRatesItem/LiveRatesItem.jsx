@@ -1,22 +1,22 @@
 import React from "react";
 import Button from "../Button/Button";
 import "./LiveRatesItem.scss";
-
+import CurrencyFlag from "react-currency-flags";
 
 const LiveRatesItem = (props) => {
-  const { flagImg, currency, amount, rate, sendFunction, buttonName } = props;
+  const { currencyCode, currency, amount, rate, sendFunction, buttonName } =
+    props;
 
   //buttonName, buttonStyle, hasIcon, iconSrc, iconPosition, buttonFunction
 
   return (
     <tr className="liverate-row">
       <td className="liverate-row__currency">
-        <img src={flagImg} alt={currency} /> EUR{currency}{" "}
+        <CurrencyFlag currency={currencyCode} size="md" />
+        {currency}{" "}
       </td>
-      <td>1.1{amount}</td>
-      <td>
-        0.02{rate}{" "}
-      </td>
+      <td>{amount}</td>
+      <td>{rate} </td>
       <td>
         <Button
           buttonName={buttonName}

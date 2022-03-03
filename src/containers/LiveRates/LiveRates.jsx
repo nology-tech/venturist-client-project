@@ -7,6 +7,15 @@ const LiveRates = (props) => {
 
   const [baseCurrency, setBaseCurrency] = useState("GBP");
 
+  //  {
+  //   currencyName: "British Pound",
+  //   currencyFlag: "../../assets/countryFlags/gbp.png",
+  //   currencyCode: "GBP",
+  //   liveRate: 1.0000,
+  //   changeOfRate: 0.000,
+  //   currencySymbol: "£"
+  // }
+
   const renderBaseCurrency = () => {
     return rates
       .filter((currency) => currency.currencyCode === baseCurrency)
@@ -14,6 +23,7 @@ const LiveRates = (props) => {
         return (
           <LiveRatesItem
             key={index}
+            currencyCode={item.currencyCode}
             flagImg={item.currencyFlag}
             currency={item.currencyCode}
             amount={item.liveRate}
@@ -26,13 +36,20 @@ const LiveRates = (props) => {
 
   const renderList = () => {
     return rates.map((currency, index) => {
-      const { currencyFlag, currencyCode, liveRate, changeOfRate } = currency;
+      const {
+        currencyFlag,
+        currencyCode,
+        liveRate,
+        changeOfRate,
+        currencyName,
+      } = currency;
       if (currency.currencyCode !== baseCurrency) {
         return (
           <LiveRatesItem
             key={index}
+            currencyCode={currencyCode}
             flagImg={currencyFlag}
-            currency={currencyCode}
+            currency={currencyName}
             amount={liveRate}
             rate={changeOfRate}
             buttonName="Send"
