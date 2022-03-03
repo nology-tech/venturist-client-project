@@ -1,11 +1,12 @@
 import React from "react";
 import LiveRatesItem from "../../components/LiveRatesItem/LiveRatesItem";
+import "./LiveRates.scss";
 
 const LiveRates = () => {
   //flagImg, currency, amount, rate
 
   return (
-    <table>
+    <table className="liverate-table">
       <tr>
         <th>Currency</th>
         <th>Amount</th>

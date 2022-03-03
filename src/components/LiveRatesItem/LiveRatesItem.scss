@@ -1,0 +1,16 @@
+@use "../../assets/sass/global_variables" as *;
+
+.liverate-row {
+    background-color:$colourTen;
+    margin-bottom: 10px;
+    font: $inter;
+    font-size: 18px;
+    line-height: 20px;
+    color: $colourThree;
+    font-weight: 600;
+
+
+    &__currency {
+        font-weight: 400;
+    }
+}
