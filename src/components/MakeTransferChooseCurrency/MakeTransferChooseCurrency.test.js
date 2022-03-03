@@ -1,4 +1,4 @@
-import MakeTransferChooseRecipient from "./MakeTransferChooseRecipient";
+import MakeTransferChooseCurrency from "./MakeTransferChooseCurrency";
 
 test('Test', () => {
   
