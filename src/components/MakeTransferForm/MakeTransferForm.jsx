@@ -1,28 +1,19 @@
-import React, {useState} from 'react'
-import Button from '../Button/Button';
+import React, { useState } from "react";
+import Button from "../Button/Button";
 import "./MakeTransferForm.scss";
-import CurrencyFlag from 'react-currency-flags';
+import CurrencyFlag from "react-currency-flags";
 
-const MakeTransferForm = (props) => {
+const MakeTransferForm = props => {
+  const { exchangeFrom, exchangeTo, handleChangingCurrency } = props;
 
-  const {exchangeFrom, exchangeTo, handleChangingCurrency} = props;
-
-  const [exchangeAmount,setExchangeAmount] = useState(1000.00);
-
-  const handleChangeAmount = (event) => {
-    
-  }
+  const [exchangeAmount, setExchangeAmount] = useState(1000.0);
 
   const calculateConversion = () => {
-    return (exchangeTo.liveRate/exchangeFrom.liveRate);
-  }
+    return exchangeTo.liveRate / exchangeFrom.liveRate;
+  };
 
-  const handleContinueButton = (event) => {
-    event.preventDefault();
-  }
-
-  const onlyNumber = (event) => {
-    let amountInputField = document.getElementById("amountInput").value; // CHANGE TO event.target.value
+  const onlyNumber = event => {
+    let amountInputField = event.target.value; // CHANGE TO event.target.value
     setExchangeAmount(event.target.value);
 
     if (
@@ -33,48 +24,60 @@ const MakeTransferForm = (props) => {
     }
   };
 
-  // var validate = function(e) {
-  //   var t = e.value;
-  //   e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."), 3)) : t;
-  // }
-
-  // const only2dp = e => {
-  //   let t = e.value;
-
-  //   e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."), 3)) : t;
-  // }
-
   return (
-    <form className='transfer-page__transfer-form'>
+    <form className="transfer-page__transfer-form">
       <div className="transfer-form-bar">
         <h4 className="transfer-form-bar__header">You send</h4>
         <div className="transfer-form-bar__container">
           <div className="transfer-form-bar__container--left">
-            <CurrencyFlag currency={exchangeFrom.currencyCode} width={36} onClick={handleChangingCurrency} />
-            <p className="transfer-form-bar__currency transfer-form-bar__currency-from" onClick={handleChangingCurrency}>{exchangeFrom.currencyCode} - {exchangeFrom.currencyName}</p>
+            <CurrencyFlag
+              currency={exchangeFrom.currencyCode}
+              width={36}
+              onClick={handleChangingCurrency}
+            />
+            <p
+              className="transfer-form-bar__currency transfer-form-bar__currency-from"
+              onClick={handleChangingCurrency}
+            >
+              {exchangeFrom.currencyCode} - {exchangeFrom.currencyName}
+            </p>
           </div>
-          <p className="transfer-form-bar__amount">{exchangeFrom.currencySymbol}
+          <p className="transfer-form-bar__amount">
+            {exchangeFrom.currencySymbol}
             <input
-            id="amountInput"
-            className="transfer-form-bar__input"
-            type="number"
-            step={0.01}
-            max={10}
-            // pattern="[0-9.]+"
-            // onInput={only2dp}
-            onKeyPress={onlyNumber}
-            placeholder="00.00"
-            required
-            /> 
+              id="amountInput"
+              className="transfer-form-bar__input"
+              type="number"
+              step={0.01}
+              min={0}
+              // max={10000}
+              pattern="[0-9.]+"
+              // onInput={only2dp}
+              onChange={onlyNumber}
+              placeholder="00.00"
+              required
+            />
           </p>
         </div>
         <h4 className="transfer-form-bar__header">Recipient gets</h4>
         <div className="transfer-form-bar__container">
           <div className="transfer-form-bar__container--left">
-            <CurrencyFlag currency={exchangeTo.currencyCode} width={36} onClick={handleChangingCurrency} />
-            <p className="transfer-form-bar__currency transfer-form-bar__currency-to" onClick={handleChangingCurrency}>{exchangeTo.currencyCode} - {exchangeTo.currencyName}</p>
+            <CurrencyFlag
+              currency={exchangeTo.currencyCode}
+              width={36}
+              onClick={handleChangingCurrency}
+            />
+            <p
+              className="transfer-form-bar__currency transfer-form-bar__currency-to"
+              onClick={handleChangingCurrency}
+            >
+              {exchangeTo.currencyCode} - {exchangeTo.currencyName}
+            </p>
           </div>
-          <p className="transfer-form-bar__amount">{exchangeTo.currencySymbol} {(calculateConversion()*exchangeAmount).toFixed(2)}</p>
+          <p className="transfer-form-bar__amount">
+            {exchangeTo.currencySymbol}{" "}
+            {(calculateConversion() * exchangeAmount).toFixed(2)}
+          </p>
         </div>
       </div>
       <div className="transfer-form-info">
@@ -94,13 +97,17 @@ const MakeTransferForm = (props) => {
       <div className="transfer-form-continue">
         <div className="transfer-form-continue__total">
           <h5>Total</h5>
-          <p>{exchangeFrom.currencySymbol} {Number(exchangeAmount).toLocaleString('en-us')}</p>
+          <p>
+            {exchangeFrom.currencySymbol}{" "}
+            {Number(exchangeAmount).toFixed(2).toLocaleString("en-us")}
+          </p>
         </div>
-        <Button 
-        buttonName={"Continue"} 
-        buttonStyle={"blue"} 
-        hasIcon={false} 
-        buttonFunction={handleContinueButton}/>
+        <Button
+          buttonName={"Continue"}
+          buttonStyle={"blue"}
+          hasIcon={false}
+          buttonFunction
+        />
       </div>
     </form>
   );

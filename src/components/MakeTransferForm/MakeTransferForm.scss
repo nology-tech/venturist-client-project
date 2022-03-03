@@ -7,7 +7,6 @@
   height: 600px;
   padding: 40px 76px;
   margin-top: 30px;
-  margin-left: 45px;
   box-sizing: border-box;
   font-family: $outfit;
   
@@ -49,6 +48,7 @@ h4 {
     p {
       margin-left: 0;
     }
+    
   }
 
   &__flag {
@@ -66,6 +66,10 @@ h4 {
     margin-right: 0;
     text-align: right;
     right: 0;
+  }
+
+  &__input{
+    width: 100px;
   }
 }
 
