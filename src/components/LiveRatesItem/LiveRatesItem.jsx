@@ -4,7 +4,7 @@ import "./LiveRatesItem.scss";
 
 
 const LiveRatesItem = (props) => {
-  const { flagImg, currency, amount, rate, sendFunction } = props;
+  const { flagImg, currency, amount, rate, sendFunction, buttonName } = props;
 
   //buttonName, buttonStyle, hasIcon, iconSrc, iconPosition, buttonFunction
 
@@ -19,7 +19,7 @@ const LiveRatesItem = (props) => {
       </td>
       <td>
         <Button
-          buttonName="Send"
+          buttonName={buttonName}
           hasIcon={false}
           buttonFunction={sendFunction}
         />
