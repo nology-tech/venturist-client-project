@@ -1,0 +1,23 @@
+@use "../../assets/sass/global_variables" as *;
+
+.circular-button {
+  display: flex;
+  background-color: $colourEleven;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  font-size: 20px;
+  color: $colourOne;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  }
+  &:active {
+    color: $colourThree;
+  }
+}
