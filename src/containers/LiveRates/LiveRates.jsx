@@ -65,6 +65,7 @@ const LiveRates = (props) => {
         <th>Currency</th>
         <th>Amount</th>
         <th>Rate</th>
+        <th> </th>
       </tr>
       {renderBaseCurrency()}
       {renderList()}
