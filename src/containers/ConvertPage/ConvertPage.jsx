@@ -24,7 +24,7 @@ const ConvertPage = () => {
       />
       <CurrencyConverter profile={profile} rates={rates} />
 
-      <LiveRates />
+      <LiveRates rates={rates} />
     </section>
   );
 };
