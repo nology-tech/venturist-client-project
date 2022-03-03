@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../Button/Button";
 
 const LiveRatesItem = (props) => {
-  const { flagImg, currency, amount, rate, sendFunction } = props;
+  const { flagImg, currency, amount, rate, sendFunction, buttonName } = props;
 
   //buttonName, buttonStyle, hasIcon, iconSrc, iconPosition, buttonFunction
 
@@ -15,7 +15,7 @@ const LiveRatesItem = (props) => {
       <td>
         {rate}{" "}
         <Button
-          buttonName="Send"
+          buttonName={buttonName}
           hasIcon={false}
           buttonFunction={sendFunction}
         />
