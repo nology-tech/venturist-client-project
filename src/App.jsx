@@ -4,6 +4,7 @@ import Data from "./assets/data/liveRatesExample";
 import MakeTransferPage from "./containers/MakeTransferPage/MakeTransferPage";
 import profileData from "./assets/data/samanthaBrooksProfile"
 import contactData from "./assets/data/contactExample";
+import MakeTransferForm from "./components/MakeTransferForm/MakeTransferForm";
 
 const App = () => {
   return (
