@@ -39,11 +39,11 @@ const MakeTransferPage = (props) => {
     <div className='make-transfer'>
         <Header title="Transfer" pageFunctionHeading="Make Transfer" textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus." />
 
-        {/* <MakeTransferForm exchangeFrom={currencyFrom} exchangeTo={currencyTo} handleChangingCurrency={handleChangingCurrency} /> */}
+        <MakeTransferForm exchangeFrom={currencyFrom} exchangeTo={currencyTo} handleChangingCurrency={handleChangingCurrency} />
 
         {showCurrencyModal && <MakeTransferChooseCurrency currencyData={liveRateData} handleChangingCurrency={handleChangingCurrency}/>}
 
-        <MakeTransferConfirmAccount profileData={profileData} data={contactData} />
+        {/* <MakeTransferConfirmAccount profileData={profileData} data={contactData} /> */}
     </div>
 
   )
