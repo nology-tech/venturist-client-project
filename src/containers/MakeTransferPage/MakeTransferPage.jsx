@@ -13,9 +13,17 @@ const MakeTransferPage = (props) => {
   const [currencyFrom, setCurrencyFrom] = useState(liveRateData[0]);
   const [currencyTo, setCurrencyTo] = useState(liveRateData[1]);
   const [changingCurrency, setChangingCurrency] = useState("to");
+  const [showInitialForm, setShowInitialForm] = useState(true);
+  const [showConfirmAccount, setShowConfirmAccount] = useState(false);
   
   const handleShowCurrencyModal = () => {
     setShowCurrencyModal(!showCurrencyModal);
+  }
+
+  const handleShowForm = (event) => {
+    event.preventDefault();
+    setShowInitialForm(!showInitialForm);
+    setShowConfirmAccount(!showConfirmAccount);
   }
 
   const handleChangingCurrency = (event) => {
@@ -39,11 +47,11 @@ const MakeTransferPage = (props) => {
     <div className='make-transfer'>
         <Header title="Transfer" pageFunctionHeading="Make Transfer" textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus." />
 
-        <MakeTransferForm exchangeFrom={currencyFrom} exchangeTo={currencyTo} handleChangingCurrency={handleChangingCurrency} />
+        {showInitialForm && <MakeTransferForm exchangeFrom={currencyFrom} exchangeTo={currencyTo} handleChangingCurrency={handleChangingCurrency} handleShowForm={handleShowForm} />}
 
         {showCurrencyModal && <MakeTransferChooseCurrency currencyData={liveRateData} handleChangingCurrency={handleChangingCurrency}/>}
 
-        {false && <MakeTransferConfirmAccount profileData={profileData} data={contactData} /> }
+        {showConfirmAccount && <MakeTransferConfirmAccount profileData={profileData} data={contactData} /> }
     </div>
 
   )
