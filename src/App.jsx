@@ -20,7 +20,7 @@ const App = () => {
           <Route path="/Wallet" element={<WalletPage />}></Route>
           <Route path="/LiveRates" element={<LiveRatesPage />}></Route>
           <Route path="/Convert" element={<ConvertPage />}></Route>
-          <Route path="/Transfer" element={<MakeTransferPage />}></Route>
+          <Route path="/Transfer" element={<MakeTransferPage liveRateData={Data} profileData={profileData} contactData={contactData} />}></Route>
           <Route path="/Contacts" element={<ContactsPage />}></Route>
           <Route path="/Deposit" element={<DepositPage />}></Route>
           <Route path="/Withdraw" element={<WithdrawPage />}></Route>

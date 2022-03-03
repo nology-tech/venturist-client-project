@@ -5,20 +5,12 @@ import CurrencyFlag from 'react-currency-flags';
 
 const MakeTransferForm = (props) => {
 
-  const {exchangeFrom, exchangeTo, handleChangingCurrency} = props;
+  const {exchangeFrom, exchangeTo, handleChangingCurrency, handleShowForm} = props;
 
   const [exchangeAmount,setExchangeAmount] = useState(1000.00);
 
-  const handleChangeAmount = (event) => {
-    
-  }
-
   const calculateConversion = () => {
     return (exchangeTo.liveRate/exchangeFrom.liveRate);
-  }
-
-  const handleContinueButton = (event) => {
-    event.preventDefault();
   }
 
   const onlyNumber = (event) => {
@@ -32,17 +24,6 @@ const MakeTransferForm = (props) => {
       event.preventDefault();
     }
   };
-
-  // var validate = function(e) {
-  //   var t = e.value;
-  //   e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."), 3)) : t;
-  // }
-
-  // const only2dp = e => {
-  //   let t = e.value;
-
-  //   e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."), 3)) : t;
-  // }
 
   return (
     <form className='transfer-page__transfer-form'>
@@ -60,8 +41,6 @@ const MakeTransferForm = (props) => {
             type="number"
             step={0.01}
             max={10}
-            // pattern="[0-9.]+"
-            // onInput={only2dp}
             onKeyPress={onlyNumber}
             placeholder="00.00"
             required
@@ -100,7 +79,7 @@ const MakeTransferForm = (props) => {
         buttonName={"Continue"} 
         buttonStyle={"blue"} 
         hasIcon={false} 
-        buttonFunction={handleContinueButton}/>
+        buttonFunction={handleShowForm}/>
       </div>
     </form>
   );
