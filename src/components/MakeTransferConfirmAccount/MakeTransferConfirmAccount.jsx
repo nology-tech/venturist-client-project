@@ -5,7 +5,7 @@ import Button from "./../Button/Button";
 
 const MakeTransferConfirmAccount = (props) => {
 
-  const {profileData, data, exchangeInfo} = props;
+  const {profileData, data} = props;
 
   const [showChooseRecipients, setShowChooseRecipients] = useState(false);
   

@@ -9,10 +9,6 @@ const MakeTransferForm = (props) => {
 
   const [exchangeAmount,setExchangeAmount] = useState(1000.00);
 
-  const handleChangeAmount = (event) => {
-    
-  }
-
   const calculateConversion = () => {
     return (exchangeTo.liveRate/exchangeFrom.liveRate);
   }

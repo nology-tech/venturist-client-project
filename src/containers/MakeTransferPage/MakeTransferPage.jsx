@@ -43,7 +43,7 @@ const MakeTransferPage = (props) => {
 
         {showCurrencyModal && <MakeTransferChooseCurrency currencyData={liveRateData} handleChangingCurrency={handleChangingCurrency}/>}
 
-        {/* <MakeTransferConfirmAccount profileData={profileData} data={contactData} /> */}
+        {false && <MakeTransferConfirmAccount profileData={profileData} data={contactData} /> }
     </div>
 
   )
