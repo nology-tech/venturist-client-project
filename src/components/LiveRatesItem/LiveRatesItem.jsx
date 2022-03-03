@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "../Button/Button";
+import "./LiveRatesItem.scss";
+
 
 const LiveRatesItem = (props) => {
   const { flagImg, currency, amount, rate, sendFunction } = props;
@@ -7,13 +9,15 @@ const LiveRatesItem = (props) => {
   //buttonName, buttonStyle, hasIcon, iconSrc, iconPosition, buttonFunction
 
   return (
-    <tr>
-      <td>
-        <img src={flagImg} alt={currency} /> {currency}{" "}
+    <tr className="liverate-row">
+      <td className="liverate-row__currency">
+        <img src={flagImg} alt={currency} /> EUR{currency}{" "}
       </td>
-      <td>{amount}</td>
+      <td>1.1{amount}</td>
       <td>
-        {rate}{" "}
+        0.02{rate}{" "}
+      </td>
+      <td>
         <Button
           buttonName="Send"
           hasIcon={false}
