@@ -1,19 +1,20 @@
-import React, { useState } from "react";
-import Button from "../Button/Button";
+import React, {useState} from 'react'
+import Button from '../../Button/Button';
 import "./MakeTransferForm.scss";
 import CurrencyFlag from "react-currency-flags";
 
 const MakeTransferForm = props => {
-  const { exchangeFrom, exchangeTo, handleChangingCurrency } = props;
 
-  const [exchangeAmount, setExchangeAmount] = useState(1000.0);
+  const {exchangeFrom, exchangeTo, handleChangingCurrency, handleShowForm} = props;
+
+  const [exchangeAmount,setExchangeAmount] = useState(1000.00);
 
   const calculateConversion = () => {
     return exchangeTo.liveRate / exchangeFrom.liveRate;
   };
 
-  const onlyNumber = event => {
-    let amountInputField = event.target.value; // CHANGE TO event.target.value
+  const onlyNumber = (event) => {
+    let amountInputField = document.getElementById("amountInput").value; // CHANGE TO event.target.value
     setExchangeAmount(event.target.value);
 
     if (
@@ -42,17 +43,14 @@ const MakeTransferForm = props => {
               {exchangeFrom.currencyCode} - {exchangeFrom.currencyName}
             </p>
           </div>
-          <p className="transfer-form-bar__amount">
-            {exchangeFrom.currencySymbol}
-            <input
+          <p className="transfer-form-bar__amount">{exchangeFrom.currencySymbol}
+          <input
               id="amountInput"
               className="transfer-form-bar__input"
               type="number"
               step={0.01}
               min={0}
-              // max={10000}
               pattern="[0-9.]+"
-              // onInput={only2dp}
               onChange={onlyNumber}
               placeholder="00.00"
               required
@@ -98,16 +96,14 @@ const MakeTransferForm = props => {
         <div className="transfer-form-continue__total">
           <h5>Total</h5>
           <p>
-            {exchangeFrom.currencySymbol}{" "}
-            {Number(exchangeAmount).toFixed(2).toLocaleString("en-us")}
+            {exchangeFrom.currencySymbol} {Number(exchangeAmount).toFixed(2).toLocaleString("en-us")}
           </p>
         </div>
-        <Button
-          buttonName={"Continue"}
-          buttonStyle={"blue"}
-          hasIcon={false}
-          buttonFunction
-        />
+        <Button 
+        buttonName={"Continue"} 
+        buttonStyle={"blue"} 
+        hasIcon={false} 
+        buttonFunction={handleShowForm}/>
       </div>
     </form>
   );

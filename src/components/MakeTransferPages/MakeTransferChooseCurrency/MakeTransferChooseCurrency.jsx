@@ -5,9 +5,8 @@ import MakeTransferCurrencyCard from '../MakeTransferCurrencyCard/MakeTransferCu
 import { library } from '@fortawesome/fontawesome-svg-core';
 import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
 import * as IconsRegular from '@fortawesome/free-regular-svg-icons';
-import icons from "../../assets/icons/icons";
-import cross from "./../../assets/icons/black-cross.png"
-// import { useState } from "react";
+import icons from "../../../assets/icons/icons";
+import cross from "./../../../assets/icons/black-cross.png"
 
 const iconListSolid = Object
   .keys(IconsSolid)
