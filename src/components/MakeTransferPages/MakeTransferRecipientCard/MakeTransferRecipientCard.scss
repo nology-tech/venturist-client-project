@@ -1,4 +1,4 @@
-@use "./../../assets/sass/global_variables" as *;
+@use "../../../assets/sass/global_variables" as *;
 
 @mixin grey-16px-text {
   font-family: $outfit;
@@ -7,7 +7,6 @@
   font-size: 16px;
   line-height: 20px;
   margin-top: 10px;
-
   color: #8896A3;
 }
 

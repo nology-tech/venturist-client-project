@@ -1,21 +1,28 @@
 import React, {useState} from 'react'
 import Header from '../../components/Header/Header';
-import MakeTransferConfirmAccount from '../../components/MakeTransferConfirmAccount/MakeTransferConfirmAccount';
-import MakeTransferForm from '../../components/MakeTransferForm/MakeTransferForm';
-import MakeTransferChooseCurrency from "./../../components/MakeTransferChooseCurrency/MakeTransferChooseCurrency";
+import MakeTransferConfirmAccount from '../../components/MakeTransferPages/MakeTransferConfirmAccount/MakeTransferConfirmAccount';
+import MakeTransferForm from '../../components/MakeTransferPages/MakeTransferForm/MakeTransferForm';
+import MakeTransferChooseCurrency from "./../../components/MakeTransferPages/MakeTransferChooseCurrency/MakeTransferChooseCurrency";
 import "./MakeTransferPage.scss";
 
-const MakeTransferPage = (props) => {
-
-  const {liveRateData, profileData, contactData} = props;
+const MakeTransferPage = props => {
+  const { liveRateData, profileData, contactData } = props;
 
   const [showCurrencyModal, setShowCurrencyModal] = useState(false);
   const [currencyFrom, setCurrencyFrom] = useState(liveRateData[0]);
   const [currencyTo, setCurrencyTo] = useState(liveRateData[1]);
   const [changingCurrency, setChangingCurrency] = useState("to");
+  const [showInitialForm, setShowInitialForm] = useState(true);
+  const [showConfirmAccount, setShowConfirmAccount] = useState(false);
   
   const handleShowCurrencyModal = () => {
     setShowCurrencyModal(!showCurrencyModal);
+  };
+
+  const handleShowForm = (event) => {
+    event.preventDefault();
+    setShowInitialForm(!showInitialForm);
+    setShowConfirmAccount(!showConfirmAccount);
   }
 
   const handleChangingCurrency = (event) => {
@@ -27,26 +34,34 @@ const MakeTransferPage = (props) => {
       } else if(changingCurrency==="from"){
         setCurrencyFrom(chosenCurrencyObj);
       }
-    } else if(event.target.classList.contains("transfer-form-bar__currency-to")) {
+    } else if (event.target.classList.contains("transfer-form-bar__currency-to")) {
       setChangingCurrency("to");
-    } else if(event.target.classList.contains("transfer-form-bar__currency-from")) {
+    } else if (event.target.classList.contains("transfer-form-bar__currency-from")) {
       setChangingCurrency("from");
     }
     handleShowCurrencyModal();
-  }
+  };
 
   return (
-    <div className='make-transfer'>
-        <Header title="Transfer" pageFunctionHeading="Make Transfer" textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus." />
+    <div className="make-transfer">
+      <Header
+        title="Transfer"
+        pageFunctionHeading="Make Transfer"
+        textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus."
+      />
 
-        <MakeTransferForm exchangeFrom={currencyFrom} exchangeTo={currencyTo} handleChangingCurrency={handleChangingCurrency} />
+        {showInitialForm && <MakeTransferForm exchangeFrom={currencyFrom} exchangeTo={currencyTo} handleChangingCurrency={handleChangingCurrency} handleShowForm={handleShowForm} />}
 
-        {showCurrencyModal && <MakeTransferChooseCurrency currencyData={liveRateData} handleChangingCurrency={handleChangingCurrency}/>}
+      {showCurrencyModal && (
+        <MakeTransferChooseCurrency
+          currencyData={liveRateData}
+          handleChangingCurrency={handleChangingCurrency}
+        />
+      )}
 
-        {/* <MakeTransferConfirmAccount profileData={profileData} data={contactData} /> */}
+        {showConfirmAccount && <MakeTransferConfirmAccount profileData={profileData} data={contactData} /> }
     </div>
+  );
+};
 
-  )
-}
-
-export default MakeTransferPage
+export default MakeTransferPage;

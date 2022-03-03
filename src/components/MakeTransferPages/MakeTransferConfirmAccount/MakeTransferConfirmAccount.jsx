@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import "./MakeTransferConfirmAccount.scss";
 import MakeTransferChooseRecipient from '../MakeTransferChooseRecipient/MakeTransferChooseRecipient';
-import Button from "./../Button/Button";
+import Button from "../../Button/Button";
 
 const MakeTransferConfirmAccount = (props) => {
 
-  const {profileData, data, exchangeInfo} = props;
+  const {profileData, data} = props;
 
   const [showChooseRecipients, setShowChooseRecipients] = useState(false);
   
