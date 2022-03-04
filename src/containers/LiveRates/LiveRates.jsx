@@ -60,9 +60,14 @@ const LiveRates = (props) => {
   };
 
   return (
-    <table className="liverate-table" data-testid="liverate-table">
-      <tbody>
-        <tr>
+    <table
+      cellPadding={0}
+      cellSpacing={0}
+      className="liverate-table"
+      data-testid="liverate-table"
+    >
+      <tbody className="liverate-table__body">
+        <tr className="liverate-table__body-headings">
           <th>Currency </th>
           <th>Amount </th>
           <th>Rate </th>
