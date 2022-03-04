@@ -8,8 +8,7 @@
 
 .transfer-page__confirm {
     position: absolute;
-    margin-left: 45px;
-    margin-top: 35px;
+    margin-top: 30px;
     width: 512px;
 
     &__transfer{
@@ -48,19 +47,33 @@
             }
             &__text{
                 margin-left: 35px;
+                margin-right: 35px;
                 font-size: .9em;
-                color: $colourThree;                
+                color: $colourThree; 
+                display: flex;
+                flex-direction: row; 
+                justify-content: space-between;
+                
+                     
             }
             &__total {
                 padding-top: 30px;
                 padding-bottom: 4px;
                 margin-left: 35px;
+                margin-right: 35px;
                 font-size: 1.2em;
                 font-weight: 400;
+                display: flex;
+                flex-direction: row; 
+                justify-content: space-between;
             }
             &__funds {
+                margin-right: 35px;
                 margin-left: 35px;
                 font-size: .6em;
+                display: flex;
+                flex-direction: row; 
+                justify-content: space-between;
                 color: $colourThree;
             }
         }

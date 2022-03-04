@@ -3,17 +3,20 @@
 .transfer-page__choose-recipient {
   padding: 50px 50px 0 65px;
   box-sizing: border-box;
-  position: absolute;
-  width: 774px;
-  height: 735px;
-  left: 477px;
-  top: 191px;
   z-index: 2;
   position: fixed;
   left: 35%;
   top: 10%;  
   background-color: #FFFFFF;
   border-radius: 8px;
+
+  position: fixed;
+  width: 774px;
+  height: 735px;
+  left: 50%;
+  top: 50%;
+  margin-left: -387px;
+  margin-top: -368px;
 
   &__overlay {
     z-index: 1;

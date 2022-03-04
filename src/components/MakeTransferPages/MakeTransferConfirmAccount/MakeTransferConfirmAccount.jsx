@@ -20,11 +20,11 @@ const MakeTransferConfirmAccount = (props) => {
         <h2 className='transfer-page__confirm__sendContainer__header'>Send From</h2>
         <div  className='transfer-page__confirm__sendContainer__details'>
           <h6 className='transfer-page__confirm__sendContainer__details__name'>{profileData.firstName} {profileData.lastName}</h6>
-          <p className='transfer-page__confirm__sendContainer__details__text'>Account Number: {profileData.accountNumber}</p>
-          <p className='transfer-page__confirm__sendContainer__details__text' >Sort Code:  {profileData.sortCode}</p>
+          <p className='transfer-page__confirm__sendContainer__details__text'>Account Number: <p>{profileData.accountNumber}</p> </p>
+          <p className='transfer-page__confirm__sendContainer__details__text' >Sort Code:  <p>{profileData.sortCode}</p> </p>
 
-          <h6 className='transfer-page__confirm__sendContainer__details__total'>Total {profileData.holdings.GBP}</h6>
-          <p className='transfer-page__confirm__sendContainer__details__funds'>Funds Remaining: £14,210.00 </p>
+          <h6 className='transfer-page__confirm__sendContainer__details__total'>Total <h6>{profileData.holdings.GBP}</h6> </h6>
+          <p className='transfer-page__confirm__sendContainer__details__funds'>Funds Remaining: <p>£14,210.00</p>  </p>
         </div>
 
         <h2 className='transfer-page__confirm__sendContainer__header'>To</h2>
