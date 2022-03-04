@@ -6,6 +6,15 @@ const LiveRates = (props) => {
   const { rates } = props;
 
   const [baseCurrency, setBaseCurrency] = useState("GBP");
+  const [currencyList, setCurrencyList] = useState([]);
+
+  const addCurrencies = (currencyToAdd) => {
+    return rates
+      .filter((currency) => currency.currencyCode === currencyToAdd)
+      .map((currency) => currency);
+  };
+
+  console.log(addCurrencies("USD"));
 
   //  {
   //   currencyName: "British Pound",
