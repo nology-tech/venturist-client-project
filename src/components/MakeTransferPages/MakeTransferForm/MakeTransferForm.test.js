@@ -1,5 +1,7 @@
 import MakeTransferForm from "./MakeTransferForm";
 import { fireEvent, render, screen } from "@testing-library/react";
+import { CurrencyFlag } from "react-currency-flags/dist/components";
+import mockData from "../../../assets/data/liveRatesExample";
 
 // test("Test that button renders with correct inner text", () => {
 //   //Arrange
@@ -41,3 +43,68 @@ import { fireEvent, render, screen } from "@testing-library/react";
 //   //Assert
 //   expect(button).not.toContainElement(buttonIcon);
 // });
+
+test("Input box renders with the correct inner text", () => {
+  // Arrange 
+  const onClick = jest.fn();
+  render(<MakeTransferForm exchangeFrom={mockData[0]}
+    exchangeTo={mockData[1]}
+    handleChangingCurrency={(onClick)}
+    handleShowForm={(onClick)}/>)
+
+  // Act 
+
+  const youSendInput = screen.getByTestId("amountInput");
+
+  // Assert
+
+  expect(youSendInput).toBeInTheDocument();
+ 
+
+});
+
+
+
+test("Correct inner text for input", () => {
+  // Arrange 
+  const onClick = jest.fn();
+  render(<MakeTransferForm exchangeFrom={mockData[0]}
+    exchangeTo={mockData[1]}
+    handleChangingCurrency={(onClick)}
+    handleShowForm={(onClick)}/>)
+
+  // Act 
+
+ const youSendInput2 = screen.getByPlaceholderText("00.00");
+
+  // Assert
+
+ expect(youSendInput2).toHaveAttribute("placeholder");
+ 
+});
+
+test("placeholder text", () => {
+  // Arrange 
+  const onClick = jest.fn();
+  render(<MakeTransferForm exchangeFrom={mockData[0]}
+    exchangeTo={mockData[1]}
+    handleChangingCurrency={(onClick)}
+    handleShowForm={(onClick)}/>)
+
+  // Act 
+
+  const youSendInput3 = screen.getByTestId("amountInput");
+
+  // Assert
+
+  expect(youSendInput3).toHaveAttribute("placeholder", "00.00")
+ 
+});
+
+
+
+
+
+
+
+
