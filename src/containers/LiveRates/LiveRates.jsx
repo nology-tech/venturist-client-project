@@ -61,14 +61,16 @@ const LiveRates = (props) => {
 
   return (
     <table className="liverate-table">
-      <tr>
-        <th>Currency</th>
-        <th>Amount</th>
-        <th>Rate</th>
-        <th> </th>
-      </tr>
-      {renderBaseCurrency()}
-      {renderList()}
+      <tbody>
+        <tr>
+          <th>Currency</th>
+          <th>Amount</th>
+          <th>Rate</th>
+          <th> </th>
+        </tr>
+        {renderBaseCurrency()}
+        {renderList()}
+      </tbody>
     </table>
   );
 };
