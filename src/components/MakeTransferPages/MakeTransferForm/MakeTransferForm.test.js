@@ -3,6 +3,8 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { CurrencyFlag } from "react-currency-flags/dist/components";
 import mockData from "../../../assets/data/liveRatesExample";
 
+test("", () => {});
+
 // test("Test that button renders with correct inner text", () => {
 //   //Arrange
 //   render(<Button buttonName="test button" />);

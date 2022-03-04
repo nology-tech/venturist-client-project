@@ -3,7 +3,7 @@ import "./MakeTransferRecipientCard.scss";
 
 const MakeTransferRecipientCard = (props) => {
 
-  const { userCard } = props;
+  const { userCard, handleChooseRecipient } = props;
 
   let personName;
 
@@ -14,7 +14,7 @@ const MakeTransferRecipientCard = (props) => {
   }
 
   return (
-    <div className="transfer-page__recipient__card" onClick={()=>alert("clicked")}>
+    <div className="transfer-page__recipient__card" data-testid={"recipient-card"} onClick={handleChooseRecipient}>
       <div className="transfer-page__recipient__card--left">
         <img src={userCard.bankIcon} alt={userCard.bankName} className="transfer-page__recipient__card__bank-image"></img>
         <p>{personName}</p>
