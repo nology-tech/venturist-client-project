@@ -48,7 +48,7 @@ const DropDown = () => {
     );
     const IconOption = (props) => (
       <Option {...props}>
-          <div className={`currency-flag currency-flag-${props.data.code}`}/>
+          <div className={`currency-flag currency-flag-${props.data.code}`} style={{ marginRight: '.5rem' }}/>
           {props.data.label}
       </Option>
     );
