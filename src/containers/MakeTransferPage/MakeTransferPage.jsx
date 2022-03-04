@@ -29,13 +29,15 @@ const MakeTransferPage = props => {
     }
   };
 
-  const handleChangingCurrency = (event) => {
-    if(event.target.classList.contains("transfer-page__currency__card__overlay")) {
-      const chosenCurrencyCode = event.target.id.slice(25,28);
-      const chosenCurrencyObj = liveRateData.filter(currency => currency.currencyCode === chosenCurrencyCode)[0];
-      if(changingCurrency==="to") {
+  const handleChangingCurrency = event => {
+    if (event.target.classList.contains("transfer-page__currency__card__overlay")) {
+      const chosenCurrencyCode = event.target.id.slice(25, 28);
+      const chosenCurrencyObj = liveRateData.filter(
+        currency => currency.currencyCode === chosenCurrencyCode
+      )[0];
+      if (changingCurrency === "to") {
         setCurrencyTo(chosenCurrencyObj);
-      } else if(changingCurrency==="from"){
+      } else if (changingCurrency === "from") {
         setCurrencyFrom(chosenCurrencyObj);
       }
     } else if (event.target.classList.contains("transfer-form-bar__currency-to")) {
