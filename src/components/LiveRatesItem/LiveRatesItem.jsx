@@ -10,7 +10,7 @@ const LiveRatesItem = (props) => {
   //buttonName, buttonStyle, hasIcon, iconSrc, iconPosition, buttonFunction
 
   return (
-    <tr className="liverate-row">
+    <tr className="liverate-row" data-testid="liverate-row">
       <td className="liverate-row__currency">
         <CurrencyFlag currency={currencyCode} size="md" />
         {currency}{" "}
