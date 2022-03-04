@@ -3,41 +3,10 @@ import "./DropDown.scss";
 import Select, { components } from 'react-select';
 import 'currency-flags/dist/currency-flags.css';
 
-// import CurrencyFlag from "currency-flags";
-// import imageGBP from '../../assets/countryFlags/gbp.png';
-// import { components } from 'react-select';
-// const { SingleValue, Option } = components;
 
 
-const DropDown = () => {
+const DropDown = (props) => {
 
-
-
-  // const stringArray = ['usd', 'gbp', 'eur']
-
-  //   const createOptions = stringArray.map((currency, index) => {
-  //     const option = {}
-  //     option.value = index + 1
-  //     option.label = <div class={`currency-flag currency-flag-${currency}`}>USD</div>
-      
-  //     return option
-  //   })
-
-
-  //   // const = flagcss.map(cssstyle=> cssstyle.label)
- 
-
-  // return (
-  //    <div className="drop-down">
-       
-  //     <Select
-  //       options={createOptions}
-        
-  //     />
-
-  //   </div>
-
-  // )
 
   const { SingleValue, Option } = components;
     const IconSingleValue = (props) => (
@@ -67,39 +36,27 @@ const DropDown = () => {
       }),
   }
 
-  const codes = ['usd', 'gbp', 'eur']
 
-  const options = codes.map((currency, index) => (
+  const options = props.codes.map((currency, index) => (
       {
-        value: index,
+        value: currency.toUpperCase(),
         label: currency.toUpperCase(),
-        code: currency
+        code: currency,
+        key: index
       }
   ))
 
 
-  //   const options = [
-  //     {
-  //         label: 'Option 1',
-  //         value: 0,
-  //         code: 'usd'
-  //     },
-  //     {
-  //         label: 'Option 2',
-  //         value: 1,
-  //         code: 'gbp'
-  //     }
-  // ];
-
     return (
       <Select
+        className='currency-selector'
         options={options}
         components={{
           SingleValue: IconSingleValue,
           Option: IconOption
         }}
         styles={customStyles}
-        onChange={(e) => console.log(e)}
+        onChange={(e) => props.handleChange(e.value)}
       />
     )
 

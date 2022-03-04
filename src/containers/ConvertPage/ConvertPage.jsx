@@ -10,8 +10,10 @@ import DropDown from '../../components/DropDown/DropDown';
 
 const ConvertPage = () => {
 
-
- 
+  const handleChange = (value) => {
+    alert(value);
+  }
+  const codes = ['usd', 'gbp', 'eur'];
   // useEffect(() => {},userProfile,liveRatesArr)
 
   // const [profile,setProfile] = useState({...userProfile});
@@ -25,7 +27,7 @@ const ConvertPage = () => {
       <section className='convert-page__dropDown'>
       {/* <DropDown options={testoptions} /> */}
 
-      <DropDown />
+      <DropDown codes={codes} handleChange= {handleChange}/>
 
       </section>
     </section>

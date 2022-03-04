@@ -1,7 +1,17 @@
+@use "../../assets/sass/global_variables" as *;
+
+
 .css-qt7jg1-singleValue {
   font-size: 13px;
  .currency-flag {
     margin-right: 6px;
   }
 
+}
+
+.currency-selector {
+  font-family: $inter;
+  color: $colourFour;
+  height: 40px;
+  width: 150px;
 }
