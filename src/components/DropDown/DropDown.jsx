@@ -48,6 +48,8 @@ const DropDown = (props) => {
 
 
     return (
+
+      <div data-testid="currency-selector">
       <Select
         className='currency-selector'
         options={options}
@@ -58,6 +60,8 @@ const DropDown = (props) => {
         styles={customStyles}
         onChange={(e) => props.handleChange(e.value)}
       />
+
+</div>
     )
 
 }
