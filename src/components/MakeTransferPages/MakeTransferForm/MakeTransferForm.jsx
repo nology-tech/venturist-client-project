@@ -46,6 +46,7 @@ const MakeTransferForm = props => {
             {exchangeFrom.currencySymbol}
             <input
               id="amountInput"
+              data-testid="amountInput"
               className="transfer-form-bar__input"
               type="number"
               step={0.01}
@@ -95,7 +96,7 @@ const MakeTransferForm = props => {
       <div className="transfer-form-continue">
         <div className="transfer-form-continue__total">
           <h5>Total</h5>
-          <p>
+          <p data-testid="totalBox">
             {exchangeFrom.currencySymbol}{" "}
             {Number(exchangeAmount).toFixed(2).toLocaleString("en-us")}
           </p>
