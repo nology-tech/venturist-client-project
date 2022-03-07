@@ -47,7 +47,7 @@ const MakeTransferPage = props => {
   };
 
   return (
-    <div className="make-transfer">
+    <div className="make-transfer" data-testid="make-transfer">
       <Header
         title="Transfer"
         pageFunctionHeading="Make Transfer"
