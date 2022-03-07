@@ -15,19 +15,19 @@ const TransactionForm = (props) => {
 
   return (
     <section className="deposit-form">
-      <p className="deposit-form__title">Deposit Form</p>
+      <p className="deposit-form__title">{formTitle}</p>
       <div className="deposit-form__table">
         <table>
-          <h5 className="deposit-form__table__user-name">Sam Brooks</h5>
+          <h5 className="deposit-form__table__user-name">{firstName} {lastName}</h5>
           <tr>
             <td id="account-details" colspan="2">Account Number:</td>
             <td></td>
-            <td className="deposit-form__table__user-details">10840366</td>
+            <td className="deposit-form__table__user-details">{accountNumber}</td>
           </tr>
           <tr>
             <td id="account-details" colspan="2">Sort Code:</td>
             <td></td>
-            <td className="deposit-form__table__user-details">110053</td>
+            <td className="deposit-form__table__user-details">{sortCode}</td>
           </tr>
         </table>
         <p id="border"></p>  
