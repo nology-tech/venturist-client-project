@@ -73,7 +73,7 @@ const MakeTransferForm = props => {
               {exchangeTo.currencyCode} - {exchangeTo.currencyName}
             </p>
           </div>
-          <p className="transfer-form-bar__amount">
+          <p className="transfer-form-bar__amount" data-testid="amountOutput">
             {exchangeTo.currencySymbol}{" "}
             {(calculateConversion() * exchangeAmount).toFixed(2)}
           </p>
