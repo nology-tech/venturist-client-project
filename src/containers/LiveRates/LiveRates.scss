@@ -1,15 +1,19 @@
 @use "../../assets/sass/global_variables" as *;
 
 .liverate-table {
-  width: 80%;
-  margin: 2rem auto;
+  width: 100%;
+  margin: auto;
+  padding-left: 45px;
 
   &__body {
     text-align: left;
     color: $colourThree;
 
     &-headings {
-      text-align: center;
+      text-align: left;
+      th {
+        padding: 1rem;
+      }
     }
   }
 }

@@ -5,16 +5,16 @@ import "./LiveRates.scss";
 const LiveRates = (props) => {
   const { rates } = props;
 
-  const [baseCurrency, setBaseCurrency] = useState("GBP");
-  const [currencyList, setCurrencyList] = useState([]);
-
-  const addCurrencies = (currencyToAdd) => {
-    return rates
-      .filter((currency) => currency.currencyCode === currencyToAdd)
-      .map((currency) => currency);
+  const addCurrencyByCode = (currencyCode) => {
+    return rates.filter(
+      (currency) => currency.currencyCode === currencyCode && currency
+    )[0];
   };
 
-  console.log(addCurrencies("USD"));
+  //console.log(addCurrencyByCode("USD"));
+
+  const [baseCurrency, setBaseCurrency] = useState("GBP");
+  const [currencyList, setCurrencyList] = useState([]);
 
   //  {
   //   currencyName: "British Pound",
@@ -80,7 +80,7 @@ const LiveRates = (props) => {
           <th>Currency </th>
           <th>Amount </th>
           <th>Rate </th>
-          <th> </th>
+          <th>&nbsp;</th>
         </tr>
         {renderBaseCurrency()}
         {renderList()}
