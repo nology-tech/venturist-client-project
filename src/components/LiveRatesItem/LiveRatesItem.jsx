@@ -4,7 +4,7 @@ import "./LiveRatesItem.scss";
 import CurrencyFlag from "react-currency-flags";
 
 const LiveRatesItem = (props) => {
-  const { currencyCode, currency, amount, rate, sendFunction, buttonName } =
+  const { currencyCode, currency, amount, rate, buttonFunction, buttonName } =
     props;
 
   //buttonName, buttonStyle, hasIcon, iconSrc, iconPosition, buttonFunction
@@ -21,7 +21,7 @@ const LiveRatesItem = (props) => {
         <Button
           buttonName={buttonName}
           hasIcon={false}
-          buttonFunction={sendFunction}
+          buttonFunction={buttonFunction}
         />
       </td>
     </tr>

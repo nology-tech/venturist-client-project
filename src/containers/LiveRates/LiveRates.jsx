@@ -1,20 +1,21 @@
 import React, { useState } from "react";
+import Button from "../../components/Button/Button";
 import LiveRatesItem from "../../components/LiveRatesItem/LiveRatesItem";
 import "./LiveRates.scss";
 
 const LiveRates = (props) => {
   const { rates } = props;
 
-  const addCurrencyByCode = (currencyCode) => {
-    return rates.filter(
-      (currency) => currency.currencyCode === currencyCode && currency
-    )[0];
-  };
-
-  //console.log(addCurrencyByCode("USD"));
-
   const [baseCurrency, setBaseCurrency] = useState("GBP");
   const [currencyList, setCurrencyList] = useState([]);
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [editBaseCurrency, setEditBaseCurrency] = useState(false);
+
+  const addCurrenciesByCode = (code) => {
+    return rates.filter((currency) => currency.currencyCode === code)[0];
+  };
+
+  console.log(addCurrenciesByCode("USD"));
 
   //  {
   //   currencyName: "British Pound",
@@ -24,6 +25,19 @@ const LiveRates = (props) => {
   //   changeOfRate: 0.000,
   //   currencySymbol: "£"
   // }
+
+  const renderEdit = () => {
+    return (
+      <LiveRatesItem
+        currencyCode={"usd"}
+        currency={"US Dollars"}
+        amount={"1.4"}
+        rate={"0.1"}
+        buttonName="Confirm"
+        buttonFunction={() => setEditBaseCurrency(!editBaseCurrency)}
+      />
+    );
+  };
 
   const renderBaseCurrency = () => {
     return rates
@@ -38,6 +52,7 @@ const LiveRates = (props) => {
             amount={item.liveRate}
             rate={item.changeOfRate}
             buttonName="Edit"
+            buttonFunction={() => setEditBaseCurrency(true)}
           />
         );
       });
@@ -67,25 +82,35 @@ const LiveRates = (props) => {
       }
     });
   };
+  console.log(showDropDown);
 
   return (
-    <table
-      cellPadding={0}
-      cellSpacing={0}
-      className="liverate-table"
-      data-testid="liverate-table"
-    >
-      <tbody className="liverate-table__body">
-        <tr className="liverate-table__body-headings">
-          <th>Currency </th>
-          <th>Amount </th>
-          <th>Rate </th>
-          <th>&nbsp;</th>
-        </tr>
-        {renderBaseCurrency()}
-        {renderList()}
-      </tbody>
-    </table>
+    <>
+      <table
+        cellPadding={0}
+        cellSpacing={0}
+        className="liverate-table"
+        data-testid="liverate-table"
+      >
+        <tbody className="liverate-table__body">
+          <tr className="liverate-table__body-headings">
+            <th>Currency </th>
+            <th>Amount </th>
+            <th>Rate </th>
+            <th>&nbsp;</th>
+          </tr>
+          {!editBaseCurrency ? renderBaseCurrency() : renderEdit()}
+          {renderList()}
+        </tbody>
+      </table>
+      {showDropDown && <div>hello</div>}
+      <Button
+        buttonName={"Add Currency"}
+        buttonFunction={() => setShowDropDown(!showDropDown)}
+      />
+    </>
+
+    //  buttonName, hasIcon, iconSrc, iconPosition, buttonFunction } = props
   );
 };
 
