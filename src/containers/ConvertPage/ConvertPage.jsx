@@ -1,19 +1,18 @@
 import React from 'react'
 import "./ConvertPage.scss";
 // import userProfile from "../../assets/data/samanthaBrooksProfile";
-// import liveRatesArr from "../../assets/data/liveRatesExample";
+import liveRatesArr from "../../assets/data/liveRatesExample";
 import Header from '../../components/Header/Header'
 import DropDown from '../../components/DropDown/DropDown';
-// const testoptions = ["GBP", "YEN", "USD"];
-
+import 'currency-flags/dist/currency-flags.css';
 
 
 const ConvertPage = () => {
 
   const handleChange = (value) => {
-    alert(value);
+    // alert(value);
   }
-  const codes = ['usd', 'gbp', 'eur'];
+  const codes = liveRatesArr.map(currency => currency.currencyCode);
   // useEffect(() => {},userProfile,liveRatesArr)
 
   // const [profile,setProfile] = useState({...userProfile});
