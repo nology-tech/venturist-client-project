@@ -22,7 +22,7 @@ const MakeTransferConfirmAccount = (props) => {
           <h6 className='transfer-page__confirm__sendContainer__details__name'>{profileData.firstName} {profileData.lastName}</h6>
           <div className='transfer-page__confirm__sendContainer__details__text'><p >Account Number:</p> <p>{profileData.accountNumber}</p> </div>            
           <div className='transfer-page__confirm__sendContainer__details__text' ><p>Sort Code: </p> <p>{profileData.sortCode}</p> </div>
-          <div className='transfer-page__confirm__sendContainer__details__total' > <h6 >Total </h6> <p data-testid="transferAmount">{transferAmount}</p></div>          
+          <div className='transfer-page__confirm__sendContainer__details__total' > <h5 >Total </h5> <p data-testid="transferAmount">{transferAmount}</p></div>          
           <div className='transfer-page__confirm__sendContainer__details__funds'> <p>Funds Remaining: </p> <p data-testid="remainingBalance">£{(profileData.holdings.GBP - transferAmount).toFixed(2)}</p></div>
           
         </div>
