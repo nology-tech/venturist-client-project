@@ -22,6 +22,11 @@ const ConvertPage = () => {
 
         <DropDown codes={codes} handleChange={handleChange} />
       </section>
+      <Header
+        title="Live Rates"
+        pageFunctionHeading="View Live Rates"
+        textDescription="See currency rates with your chosen currency in real time."
+      />
       <section className="live-rates">
         <LiveRates />
       </section>
