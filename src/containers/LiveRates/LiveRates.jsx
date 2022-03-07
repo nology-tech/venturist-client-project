@@ -3,27 +3,22 @@ import Button from "../../components/Button/Button";
 import LiveRatesItem from "../../components/LiveRatesItem/LiveRatesItem";
 import liveRatesArr from "../../assets/data/liveRatesExample";
 import "./LiveRates.scss";
+import DropDown from "../../components/DropDown/DropDown";
 
 const LiveRates = (props) => {
-  const [baseCurrency, setBaseCurrency] = useState("GBP");
-  const [currencyList, setCurrencyList] = useState([]);
-  const [showDropDown, setShowDropDown] = useState(false);
-  const [editBaseCurrency, setEditBaseCurrency] = useState(false);
-
   const addCurrenciesByCode = (code) => {
     return liveRatesArr.filter((currency) => currency.currencyCode === code)[0];
   };
 
-  console.log(addCurrenciesByCode("USD"));
+  const [baseCurrency, setBaseCurrency] = useState("GBP");
+  const [currencyList, setCurrencyList] = useState([
+    addCurrenciesByCode("USD"),
+    addCurrenciesByCode("EUR"),
+  ]);
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [editBaseCurrency, setEditBaseCurrency] = useState(false);
 
-  //  {
-  //   currencyName: "British Pound",
-  //   currencyFlag: "../../assets/countryFlags/gbp.png",
-  //   currencyCode: "GBP",
-  //   liveRate: 1.0000,
-  //   changeOfRate: 0.000,
-  //   currencySymbol: "£"
-  // }
+  console.log(addCurrenciesByCode("USD"));
 
   const renderEdit = () => {
     return (
@@ -39,26 +34,22 @@ const LiveRates = (props) => {
   };
 
   const renderBaseCurrency = () => {
-    return liveRatesArr
-      .filter((currency) => currency.currencyCode === baseCurrency)
-      .map((item, index) => {
-        return (
-          <LiveRatesItem
-            key={index}
-            currencyCode={item.currencyCode}
-            flagImg={item.currencyFlag}
-            currency={item.currencyCode}
-            amount={item.liveRate}
-            rate={item.changeOfRate}
-            buttonName="Edit"
-            buttonFunction={() => setEditBaseCurrency(true)}
-          />
-        );
-      });
+    const filtered = addCurrenciesByCode(baseCurrency);
+    return (
+      <LiveRatesItem
+        currencyCode={filtered.currencyCode}
+        flagImg={filtered.currencyFlag}
+        currency={filtered.currencyCode}
+        amount={filtered.liveRate}
+        rate={filtered.changeOfRate}
+        buttonName="Edit"
+        buttonFunction={() => setEditBaseCurrency(true)}
+      />
+    );
   };
 
   const renderList = () => {
-    return liveRatesArr.map((currency, index) => {
+    return currencyList.map((currency, index) => {
       const {
         currencyFlag,
         currencyCode,
@@ -81,7 +72,18 @@ const LiveRates = (props) => {
       }
     });
   };
-  console.log(showDropDown);
+
+  const remainingCurrencyCodes = () => {
+    return liveRatesArr.map((item) => {
+      return item.currencyCode.toLowerCase();
+    });
+  };
+
+  const handleChange = (value) => {
+    const newList = [...currencyList, addCurrenciesByCode(value.toUpperCase())];
+    setCurrencyList(newList);
+    setShowDropDown(false);
+  };
 
   return (
     <>
@@ -102,11 +104,19 @@ const LiveRates = (props) => {
           {renderList()}
         </tbody>
       </table>
-      {showDropDown && <div>hello</div>}
-      <Button
-        buttonName={"Add Currency"}
-        buttonFunction={() => setShowDropDown(!showDropDown)}
-      />
+      <div className="liverate-table__add">
+        <Button
+          buttonName={"Add Currency"}
+          buttonFunction={() => setShowDropDown(!showDropDown)}
+        />
+      </div>
+
+      {showDropDown && (
+        <DropDown
+          codes={remainingCurrencyCodes()}
+          handleChange={handleChange}
+        />
+      )}
     </>
 
     //  buttonName, hasIcon, iconSrc, iconPosition, buttonFunction } = props
