@@ -79,3 +79,13 @@ test('Expect user list to render, test singular name', () => {
   
   expect(name).toBeInTheDocument();
 });
+
+test('Expect text to render when empty list of contacts', () => {
+  const onClick = jest.fn();
+  const onSearch = jest.fn();
+  render(<MakeTransferChooseRecipient userCardList={[]} toggleChooseRecipients={onClick} handleSearch={onSearch} />);
+
+  const emptyListText = screen.getByText("You don't seem to have any contacts yet, try adding one!");
+  
+  expect(emptyListText).toBeInTheDocument();
+});
