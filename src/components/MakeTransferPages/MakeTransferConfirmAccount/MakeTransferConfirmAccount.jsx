@@ -36,7 +36,7 @@ const MakeTransferConfirmAccount = (props) => {
         </div>
       </div>
 
-        {showChooseRecipients && <MakeTransferChooseRecipient userCardList = {data} toggleChooseRecipients={toggleChooseRecipients}  />}
+        {showChooseRecipients && <MakeTransferChooseRecipient userCardList = {data} toggleChooseRecipients={toggleChooseRecipients} handleSearch={()=>alert("Search")} />}
 
     </div>
   )
