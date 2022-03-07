@@ -79,7 +79,7 @@ const MakeTransferPage = props => {
       )}
 
       {showConfirmAccount && (
-        <MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={transferAmount} handleAddRecipient={handleAddRecipient} />
+        <MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={transferAmount} handleAddRecipient={handleAddRecipient} currencySymbol={currencyFrom.currencySymbol} currencyCode={currencyFrom.currencyCode} />
       )}
     </div>
   );
