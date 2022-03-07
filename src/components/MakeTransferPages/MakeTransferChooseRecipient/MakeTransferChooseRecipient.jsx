@@ -34,7 +34,7 @@ const MakeTransferChooseRecipient = (props) => {
 
   return (
     <>
-    <div className="transfer-page__choose-recipient">
+    <div className="transfer-page__choose-recipient" data-testid="chooseRecipientContainer">
       <h2 className="transfer-page__choose-recipient__header">Choose Recipient</h2>
 
       <img src={cross} alt="cross" className="transfer-page__choose-recipient__close-menu" onClick={toggleChooseRecipients}/>

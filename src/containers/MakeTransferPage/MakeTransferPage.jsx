@@ -14,14 +14,21 @@ const MakeTransferPage = props => {
   const [changingCurrency, setChangingCurrency] = useState("to");
   const [showInitialForm, setShowInitialForm] = useState(true);
   const [showConfirmAccount, setShowConfirmAccount] = useState(false);
+  const [transferAmount, setTransferAmount] = useState(0);
 
   const handleShowCurrencyModal = () => {
     setShowCurrencyModal(!showCurrencyModal);
   };
 
+  const handleAddRecipient = () => {
+    
+  }
+
+  
   const handleShowForm = event => {
     // If statement to check amount entered conforms to required format
     const amountInput = document.getElementById("amountInput").value;
+    setTransferAmount(amountInput)
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
       event.preventDefault(); // think this can be deleted now?
       setShowInitialForm(!showInitialForm);
@@ -72,7 +79,7 @@ const MakeTransferPage = props => {
       )}
 
       {showConfirmAccount && (
-        <MakeTransferConfirmAccount profileData={profileData} data={contactData} />
+        <MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={transferAmount} handleAddRecipient={handleAddRecipient} />
       )}
     </div>
   );
