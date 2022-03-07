@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../../components/Button/Button";
 import LiveRatesItem from "../../components/LiveRatesItem/LiveRatesItem";
 import "./LiveRates.scss";
 
@@ -7,14 +8,15 @@ const LiveRates = (props) => {
 
   const [baseCurrency, setBaseCurrency] = useState("GBP");
   const [currencyList, setCurrencyList] = useState([]);
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [editBaseCurrency, setEditBaseCurrency] = useState(false);
 
-  const addCurrencies = (currencyToAdd) => {
+  const addCurrenciesByCode = (code) => {
     return rates
-      .filter((currency) => currency.currencyCode === currencyToAdd)
-      .map((currency) => currency);
+      .filter((currency) => currency.currencyCode === code)[0]
   };
 
-  console.log(addCurrencies("USD"));
+  console.log(addCurrenciesByCode("USD"));
 
   //  {
   //   currencyName: "British Pound",
@@ -24,6 +26,18 @@ const LiveRates = (props) => {
   //   changeOfRate: 0.000,
   //   currencySymbol: "£"
   // }
+
+  const renderEdit = () => {
+    return(
+      <LiveRatesItem 
+            currencyCode={"usd"}
+            currency={"US Dollars"}
+            amount={"1.4"}
+            rate={"0.1"}
+            buttonName="Confirm"
+            buttonFunction={() => setEditBaseCurrency(!editBaseCurrency)}/>
+    )
+  }
 
   const renderBaseCurrency = () => {
     return rates
@@ -38,6 +52,7 @@ const LiveRates = (props) => {
             amount={item.liveRate}
             rate={item.changeOfRate}
             buttonName="Edit"
+            buttonFunction={() => setEditBaseCurrency(true)}
           />
         );
       });
@@ -67,9 +82,11 @@ const LiveRates = (props) => {
       }
     });
   };
+  console.log(showDropDown);
 
   return (
-    <table
+    <>
+     <table
       cellPadding={0}
       cellSpacing={0}
       className="liverate-table"
@@ -82,10 +99,16 @@ const LiveRates = (props) => {
           <th>Rate </th>
           <th> </th>
         </tr>
-        {renderBaseCurrency()}
+        {!editBaseCurrency ? renderBaseCurrency() : renderEdit()}
         {renderList()}
       </tbody>
     </table>
+    {showDropDown && <div>hello</div>
+    }
+    <Button buttonName={"Add Currency"} buttonFunction={() => setShowDropDown(!showDropDown)} />
+    </>
+   
+  //  buttonName, hasIcon, iconSrc, iconPosition, buttonFunction } = props
   );
 };
 
