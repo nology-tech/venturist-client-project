@@ -23,11 +23,7 @@ library.add(...iconListRegular)
 
 const MakeTransferChooseCurrency = (props) => {
 
-  const {currencyData, handleChangingCurrency} = props;
-
-  const handleSearch = () => {
-
-  }
+  const {currencyData, handleChangingCurrency, handleSearch} = props;
 
   const currencyCardComponents = currencyData.map((currency,index) => <MakeTransferCurrencyCard key={index} currency={currency} handleChangingCurrency={handleChangingCurrency}/>)
 

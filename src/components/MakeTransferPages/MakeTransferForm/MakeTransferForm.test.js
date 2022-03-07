@@ -52,7 +52,7 @@ test("Input box renders with the correct inner text", () => {
   render(<MakeTransferForm exchangeFrom={mockData[0]}
     exchangeTo={mockData[1]}
     handleChangingCurrency={(onClick)}
-    handleShowForm={(onClick)}/>)
+    handleShowForm={(onClick)}/>);
 
   // Act 
 
@@ -73,7 +73,7 @@ test("Correct inner text for input", () => {
   render(<MakeTransferForm exchangeFrom={mockData[0]}
     exchangeTo={mockData[1]}
     handleChangingCurrency={(onClick)}
-    handleShowForm={(onClick)}/>)
+    handleShowForm={(onClick)}/>);
 
   // Act 
 
@@ -91,7 +91,7 @@ test("placeholder text", () => {
   render(<MakeTransferForm exchangeFrom={mockData[0]}
     exchangeTo={mockData[1]}
     handleChangingCurrency={(onClick)}
-    handleShowForm={(onClick)}/>)
+    handleShowForm={(onClick)}/>);
 
   // Act 
 

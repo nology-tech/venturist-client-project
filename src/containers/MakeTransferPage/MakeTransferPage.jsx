@@ -67,6 +67,7 @@ const MakeTransferPage = props => {
         <MakeTransferChooseCurrency
           currencyData={liveRateData}
           handleChangingCurrency={handleChangingCurrency}
+          handleSearch={()=>alert("Searching")}
         />
       )}
 
