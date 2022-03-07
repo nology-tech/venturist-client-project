@@ -52,6 +52,7 @@ const DropDown = (props) => {
       <div data-testid="currency-selector">
       <Select
         className='currency-selector'
+        value={options.filter(option => option.label === props.currentCode)}
         options={options}
         components={{
           SingleValue: IconSingleValue,

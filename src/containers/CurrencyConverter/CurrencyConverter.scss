@@ -1,0 +1,67 @@
+@use "../../assets/sass/global_variables" as *;
+
+.currency-converter {
+  margin-top: 40px;
+  padding: 40px 80px;
+  border-radius: 10px;
+  background-color: $colourTwo;
+  display: flex;
+  flex-direction: column;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 40px 1fr;
+    column-gap: 20px;
+    row-gap: 5px;
+    justify-self: center;
+
+    &--heading {
+      font-family: $outfit;
+    }
+
+    &--input {
+      height: 32px;
+      width: 150px;
+      background-color: hsl(0, 0%, 100%);
+      border: 1px solid hsl(0, 0%, 80%);
+      border-radius: 4px;
+      padding: 2px;
+      padding-left: 5px;
+      font-size: 18px;
+      font-family: $inter;
+      color: $colourFour;
+    }
+  }
+
+  &__button {
+    padding: 30px 1px;
+    width: 100%;
+    // 
+  }
+
+  &__convert {
+    font-family: $outfit;
+    border-top: 1px solid $colourThree;
+    padding-top: 20px;
+
+    display: flex;
+    justify-content: space-between;
+
+    &--numbers {
+      h4 {
+        color: $colourOne;
+        font-size: 20px;
+      }
+      h3 {
+        color: $colourSix;
+        font-size: 32px;
+        padding: 5px 0 10px;
+      }
+
+      .fineprint {
+        font-size: 12px;
+        color: $colourFour;
+      }
+    }
+  }
+}
