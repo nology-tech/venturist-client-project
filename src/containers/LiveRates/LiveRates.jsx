@@ -21,17 +21,13 @@ const LiveRates = (props) => {
 
   console.log(addCurrenciesByCode("USD"));
 
-  const handleChange = (value) => {
-    alert(value);
-  };
-  
   const codes = ["usd", "gbp", "eur"];
 
   const renderEdit = () => {
     return (
       <LiveRatesItemEdit
         buttonName="Confirm"
-        buttonFunction={() => setEditBaseCurrency(!editBaseCurrency) }
+        buttonFunction={() => setEditBaseCurrency(!editBaseCurrency)}
         codes={codes}
         handleChange={handleChange}
       />
