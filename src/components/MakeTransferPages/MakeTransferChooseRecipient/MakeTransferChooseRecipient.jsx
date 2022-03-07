@@ -24,7 +24,7 @@ library.add(...iconListRegular)
 
 const MakeTransferChooseRecipient = (props) => {
 
-  const {userCardList, toggleChooseRecipients} = props;
+  const {userCardList, toggleChooseRecipients, handleSearch} = props;
 
   const userCardListUsed = (userCardList.length !== 0);
   
@@ -34,14 +34,14 @@ const MakeTransferChooseRecipient = (props) => {
 
   return (
     <>
-    <div className="transfer-page__choose-recipient">
+    <div className="transfer-page__choose-recipient" data-testid="chooseRecipientContainer">
       <h2 className="transfer-page__choose-recipient__header">Choose Recipient</h2>
 
       <img src={cross} alt="cross" className="transfer-page__choose-recipient__close-menu" onClick={toggleChooseRecipients}/>
 
       <h4 className="transfer-page__choose-recipient__subheader">Search</h4>
       {icons.Search}
-      <input type="text" placeholder="Search..." className="transfer-page__choose-recipient__search" onChange={() => {}}/>
+      <input type="text" placeholder="Search..." className="transfer-page__choose-recipient__search" onChange={handleSearch}/>
 
       <div className="transfer-page__choose-recipient__recipient-list">
         <div className="transfer-page__choose-recipient__recipient-list__headers">
@@ -59,8 +59,5 @@ const MakeTransferChooseRecipient = (props) => {
     </>
   )
 }
-
-
-
 
 export default MakeTransferChooseRecipient
