@@ -1,39 +1,31 @@
 import React, { useState, useEffect } from "react";
 import "./ConvertPage.scss";
-import userProfile from "../../assets/data/samanthaBrooksProfile";
-import liveRatesArr from "../../assets/data/liveRatesExample";
-import CurrencyConverter from "../CurrencyConverter/CurrencyConverter";
 import Header from "../../components/Header/Header";
-import LiveRates from "../LiveRates/LiveRates";
+import DropDown from "../../components/DropDown/DropDown";
+import LiveRates from "../LiveRates";
 
 const ConvertPage = () => {
-  useEffect(() => {}, userProfile, liveRatesArr);
-
-  const [profile, setProfile] = useState({ ...userProfile });
-  const [rates, setRates] = useState([...liveRatesArr]);
-
-  console.log(userProfile);
-  console.log(liveRatesArr);
+  const handleChange = (value) => {
+    alert(value);
+  };
+  const codes = ["usd", "gbp", "eur"];
 
   return (
-    <div className="convert-page">
-      <section>
-        <Header
-          title="Convert"
-          pageFunctionHeading="Currency Converter"
-          textDescription="Buy and exchange currencies with ease"
-        />
-        <CurrencyConverter profile={profile} rates={rates} />
+    <section className="convert-page">
+      <Header
+        title="Convert"
+        pageFunctionHeading="Currency Converter"
+        textDescription="Buy and exchange currencies with ease"
+      />
+      <section className="convert-page__dropDown">
+        {/* <DropDown options={testoptions} /> */}
+
+        <DropDown codes={codes} handleChange={handleChange} />
       </section>
-      <section>
-        <Header
-          title=""
-          pageFunctionHeading="View Latest Rates"
-          textDescription="View live rates"
-        />
-        <LiveRates rates={rates} />
+      <section className="live-rates">
+        <LiveRates />
       </section>
-    </div>
+    </section>
   );
 };
 
