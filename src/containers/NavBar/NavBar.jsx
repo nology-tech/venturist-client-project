@@ -4,7 +4,7 @@ import './NavBar.scss';
 import logo from "../../assets/logos/logo.png";
 import icons from "../../assets/icons/icons";
 import Button from "../../components/Button/Button"
-
+import {Link} from "react-router-dom";
 
 const NavBar = () => {
 
@@ -25,12 +25,12 @@ const NavBar = () => {
 
   return (
     <nav className="navbar" data-testid="navbar">
-      <div className="navbar__header" onClick={() => handleClick("/")}>
+      <Link to="/" className="navbar__header" onClick={() => handleClick("/")} style={{ textDecoration: 'none' }}>
         <div className="navbar__header--logo" >
           <img src={logo} alt="" />
           <h2>VENTURIST</h2>
         </div>
-      </div>
+      </Link>
 
       <section className="navbar__menu">
         {buttons}

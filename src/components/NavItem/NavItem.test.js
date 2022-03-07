@@ -1,20 +1,29 @@
 import { render, screen } from "@testing-library/react";
 import NavItem from "./NavItem";
+import {BrowserRouter as Router} from "react-router-dom";
 
 describe("Tests for NavItem Rendering", () => {
 
   test("Should Render a Nav Item", () => {
-    render(<NavItem label="test" handleClick={()=>{}} activeButton= ""/> );
+    render(
+      <Router>
+        <NavItem label="test" handleClick={()=>{}} activeButton= ""/>
+      </Router> 
+    );
 
     const navItem = screen.getByTestId("navItem");
 
-    expect(navItem).toBeInTheDocument;
+    expect(navItem).toBeInTheDocument();
   })
 
   test("Should Render Provided Text", () => {
 
     // Arrange
-    render(<NavItem label="test" handleClick={()=>{}} activeButton= ""/> );
+    render(
+      <Router>
+        <NavItem label="test" handleClick={()=>{}} activeButton= ""/> 
+      </Router>
+    );
 
     // Act
     const navItem = screen.getByText("test");
@@ -22,12 +31,15 @@ describe("Tests for NavItem Rendering", () => {
     // Assert
     expect(navItem).toHaveTextContent("test");
 
-
   })
 
   test("Should Render Active, when Active", () => {
     // Arrange
-    render(<NavItem label="test" handleClick={()=>{}} activeButton= "test"/>);
+    render(
+      <Router>
+        <NavItem label="test" handleClick={()=>{}} activeButton= "test"/>
+      </Router>
+    );
     // Act
     const navItem = screen.getByText("test");
     // Assert

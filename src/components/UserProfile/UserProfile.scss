@@ -1,0 +1,30 @@
+@use "../../assets/sass/global_variables" as *;
+
+.user-grid {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 1rem;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+
+  h3 {
+    color: $colourSix;
+    font-family: $outfit;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__icon {
+    color: $colourFour;
+    width: 12px;
+  }
+}
