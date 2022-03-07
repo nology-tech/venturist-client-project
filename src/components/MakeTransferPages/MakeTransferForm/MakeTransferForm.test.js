@@ -2,51 +2,11 @@ import MakeTransferForm from "./MakeTransferForm";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { CurrencyFlag } from "react-currency-flags/dist/components";
 import mockData from "../../../assets/data/liveRatesExample";
+import userEvent from '@testing-library/user-event'
 
 test("", () => {});
 
-// test("Test that button renders with correct inner text", () => {
-//   //Arrange
-//   render(<Button buttonName="test button" />);
-//   //Act
-//   const button = screen.getByTestId("button");
-//   //Assert
-//   expect(button).toBeInTheDocument();
-//   expect(button).toHaveTextContent("test button");
-// });
-
-// test("Test that the button onClick={buttonFunction} calls the function passed in a prop", () => {
-//   //Arrange
-//   const onClick = jest.fn();
-//   render(<Button buttonFunction={onClick} buttonName="test button" />);
-//   const button = screen.getByTestId("button");
-//   //Act
-//   fireEvent.click(button);
-//   //Assert
-//   expect(onClick).toHaveBeenCalled();
-// });
-
-// test("Test image tag renders when hasIcon is true", () => {
-//   //Arrange
-//   render(<Button hasIcon={true} iconSrc={icons.Convert}/>);
-//   //Act
-//   const button = screen.getByTestId("button");
-//   const buttonIcon = screen.getByTitle("Convert")
-//   //Assert
-//   expect(buttonIcon).toBeInTheDocument();
-// });
-
-// test("Test that an icon does NOT render inside of the button when prop hasIcon is false", () => {
-//   //Arrange
-//   render(<Button hasIcon={false} buttonName="test button" />);
-//   //Act
-//   const button = screen.getByTestId("button");
-//   const buttonIcon = screen.queryByAltText("test button");
-//   //Assert
-//   expect(button).not.toContainElement(buttonIcon);
-// });
-
-test("Input box renders with the correct inner text", () => {
+test("Should render the input box", () => {
   // Arrange 
   const onClick = jest.fn();
   render(<MakeTransferForm exchangeFrom={mockData[0]}
@@ -55,19 +15,13 @@ test("Input box renders with the correct inner text", () => {
     handleShowForm={(onClick)}/>);
 
   // Act 
-
   const youSendInput = screen.getByTestId("amountInput");
-
   // Assert
-
   expect(youSendInput).toBeInTheDocument();
- 
 
 });
 
-
-
-test("Correct inner text for input", () => {
+test("Should render the correct placeholder text", () => {
   // Arrange 
   const onClick = jest.fn();
   render(<MakeTransferForm exchangeFrom={mockData[0]}
@@ -76,32 +30,124 @@ test("Correct inner text for input", () => {
     handleShowForm={(onClick)}/>);
 
   // Act 
-
- const youSendInput2 = screen.getByPlaceholderText("00.00");
-
+  const placeholderText = screen.getByTestId("amountInput");
   // Assert
-
- expect(youSendInput2).toHaveAttribute("placeholder");
- 
+  expect(placeholderText).toHaveAttribute("placeholder", "00.00")
 });
 
-test("placeholder text", () => {
-  // Arrange 
+test("Both headers render with correct text", () => {
+  // Arrange
   const onClick = jest.fn();
   render(<MakeTransferForm exchangeFrom={mockData[0]}
     exchangeTo={mockData[1]}
     handleChangingCurrency={(onClick)}
-    handleShowForm={(onClick)}/>);
-
-  // Act 
-
-  const youSendInput3 = screen.getByTestId("amountInput");
-
-  // Assert
-
-  expect(youSendInput3).toHaveAttribute("placeholder", "00.00")
- 
+    handleShowForm={(onClick)}/>)
+    // Act
+    const youSendHeader = screen.queryByText("You send");
+    const recipientGetsHeader = screen.queryByText("Recipient gets");
+    // Assert
+    expect(youSendHeader).toBeInTheDocument();
+    expect(recipientGetsHeader).toBeInTheDocument();
 });
+
+test("Should render the correct conversion amount", () => {
+    // Arrange 
+    const onClick = jest.fn();
+    render(<MakeTransferForm exchangeFrom={mockData[0]}
+    exchangeTo={mockData[1]}
+    handleChangingCurrency={(onClick)}
+    handleShowForm={(onClick)}/>)
+
+    // Act
+    const correctConversionAmount = screen.getByTestId("amountOutput");
+    userEvent.type(screen.getByTestId("amountInput"), '1000')
+    // Assert
+    expect(correctConversionAmount).toHaveTextContent("1351.30")
+});
+
+test("Should render the correct total amount", () => {
+  // Arrange 
+  const onClick = jest.fn();
+  render(<MakeTransferForm exchangeFrom={mockData[0]}
+  exchangeTo={mockData[1]}
+  handleChangingCurrency={(onClick)}
+  handleShowForm={(onClick)}/>)
+
+  // Act
+  const totalAmount = screen.getByTestId("totalBox");
+  userEvent.type(screen.getByTestId("amountInput"), '1000')
+  // Assert
+  expect(totalAmount).toHaveTextContent("1000.00")
+});
+
+test("Should render the button with the correct text content", () => {
+  // Arrange
+  const onClick = jest.fn();
+  render(<MakeTransferForm exchangeFrom={mockData[0]}
+  exchangeTo={mockData[1]}
+  handleChangingCurrency={(onClick)}
+  handleShowForm={(onClick)}/>)
+
+  // Act
+  const buttonText = screen.getByTestId("button")
+  // Assert
+  expect(buttonText).toBeInTheDocument();
+  expect(buttonText).toHaveTextContent("Continue")
+});
+
+test("Should render the correct flag corresponding with the currency type", () => {
+  // Arrange 
+  const onClick = jest.fn();
+  render(<MakeTransferForm exchangeFrom={mockData[0]}
+  exchangeTo={mockData[1]}
+  handleChangingCurrency={(onClick)}
+  handleShowForm={(onClick)}/>)
+
+  // Act
+  // const amountInput = screen.getByTestId("amountInput")
+  const correctConversionAmount = screen.getByTestId("amountOutput");
+  userEvent.type(screen.getByTestId("amountInput"), '1000')
+  // Assert
+  expect(correctConversionAmount).toHaveTextContent("1351.30")
+});
+
+test("OnlyNumber prevents multiple decimal points", () => {
+  // Arrange 
+  const onClick = jest.fn();
+  render(<MakeTransferForm exchangeFrom={mockData[0]}
+  exchangeTo={mockData[1]}
+  handleChangingCurrency={(onClick)}
+  handleShowForm={(onClick)}/>)
+
+  // Act
+  const youSendInput = screen.getByTestId("amountInput");
+  const totalBox = screen.getByTestId("totalBox");
+  userEvent.type(screen.getByTestId("amountInput"), '1000.....00')
+  // Assert
+  expect(totalBox).toHaveTextContent("1000.00")
+});
+
+test("Total box displays value to max two decimal places", () => {
+  // Arrange 
+  const onClick = jest.fn();
+  render(<MakeTransferForm exchangeFrom={mockData[0]}
+  exchangeTo={mockData[1]}
+  handleChangingCurrency={(onClick)}
+  handleShowForm={(onClick)}/>)
+
+  // Act
+  const youSendInput = screen.getByTestId("amountInput");
+  const totalBox = screen.getByTestId("totalBox");
+  userEvent.type(screen.getByTestId("amountInput"), '1000.78965412')
+  // Assert
+  expect(totalBox).toHaveTextContent("1000.79")
+});
+
+
+
+
+
+
 
 
 
