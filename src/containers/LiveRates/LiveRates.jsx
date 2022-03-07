@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Button from "../../components/Button/Button";
 import LiveRatesItem from "../../components/LiveRatesItem/LiveRatesItem";
+import LiveRatesItemEdit from "../../components/LiveRatesItemEdit/LiveRatesItemEdit";
 import liveRatesArr from "../../assets/data/liveRatesExample";
 import "./LiveRates.scss";
+import DropDown from "../../components/DropDown/DropDown";
 
 const LiveRates = (props) => {
   const [baseCurrency, setBaseCurrency] = useState("GBP");
@@ -25,15 +27,19 @@ const LiveRates = (props) => {
   //   currencySymbol: "£"
   // }
 
+  const handleChange = (value) => {
+    alert(value);
+  };
+  
+  const codes = ["usd", "gbp", "eur"];
+
   const renderEdit = () => {
     return (
-      <LiveRatesItem
-        currencyCode={"usd"}
-        currency={"US Dollars"}
-        amount={"1.4"}
-        rate={"0.1"}
+      <LiveRatesItemEdit
         buttonName="Confirm"
-        buttonFunction={() => setEditBaseCurrency(!editBaseCurrency)}
+        buttonFunction={() => setEditBaseCurrency(!editBaseCurrency) }
+        codes={codes}
+        handleChange={handleChange}
       />
     );
   };

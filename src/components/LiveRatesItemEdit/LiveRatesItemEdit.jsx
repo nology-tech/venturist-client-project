@@ -2,23 +2,26 @@ import React from "react";
 import Button from "../Button/Button";
 import "./LiveRatesItemEdit.scss";
 import CurrencyFlag from "react-currency-flags";
+import DropDown from "../DropDown/DropDown";
 
 const LiveRatesItemEdit = (props) => {
-  const { currencyCode, currency, amount, rate, sendFunction, buttonName } =
+  const { buttonFunction, buttonName, codes, handleChange } =
     props;
 
+  //buttonName, buttonStyle, hasIcon, iconSrc, iconPosition, buttonFunction
+
   return (
-    <tr className="liverate-row">
+    <tr className="liverate-row" data-testid="liverate-row">
       <td className="liverate-row__currency">
-        <CurrencyFlag currency={currencyCode} size="md" />
-        {currency}{" "}
+      <DropDown codes={codes} handleChange={handleChange} />
       </td>
-      <td><input type="text" />Enter Amount..</td>
+      <td><input placeholder="Enter amount" type="text" /></td>
+      <td></td>
       <td className="liverate-row__button">
         <Button
           buttonName={buttonName}
           hasIcon={false}
-          buttonFunction={sendFunction}
+          buttonFunction={buttonFunction}
         />
       </td>
     </tr>
