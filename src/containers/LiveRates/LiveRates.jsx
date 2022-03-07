@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import Button from "../../components/Button/Button";
 import LiveRatesItem from "../../components/LiveRatesItem/LiveRatesItem";
+import liveRatesArr from "../../assets/data/liveRatesExample";
 import "./LiveRates.scss";
 
 const LiveRates = (props) => {
-  const { rates } = props;
-
   const [baseCurrency, setBaseCurrency] = useState("GBP");
   const [currencyList, setCurrencyList] = useState([]);
   const [showDropDown, setShowDropDown] = useState(false);
   const [editBaseCurrency, setEditBaseCurrency] = useState(false);
 
   const addCurrenciesByCode = (code) => {
-    return rates.filter((currency) => currency.currencyCode === code)[0];
+    return liveRatesArr.filter((currency) => currency.currencyCode === code)[0];
   };
 
   console.log(addCurrenciesByCode("USD"));
@@ -40,7 +39,7 @@ const LiveRates = (props) => {
   };
 
   const renderBaseCurrency = () => {
-    return rates
+    return liveRatesArr
       .filter((currency) => currency.currencyCode === baseCurrency)
       .map((item, index) => {
         return (
@@ -59,7 +58,7 @@ const LiveRates = (props) => {
   };
 
   const renderList = () => {
-    return rates.map((currency, index) => {
+    return liveRatesArr.map((currency, index) => {
       const {
         currencyFlag,
         currencyCode,

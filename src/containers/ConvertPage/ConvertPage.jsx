@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./ConvertPage.scss";
 import Header from "../../components/Header/Header";
 import DropDown from "../../components/DropDown/DropDown";
-import LiveRates from "../LiveRates";
+import LiveRates from "../LiveRates/LiveRates";
 
 const ConvertPage = () => {
   const handleChange = (value) => {
