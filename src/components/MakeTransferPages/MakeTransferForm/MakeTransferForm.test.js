@@ -122,7 +122,7 @@ test("Should render the button with the correct text content", () => {
   expect(buttonText).toHaveTextContent("Continue");
 });
 
-test("Should render the correct flag corresponding with the currency type", () => {
+test("Check correct currency details render on page - British Pound, US Dollar", () => {
   // Arrange
   const onClick = jest.fn();
   render(
@@ -135,11 +135,33 @@ test("Should render the correct flag corresponding with the currency type", () =
   );
 
   // Act
-  const correctConversionAmount = screen.getByTestId("amountOutput");
-  userEvent.type(screen.getByTestId("amountInput"), "1000");
+  const currencyFrom = screen.getByTestId("currencyFrom");
+  const currencyTo = screen.getByTestId("currencyTo");
 
   // Assert
-  expect(correctConversionAmount).toHaveTextContent("1351.30");
+  expect(currencyFrom).toHaveTextContent("British Pound");
+  expect(currencyTo).toHaveTextContent("US Dollar");
+});
+
+test("Check correct currency details render on page - US Dollar, British Pound", () => {
+  // Arrange
+  const onClick = jest.fn();
+  render(
+    <MakeTransferForm
+      exchangeFrom={mockData[1]}
+      exchangeTo={mockData[0]}
+      handleChangingCurrency={onClick}
+      handleShowForm={onClick}
+    />
+  );
+
+  // Act
+  const currencyFrom = screen.getByTestId("currencyFrom");
+  const currencyTo = screen.getByTestId("currencyTo");
+
+  // Assert
+  expect(currencyFrom).toHaveTextContent("US Dollar");
+  expect(currencyTo).toHaveTextContent("British Pound");
 });
 
 test("OnlyNumber prevents multiple decimal points", () => {
