@@ -66,17 +66,19 @@ const LiveRates = (props) => {
         changeOfRate,
         currencyName,
       } = currency;
-      return (
-        <LiveRatesItem
-          key={index}
-          currencyCode={currencyCode}
-          flagImg={currencyFlag}
-          currency={currencyName}
-          amount={liveRate}
-          rate={changeOfRate}
-          buttonName="Send"
-        />
-      );
+      if (currency.currencyCode !== baseCurrency.currencyCode) {
+        return (
+          <LiveRatesItem
+            key={index}
+            currencyCode={currencyCode}
+            flagImg={currencyFlag}
+            currency={currencyName}
+            amount={liveRate}
+            rate={changeOfRate}
+            buttonName="Send"
+          />
+        );
+      }
     });
   };
 
