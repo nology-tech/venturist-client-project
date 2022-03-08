@@ -1,6 +1,7 @@
 import React from 'react'
 import "./TransactionForm.scss"
 import Button from '../Button/Button';
+import { useForm } from "react-hook-form";
 
 const TransactionForm = (props) => {
   const {
@@ -12,6 +13,14 @@ const TransactionForm = (props) => {
     fundsRemaining
   } = props;
 
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const depositAmount = []; // go into parent container and feed through
+
+  const onSubmit = (data) => {
+    depositAmount.push(JSON.stringify(data));
+    alert(depositAmount);
+  }
 
   return (
     <section className="deposit-form">
@@ -30,11 +39,22 @@ const TransactionForm = (props) => {
             <td className="deposit-form__table__user-details">{sortCode}</td>
           </tr>
         </table>
+
         <p id="border"></p>  
-        <form className="transaction" action="">
+
+        <form id="transaction" onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="amount" id="amount">Amount</label>
-          <input type="text" name="amount" id="amount-input"/>
+          <input 
+            type="text" 
+            name="amount-input" 
+            id="amount-input" 
+            {...register("depositAmount", { required: true, pattern: /^[0-9]+$/i, maxLength: 5})} 
+          />
+          {errors.deposit?.type === "required" && <span>"This is required"</span>}
+          {errors.deposit?.type === "pattern" && <span>Must include numbers</span>}
+          {errors.deposit?.type === "maxLength" && <span>Number too big</span>}
         </form>
+
         <table className="funds-table">
           <tr>
             <td>
@@ -46,7 +66,8 @@ const TransactionForm = (props) => {
         </table>
       </div>
       <div className="button">
-        <Button buttonName="Add Funds" />
+        {/* <Button buttonName="Add Funds" type="submit" form="transaction"/> */}
+        <button type="submit" form="transaction">Submit</button>
       </div>
       <p id="box-border"></p>  
   </section>

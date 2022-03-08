@@ -6,6 +6,8 @@ import userProfile from "../../assets/data/samanthaBrooksProfile";
 
 const DepositPage = () => {
   
+
+  
   return (
     <div className="deposit-page">
       <Header

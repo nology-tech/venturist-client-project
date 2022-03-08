@@ -15,6 +15,10 @@ table {
   font-size: 12px;
 }
 
+span {
+  background-color: red;
+}
+
 #amount {
   font-size: 16px;
   font-weight: 500;
@@ -74,7 +78,7 @@ table {
     }
   }
 
-  .transaction {
+  #transaction {
     display: flex;
     justify-content: space-between;
     padding-top: 1em;
@@ -88,7 +92,7 @@ table {
     padding-top: 3px;
   }
 
-  button {
+  .button {
     margin-top: 20px;
     margin-left: 395px;
     margin-bottom: 20px;
