@@ -19,10 +19,12 @@ describe ("Testing the drop-down menu item",()=> {
 
   test("It should call the onChange function when the first option is selected", ()=> {
     //Arrange 
-    render(<DropDown codes={mockedOptions} mockedOnChange={mockedOnChange}/>)
+    const {getByText} = render(<DropDown codes={mockedOptions} mockedOnChange={mockedOnChange}/>)
 
     //Act 
-    const mySelectComponent = screen.getByTestId('currency-selector');
+   const mySelectComponent = screen.getByTestId('currency-selector');
+   fireEvent.keyDown(mySelectComponent, { key: 'ArrowDown', code: 40 });
+   fireEvent.click(mySelectComponent);
 
 
     //Assert
