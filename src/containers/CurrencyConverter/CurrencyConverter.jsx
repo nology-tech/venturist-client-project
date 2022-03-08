@@ -27,6 +27,7 @@ const CurrencyConverter = (props) => {
   const [currencyNames,setCurrencyNames] = useState(["",""]);
   const [rateFrom,setRateFrom] = useState(0);
   const [rateTo,setRateTo] = useState(0);
+  const [time, setTime]=useState(0);
 
   const changeTo = (selected) => {
     setTo(selected);
@@ -43,6 +44,8 @@ const CurrencyConverter = (props) => {
   const convertibleCurrencies = props.liveRates.map(currency => currency.currencyCode.toLowerCase());
 
   const convertPressed = () => {
+    setTime(new Date());
+
     if (to && from && amount > 0 && amount < props.userProfile.holdings[from]) {
       setConvert(true);
       performConversion();
@@ -95,9 +98,11 @@ const CurrencyConverter = (props) => {
           <h3>{convertedAmount.toFixed(2)} {currencyNames[1]} </h3>
           <p className='fineprint'>1 {from} = {(1/rateFrom)*rateTo} {to}</p>
           <p className='fineprint'>1 {to} = { (1/rateTo)*rateFrom} {from}</p>
+          <p className='fineprint'>Last Udated: {time.toUTCString()} </p>
         </div>
         <div className="currency-converter__convert--right">
-          <Button buttonName="Make Transfer" hasIcon={false} buttonStyle="white" />
+          <Button buttonName="Make Transfer" hasIcon={false} buttonStyle="white" buttonFunction={()=> {
+            props.handleConversion(amount, convertedAmount.toFixed(2), from, to)}}/>
         </div>
         </div>}
       
