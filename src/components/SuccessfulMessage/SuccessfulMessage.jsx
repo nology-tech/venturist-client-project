@@ -1,7 +1,7 @@
 import React from "react";
 import "./SuccessfulMessage.scss";
 import iconCross from "../../assets/icons/black-cross.png";
-import { Link, Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SuccessfulMessage = (props) => {
   const { message } = props;
