@@ -18,6 +18,7 @@ const App = () => {
   return (
     <div className="App">
       <Router>
+      <div className="App">
         <NavBar />
         <UserProfile />
         <Routes>
@@ -30,7 +31,7 @@ const App = () => {
           <Route path="/Withdraw" element={<WithdrawPage />}></Route>
         </Routes>
       </Router>
-    </div>
+     </div>
   );
 };
 
