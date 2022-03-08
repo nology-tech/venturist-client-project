@@ -16,21 +16,30 @@ import contactData from "./assets/data/contactExample";
 
 const App = () => {
   return (
-    <Router>
-      <div className="App">
+    <div className="App">
+      <Router>
         <NavBar />
         <UserProfile />
         <Routes>
           <Route path="/Wallet" element={<WalletPage />}></Route>
           <Route path="/LiveRates" element={<LiveRatesPage />}></Route>
           <Route path="/Convert" element={<ConvertPage />}></Route>
-          <Route path="/Transfer" element={<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />}></Route>
+          <Route
+            path="/Transfer"
+            element={
+              <MakeTransferPage
+                liveRateData={liveRateData}
+                profileData={profileData}
+                contactData={contactData}
+              />
+            }
+          ></Route>
           <Route path="/Contacts" element={<ContactsPage />}></Route>
           <Route path="/Deposit" element={<DepositPage />}></Route>
           <Route path="/Withdraw" element={<WithdrawPage />}></Route>
         </Routes>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 };
 
