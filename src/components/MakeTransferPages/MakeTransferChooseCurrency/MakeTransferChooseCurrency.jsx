@@ -29,7 +29,7 @@ const MakeTransferChooseCurrency = (props) => {
 
   return (
     <>
-    <div className="transfer-page__choose-currency">
+    <div className="transfer-page__choose-currency" data-testid="choose-currency">
       <h2 className="transfer-page__choose-currency__header">Choose Currency</h2>
       <img src={cross} alt="Close menu" className="transfer-page__choose-currency__close-menu" onClick={handleChangingCurrency}/>
       <h4 className="transfer-page__choose-currency__subheader">Search</h4>

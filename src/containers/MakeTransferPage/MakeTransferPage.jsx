@@ -26,11 +26,10 @@ const MakeTransferPage = props => {
 
   
   const handleShowForm = event => {
-    // If statement to check amount entered conforms to required format
     const amountInput = document.getElementById("amountInput").value;
-    setTransferAmount(amountInput)
+    setTransferAmount(amountInput);
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
-      event.preventDefault(); // think this can be deleted now?
+      event.preventDefault(); 
       setShowInitialForm(!showInitialForm);
       setShowConfirmAccount(!showConfirmAccount);
     }
@@ -86,3 +85,5 @@ const MakeTransferPage = props => {
 };
 
 export default MakeTransferPage;
+
+// When number input, click continue should go to next page (1)
