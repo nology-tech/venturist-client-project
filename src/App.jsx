@@ -24,7 +24,16 @@ const App = () => {
           <Route path="/Wallet" element={<WalletPage />}></Route>
           <Route path="/LiveRates" element={<LiveRatesPage />}></Route>
           <Route path="/Convert" element={<ConvertPage />}></Route>
-          <Route path="/Transfer" element={<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />}></Route>
+          <Route
+            path="/Transfer"
+            element={
+              <MakeTransferPage
+                liveRateData={liveRateData}
+                profileData={profileData}
+                contactData={contactData}
+              />
+            }
+          ></Route>
           <Route path="/Contacts" element={<ContactsPage />}></Route>
           <Route path="/Deposit" element={<DepositPage />}></Route>
           <Route path="/Withdraw" element={<WithdrawPage />}></Route>
@@ -32,6 +41,7 @@ const App = () => {
       </Router>
     </div>
   );
+  //test
 };
 
 export default App;
