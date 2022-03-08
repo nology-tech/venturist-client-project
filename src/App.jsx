@@ -12,8 +12,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <Router>
-      <div className="App">
+    <div className="App">
+      <Router>
         <NavBar />
         <UserProfile />
         <Routes>
@@ -25,8 +25,8 @@ const App = () => {
           <Route path="/Deposit" element={<DepositPage />}></Route>
           <Route path="/Withdraw" element={<WithdrawPage />}></Route>
         </Routes>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 };
 
