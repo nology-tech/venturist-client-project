@@ -1,24 +1,25 @@
-import React from 'react';
-import './SuccessfulMessage.scss';
-import Icons from '../../assets/icons/icons.js';
+import React from "react";
+import "./SuccessfulMessage.scss";
+import iconCross from "../../assets/icons/black-cross.png";
 import { Link } from "react-router-dom";
 
 const SuccessfulMessage = (props) => {
-
-    const { message } = props;
+  const { message } = props;
 
   return (
     <>
-        <div className='popup-background'></div>
-        <div className='success'>
-            <Link to="/" className='success__icon'>X</Link>
-            <p className='success__title'>Completed</p>
-            <span className='success__line-top'></span>
-            <p className='success__message'>{message}</p>
-            <span className='success__line-bottom'></span>
-        </div>
+      <div className="popup-background"></div>
+      <div className="success">
+        <Link to="/" className="success__icon">
+          <img src={iconCross} alt="Go back" />
+        </Link>
+        <p className="success__title">Completed</p>
+        <span className="success__line-top"></span>
+        <p className="success__message">{message}</p>
+        <span className="success__line-bottom"></span>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default SuccessfulMessage
+export default SuccessfulMessage;
