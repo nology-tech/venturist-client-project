@@ -13,7 +13,7 @@ const TransactionForm = (props) => {
     fundsRemaining
   } = props;
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, errors } = useForm();
 
   const depositAmount = []; // go into parent container and feed through
 
@@ -51,8 +51,8 @@ const TransactionForm = (props) => {
             {...register("depositAmount", { required: true, pattern: /^[0-9]+$/i, maxLength: 5})} 
           />
           {errors.deposit?.type === "required" && <span>"This is required"</span>}
-          {errors.deposit?.type === "pattern" && <span>Must include numbers</span>}
-          {errors.deposit?.type === "maxLength" && <span>Number too big</span>}
+          {errors.deposit?.type === "pattern" && <span role="alert">Must include numbers</span>}
+          {errors.deposit?.type === "maxLength" && <span role="alert">Number too big</span>}
         </form>
 
         <table className="funds-table">
@@ -67,7 +67,7 @@ const TransactionForm = (props) => {
       </div>
       <div className="button">
         {/* <Button buttonName="Add Funds" type="submit" form="transaction"/> */}
-        <button type="submit" form="transaction">Submit</button>
+        <button type="submit" form="transaction">Add Funds</button>
       </div>
       <p id="box-border"></p>  
   </section>
