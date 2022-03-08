@@ -1,7 +1,6 @@
 import React from "react";
 import "./TransactionForm.scss";
 import Button from "../Button/Button";
-import { useForm } from "react-hook-form";
 
 const TransactionForm = (props) => {
   const {
@@ -13,15 +12,6 @@ const TransactionForm = (props) => {
     fundsRemaining,
   } = props;
   const { toggleConfirm } = props;
-
-  const { register, handleSubmit, errors } = useForm();
-
-  const depositAmount = []; // go into parent container and feed through
-
-  const onSubmit = (data) => {
-    depositAmount.push(JSON.stringify(data));
-    alert(depositAmount);
-  };
 
   return (
     <section className="deposit-form">
@@ -51,29 +41,11 @@ const TransactionForm = (props) => {
 
         <p id="border"></p>
 
-        <form id="transaction" onSubmit={handleSubmit(onSubmit)}>
+        <form id="transaction">
           <label htmlFor="amount" id="amount">
             Amount
           </label>
-          <input
-            type="text"
-            name="amount-input"
-            id="amount-input"
-            {...register("depositAmount", {
-              required: true,
-              pattern: /^[0-9]+$/i,
-              maxLength: 5,
-            })}
-          />
-          {errors.deposit?.type === "required" && (
-            <span>"This is required"</span>
-          )}
-          {errors.deposit?.type === "pattern" && (
-            <span role="alert">Must include numbers</span>
-          )}
-          {errors.deposit?.type === "maxLength" && (
-            <span role="alert">Number too big</span>
-          )}
+          <input type="text" name="amount-input" id="amount-input"></input>
         </form>
 
         <table className="funds-table">
@@ -90,10 +62,9 @@ const TransactionForm = (props) => {
         </table>
       </div>
       <div className="button">
-        {/* <Button buttonName="Add Funds" type="submit" form="transaction"/> */}
-        <button type="submit" onClick={toggleConfirm} form="transaction">
-          Add Funds
-        </button>
+        <Button buttonName="Add Funds" type="submit" form="transaction" />
+        Add Funds
+        {/* </button> */}
       </div>
       <p id="box-border"></p>
     </section>

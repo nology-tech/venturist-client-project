@@ -22,17 +22,15 @@ const DepositPage = () => {
         pageFunctionHeading="Deposit Funds"
         textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus."
       />
-      {/* <TransactionForm
+      <TransactionForm
         fundsRemaining="£100.00"
         firstName={userProfile.firstName}
         lastName={userProfile.lastName}
         accountNumber={userProfile.accountNumber}
         sortCode={userProfile.sortCode}
         toggleConfirm={toggleConfirm}
-      /> */}
+      />
       {showConfirm && <ConfirmDetailsPopUp toggleConfirm={toggleConfirm} />}
-
-      <SuccessfulMessage message="Deposit has been successful." />
     </div>
   );
 };
