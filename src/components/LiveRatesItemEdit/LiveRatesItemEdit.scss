@@ -13,11 +13,6 @@
     padding: 1rem;
   }
 
-  td:last-child {
-    display: flex;
-    justify-content: flex-end;
-  }
-
   &__currency {
     font-weight: 400;
   }
@@ -35,6 +30,15 @@
   }
 }
 
-.liverate-row:nth-child(2) {
+.liverate-row:nth-child(2) td {
   background-color: $colourOne;
+  color: $colourTen;
+}
+
+.liverate-row:nth-child(2) td:first-child {
+  border-radius: 10px 0 0 0;
+}
+
+.liverate-row:nth-child(2) td:last-child {
+  border-radius: 0 10px 0 0;
 }

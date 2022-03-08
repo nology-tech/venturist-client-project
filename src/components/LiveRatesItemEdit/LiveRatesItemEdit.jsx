@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button/Button";
-import "../LiveRatesItem/LiveRatesItem.scss";
+import "./LiveRatesItemEdit.scss";
 import DropDown from "../DropDown/DropDown";
 
 const LiveRatesItemEdit = (props) => {
