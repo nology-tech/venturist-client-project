@@ -1,21 +1,27 @@
 @use "../../assets/sass/global_variables" as *;
 
-.liverate-table {
-  width: 100%;
+.liverate {
   margin: auto;
+  padding-bottom: 10rem;
+  .liverate-table {
+    width: 100%;
 
-  &__body {
-    text-align: left;
-    color: $colourThree;
-
-    &-headings {
+    &__body {
       text-align: left;
-      th {
-        padding: 1rem;
+      color: $colourThree;
+
+      &-headings {
+        text-align: left;
+        th {
+          padding: 1rem;
+        }
       }
     }
   }
   &__add {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
     margin: 2rem 0;
   }
 }
