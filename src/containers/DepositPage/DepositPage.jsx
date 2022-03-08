@@ -30,9 +30,8 @@ const DepositPage = () => {
         sortCode={userProfile.sortCode}
         toggleConfirm={toggleConfirm}
       /> */}
-      <ConfirmDetailsPopUp
-      // toggleConfirm={toggleConfirm}
-      />
+      {showConfirm && <ConfirmDetailsPopUp toggleConfirm={toggleConfirm} />}
+
       <SuccessfulMessage message="Deposit has been successful." />
     </div>
   );
