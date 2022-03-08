@@ -16,8 +16,8 @@ import contactData from "./assets/data/contactExample";
 
 const App = () => {
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <div className="App">
         <NavBar />
         <UserProfile />
         <Routes>
@@ -38,8 +38,8 @@ const App = () => {
           <Route path="/Deposit" element={<DepositPage />}></Route>
           <Route path="/Withdraw" element={<WithdrawPage />}></Route>
         </Routes>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
   //test
 };
