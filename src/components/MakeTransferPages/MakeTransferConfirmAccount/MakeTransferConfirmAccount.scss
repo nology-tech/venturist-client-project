@@ -1,0 +1,107 @@
+@use "../../../assets/sass/global_variables" as *;
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: $outfit;
+}
+
+.transfer-page__confirm {
+    position: absolute;
+    margin-top: 30px;
+    width: 512px;
+
+    &__transfer{
+        color: $colourOne;
+    }
+
+    &__sendContainer {
+        border: 1px solid #FBFBFC;
+        margin-top: 68px;
+        height: 482px;
+        width: 626px;
+        border-radius: 10px;
+        background-color: #FBFBFC;
+
+        &__header{
+            margin-top: 44px;
+            margin-bottom: 15px;
+            margin-left: 75px;
+            font-weight: 500;
+        }
+
+        &__details {
+            margin-left: 75px;
+            border-radius: 10px;
+            height: 187px;
+            width: 475px;
+            background-color: #F3F3F3;
+
+            &__name {
+                margin-left: 35px;
+                padding-top: 25px;
+                padding-bottom: 16px;
+                color: $colourOne;
+                font-size: 1.2em;
+                font-weight: 400;
+            }
+            &__text{
+                margin-left: 35px;
+                margin-right: 35px;
+                font-size: .9em;
+                color: $colourThree; 
+                display: flex;
+                flex-direction: row; 
+                justify-content: space-between;
+                
+                     
+            }
+            &__total {
+                margin-top: 15px;
+                border-top: 1px solid #e5e5f0;
+                padding-top: 15px;
+                padding-bottom: 4px;
+                margin-left: 35px;
+                margin-right: 35px;
+                font-size: 1.2em;
+                font-weight: 400;
+                display: flex;
+                flex-direction: row; 
+                justify-content: space-between;
+            }
+            &__funds {
+                margin-right: 35px;
+                margin-left: 35px;
+                font-size: .6em;
+                display: flex;
+                flex-direction: row; 
+                justify-content: space-between;
+                color: $colourThree;
+            }
+        }
+
+        &__divider {
+            background-color: #c2c2c2;
+            color: #c2c2c2;
+            height: 35px;
+            width: .1px;
+            border: 1px solid #c2c2c2;
+            
+        }
+
+        &__button {
+            margin-right: 123px;
+            margin-left: 75px;
+            display: flex;
+            justify-content: space-between;            
+            width: 475px;
+            height: 50px;
+
+            button {
+                width: 150px;
+                height: 45px;
+            }
+        }
+    }
+
+}
