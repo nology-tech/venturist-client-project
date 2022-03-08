@@ -66,7 +66,7 @@ const LiveRates = (props) => {
         changeOfRate,
         currencyName,
       } = currency;
-      if (currency.currencyCode !== baseCurrency.currencyCode) {
+      if (currency.currencyCode !== baseCurrency) {
         return (
           <LiveRatesItem
             key={index}

@@ -7,8 +7,6 @@ const LiveRatesItem = (props) => {
   const { currencyCode, currency, amount, rate, buttonFunction, buttonName } =
     props;
 
-  //buttonName, buttonStyle, hasIcon, iconSrc, iconPosition, buttonFunction
-
   return (
     <tr className="liverate-row" data-testid="liverate-row">
       <td className="liverate-row__currency">
