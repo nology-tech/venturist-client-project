@@ -6,6 +6,8 @@ import "./DepositPage.scss";
 import userProfile from "../../assets/data/samanthaBrooksProfile";
 import ConfirmDetailsPopUp from "../../components/ConfirmDetailsPopUp/ConfirmDetailsPopUp";
 
+import SuccessfulMessage from "../../components/SuccessfulMessage/SuccessfulMessage";
+
 const DepositPage = () => {
   const [showConfirm, setShowConfirm] = useState(false);
 
@@ -31,6 +33,7 @@ const DepositPage = () => {
       <ConfirmDetailsPopUp
       // toggleConfirm={toggleConfirm}
       />
+      <SuccessfulMessage message="Deposit has been successful." />
     </div>
   );
 };
