@@ -5,17 +5,15 @@ import CurrencyFlag from "react-currency-flags";
 import DropDown from "../DropDown/DropDown";
 
 const LiveRatesItemEdit = (props) => {
-  const { buttonFunction, buttonName, codes, handleChange } =
+  const { buttonFunction, buttonName, codes, handleCurrency, handleAmount } =
     props;
 
-  //buttonName, buttonStyle, hasIcon, iconSrc, iconPosition, buttonFunction
-
   return (
-    <tr className="liverate-row" data-testid="liverate-row">
+    <tr className="liverate-row" data-testid="liverate-row-edit">
       <td className="liverate-row__currency">
-      <DropDown codes={codes} handleChange={handleChange} />
+      <DropDown codes={codes} handleChange={handleCurrency}/>
       </td>
-      <td><input placeholder="Enter amount" type="text" /></td>
+      <td><input className="liverate-row__input" placeholder="Enter amount" type="number" onChange={handleAmount} /></td>
       <td></td>
       <td className="liverate-row__button">
         <Button

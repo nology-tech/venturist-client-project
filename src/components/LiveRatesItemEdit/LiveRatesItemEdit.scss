@@ -21,6 +21,19 @@
   &__currency {
     font-weight: 400;
   }
+
+  &__input {
+    padding: 5px;
+    min-width: 100px;
+    min-height: 35px;
+    border: 0;
+    border-radius: 3px;
+    padding: 5px;
+    gap: 5px;
+    font-family: $inter;
+    color: $colourThree;
+
+  }
 }
 
 .liverate-row:nth-child(2) {

@@ -19,11 +19,16 @@ const LiveRates = (props) => {
   const [showDropDown, setShowDropDown] = useState(false);
   const [editBaseCurrency, setEditBaseCurrency] = useState(false);
 
-  console.log(addCurrenciesByCode("USD"));
+  const handleAmount = (event) => {
+    console.log(event.target.value)
+  }
 
-  const handleChange = (value) => {
-    alert(value);
-  };
+  const handleCurrency = (value) => {
+    console.log(value)
+    setBaseCurrency(value)
+  }
+
+  console.log(addCurrenciesByCode("USD"))
   
   const codes = ["usd", "gbp", "eur"];
 
@@ -32,8 +37,9 @@ const LiveRates = (props) => {
       <LiveRatesItemEdit
         buttonName="Confirm"
         buttonFunction={() => setEditBaseCurrency(!editBaseCurrency) }
-        codes={codes}
-        handleChange={handleChange}
+        codes={liveRatesArr.map(item => item.currencyCode.toLowerCase())}
+        handleAmount={handleAmount}
+        handleCurrency={handleCurrency}
       />
     );
   };
@@ -124,7 +130,6 @@ const LiveRates = (props) => {
       )}
     </>
 
-    //  buttonName, hasIcon, iconSrc, iconPosition, buttonFunction } = props
   );
 };
 
