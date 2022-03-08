@@ -78,7 +78,7 @@ const LiveRates = (props) => {
             buttonName="Send"
           />
         );
-      }
+      } else return <div></div>;
     });
   };
 
