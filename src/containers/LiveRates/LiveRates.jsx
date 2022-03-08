@@ -30,8 +30,6 @@ const LiveRates = (props) => {
 
   console.log(addCurrenciesByCode("USD"));
 
-  const codes = ["usd", "gbp", "eur"];
-
   const renderEdit = () => {
     return (
       <LiveRatesItemEdit

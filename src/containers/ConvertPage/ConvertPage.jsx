@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import "./ConvertPage.scss";
 import Header from "../../components/Header/Header";
 import DropDown from "../../components/DropDown/DropDown";
