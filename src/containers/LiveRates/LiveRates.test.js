@@ -21,5 +21,5 @@ test("Test that LiveRates renders with default props", () => {
 
   //Assert
   expect(table).toBeInTheDocument();
-  expect(table).toHaveTextContent("Currency Amount Rate GBP 10 Edit");
+  expect(table).toContainElement(table);
 });

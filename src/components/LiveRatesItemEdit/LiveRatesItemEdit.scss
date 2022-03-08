@@ -14,32 +14,27 @@
   }
 
   td:last-child {
-    // display: flex;
-    // justify-content: flex-end;
-
-    button {
-      border: 2px solid white;
-    }
+    display: flex;
+    justify-content: flex-end;
   }
 
   &__currency {
     font-weight: 400;
+  }
 
-    span {
-      margin-right: 1rem;
-    }
+  &__input {
+    padding: 5px;
+    min-width: 100px;
+    min-height: 35px;
+    border: 0;
+    border-radius: 3px;
+    padding: 5px;
+    gap: 5px;
+    font-family: $inter;
+    color: $colourThree;
   }
 }
 
-.liverate-row:nth-child(2) td {
+.liverate-row:nth-child(2) {
   background-color: $colourOne;
-  color: $colourTen;
-}
-
-.liverate-row:nth-child(2) td:first-child {
-  border-radius: 10px 0 0 0;
-}
-
-.liverate-row:nth-child(2) td:last-child {
-  border-radius: 0 10px 0 0;
 }

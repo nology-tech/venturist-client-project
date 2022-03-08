@@ -19,6 +19,17 @@ const LiveRates = (props) => {
   const [showDropDown, setShowDropDown] = useState(false);
   const [editBaseCurrency, setEditBaseCurrency] = useState(false);
 
+  const handleAmount = (event) => {
+    console.log(event.target.value);
+  };
+
+  const handleCurrency = (value) => {
+    console.log(value);
+    setBaseCurrency(value);
+  };
+
+  console.log(addCurrenciesByCode("USD"));
+
   const codes = ["usd", "gbp", "eur"];
 
   const renderEdit = () => {
@@ -26,8 +37,9 @@ const LiveRates = (props) => {
       <LiveRatesItemEdit
         buttonName="Confirm"
         buttonFunction={() => setEditBaseCurrency(!editBaseCurrency)}
-        codes={codes}
-        handleChange={() => ""}
+        codes={liveRatesArr.map((item) => item.currencyCode.toLowerCase())}
+        handleAmount={handleAmount}
+        handleCurrency={handleCurrency}
       />
     );
   };
