@@ -33,7 +33,8 @@ const MakeTransferConfirmAccount = (props) => {
 
         <div className="transfer-page__confirm__sendContainer__button">
         <Button  buttonName="Select Recipient" buttonFunction={toggleChooseRecipients} />
-        <h1 className="transfer-page__confirm__sendContainer__divider">|</h1>
+        <div className="transfer-page__confirm__sendContainer__divider"> </div>
+        {/* <h1 className="transfer-page__confirm__sendContainer__divider">|</h1> */}
         <Button  buttonName="+ Pay Someone New" buttonStyle="clear" buttonFunction={handleAddRecipient} />
         </div>
       </div>
