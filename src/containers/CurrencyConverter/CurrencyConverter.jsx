@@ -102,7 +102,8 @@ const CurrencyConverter = (props) => {
         </div>
         <div className="currency-converter__convert--right">
           <Button buttonName="Make Transfer" hasIcon={false} buttonStyle="white" buttonFunction={()=> {
-            props.handleConversion(amount, convertedAmount.toFixed(2), from, to)}}/>
+            setConvert(false);
+            props.handleConversion(amount, Number(convertedAmount.toFixed(2)), from, to)}}/>
         </div>
         </div>}
       
