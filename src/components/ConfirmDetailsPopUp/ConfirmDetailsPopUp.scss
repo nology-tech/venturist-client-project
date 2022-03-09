@@ -1,80 +1,76 @@
 @use "../../assets/sass/theme_colours" as *;
 @use "../../assets/sass/typography" as *;
 
-// .confirm-popup {
-//   z-index: 1;
-//   fill: $colourTwo;
-//   background-color: rgba(0, 0, 0, 0.15);
-//   height: 100vh;
-//   width: 100vw;
-//   position: fixed;
-//   top: 0px;
-//   left: 0px;
-//   &__content {
-//     position: absolute;
-//     width: 595px;
-//     height: 573px;
-//     border-radius: 8px;
-//     background: $colourTen;
-//     padding-left: 62px;
-//     z-index: 2;
-//   }
+.popup-background {
+  z-index: 1;
+  fill: $colourTwo;
+  background-color: rgba(0, 0, 0, 0.15);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
 
 .confirm-popup {
-  border: 1px solid black;
-  height: 500px;
+  position: absolute;
   width: 500px;
+  height: 500px;
+  border-radius: 8px;
+  background: #ffffff;
+  padding-left: 50px;
+  padding-right: 60px;
+  z-index: 2;
   position: fixed;
   top: 250px;
   left: 600px;
   right: 0;
   bottom: 0;
-  z-index: 2;
-  background-color: #ffffff;
 
-  &__content {
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
-
-    &__title {
-      font-size: 32px;
-    }
+  &__icon {
+    position: absolute;
+    right: 36px;
+    top: 36px;
+    color: $colourThree;
   }
 
-  .account-details {
-    color: $colourSix;
+&__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  
+
+  &__title {
+    border-bottom: 1px solid $colourEleven;
     font-family: $outfit;
-    font-weight: 500;
-    text-align: left;
+    font-size: 32px;
+    padding-top: 30px;
+    padding-bottom: 10px;
   }
 
-  .user-info {
-    color: $colourFour;
-    font-family: $inter;
-  }
+}}
 
-  //   &__cross {
-  //     position: absolute;
-  //     top: 20px;
-  //     right: 50px;
-
-  //     &:hover {
-  //       cursor: pointer;
-  //     }
-  //   }
-
-  //   &__item {
-  //     font-size: 30px;
-  //     text-decoration: none;
-  //     color: $color-black;
-  //     padding: 20px;
-  //   }
+.border {
+  border-bottom: 1px solid $colourEleven;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
-
 .button-container {
-  width: 50px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5em;
+}
+
+#header {
+  font-weight: lighter;
+  color: $colourSix;
+}
+
+p {
+  padding-bottom: 0.15em;
+}
+
+.user-info {
+  color: $colourFour;
 }
