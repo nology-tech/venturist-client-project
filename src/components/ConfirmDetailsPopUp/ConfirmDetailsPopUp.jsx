@@ -44,7 +44,7 @@ const ConfirmDetailsPopUp = (props) => {
 
         <p className="border"></p>
         <button onClick={toggleConfirm}>Go back</button>
-        <button>Confirm</button>
+        {/* <button onClick={}>Confirm</button> */}
       </div>
     </div>
   );
