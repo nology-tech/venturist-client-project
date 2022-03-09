@@ -18,4 +18,14 @@ describe ("Testing for circular button component", () => {
     // Assert
     expect(button).toBeInTheDocument();
   });
+  test("Test if buttons runs the function on click", () => {
+    const onClick = jest.fn();
+    render(<CircularButton content="Test" handleClick={onClick} />);
+
+    const button = screen.getByTestId("circular-button");
+    fireEvent.click(button);
+
+    expect(onClick).toHaveBeenCalled();
+
+  })
 });
