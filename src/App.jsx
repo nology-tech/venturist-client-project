@@ -1,31 +1,46 @@
 import "./App.scss";
-import Tiles from "./Component/Tiles/Tiles";
+import NavBar from "./containers/NavBar/NavBar";
+import ConvertPage from "./containers/ConvertPage/ConvertPage";
+import UserProfile from "./components/UserProfile/UserProfile";
+import MakeTransferPage from "./containers/MakeTransferPage/MakeTransferPage";
+import WalletPage from "./containers/WalletPage/WalletPage";
+import LiveRatesPage from "./containers/LiveRatesPage/LiveRatesPage";
+import ContactsPage from "./containers/ContactsPage/ContactsPage";
+import DepositPage from "./containers/DepositPage/DepositPage";
+import WithdrawPage from "./containers/WithdrawPage/WithdrawPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App() {
+import liveRateData from "./assets/data/liveRatesExample";
+import profileData from "./assets/data/samanthaBrooksProfile";
+import contactData from "./assets/data/contactExample";
+
+const App = () => {
   return (
     <div className="App">
-      <section className="intro">
-        <div className="currency-flag currency-flag-usd"></div>
-        <div>Howsit?</div>
-        <div>p tags are the best</div>
-        <div>Other stuff</div>
-        <div>Hello,it's Lana</div>
-        <div>Ollie woz ere 2k22</div>
-        <div>I like this!</div>
-        <div>PLEASE DONT MESS UP HG</div>
-        <div>William was also here</div>
-        <div>Happi is being happy :)</div>
-        <div>Ebrima was here</div>
-        <div>I am unhappy with the lack of testing - matt</div>
-        <div>something funny</div>
-      </section>
-      <section className="welcome-section">
-      <div>
-          <Tiles />
-        </div>
-      </section>
+      <Router>
+        <NavBar />
+        <UserProfile />
+        <Routes>
+          <Route path="/Wallet" element={<WalletPage />}></Route>
+          <Route path="/LiveRates" element={<LiveRatesPage />}></Route>
+          <Route path="/Convert" element={<ConvertPage />}></Route>
+          <Route
+            path="/Transfer"
+            element={
+              <MakeTransferPage
+                liveRateData={liveRateData}
+                profileData={profileData}
+                contactData={contactData}
+              />
+            }
+          ></Route>
+          <Route path="/Contacts" element={<ContactsPage />}></Route>
+          <Route path="/Deposit" element={<DepositPage />}></Route>
+          <Route path="/Withdraw" element={<WithdrawPage />}></Route>
+        </Routes>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;

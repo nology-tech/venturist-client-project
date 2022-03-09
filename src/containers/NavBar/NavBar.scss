@@ -1,0 +1,48 @@
+@use "../../assets/sass/global_variables" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  border-right: 2px solid $colourEleven;
+  height: 100vh;
+  min-width: 230px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+
+
+  &__header {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    cursor: pointer;
+
+    &--logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      img {
+        width: 32px;
+        height: 32px;
+      }
+      h2 {
+        color: $colourSix;
+        font-family: $outfit;
+        font-weight: 700;
+        font-size: 24px;
+      }
+    }
+
+  }
+  &__button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: 50px;
+  }
+
+}

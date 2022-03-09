@@ -1,0 +1,32 @@
+@import "../../assets/sass/theme_colours";
+@import "../../assets/sass/typography";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  inline-size: 600px;
+  text-align: start;
+  //   needs correctly aligning
+  //   line height
+  font-family: $outfit;
+
+  &__title {
+    color: $colourOne;
+    font-size: 12px;
+    padding-bottom: 15px;
+  }
+  &__page-function {
+    color: $colourSix;
+    padding-bottom: 20px;
+    font-weight: 500;
+    font-size: 32px;
+  }
+  &__description {
+    color: $colourFour;
+    font-family: $inter;
+    line-height: 150%;
+  }
+}
