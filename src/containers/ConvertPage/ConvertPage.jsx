@@ -3,6 +3,7 @@ import "./ConvertPage.scss";
 import Header from '../../components/Header/Header'
 import CurrencyConverter from '../CurrencyConverter/CurrencyConverter';
 import LiveRates from "../LiveRates/LiveRates";
+import WalletTile from '../../components/WalletTile/WalletTile';
 
 const ConvertPage = (props) => {
 
@@ -19,23 +20,27 @@ const ConvertPage = (props) => {
     updateProfileData(temp);
   }
 
-  const [test,setTest] = useState([])
-  useEffect(() => {
-    const temp = Object.keys(profileData.holdings).map((key, index) => <p key={index}>{key}: {profileData.holdings[key]}</p>);
-    setTest(temp)
-  }, [profileData])
-
-  // const [tiles,setTiles] = useState([]);
+  // const [test,setTest] = useState([])
   // useEffect(() => {
-  //   const temp = Object.keys(profileData.holdings).map((key,index) => );
-  //   setTiles(temp);
+  //   const temp = Object.keys(profileData.holdings).map((key, index) => <p key={index}>{key}: {profileData.holdings[key]}</p>);
+  //   setTest(temp)
   // }, [profileData])
+
+  const [tiles,setTiles] = useState([]);
+  useEffect(() => {
+    const temp = Object.keys(profileData.holdings).map((key,index) => {
+    return <WalletTile key={index} currencyAmount={profileData.holdings[key]} currencySymbol={"£"}/>
+  }) 
+  setTiles(temp)
+  }, [profileData])
   
   return (
 
     <section className='convert-page'>
-      <Header title="Convert" pageFunctionHeading="Currency Converter" textDescription="Buy and exchange currencies with ease" />
-      {test}
+      <Header title="Convert" pageFunctionHeading="Currency Converter" textDescription="Buy and exchange currencies with ease" /> 
+      <div className="tiles">
+      {tiles}
+      </div>
       <CurrencyConverter profileData={profileData} liveRateData={liveRateData} handleConversion={handleConversion} />
       <Header
         title="Live Rates"
