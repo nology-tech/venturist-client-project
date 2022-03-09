@@ -51,6 +51,8 @@ const CurrencyConverter = (props) => {
     if (to && from && amount > 0 && amount < profileData.holdings[from]) {
       setConvert(true);
       performConversion();
+    } else if (Number(amount) > profileData.holdings[from]) {
+      alert ("Invalid Conversion Amount. Check Balance.")
     } else {
       setConvert(false);
       alert("Enter Correct Details")
