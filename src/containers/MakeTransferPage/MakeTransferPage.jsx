@@ -27,9 +27,9 @@ const MakeTransferPage = props => {
   
   const handleShowForm = event => {
     const amountInput = document.getElementById("amountInput").value;
-    setTransferAmount(amountInput);
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
       event.preventDefault(); 
+      setTransferAmount(amountInput);
       setShowInitialForm(!showInitialForm);
       setShowConfirmAccount(!showConfirmAccount);
     }
