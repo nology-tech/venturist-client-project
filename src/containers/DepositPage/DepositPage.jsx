@@ -36,19 +36,26 @@ const DepositPage = () => {
         accountNumber={userProfile.accountNumber}
         sortCode={userProfile.sortCode}
         toggleConfirm={toggleConfirm}
+        buttonName="Add Funds"
       />
-      {showConfirm && 
-      <ConfirmDetailsPopUp 
-        toggleSuccess={toggleSuccess} 
-        toggleConfirm={toggleConfirm}
-        firstName={userProfile.firstName}
-        lastName={userProfile.lastName}
-        accountNumber={userProfile.accountNumber}
-        sortCode={userProfile.sortCode}
-        accountType={userProfile.cards[0].accountType}
-        totalAmount="1000"
-      />}
-      {showSuccess && <SuccessfulMessage message="Deposit has been successful" toggleSuccess={toggleSuccess} />}
+      {showConfirm && (
+        <ConfirmDetailsPopUp
+          toggleSuccess={toggleSuccess}
+          toggleConfirm={toggleConfirm}
+          firstName={userProfile.firstName}
+          lastName={userProfile.lastName}
+          accountNumber={userProfile.accountNumber}
+          sortCode={userProfile.sortCode}
+          accountType={userProfile.cards[0].accountType}
+          totalAmount="1000"
+        />
+      )}
+      {showSuccess && (
+        <SuccessfulMessage
+          message="Deposit has been successful"
+          toggleSuccess={toggleSuccess}
+        />
+      )}
     </div>
   );
 };
