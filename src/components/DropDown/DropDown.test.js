@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor, findByText } from '@testing-library/react';
+import { render, screen, fireEvent} from '@testing-library/react';
 import DropDown from "./DropDown.jsx";
 
 const codes = ["usd", "gbp", "eur"];
@@ -42,7 +42,7 @@ test('should render input option when changed', () => {
  
 })
 
- // funstion to be tested on currency converted page
+ // function to be tested on currency converted page
 // const handleChange = jest.fn();
 // expect(handleChange).toHaveBeenCalledTimes(0);
   
