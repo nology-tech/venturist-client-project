@@ -24,6 +24,12 @@ const ConvertPage = (props) => {
     const temp = Object.keys(profileData.holdings).map((key, index) => <p key={index}>{key}: {profileData.holdings[key]}</p>);
     setTest(temp)
   }, [profileData])
+
+  // const [tiles,setTiles] = useState([]);
+  // useEffect(() => {
+  //   const temp = Object.keys(profileData.holdings).map((key,index) => );
+  //   setTiles(temp);
+  // }, [profileData])
   
   return (
 

@@ -103,7 +103,7 @@ const CurrencyConverter = (props) => {
           <p className='fineprint'>Last Udated: {time.toUTCString()} </p>
         </div>
         <div className="currency-converter__convert--right">
-          <Button buttonName="Make Transfer" hasIcon={false} buttonStyle="white" buttonFunction={()=> {
+          <Button buttonName="Make Transfer" hasIcon={false} buttonFunction={()=> {
             setConvert(false);
             handleConversion(amount, Number(convertedAmount.toFixed(2)), from, to)}}/>
         </div>
