@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../Button/Button";
 
 import "./ConfirmDetailsPopUp.scss";
 
@@ -11,7 +12,7 @@ const ConfirmDetailsPopUp = (props) => {
     accountType,
     totalAmount,
   } = props;
-  const { toggleConfirm } = props;
+  const { toggleConfirm, toggleSuccess } = props;
 
   return (
     <div className="confirm-popup">
@@ -43,8 +44,12 @@ const ConfirmDetailsPopUp = (props) => {
         </div>
 
         <p className="border"></p>
-        <button onClick={toggleConfirm}>Go back</button>
-        {/* <button onClick={}>Confirm</button> */}
+        {/* <button onClick={toggleConfirm}>Go back</button>
+        <button onClick={toggleSuccess}>Confirm</button> */}
+        <Button buttonName="Go Back"
+        buttonFunction={toggleConfirm}/>
+        <Button buttonName="Confirm"
+        buttonFunction={toggleSuccess}/>
       </div>
     </div>
   );

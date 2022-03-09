@@ -10,9 +10,15 @@ import SuccessfulMessage from "../../components/SuccessfulMessage/SuccessfulMess
 
 const DepositPage = () => {
   const [showConfirm, setShowConfirm] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const toggleConfirm = () => {
     setShowConfirm(!showConfirm);
+  };
+
+  const toggleSuccess = () => {
+    setShowConfirm(!showConfirm);
+    setShowSuccess(!showSuccess);
   };
 
   return (
@@ -24,13 +30,15 @@ const DepositPage = () => {
       />
       <TransactionForm
         fundsRemaining="£100.00"
+        formTitle="Deposit Form"
         firstName={userProfile.firstName}
         lastName={userProfile.lastName}
         accountNumber={userProfile.accountNumber}
         sortCode={userProfile.sortCode}
         toggleConfirm={toggleConfirm}
       />
-      {showConfirm && <ConfirmDetailsPopUp toggleConfirm={toggleConfirm} />}
+      {showConfirm && <ConfirmDetailsPopUp toggleSuccess={toggleSuccess} toggleConfirm={toggleConfirm} />}
+      {showSuccess && <SuccessfulMessage toggleSuccess={toggleSuccess} />}
     </div>
   );
 };
