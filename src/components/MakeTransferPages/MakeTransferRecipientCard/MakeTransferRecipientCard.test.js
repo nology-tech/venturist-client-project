@@ -5,7 +5,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 test('Check it renders the contacts name', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferRecipientCard userCard={contactList[0]} handleChooseRecipient={onClick}/>);
+  render(<MakeTransferRecipientCard user={contactList[0]} handleChooseRecipient={onClick}/>);
 
   //Act
   const contactName = screen.queryByText("Zoe Jansen");
@@ -17,7 +17,7 @@ test('Check it renders the contacts name', () => {
 test('Check it renders the sort code', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferRecipientCard userCard={contactList[0]} handleChooseRecipient={onClick} />);
+  render(<MakeTransferRecipientCard user={contactList[0]} handleChooseRecipient={onClick} />);
 
   //Act
   const contactSortCode = screen.queryByText("553456");
@@ -29,7 +29,7 @@ test('Check it renders the sort code', () => {
 test('Check it renders the account number', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferRecipientCard userCard={contactList[0]} handleChooseRecipient={onClick} />);
+  render(<MakeTransferRecipientCard user={contactList[0]} handleChooseRecipient={onClick} />);
 
   //Act
   const contactAccountNumber = screen.queryByText("12345689");
@@ -41,7 +41,7 @@ test('Check it renders the account number', () => {
 test('Check the it renders the image', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferRecipientCard userCard={contactList[0]} handleChooseRecipient={onClick} />);
+  render(<MakeTransferRecipientCard user={contactList[0]} handleChooseRecipient={onClick} />);
 
   //Act
   const bankImage = screen.queryByRole("img");
@@ -53,7 +53,7 @@ test('Check the it renders the image', () => {
 test('Check the click function works', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferRecipientCard userCard={contactList[0]} handleChooseRecipient={onClick} />);
+  render(<MakeTransferRecipientCard user={contactList[0]} handleChooseRecipient={onClick} />);
 
   //Act
   const recipientCard = screen.getByTestId("recipient-card")
