@@ -2,9 +2,7 @@ import React, {useState, useEffect} from 'react'
 import "./ConvertPage.scss";
 import Header from '../../components/Header/Header'
 import CurrencyConverter from '../CurrencyConverter/CurrencyConverter';
-
-
-
+import LiveRates from "../LiveRates/LiveRates";
 
 const ConvertPage = (props) => {
 
@@ -33,8 +31,16 @@ const ConvertPage = (props) => {
       <Header title="Convert" pageFunctionHeading="Currency Converter" textDescription="Buy and exchange currencies with ease" />
       {test}
       <CurrencyConverter profileData={profileData} liveRateData={liveRateData} handleConversion={handleConversion} />
+      <Header
+        title="Live Rates"
+        pageFunctionHeading="View Live Rates"
+        textDescription="See currency rates with your chosen currency in real time."
+      />
+      <section className="live-rates">
+        <LiveRates />
+      </section>
     </section>
-  )
-}
+  );
+};
 
 export default ConvertPage;

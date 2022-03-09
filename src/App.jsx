@@ -1,14 +1,14 @@
 import "./App.scss";
 import NavBar from "./containers/NavBar/NavBar";
-import ConvertPage from "./containers/ConvertPage/ConvertPage"
-import UserProfile from "./components/UserProfile/UserProfile"
+import ConvertPage from "./containers/ConvertPage/ConvertPage";
+import UserProfile from "./components/UserProfile/UserProfile";
 import MakeTransferPage from "./containers/MakeTransferPage/MakeTransferPage";
 import WalletPage from "./containers/WalletPage/WalletPage";
 import LiveRatesPage from "./containers/LiveRatesPage/LiveRatesPage";
-import ContactsPage from "./containers/ContactsPage/ContactsPage"
+import ContactsPage from "./containers/ContactsPage/ContactsPage";
 import DepositPage from "./containers/DepositPage/DepositPage";
 import WithdrawPage from "./containers/WithdrawPage/WithdrawPage";
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import liveRateData from "./assets/data/liveRatesExample";
 import userProfile from "./assets/data/samanthaBrooksProfile";
@@ -24,8 +24,8 @@ const App = () => {
 
 
   return (
-    <Router>
     <div className="App">
+      <Router>
         <NavBar />
         <UserProfile />
         <Routes>
@@ -37,8 +37,8 @@ const App = () => {
           <Route path="/Deposit" element={<DepositPage />}></Route>
           <Route path="/Withdraw" element={<WithdrawPage />}></Route>
         </Routes>
+      </Router>
     </div>
-    </Router>
   );
 };
 
