@@ -1,5 +1,4 @@
 import React from 'react';
-import MakeTransferRecipientCard from '../MakeTransferRecipientCard/MakeTransferRecipientCard';
 import MakeTransferCard from '../MakeTransferCard/MakeTransferCard';
 import "./MakeTransferChooseRecipient.scss";
 
