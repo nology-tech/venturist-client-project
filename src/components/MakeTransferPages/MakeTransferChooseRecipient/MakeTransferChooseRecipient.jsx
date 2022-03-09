@@ -28,7 +28,7 @@ const MakeTransferChooseRecipient = (props) => {
 
   const userCardListUsed = (userCardList.length !== 0);
   
-  const userCardComponents = userCardList.map((userCard,index) => <MakeTransferRecipientCard key={index} userCard={userCard} />);
+  const userCardComponents = userCardList.map((user,index) => <MakeTransferRecipientCard key={index} user={user} />);
 
   const emptyContactListText = <p className="transfer-page__choose-recipient__recipient-list__empty">You don't seem to have any contacts yet, try adding one!</p>;
 
