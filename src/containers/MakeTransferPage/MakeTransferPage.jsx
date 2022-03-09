@@ -36,21 +36,24 @@ const MakeTransferPage = props => {
   };
 
   const handleChangingCurrency = (event) => {
-    if(event.target.classList.contains("transfer-page__currency__card__overlay")) {
-      const chosenCurrencyCode = event.target.id.slice(25,28);
-      const chosenCurrencyObj = liveRateData.filter(currency => currency.currencyCode === chosenCurrencyCode)[0];
-      if(changingCurrency==="to") {
-        setCurrencyTo(chosenCurrencyObj);
-      } else if(changingCurrency==="from"){
-        setCurrencyFrom(chosenCurrencyObj);
-      }
-    } else if (event.target.classList.contains("transfer-form-bar__currency-to")) {
+    if (event.target.classList.contains("transfer-form-bar__currency-to")) {
       setChangingCurrency("to");
     } else if (event.target.classList.contains("transfer-form-bar__currency-from")) {
       setChangingCurrency("from");
     }
     handleShowCurrencyModal();
   };
+
+  const handleCurrency = (event) => {
+    const chosenCurrencyCode = event.target.id.slice(25,28);
+    const chosenCurrencyObj = liveRateData.filter(currency => currency.currencyCode === chosenCurrencyCode)[0];
+    if(changingCurrency==="to") {
+      setCurrencyTo(chosenCurrencyObj);
+    } else if(changingCurrency==="from"){
+      setCurrencyFrom(chosenCurrencyObj);
+    }
+    handleShowCurrencyModal();
+  }
 
   return (
     <div className="make-transfer" data-testid="make-transfer">
@@ -72,7 +75,8 @@ const MakeTransferPage = props => {
       {showCurrencyModal && (
         <MakeTransferChooseCurrency
           currencyData={liveRateData}
-          handleChangingCurrency={handleChangingCurrency}
+          handleCurrency={handleCurrency}
+          handleShowCurrencyModal={handleShowCurrencyModal}
           handleSearch={()=>alert("Searching")}
         />
       )}
@@ -85,5 +89,3 @@ const MakeTransferPage = props => {
 };
 
 export default MakeTransferPage;
-
-// When number input, click continue should go to next page (1)

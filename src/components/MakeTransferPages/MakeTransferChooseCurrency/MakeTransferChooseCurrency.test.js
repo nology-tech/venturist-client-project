@@ -5,7 +5,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 test('Render the component', () => {
   const onClick = jest.fn();
   const onSearch = jest.fn();
-  render(<MakeTransferChooseCurrency currencyData={liveRateData} handleChangingCurrency={onClick} handleSearch={onSearch}/>);
+  render(<MakeTransferChooseCurrency currencyData={liveRateData} handleCurrency={onClick} handleSearch={onSearch} handleShowCurrencyModal={onClick} />);
 
   const header = screen.getByText("Choose Currency");
 
@@ -15,7 +15,7 @@ test('Render the component', () => {
 test('Render the magnifying glass', () => {
   const onClick = jest.fn();
   const onSearch = jest.fn();
-  render(<MakeTransferChooseCurrency currencyData={liveRateData} handleChangingCurrency={onClick} handleSearch={onSearch}/>);
+  render(<MakeTransferChooseCurrency currencyData={liveRateData} handleCurrency={onClick} handleSearch={onSearch} handleShowCurrencyModal={onClick} />);
 
   const magnifyingGlass = screen.getByTitle("Search");
 
@@ -25,7 +25,7 @@ test('Render the magnifying glass', () => {
 test('Cross should have a function', () => {
   const onClick = jest.fn();
   const onSearch = jest.fn();
-  render(<MakeTransferChooseCurrency currencyData={liveRateData} handleChangingCurrency={onClick} handleSearch={onSearch}/>);
+  render(<MakeTransferChooseCurrency currencyData={liveRateData} handleCurrency={onClick} handleSearch={onSearch}handleShowCurrencyModal={onClick} />);
 
   const cross = screen.getAllByRole("img")[0];
   fireEvent.click(cross);
@@ -36,7 +36,7 @@ test('Cross should have a function', () => {
 test('Search should have a function', () => {
   const onClick = jest.fn();
   const onSearch = jest.fn();
-  render(<MakeTransferChooseCurrency currencyData={liveRateData} handleChangingCurrency={onClick} handleSearch={onSearch}/>);
+  render(<MakeTransferChooseCurrency currencyData={liveRateData} handleCurrency={onClick} handleSearch={onSearch} handleShowCurrencyModal={onClick} />);
 
   const search = screen.getByRole("textbox");
   fireEvent.change(search, {target: {value: 'test'}});
@@ -48,7 +48,7 @@ test('Search should have a function', () => {
 test('Expect currency column head to render', () => {
   const onClick = jest.fn();
   const onSearch = jest.fn();
-  render(<MakeTransferChooseCurrency currencyData={liveRateData} handleChangingCurrency={onClick} handleSearch={onSearch}/>);
+  render(<MakeTransferChooseCurrency currencyData={liveRateData} handleCurrency={onClick} handleSearch={onSearch} handleShowCurrencyModal={onClick} />);
 
   const currency = screen.getByText("Currency");
   
@@ -58,7 +58,7 @@ test('Expect currency column head to render', () => {
 test('Expect rate column head to render', () => {
   const onClick = jest.fn();
   const onSearch = jest.fn();
-  render(<MakeTransferChooseCurrency currencyData={liveRateData} handleChangingCurrency={onClick} handleSearch={onSearch}/>);
+  render(<MakeTransferChooseCurrency currencyData={liveRateData} handleCurrency={onClick} handleSearch={onSearch} handleShowCurrencyModal={onClick} />);
 
   const rate = screen.getByText("Rate");
   
@@ -68,7 +68,7 @@ test('Expect rate column head to render', () => {
 test('Expect currency list to render', () => {
   const onClick = jest.fn();
   const onSearch = jest.fn();
-  render(<MakeTransferChooseCurrency currencyData={liveRateData} handleChangingCurrency={onClick} handleSearch={onSearch}/>);
+  render(<MakeTransferChooseCurrency currencyData={liveRateData} handleCurrency={onClick} handleSearch={onSearch} handleShowCurrencyModal={onClick} />);
 
   const rate = screen.getByText("British Pound");
   
