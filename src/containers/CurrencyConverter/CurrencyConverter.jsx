@@ -7,6 +7,8 @@ import Button from '../../components/Button/Button'
 
 const CurrencyConverter = (props) => {
 
+  const {liveRateData, profileData, handleConversion} = props;
+
   const swap = (value) => {
     if ((to && from) && (to !== from) && (ownedCurrencies.includes(to.toLowerCase())))  {
       const temp = to;
@@ -40,13 +42,13 @@ const CurrencyConverter = (props) => {
     setAmount(event.target.value);
   }
 
-  const ownedCurrencies = Object.keys(props.userProfile.holdings).map(code => code.toLocaleLowerCase());
-  const convertibleCurrencies = props.liveRates.map(currency => currency.currencyCode.toLowerCase());
+  const ownedCurrencies = Object.keys(profileData.holdings).map(code => code.toLocaleLowerCase());
+  const convertibleCurrencies = liveRateData.map(currency => currency.currencyCode.toLowerCase());
 
   const convertPressed = () => {
     setTime(new Date());
 
-    if (to && from && amount > 0 && amount < props.userProfile.holdings[from]) {
+    if (to && from && amount > 0 && amount < profileData.holdings[from]) {
       setConvert(true);
       performConversion();
     } else {
@@ -59,7 +61,7 @@ const CurrencyConverter = (props) => {
     let tempFrom = 1;
     const temp = [...currencyNames];
 
-    for (let rateObject of props.liveRates) {
+    for (let rateObject of liveRateData) {
       if (rateObject.currencyCode === to) {
         tempTo = rateObject.liveRate;
         temp[1] = rateObject.currencyName;
@@ -103,7 +105,7 @@ const CurrencyConverter = (props) => {
         <div className="currency-converter__convert--right">
           <Button buttonName="Make Transfer" hasIcon={false} buttonStyle="white" buttonFunction={()=> {
             setConvert(false);
-            props.handleConversion(amount, Number(convertedAmount.toFixed(2)), from, to)}}/>
+            handleConversion(amount, Number(convertedAmount.toFixed(2)), from, to)}}/>
         </div>
         </div>}
       
