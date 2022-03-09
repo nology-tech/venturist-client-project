@@ -99,7 +99,7 @@ test("Should render the correct total amount", () => {
   userEvent.type(screen.getByTestId("amountInput"), "1000");
 
   // Assert
-  expect(totalAmount).toHaveTextContent("1000.00");
+  expect(totalAmount).toHaveTextContent("£ 1010.00");
 });
 
 test("Should render the button with the correct text content", () => {
@@ -182,7 +182,7 @@ test("OnlyNumber prevents multiple decimal points", () => {
   userEvent.type(screen.getByTestId("amountInput"), "1000.....00");
 
   // Assert
-  expect(totalBox).toHaveTextContent("1000.00");
+  expect(totalBox).toHaveTextContent("£ 1010.00");
 });
 
 test("Total box displays value to max two decimal places", () => {
@@ -203,5 +203,63 @@ test("Total box displays value to max two decimal places", () => {
   userEvent.type(screen.getByTestId("amountInput"), "1000.78965412");
 
   // Assert
-  expect(totalBox).toHaveTextContent("1000.79");
+  expect(totalBox).toHaveTextContent("£ 1010.80");
+});
+
+test("Test the fee is in the document", () => {
+  // Arrange
+  const onClick = jest.fn();
+  render(
+    <MakeTransferForm
+      exchangeFrom={mockData[2]}
+      exchangeTo={mockData[1]}
+      handleChangingCurrency={onClick}
+      handleShowForm={onClick}
+    />
+  );
+
+  // Act
+  const symbol = screen.getByTestId("fee-rate");
+
+  expect(symbol).toBeInTheDocument();
+});
+
+test("Test the fee symbol and amount are correct", () => {
+  // Arrange
+  const onClick = jest.fn();
+  render(
+    <MakeTransferForm
+      exchangeFrom={mockData[2]}
+      exchangeTo={mockData[1]}
+      handleChangingCurrency={onClick}
+      handleShowForm={onClick}
+    />
+  );
+
+  // Act
+  const youSendInput = screen.getByTestId("amountInput");
+  userEvent.type(youSendInput, "100");
+  const symbol = screen.getByTestId("fee-rate");
+
+  // Assert
+  expect(symbol).toHaveTextContent("€ 1.00");
+});
+
+test("Test the delivery time is correct", () => {
+  // Arrange
+  const onClick = jest.fn();
+  render(
+    <MakeTransferForm
+      exchangeFrom={mockData[2]}
+      exchangeTo={mockData[1]}
+      handleChangingCurrency={onClick}
+      handleShowForm={onClick}
+    />
+  );
+
+  // Act
+  const deliveryText = screen.getByText("Typically same day");
+
+  // Assert
+  expect(deliveryText).toBeInTheDocument();
 });

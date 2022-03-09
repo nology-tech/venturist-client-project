@@ -90,7 +90,7 @@ const MakeTransferForm = props => {
         </div>
         <div className="transfer-form-info__fee">
           <p>Fee</p>
-          <p>£0.00</p>
+        <p data-testid="fee-rate">{exchangeFrom.currencySymbol} {Number(exchangeAmount*0.01).toFixed(2).toLocaleString("en-us")}</p>
         </div>
         <div className="transfer-form-info__delivery">
           <p>Delivery</p>
@@ -102,7 +102,7 @@ const MakeTransferForm = props => {
           <h5>Total</h5>
           <p data-testid="totalBox">
             {exchangeFrom.currencySymbol}{" "}
-            {Number(exchangeAmount).toFixed(2).toLocaleString("en-us")}
+            {Number(exchangeAmount*1.01).toFixed(2).toLocaleString("en-us")}
           </p>
         </div>
         <Button
