@@ -63,3 +63,62 @@ test('Check the overlay click works', () => {
   //Assert
   expect(onClick).toHaveBeenCalled();
 });
+
+test('Check it renders the contacts name', () => {
+  //Arrange
+  const onClick = jest.fn();
+  render(<MakeTransferCard type="recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
+
+  //Act
+  const contactName = screen.queryByText("Zoe Jansen");
+
+  //Assert
+  expect(contactName).toBeInTheDocument();
+});
+
+test('Check it renders the sort code', () => {
+  //Arrange
+  const onClick = jest.fn();
+  render(<MakeTransferCard type="recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
+
+  //Act
+  const contactSortCode = screen.queryByText("553456");
+
+  //Assert
+  expect(contactSortCode).toBeInTheDocument();
+});
+
+test('Check it renders the account number', () => {
+  //Arrange
+  const onClick = jest.fn();
+  render(<MakeTransferCard type="recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
+
+  //Act
+  const contactAccountNumber = screen.queryByText("12345689");
+
+  //Assert
+  expect(contactAccountNumber).toBeInTheDocument();
+});
+
+test('Check the it renders the image', () => {
+  //Arrange
+  const onClick = jest.fn();
+  render(<MakeTransferCard type="recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
+  //Act
+  const bankImage = screen.queryByRole("img");
+
+  //Assert
+  expect(bankImage).toBeInTheDocument();
+});
+
+test('Check the click function works', () => {
+  //Arrange
+  const onClick = jest.fn();
+  render(<MakeTransferCard type="recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
+  //Act
+  const overlay = screen.getByTestId("overlay")
+  fireEvent.click(overlay);
+
+  //Assert
+  expect(onClick).toHaveBeenCalled();
+});
