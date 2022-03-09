@@ -1,0 +1,74 @@
+@use "../../assets/sass/theme_colours" as *;
+@use "../../assets/sass/typography" as *;
+
+// .confirm-popup {
+//   z-index: 1;
+//   fill: $colourTwo;
+//   background-color: rgba(0, 0, 0, 0.15);
+//   height: 100vh;
+//   width: 100vw;
+//   position: fixed;
+//   top: 0px;
+//   left: 0px;
+//   &__content {
+//     position: absolute;
+//     width: 595px;
+//     height: 573px;
+//     border-radius: 8px;
+//     background: $colourTen;
+//     padding-left: 62px;
+//     z-index: 2;
+//   }
+
+.confirm-popup {
+  border: 1px solid black;
+  height: 500px;
+  width: 500px;
+  position: fixed;
+  top: 250px;
+  left: 600px;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+
+  &__content {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+
+    &__title {
+      font-size: 32px;
+    }
+  }
+
+  .account-details {
+    color: $colourSix;
+    font-family: $outfit;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .user-info {
+    color: $colourFour;
+    font-family: $inter;
+  }
+
+  //   &__cross {
+  //     position: absolute;
+  //     top: 20px;
+  //     right: 50px;
+
+  //     &:hover {
+  //       cursor: pointer;
+  //     }
+  //   }
+
+  //   &__item {
+  //     font-size: 30px;
+  //     text-decoration: none;
+  //     color: $color-black;
+  //     padding: 20px;
+  //   }
+}

@@ -1,0 +1,44 @@
+@use "../../assets/sass/global_variables" as *;
+
+.liverate-row {
+  background-color: $colourTen;
+  margin-bottom: 10px;
+  font: $inter;
+  font-size: 18px;
+  line-height: 20px;
+  color: $colourThree;
+  font-weight: 600;
+
+  td {
+    padding: 1rem;
+  }
+
+  &__currency {
+    font-weight: 400;
+  }
+
+  &__input {
+    padding: 5px;
+    min-width: 100px;
+    min-height: 35px;
+    border: 0;
+    border-radius: 3px;
+    padding: 5px;
+    gap: 5px;
+    font-family: $inter;
+    color: $colourThree;
+  }
+}
+
+.liverate-row:nth-child(2) td {
+  background-color: $colourOne;
+  color: $colourTen;
+}
+
+.liverate-row:nth-child(2) td:first-child {
+  border-radius: 10px 0 0 0;
+}
+
+.liverate-row:nth-child(2) td:last-child {
+  border-radius: 0 10px 0 0;
+}
