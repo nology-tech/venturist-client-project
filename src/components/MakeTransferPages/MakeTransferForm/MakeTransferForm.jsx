@@ -34,6 +34,7 @@ const MakeTransferForm = props => {
               currency={exchangeFrom.currencyCode}
               width={36}
               onClick={handleChangingCurrency}
+              className="transfer-form-bar__currency-from"
             />
             <p
               className="transfer-form-bar__currency transfer-form-bar__currency-from"
@@ -66,6 +67,7 @@ const MakeTransferForm = props => {
               currency={exchangeTo.currencyCode}
               width={36}
               onClick={handleChangingCurrency}
+              className="transfer-form-bar__currency-to"
             />
             <p
               className="transfer-form-bar__currency transfer-form-bar__currency-to"
