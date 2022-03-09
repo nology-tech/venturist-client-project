@@ -62,9 +62,13 @@ const TransactionForm = (props) => {
         </table>
       </div>
       <div className="button">
-        <Button buttonName="Add Funds" type="submit" form="transaction" />
-        Add Funds
-        {/* </button> */}
+        {/* <Button
+          toggleConfirm={toggleConfirm}
+          buttonName="Add Funds"
+          type="submit"
+          form="transaction"
+        /> */}
+        <button onClick={toggleConfirm}> Add Funds</button>
       </div>
       <p id="box-border"></p>
     </section>
