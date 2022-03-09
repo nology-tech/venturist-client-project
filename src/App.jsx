@@ -11,10 +11,18 @@ import WithdrawPage from "./containers/WithdrawPage/WithdrawPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import liveRateData from "./assets/data/liveRatesExample";
-import profileData from "./assets/data/samanthaBrooksProfile";
+import userProfile from "./assets/data/samanthaBrooksProfile";
 import contactData from "./assets/data/contactExample";
+import { useState } from "react";
 
 const App = () => {
+
+  const [profileData,setProfileData] = useState({...userProfile});
+  const updateProfileData = (newData) => {
+    setProfileData(newData);
+  }
+
+
   return (
     <div className="App">
       <Router>
@@ -23,17 +31,8 @@ const App = () => {
         <Routes>
           <Route path="/Wallet" element={<WalletPage />}></Route>
           <Route path="/LiveRates" element={<LiveRatesPage />}></Route>
-          <Route path="/Convert" element={<ConvertPage />}></Route>
-          <Route
-            path="/Transfer"
-            element={
-              <MakeTransferPage
-                liveRateData={liveRateData}
-                profileData={profileData}
-                contactData={contactData}
-              />
-            }
-          ></Route>
+          <Route path="/Convert" element={<ConvertPage liveRateData={liveRateData} profileData={profileData} updateProfileData={updateProfileData} />}></Route>
+          <Route path="/Transfer" element={<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />}></Route>
           <Route path="/Contacts" element={<ContactsPage />}></Route>
           <Route path="/Deposit" element={<DepositPage />}></Route>
           <Route path="/Withdraw" element={<WithdrawPage />}></Route>
