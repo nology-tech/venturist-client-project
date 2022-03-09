@@ -6,7 +6,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 test('Check it renders the currency name', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCurrencyCard currency={currency[0]} handleCurrency={(onClick)}/>);
+  render(<MakeTransferCard type="currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
 
   //Act
   const currencyName = screen.queryByText("British Pound");
@@ -18,7 +18,7 @@ test('Check it renders the currency name', () => {
 test('Check it renders the currency flag', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCurrencyCard currency={currency[0]} handleCurrency={(onClick)}/>);
+  render(<MakeTransferCard type="currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
 
   //Act
   const flagSpan = screen.queryByTestId("currency-flag");
@@ -30,7 +30,7 @@ test('Check it renders the currency flag', () => {
 test('Check it renders the currency rate', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCurrencyCard currency={currency[0]} handleCurrency={(onClick)}/>);
+  render(<MakeTransferCard type="currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
 
   //Act
   const currencyRate = screen.queryByText("1.0000");
@@ -42,7 +42,7 @@ test('Check it renders the currency rate', () => {
 test('Check the overlay exists', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCurrencyCard currency={currency[0]} handleCurrency={(onClick)}/>);
+  render(<MakeTransferCard type="currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
 
   //Act
   const overlay = screen.getByTestId("overlay")
@@ -54,7 +54,7 @@ test('Check the overlay exists', () => {
 test('Check the overlay click works', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCurrencyCard currency={currency[0]} handleCurrency={(onClick)}/>);
+  render(<MakeTransferCard type="currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
 
   //Act
   const overlay = screen.getByTestId("overlay")
