@@ -45,7 +45,7 @@ const MakeTransferPage = props => {
   };
 
   const handleCurrency = (event) => {
-    const chosenCurrencyCode = event.target.id.slice(25,28);
+    const chosenCurrencyCode = event.target.id.slice(21,24);
     const chosenCurrencyObj = liveRateData.filter(currency => currency.currencyCode === chosenCurrencyCode)[0];
     if(changingCurrency==="to") {
       setCurrencyTo(chosenCurrencyObj);

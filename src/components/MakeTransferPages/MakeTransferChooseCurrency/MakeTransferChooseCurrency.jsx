@@ -1,6 +1,7 @@
 import React from 'react';
 import "./MakeTransferChooseCurrency.scss";
 import MakeTransferCurrencyCard from '../MakeTransferCurrencyCard/MakeTransferCurrencyCard';
+import MakeTransferCard from '../MakeTransferCard/MakeTransferCard';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
@@ -25,7 +26,7 @@ const MakeTransferChooseCurrency = (props) => {
 
   const {currencyData, handleCurrency, handleSearch, handleShowCurrencyModal} = props;
 
-  const currencyCardComponents = currencyData.map((currency,index) => <MakeTransferCurrencyCard key={index} currency={currency} handleCurrency={handleCurrency}/>)
+  const currencyCardComponents = currencyData.map((currency,index) => <MakeTransferCard key={index} cardContent={currency} type="currency" handleEvent={handleCurrency} />)
 
   return (
     <>
