@@ -48,6 +48,7 @@
   "devDependencies": {
     "jest-watch-typeahead": "^0.6.5",
     "node-sass": "^7.0.1",
+    "react-select-event": "^5.3.0",
     "sass": "^1.49.9",
     "scss": "^0.2.4"
   }

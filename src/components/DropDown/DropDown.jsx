@@ -51,10 +51,10 @@ const DropDown = (props) => {
 
   return (
     <div data-testid="currency-selector">
-      <Select
+      <Select 
         className="currency-selector"
         value={options.filter((option) => option.label === props.currentCode)}
-        options={options} data-testid="option-list"
+        options={options}
         components={{
           SingleValue: IconSingleValue,
           Option: IconOption,
