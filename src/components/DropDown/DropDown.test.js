@@ -1,4 +1,3 @@
-import { text } from '@fortawesome/fontawesome-svg-core';
 import { render, screen, fireEvent} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import DropDown from "./DropDown.jsx";
@@ -54,7 +53,7 @@ describe ("Testing the drop-down menu item", ()=> {
     expect(mock).toHaveBeenCalled();
 
 
-  })
+  });
 
   test("Test to see if mock function returns the correct value", () => {
 
@@ -66,18 +65,6 @@ describe ("Testing the drop-down menu item", ()=> {
     userEvent.click(screen.getByText('Select...'));
     userEvent.click(screen.getByText('USD'));
 
-  })
+  });
 
-})
-
- // function to be tested on currency converted page
-// const handleChange = jest.fn();
-// expect(handleChange).toHaveBeenCalledTimes(0);
-  
-  //Act 
-  // eslint-disable-next-line testing-library/no-node-access
-  // fireEvent.keyDown(menu.firstChild, { key: 'ArrowDown' });
-  // eslint-disable-next-line testing-library/await-async-utils
-  // await screen.findByText('USD');
-  // fireEvent.click(screen.getByText('USD'));
-  // expect(handleChange).toHaveBeenCalledTimes(1);
+});

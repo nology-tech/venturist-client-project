@@ -53,6 +53,7 @@ const CurrencyConverter = (props) => {
       performConversion();
     } else {
       setConvert(false);
+      alert("Enter Correct Details")
     }
   }
 
@@ -80,7 +81,7 @@ const CurrencyConverter = (props) => {
 
 
   return (
-    <section className='currency-converter'>
+    <section className='currency-converter' data-testid="currency-converter">
       <div className='currency-converter__grid'>
         <h3 className='currency-converter__grid--heading'>Amount</h3>
         <h3 className='currency-converter__grid--heading'>From</h3>
@@ -96,8 +97,8 @@ const CurrencyConverter = (props) => {
       </div>
       {convert && <div className='currency-converter__convert'>
         <div className="currency-converter__convert--numbers">
-          <h4>{amount} {currencyNames[0]} = </h4> 
-          <h3>{convertedAmount.toFixed(2)} {currencyNames[1]} </h3>
+          <h4>{amount+" "+currencyNames[0]+" ="}</h4> 
+          <h3>{convertedAmount.toFixed(2) + " " + currencyNames[1]} </h3>
           <p className='fineprint'>1 {from} = {(1/rateFrom)*rateTo} {to}</p>
           <p className='fineprint'>1 {to} = { (1/rateTo)*rateFrom} {from}</p>
           <p className='fineprint'>Last Udated: {time.toUTCString()} </p>
