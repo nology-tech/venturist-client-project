@@ -29,7 +29,8 @@
   left: 600px;
   right: 0;
   bottom: 0;
-  z-index: 5;
+  z-index: 2;
+  background-color: #ffffff;
 
   &__content {
     height: 500px;
@@ -71,4 +72,9 @@
   //     color: $color-black;
   //     padding: 20px;
   //   }
+}
+
+
+.button-container {
+  width: 50px;
 }
