@@ -10,7 +10,7 @@ import "./HomePage.scss";
 const HomePage = (props) => {
   const { setShowHome } = props;
   return (
-    <>
+    <div className="home">
       <Header setShowHome={setShowHome} />
       <main>
         <Home />
@@ -20,7 +20,7 @@ const HomePage = (props) => {
         <Section title="View Latest Rates" bgColour="white" />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

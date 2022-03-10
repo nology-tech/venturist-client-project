@@ -21,14 +21,10 @@ const App = () => {
   console.log(showHome);
 
   return (
-    <div
-    //  className="App"
-    >
+    <div className="App">
       <Router>
         {!showHome && <NavBar />}
         {!showHome && <UserProfile />}
-        {/* <NavBar />
-        <UserProfile /> */}
         <Routes>
           <Route path="/Wallet" element={<WalletPage />}></Route>
           <Route path="/LiveRates" element={<LiveRatesPage />}></Route>
