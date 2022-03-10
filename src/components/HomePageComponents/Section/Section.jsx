@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Section.scss";
 
 const Section = (props) => {
-  const { title, bgColour } = props;
+  const { title, bgColour, img, name } = props;
 
   return (
     <section className={`section ${bgColour}`}>
@@ -11,7 +11,7 @@ const Section = (props) => {
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat
         excepturi omnis laborum ullam libero quasi.
       </p>
-      <p className="section__img">image or form?</p>
+      <img src={img} alt={name} />
     </section>
   );
 };

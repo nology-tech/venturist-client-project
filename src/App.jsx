@@ -28,8 +28,10 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        {!showHome && <NavBar />}
-        {!showHome && <UserProfile />}
+        {/* {!showHome && <NavBar />}
+        {!showHome && <UserProfile />} */}
+        <NavBar />
+        <UserProfile />
         <Routes>
           <Route path="/Wallet" element={<WalletPage />}></Route>
           <Route path="/LiveRates" element={<LiveRatesPage />}></Route>
@@ -56,10 +58,11 @@ const App = () => {
           <Route path="/Contacts" element={<ContactsPage />}></Route>
           <Route path="/Deposit" element={<DepositPage />}></Route>
           <Route path="/Withdraw" element={<WithdrawPage />}></Route>
-          <Route
+          {/* <Route
             path="/"
             element={<HomePage setShowHome={setShowHome} />}
-          ></Route>
+          >
+            </Route> */}
         </Routes>
       </Router>
     </div>
