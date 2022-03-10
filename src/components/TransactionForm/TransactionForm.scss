@@ -90,9 +90,21 @@ span {
 
   .button-container {
     margin-top: 20px;
-    margin-left: 198px;
+    margin-left: 398px;
     margin-bottom: 20px;
+    height: 35px;
+    width: 150px;
   }
+}
+
+.transaction__search-bar__input {
+  width: 105px;
+  text-align: right;
+  border: solid 1px #dddddd;
+  padding: 3px;
+  font-size: 15px;
+  margin-left: 3px;
+  border-radius: 4px;
 }
 // button needs bem name & nesting into correct parent; button styling needs checking too
 // also weird shadow that appears when selecting the button

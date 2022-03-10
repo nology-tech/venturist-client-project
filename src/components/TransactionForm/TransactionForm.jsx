@@ -1,6 +1,7 @@
 import React from "react";
 import "./TransactionForm.scss";
 import Button from "../Button/Button";
+import { useState } from "react";
 
 const TransactionForm = (props) => {
   const {
@@ -13,6 +14,20 @@ const TransactionForm = (props) => {
     buttonName,
   } = props;
   const { toggleConfirm } = props;
+
+  const [setAmount, showSetAmount] = useState("");
+
+  const onlyNumber = (event) => {
+    let amountInputField = event.target.value;
+    showSetAmount(event.target.value);
+
+    if (
+      !/[0-9.]/.test(event.key) ||
+      (amountInputField.includes(".") && event.key === ".")
+    ) {
+      event.preventDefault();
+    }
+  };
 
   return (
     <section className="deposit-form">
@@ -46,7 +61,19 @@ const TransactionForm = (props) => {
           <label htmlFor="amount" id="amount">
             Amount
           </label>
-          <input type="text" name="amount-input" id="amount-input"></input>
+          <input
+            name="amount-input"
+            id="amount-input"
+            data-testid="amountInput"
+            className="transaction__search-bar__input"
+            type="number"
+            step={0.01}
+            min={0.01}
+            pattern="[0-9.]+"
+            onChange={onlyNumber}
+            placeholder="00.00"
+            required
+          ></input>
         </form>
 
         <table className="funds-table">

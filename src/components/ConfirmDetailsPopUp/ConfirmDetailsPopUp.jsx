@@ -16,7 +16,7 @@ const ConfirmDetailsPopUp = (props) => {
   const { toggleConfirm, toggleSuccess } = props;
 
   return (
-    <div className="confirm-popup">
+    <div className="confirm-popup" id="confirm-popup">
       <div className="popup-background"></div>
       <div className="confirm-popup">
         <div className="confirm-popup__content">

@@ -13,7 +13,10 @@ const DepositPage = () => {
   const [showSuccess, setShowSuccess] = useState(false);
 
   const toggleConfirm = () => {
-    setShowConfirm(!showConfirm);
+    const amountInput = document.getElementById("amount-input").value;
+    if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
+      setShowConfirm(!showConfirm);
+    }
   };
 
   const toggleSuccess = () => {
