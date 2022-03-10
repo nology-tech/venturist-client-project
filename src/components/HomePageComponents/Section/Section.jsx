@@ -11,7 +11,7 @@ const Section = (props) => {
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat
         excepturi omnis laborum ullam libero quasi.
       </p>
-      <img src={img} alt={name} />
+      <img className="section__img" src={img} alt={name} />
     </section>
   );
 };

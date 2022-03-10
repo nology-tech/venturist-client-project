@@ -1,12 +1,13 @@
 @use "../../../assets/sass/global_variables" as *;
 
 .blue {
-  background-color: $colourOne;
+  background: linear-gradient(150deg, $colourOne 50%, #fcfcfc 50%);
   color: $colourEleven;
 }
 
 .white {
   color: $colourFour;
+  background: linear-gradient(150deg, #fcfcfc 50%, $colourOne 50%);
 }
 
 .section {
@@ -26,5 +27,9 @@
     text-align: center;
     padding: 2rem;
     font-size: 16px;
+  }
+
+  &__img {
+    border: 1px solid grey;
   }
 }
