@@ -1,5 +1,18 @@
 {
-  "hosting": {
+  "hosting": [{
+    "target": "dev",
+    "public": "build",
+    "rewrites": [ {
+      "source": "**"
+     }],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+
+  }, {
+    "target": "main",
     "public": "build",
     "rewrites": [ {
       "source": "**",
@@ -11,5 +24,7 @@
       "**/node_modules/**"
     ]
 
+
+  }]
   }
-}
+
