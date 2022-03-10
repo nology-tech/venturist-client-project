@@ -103,7 +103,7 @@ const CurrencyConverter = (props) => {
           <h3>{convertedAmount.toFixed(2) + " " + currencyNames[1]} </h3>
           <p className='fineprint'>1 {from} = {(1/rateFrom)*rateTo} {to}</p>
           <p className='fineprint'>1 {to} = { (1/rateTo)*rateFrom} {from}</p>
-          <p className='fineprint'>Last Udated: {time.toUTCString()} </p>
+          <p className='fineprint'>Last Updated: {time.toUTCString()} </p>
         </div>
         <div className="currency-converter__convert--right">
           <Button buttonName="Make Transfer" hasIcon={false} buttonFunction={()=> {
