@@ -4,7 +4,8 @@
   display: grid;
   justify-items: center;
   gap: 2rem;
-  background-color: $colourTen;
+
+  background: linear-gradient(to bottom, $colourTen 40%, $colourEleven);
   height: 80vh;
 
   &__title {
@@ -18,5 +19,6 @@
 
   &__img {
     max-width: 850px;
+    border: 1px solid grey;
   }
 }

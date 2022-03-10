@@ -7,9 +7,9 @@
   justify-content: space-around;
   height: 13vh;
   align-items: center;
-  font: $outfit;
-  width: 100%;
+  font-family: $outfit;
   font-weight: 400;
+  width: 100%;
 
   &__logo,
   &__links {
