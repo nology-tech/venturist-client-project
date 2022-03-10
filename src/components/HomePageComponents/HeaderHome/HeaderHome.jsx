@@ -24,7 +24,9 @@ const HeaderHome = (props) => {
         })}
       </div>
       <div className="headerHome__buttons">
-        <a href="#">Sign in</a>
+        <a href="https://github.com/nology-tech/venturist-client-project">
+          Sign in
+        </a>
         <Link to="/Wallet" onClick={handleToggle}>
           <Button buttonName="Sign up" />
         </Link>

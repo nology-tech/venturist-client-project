@@ -4,7 +4,10 @@ import "./LinkItem.scss";
 const LinkItem = (props) => {
   const { link, index } = props;
   return (
-    <a href="#" key={index}>
+    <a
+      href="https://github.com/nology-tech/venturist-client-project"
+      key={index}
+    >
       {link}
     </a>
   );
