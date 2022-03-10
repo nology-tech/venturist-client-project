@@ -20,9 +20,14 @@ const ConfirmDetailsPopUp = (props) => {
       <div className="popup-background"></div>
       <div className="confirm-popup">
         <div className="confirm-popup__content">
-          <Link to="/Wallet" className="confirm-popup__icon">
-            <img src={iconCross} alt="Go back" />
-          </Link>
+          {/* <Link to="/Wallet" className="confirm-popup__icon"> */}
+          <img
+            className="confirm-popup__icon"
+            src={iconCross}
+            alt="Go back"
+            onClick={toggleConfirm}
+          />
+          {/* </Link> */}
           <p className="confirm-popup__content__title">Confirm Details</p>
           <div className="confirm-popup__content__user-name">
             <p id="header" className="account-details">
