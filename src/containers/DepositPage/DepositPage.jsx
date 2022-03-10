@@ -11,10 +11,23 @@ import SuccessfulMessage from "../../components/SuccessfulMessage/SuccessfulMess
 const DepositPage = () => {
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showAmount, setShowAmount] = useState(0.0);
 
-  const toggleConfirm = () => {
+  const onlyNumber = (event) => {
+    let amountInputField = event.target.value;
+    setShowAmount(event.target.value);
+    if (
+      !/[0-9.]/.test(event.key) ||
+      (amountInputField.includes(".") && event.key === ".")
+    ) {
+      event.preventDefault();
+    }
+  };
+
+  const toggleConfirm = event => {
     const amountInput = document.getElementById("amount-input").value;
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
+      event.preventDefault(); 
       setShowConfirm(!showConfirm);
     }
   };
@@ -39,6 +52,7 @@ const DepositPage = () => {
         accountNumber={userProfile.accountNumber}
         sortCode={userProfile.sortCode}
         toggleConfirm={toggleConfirm}
+        onlyNumber={onlyNumber}
         buttonName="Add Funds"
       />
       {showConfirm && (
@@ -50,7 +64,7 @@ const DepositPage = () => {
           accountNumber={userProfile.accountNumber}
           sortCode={userProfile.sortCode}
           accountType={userProfile.cards[0].accountType}
-          totalAmount="1000"
+          totalAmount={showAmount}
         />
       )}
       {showSuccess && (

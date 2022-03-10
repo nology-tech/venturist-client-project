@@ -13,21 +13,7 @@ const TransactionForm = (props) => {
     fundsRemaining,
     buttonName,
   } = props;
-  const { toggleConfirm } = props;
-
-  const [setAmount, showSetAmount] = useState("");
-
-  const onlyNumber = (event) => {
-    let amountInputField = event.target.value;
-    showSetAmount(event.target.value);
-
-    if (
-      !/[0-9.]/.test(event.key) ||
-      (amountInputField.includes(".") && event.key === ".")
-    ) {
-      event.preventDefault();
-    }
-  };
+  const { toggleConfirm, onlyNumber } = props;
 
   return (
     <section className="deposit-form">
@@ -64,7 +50,7 @@ const TransactionForm = (props) => {
           <input
             name="amount-input"
             id="amount-input"
-            data-testid="amountInput"
+            data-testid="amount-input"
             className="transaction__search-bar__input"
             type="number"
             step={0.01}
