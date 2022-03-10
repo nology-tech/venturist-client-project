@@ -29,7 +29,7 @@ const App = () => {
         <NavBar />
         <UserProfile />
         <Routes>
-          <Route path="/Wallet" element={<WalletPage />}></Route>
+          <Route path="/Wallet" element={<WalletPage liveRateData={liveRateData} profileData={profileData}/>}></Route>
           <Route path="/LiveRates" element={<LiveRatesPage />}></Route>
           <Route path="/Convert" element={<ConvertPage liveRateData={liveRateData} profileData={profileData} updateProfileData={updateProfileData} />}></Route>
           <Route path="/Transfer" element={<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />}></Route>

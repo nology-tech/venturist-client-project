@@ -4,14 +4,15 @@
 .tiles{
   font-family: $outfit;
   position: static;
-  min-width: 263px;
-  height: 120px;
-  overflow: hidden;
+  min-width: 230px;
+  min-height: 120px;
+  // height: 120px;
+
   
   &__fund-box{
     position: absolute;
     border-radius: 20px 0px 20px 20px;
-    width: 263px;
+    width: 230px;
     height: 120px;
     background-color: $colourOne;
     color: $colourEleven;
@@ -32,7 +33,7 @@
       margin: 5px;
       overflow-wrap: break-word;
       z-index: 3;
-      font-size: 48px;
+      font-size: 30px;
       font-weight: 500;
       padding-left: 20px;
     }
