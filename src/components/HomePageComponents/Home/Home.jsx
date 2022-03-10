@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.scss";
+import img from "../../../assets/images/liveratescreenshot.png";
 
 const Home = () => {
   return (
@@ -11,11 +12,7 @@ const Home = () => {
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur
         ducimus nihil tempora culpa, a aliquid?
       </p>
-      <img
-        className="home__img"
-        src="https://entrepreneurhandbook.co.uk/wp-content/uploads/2019/10/Website-builder.jpg.webp"
-        alt=""
-      />
+      <img className="home__img" src={img} alt="App screenshot" width="750px" />
     </section>
   );
 };

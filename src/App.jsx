@@ -18,7 +18,6 @@ import HomePage from "./containers/HomePage/HomePage";
 
 const App = () => {
   const [showHome, setShowHome] = useState(true);
-  console.log(showHome);
 
   const [profileData, setProfileData] = useState({ ...userProfile });
   const updateProfileData = (newData) => {
@@ -28,10 +27,10 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        {/* {!showHome && <NavBar />}
-        {!showHome && <UserProfile />} */}
-        <NavBar />
-        <UserProfile />
+        {!showHome && <NavBar />}
+        {!showHome && <UserProfile />}
+        {/* <NavBar />
+        <UserProfile /> */}
         <Routes>
           <Route path="/Wallet" element={<WalletPage />}></Route>
           <Route path="/LiveRates" element={<LiveRatesPage />}></Route>
@@ -58,11 +57,10 @@ const App = () => {
           <Route path="/Contacts" element={<ContactsPage />}></Route>
           <Route path="/Deposit" element={<DepositPage />}></Route>
           <Route path="/Withdraw" element={<WithdrawPage />}></Route>
-          {/* <Route
+          <Route
             path="/"
             element={<HomePage setShowHome={setShowHome} />}
-          >
-            </Route> */}
+          ></Route>
         </Routes>
       </Router>
     </div>
