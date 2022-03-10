@@ -14,7 +14,7 @@ const Header = (props) => {
     <header className="header">
       <div className="header__logo">
         <img src={logo} alt="Venturist" />
-        <h2>Synergy</h2>
+        <h2>Venturist</h2>
       </div>
       <div className="header__links">
         {links.map((link, index) => {

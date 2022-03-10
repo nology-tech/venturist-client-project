@@ -10,7 +10,7 @@ const Footer = () => {
     <div className="footer">
       <div className="footer__logo">
         <img src={logo} alt="Venturist" />
-        <h2>Synergy</h2>
+        <h2>Venturist</h2>
       </div>
       <div className="footer__links">
         {links.map((link, index) => {
