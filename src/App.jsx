@@ -12,13 +12,18 @@ import WithdrawPage from "./containers/WithdrawPage/WithdrawPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import liveRateData from "./assets/data/liveRatesExample";
-import profileData from "./assets/data/samanthaBrooksProfile";
+import userProfile from "./assets/data/samanthaBrooksProfile";
 import contactData from "./assets/data/contactExample";
 import HomePage from "./containers/HomePage/HomePage";
 
 const App = () => {
   const [showHome, setShowHome] = useState(true);
   console.log(showHome);
+
+  const [profileData, setProfileData] = useState({ ...userProfile });
+  const updateProfileData = (newData) => {
+    setProfileData(newData);
+  };
 
   return (
     <div className="App">
@@ -28,7 +33,16 @@ const App = () => {
         <Routes>
           <Route path="/Wallet" element={<WalletPage />}></Route>
           <Route path="/LiveRates" element={<LiveRatesPage />}></Route>
-          <Route path="/Convert" element={<ConvertPage />}></Route>
+          <Route
+            path="/Convert"
+            element={
+              <ConvertPage
+                liveRateData={liveRateData}
+                profileData={profileData}
+                updateProfileData={updateProfileData}
+              />
+            }
+          ></Route>
           <Route
             path="/Transfer"
             element={

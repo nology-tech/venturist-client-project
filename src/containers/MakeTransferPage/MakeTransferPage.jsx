@@ -15,6 +15,7 @@ const MakeTransferPage = props => {
   const [showInitialForm, setShowInitialForm] = useState(true);
   const [showConfirmAccount, setShowConfirmAccount] = useState(false);
   const [transferAmount, setTransferAmount] = useState(0);
+  const [transferFee, setTransferFee] = useState(0);
 
   const handleShowCurrencyModal = () => {
     setShowCurrencyModal(!showCurrencyModal);
@@ -27,9 +28,10 @@ const MakeTransferPage = props => {
   
   const handleShowForm = event => {
     const amountInput = document.getElementById("amountInput").value;
-    setTransferAmount(amountInput);
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
       event.preventDefault(); 
+      setTransferAmount(amountInput);
+      setTransferFee(amountInput*0.01);
       setShowInitialForm(!showInitialForm);
       setShowConfirmAccount(!showConfirmAccount);
     }
@@ -78,7 +80,7 @@ const MakeTransferPage = props => {
       )}
 
       {showConfirmAccount && (
-        <MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={transferAmount} handleAddRecipient={handleAddRecipient} currencySymbol={currencyFrom.currencySymbol} currencyCode={currencyFrom.currencyCode} />
+        <MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={Number(transferAmount) + Number(transferFee)} handleAddRecipient={handleAddRecipient} currencySymbol={currencyFrom.currencySymbol} currencyCode={currencyFrom.currencyCode} />
       )}
     </div>
   );

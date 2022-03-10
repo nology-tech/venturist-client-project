@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import icons from "../../../assets/icons/icons";
 import Button from "../../Button/Button";
 import "./Features.scss";
 
