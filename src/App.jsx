@@ -18,6 +18,7 @@ import HomePage from "./containers/HomePage/HomePage";
 
 const App = () => {
   const [showHome, setShowHome] = useState(true);
+  console.log(showHome);
 
   return (
     <div
@@ -47,7 +48,7 @@ const App = () => {
           <Route path="/Withdraw" element={<WithdrawPage />}></Route>
           <Route
             path="/"
-            element={<HomePage setShowHome={setShowHome} showHome={showHome} />}
+            element={<HomePage setShowHome={setShowHome} />}
           ></Route>
         </Routes>
       </Router>

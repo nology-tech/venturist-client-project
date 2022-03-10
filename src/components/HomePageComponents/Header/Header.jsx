@@ -6,9 +6,9 @@ import Button from "../../Button/Button";
 import { Link } from "react-router-dom";
 
 const Header = (props) => {
-  const { setShowHome, showHome } = props;
+  const { setShowHome } = props;
   const links = ["Home", "Features", "About", "Contact Us"];
-  const handleToggle = () => setShowHome(!showHome);
+  const handleToggle = () => setShowHome(false);
 
   return (
     <header className="header">

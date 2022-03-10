@@ -8,10 +8,10 @@ import Section from "../../components/HomePageComponents/Section/Section";
 import "./HomePage.scss";
 
 const HomePage = (props) => {
-  const { setShowHome, showHome } = props;
+  const { setShowHome } = props;
   return (
     <>
-      <Header setShowHome={setShowHome} showHome={showHome} />
+      <Header setShowHome={setShowHome} />
       <main>
         <Home />
         <Partners />
