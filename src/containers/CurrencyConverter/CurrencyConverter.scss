@@ -1,14 +1,12 @@
 @use "../../assets/sass/global_variables" as *;
 
 .currency-converter {
-  margin-top: 40px;
   padding: 40px 80px;
   border-radius: 10px;
   background-color: #FBFBFC;
   display: flex;
   flex-direction: column;
   width: 600px;
-  margin-bottom: 40px;
 
   &__grid {
     display: grid;
