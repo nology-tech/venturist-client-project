@@ -1,4 +1,5 @@
 import "./App.scss";
+import { useState } from "react";
 import NavBar from "./containers/NavBar/NavBar";
 import ConvertPage from "./containers/ConvertPage/ConvertPage";
 import UserProfile from "./components/UserProfile/UserProfile";
@@ -13,13 +14,20 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import liveRateData from "./assets/data/liveRatesExample";
 import profileData from "./assets/data/samanthaBrooksProfile";
 import contactData from "./assets/data/contactExample";
+import HomePage from "./containers/HomePage/HomePage";
 
 const App = () => {
+  const [showHome, setShowHome] = useState(true);
+
   return (
-    <div className="App">
+    <div
+    //  className="App"
+    >
       <Router>
-        <NavBar />
-        <UserProfile />
+        {!showHome && <NavBar />}
+        {!showHome && <UserProfile />}
+        {/* <NavBar />
+        <UserProfile /> */}
         <Routes>
           <Route path="/Wallet" element={<WalletPage />}></Route>
           <Route path="/LiveRates" element={<LiveRatesPage />}></Route>
@@ -37,6 +45,10 @@ const App = () => {
           <Route path="/Contacts" element={<ContactsPage />}></Route>
           <Route path="/Deposit" element={<DepositPage />}></Route>
           <Route path="/Withdraw" element={<WithdrawPage />}></Route>
+          <Route
+            path="/"
+            element={<HomePage setShowHome={setShowHome} showHome={showHome} />}
+          ></Route>
         </Routes>
       </Router>
     </div>

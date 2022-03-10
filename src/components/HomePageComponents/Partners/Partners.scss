@@ -1,0 +1,19 @@
+@use "../../../assets/sass/global_variables" as *;
+
+.logos {
+  display: grid;
+  gap: 3rem;
+  padding: 6rem;
+
+  &__title {
+    padding-top: 2rem;
+    display: grid;
+    justify-content: center;
+  }
+
+  &__grid {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem;
+  }
+}

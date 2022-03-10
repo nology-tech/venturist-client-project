@@ -1,0 +1,23 @@
+@use "../../../assets/sass/global_variables" as *;
+
+.blue {
+  background-color: $colourOne;
+  color: $colourEleven;
+}
+
+.section {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  height: 50vh;
+
+  &__title {
+    display: grid;
+    justify-content: center;
+  }
+
+  &__p {
+    max-width: 300px;
+    text-align: center;
+  }
+}
