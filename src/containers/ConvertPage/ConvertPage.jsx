@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import "./ConvertPage.scss";
 import Header from '../../components/Header/Header'
 import CurrencyConverter from '../CurrencyConverter/CurrencyConverter';

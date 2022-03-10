@@ -22,7 +22,7 @@ const Wallet = (props) => {
       return <WalletTile key={index} currencyAmount={profileData.holdings[key]} currencySymbol={currencySymbol} currencyCode={key} currencyName={currencyName}/>
   }) 
   setTiles(temp)
-  }, [profileData])
+  }, [profileData,liveRateData])
 
   return (
     <div data-testid="wallet" className="wallet">{tiles}</div>
