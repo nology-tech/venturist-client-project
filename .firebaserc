@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "accentureclientprojecttest"
+  },
+  "targets": {
+    "accentureclientprojecttest": {
+      "hosting": {
+        "main": [
+          "accentureclientprojecttest"
+        ],
+        "dev": [
+          "venturist-dev"
+        ]
+      }
+    }
   }
 }
