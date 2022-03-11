@@ -4,7 +4,15 @@ import userProfile from "../../assets/data/samanthaBrooksProfile";
 
 describe("Testing that elements render on screen", () => {
   test("Test to render container on screen", () => {
-    render(<ConfirmDetailsPopUp userProfile={userProfile} />);
+    render(
+      <ConfirmDetailsPopUp 
+        firstName="Sean" 
+        lastName="Pursani" 
+        accountNumber="0123456789"
+        sortCode="001122"
+        accountType="Current Account"
+        totalAmount="400"
+      />);
 
     const container = screen.getByTestId("confirm-popup");
 

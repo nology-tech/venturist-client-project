@@ -9,14 +9,15 @@ import SuccessfulMessage from "../../components/SuccessfulMessage/SuccessfulMess
 const DepositPage = (props) => {
 
   const {
-    profileData
+    profileData,
+    updateProfileData
   } = props;
 
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showAmount, setShowAmount] = useState(0.0);
 
-  const onlyNumber = (event) => {
+  const onlyNumber = event => {
     let amountInputField = event.target.value;
     setShowAmount(event.target.value);
     if (
@@ -35,7 +36,10 @@ const DepositPage = (props) => {
     }
   };
 
-  const toggleSuccess = () => {
+  const toggleSuccess = () => { 
+    // const temp = {...profileData};
+    // temp.holdings[profileData.cards[0].currencyType] += parseFloat(showAmount);
+    // updateProfileData(temp);
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
   };

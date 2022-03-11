@@ -42,12 +42,11 @@ const TransactionForm = (props) => {
 
         <p id="border"></p>
 
-        <form className="transaction">
+        <form onSubmit={toggleConfirm} className="transaction">
           <label htmlFor="amount" id="amount">
             Amount
           </label>
           <input
-            name="amount-input"
             id="amount-input"
             data-testid="amount-input"
             className="transaction__input"
@@ -75,7 +74,7 @@ const TransactionForm = (props) => {
         </table>
       </div>
       <div className="button-container">
-        <Button buttonFunction={toggleConfirm} buttonName={buttonName} />
+        <Button buttonFunction={toggleConfirm} buttonName={buttonName} hasIcon={false} />
       </div>
       <p id="box-border"></p>
     </section>
