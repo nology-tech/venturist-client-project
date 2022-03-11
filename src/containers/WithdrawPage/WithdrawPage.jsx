@@ -16,6 +16,7 @@ const WithdrawPage = (props) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showAmount, setShowAmount] = useState(0.0);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const onlyNumber = event => {
     let amountInputField = event.target.value;
@@ -30,6 +31,7 @@ const WithdrawPage = (props) => {
 
   // If account total is less than the amount wanting to withdraw, don't allow!
   const toggleConfirm = event => {
+    setIsDisabled(!isDisabled);
     const amountInput = document.getElementById("amount-input").value;
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
       event.preventDefault(); 
@@ -62,6 +64,7 @@ const WithdrawPage = (props) => {
         sortCode={profileData.sortCode}
         toggleConfirm={toggleConfirm}
         onlyNumber={onlyNumber}
+        isDisabled = {isDisabled}
         buttonName="Withdraw Funds"
       />
       {showConfirm && (

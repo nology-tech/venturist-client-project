@@ -12,7 +12,7 @@ const TransactionForm = (props) => {
     fundsRemaining,
     buttonName,
   } = props;
-  const { toggleConfirm, onlyNumber } = props;
+  const { toggleConfirm, onlyNumber, isDisabled } = props;
 
   return (
     <section className="deposit-form">
@@ -56,6 +56,7 @@ const TransactionForm = (props) => {
             pattern="[0-9.]+"
             onChange={onlyNumber}
             placeholder="00.00"
+            disabled={isDisabled}
             required
           ></input>
         </form>

@@ -15,6 +15,7 @@ const DepositPage = (props) => {
 
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
   const [showAmount, setShowAmount] = useState(0.0);
 
   const onlyNumber = event => {
@@ -29,6 +30,7 @@ const DepositPage = (props) => {
   };
 
   const toggleConfirm = event => {
+    setIsDisabled(!isDisabled);
     const amountInput = document.getElementById("amount-input").value;
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
       event.preventDefault(); 
@@ -60,6 +62,7 @@ const DepositPage = (props) => {
         sortCode={profileData.sortCode}
         toggleConfirm={toggleConfirm}
         onlyNumber={onlyNumber}
+        isDisabled = {isDisabled}
         buttonName="Add Funds"
       />
       {showConfirm && (
