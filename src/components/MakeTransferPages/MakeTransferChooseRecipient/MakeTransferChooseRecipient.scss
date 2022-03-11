@@ -1,0 +1,108 @@
+@use "../../../assets/sass/global_variables" as *;
+
+.transfer-page__choose-recipient {
+  padding: 50px 50px 0 65px;
+  box-sizing: border-box;
+  z-index: 2;
+  position: fixed;
+  left: 35%;
+  top: 10%;  
+  background-color: #FFFFFF;
+  border-radius: 8px;
+
+  position: fixed;
+  width: 774px;
+  height: 735px;
+  left: 50%;
+  top: 50%;
+  margin-left: -387px;
+  margin-top: -368px;
+
+  &__overlay {
+    z-index: 1;
+    fill: $colourTwo;
+    background-color: rgba(0, 0, 0, 0.15);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0px;
+    left: 0px;    
+  }
+
+  &__close-menu {
+    position: absolute;
+    right: 50px;
+    top: 35px;
+    cursor: pointer;
+  }
+
+  &__header {
+    border-bottom: 1px solid #EEEEEE;
+    padding-bottom: 26px;
+    width: 465px;
+    margin-bottom: 37px;
+    font-family: $outfit;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  &__subheader {
+    font-family: $outfit;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 11px;
+  }
+
+  &__search {
+    margin-bottom: 50px;
+    padding-left: 60px;
+    height: 50px;
+    width: 360px;
+    background: #FBFBFC;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+  }
+
+  &__recipient-list {
+    width: 650px;
+
+    h5 {
+      font-family: $outfit;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 15px;
+  
+      color: #5B6D7D;
+
+  
+    }
+
+    &__headers {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      padding-right: 65px;
+      height: 25px;
+
+      &__account-no {
+        margin-left: 70px;
+      }
+
+      &__sort-code {
+        margin-left: 235px;
+      }
+    
+    }
+  }
+}
+
+.fa-magnifying-glass {
+  position: absolute;
+  left: 90px;
+  top: 200.5px;
+}

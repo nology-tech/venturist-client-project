@@ -1,0 +1,64 @@
+@use "../../../assets/sass/global_variables" as *;
+
+.transfer-page__card {
+  background-color: #FBFBFC;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 10px 53px 9px 22px;
+  display: flex;
+  width: 650px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  height: 58px;
+  position: relative;
+
+  p {
+    font-family: $outfit;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: 10px;
+    color: $colourFour;
+  }
+  
+  &--left {
+    display: flex;
+  }
+  
+  &__image {
+    margin: auto;
+    margin-right: 70px;
+    width: 39px;
+    max-height: 39px;
+  }
+
+  &--right {
+    display: flex;
+    text-align: left;
+  }
+
+  &__rate {
+    width: 75px;
+    text-align: right;
+  }
+
+  &__sort-code {
+    margin-right: 60px;
+    width: 60px;
+  }
+
+  &__account-number {
+    width: 75px;
+  }
+
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 99;
+  }
+}
