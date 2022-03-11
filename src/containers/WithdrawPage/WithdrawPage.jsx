@@ -40,9 +40,6 @@ const WithdrawPage = (props) => {
   };
 
   const toggleSuccess = () => {
-    // const temp = {...profileData};
-    // temp.holdings[profileData.cards[0].currencyType] -= parseFloat(showAmount);
-    // updateProfileData(temp);
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
   };
@@ -56,15 +53,15 @@ const WithdrawPage = (props) => {
         textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus."
       />
       <TransactionForm
-        fundsRemaining="£100.00"
-        formTitle="Withdraw Form"
+        formTitle="Withdrawal Form"
         firstName={profileData.firstName}
         lastName={profileData.lastName}
         accountNumber={profileData.accountNumber}
         sortCode={profileData.sortCode}
+        isDisabled = {isDisabled}
+        fundsRemaining={profileData.holdings[profileData.cards[0].currencyType]}
         toggleConfirm={toggleConfirm}
         onlyNumber={onlyNumber}
-        isDisabled = {isDisabled}
         buttonName="Withdraw Funds"
       />
       {showConfirm && (
