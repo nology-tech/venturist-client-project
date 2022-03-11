@@ -3,12 +3,15 @@ import { useState } from "react";
 import Header from "../../components/Header/Header";
 import TransactionForm from "../../components/TransactionForm/TransactionForm";
 import "./DepositPage.scss";
-import userProfile from "../../assets/data/samanthaBrooksProfile";
 import ConfirmDetailsPopUp from "../../components/ConfirmDetailsPopUp/ConfirmDetailsPopUp";
-
 import SuccessfulMessage from "../../components/SuccessfulMessage/SuccessfulMessage";
 
-const DepositPage = () => {
+const DepositPage = (props) => {
+
+  const {
+    profileData
+  } = props;
+
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showAmount, setShowAmount] = useState(0.0);
@@ -47,10 +50,10 @@ const DepositPage = () => {
       <TransactionForm
         fundsRemaining="£100.00"
         formTitle="Deposit Form"
-        firstName={userProfile.firstName}
-        lastName={userProfile.lastName}
-        accountNumber={userProfile.accountNumber}
-        sortCode={userProfile.sortCode}
+        firstName={profileData.firstName}
+        lastName={profileData.lastName}
+        accountNumber={profileData.accountNumber}
+        sortCode={profileData.sortCode}
         toggleConfirm={toggleConfirm}
         onlyNumber={onlyNumber}
         buttonName="Add Funds"
@@ -59,11 +62,11 @@ const DepositPage = () => {
         <ConfirmDetailsPopUp
           toggleSuccess={toggleSuccess}
           toggleConfirm={toggleConfirm}
-          firstName={userProfile.firstName}
-          lastName={userProfile.lastName}
-          accountNumber={userProfile.accountNumber}
-          sortCode={userProfile.sortCode}
-          accountType={userProfile.cards[0].accountType}
+          firstName={profileData.firstName}
+          lastName={profileData.lastName}
+          accountNumber={profileData.accountNumber}
+          sortCode={profileData.sortCode}
+          accountType={profileData.cards[0].accountType}
           totalAmount={showAmount}
         />
       )}

@@ -3,13 +3,15 @@ import { useState } from "react";
 import Header from "../../components/Header/Header";
 import TransactionForm from "../../components/TransactionForm/TransactionForm";
 import "./WithdrawPage.scss";
-import userProfile from "../../assets/data/samanthaBrooksProfile";
 import ConfirmDetailsPopUp from "../../components/ConfirmDetailsPopUp/ConfirmDetailsPopUp";
-import Button from "../../components/Button/Button";
-
 import SuccessfulMessage from "../../components/SuccessfulMessage/SuccessfulMessage";
 
-const WithdrawPage = () => {
+const WithdrawPage = (props) => {
+
+  const {
+    profileData
+  } = props;
+
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showAmount, setShowAmount] = useState(0.0);
@@ -49,10 +51,10 @@ const WithdrawPage = () => {
       <TransactionForm
         fundsRemaining="£100.00"
         formTitle="Withdraw Form"
-        firstName={userProfile.firstName}
-        lastName={userProfile.lastName}
-        accountNumber={userProfile.accountNumber}
-        sortCode={userProfile.sortCode}
+        firstName={profileData.firstName}
+        lastName={profileData.lastName}
+        accountNumber={profileData.accountNumber}
+        sortCode={profileData.sortCode}
         toggleConfirm={toggleConfirm}
         onlyNumber={onlyNumber}
         buttonName="Withdraw Funds"
@@ -61,11 +63,11 @@ const WithdrawPage = () => {
         <ConfirmDetailsPopUp
           toggleSuccess={toggleSuccess}
           toggleConfirm={toggleConfirm}
-          firstName={userProfile.firstName}
-          lastName={userProfile.lastName}
-          accountNumber={userProfile.accountNumber}
-          sortCode={userProfile.sortCode}
-          accountType={userProfile.cards[0].accountType}
+          firstName={profileData.firstName}
+          lastName={profileData.lastName}
+          accountNumber={profileData.accountNumber}
+          sortCode={profileData.sortCode}
+          accountType={profileData.cards[0].accountType}
           totalAmount={showAmount}
         />
       )}

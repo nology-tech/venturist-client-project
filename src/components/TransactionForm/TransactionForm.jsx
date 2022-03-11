@@ -1,7 +1,6 @@
 import React from "react";
 import "./TransactionForm.scss";
 import Button from "../Button/Button";
-import { useState } from "react";
 
 const TransactionForm = (props) => {
   const {
@@ -43,7 +42,7 @@ const TransactionForm = (props) => {
 
         <p id="border"></p>
 
-        <form id="transaction">
+        <form className="transaction">
           <label htmlFor="amount" id="amount">
             Amount
           </label>
@@ -51,7 +50,7 @@ const TransactionForm = (props) => {
             name="amount-input"
             id="amount-input"
             data-testid="amount-input"
-            className="transaction__search-bar__input"
+            className="transaction__input"
             type="number"
             step={0.01}
             min={0.01}
@@ -62,7 +61,7 @@ const TransactionForm = (props) => {
           ></input>
         </form>
 
-        <table className="funds-table">
+        <table id="funds-table">
           <tr>
             <td>Funds remaining:</td>
             <td></td>

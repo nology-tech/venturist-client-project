@@ -34,8 +34,8 @@ const App = () => {
           <Route path="/Convert" element={<ConvertPage liveRateData={liveRateData} profileData={profileData} updateProfileData={updateProfileData} />}></Route>
           <Route path="/Transfer" element={<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />}></Route>
           <Route path="/Contacts" element={<ContactsPage />}></Route>
-          <Route path="/Deposit" element={<DepositPage />}></Route>
-          <Route path="/Withdraw" element={<WithdrawPage />}></Route>
+          <Route path="/Deposit" element={<DepositPage profileData={profileData} />}></Route>
+          <Route path="/Withdraw" element={<WithdrawPage profileData={profileData} />}></Route>
         </Routes>
       </Router>
     </div>

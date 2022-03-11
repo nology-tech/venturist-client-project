@@ -34,21 +34,22 @@
     color: $colourThree;
   }
 
-&__content {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
   
 
-  &__title {
-    border-bottom: 1px solid $colourEleven;
-    font-family: $outfit;
-    font-size: 32px;
-    padding-top: 30px;
-    padding-bottom: 10px;
-  }
+    &__title {
+      border-bottom: 1px solid $colourEleven;
+      font-family: $outfit;
+      font-size: 32px;
+      padding-top: 30px;
+      padding-bottom: 10px;
+    }
 
-}}
+  }
+}
 
 .border {
   border-bottom: 1px solid $colourEleven;
