@@ -29,10 +29,19 @@ const App = () => {
       <Router>
         {!showHome && <NavBar />}
         {!showHome && <UserProfile />}
+
         {/* <NavBar />
         <UserProfile /> */}
         <Routes>
-          <Route path="/Wallet" element={<WalletPage profileData={profileData} liveRateData={liveRateData} />}></Route>
+          <Route
+            path="/Wallet"
+            element={
+              <WalletPage
+                profileData={profileData}
+                liveRateData={liveRateData}
+              />
+            }
+          ></Route>
           <Route path="/LiveRates" element={<LiveRatesPage />}></Route>
           <Route
             path="/Convert"
