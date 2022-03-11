@@ -1,6 +1,6 @@
 import React from 'react';
 import "./MakeTransferChooseCurrency.scss";
-import MakeTransferCurrencyCard from '../MakeTransferCurrencyCard/MakeTransferCurrencyCard';
+import MakeTransferCard from '../MakeTransferCard/MakeTransferCard';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
@@ -23,15 +23,15 @@ library.add(...iconListRegular)
 
 const MakeTransferChooseCurrency = (props) => {
 
-  const {currencyData, handleChangingCurrency, handleSearch} = props;
+  const {currencyData, handleCurrency, handleSearch, handleShowCurrencyModal} = props;
 
-  const currencyCardComponents = currencyData.map((currency,index) => <MakeTransferCurrencyCard key={index} currency={currency} handleChangingCurrency={handleChangingCurrency}/>)
+  const currencyCardComponents = currencyData.map((currency,index) => <MakeTransferCard key={index} type="currency" cardContent={currency} handleEvent={handleCurrency} />)
 
   return (
     <>
     <div className="transfer-page__choose-currency" data-testid="choose-currency">
       <h2 className="transfer-page__choose-currency__header">Choose Currency</h2>
-      <img src={cross} alt="Close menu" className="transfer-page__choose-currency__close-menu" onClick={handleChangingCurrency}/>
+      <img src={cross} alt="Close menu" className="transfer-page__choose-currency__close-menu" onClick={handleShowCurrencyModal}/>
       <h4 className="transfer-page__choose-currency__subheader">Search</h4>
       {icons.Search}
       <input type="text" placeholder="Search..." className="transfer-page__choose-currency__search" onChange={handleSearch} />

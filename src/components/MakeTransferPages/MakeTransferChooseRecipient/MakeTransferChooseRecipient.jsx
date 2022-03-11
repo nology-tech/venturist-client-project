@@ -1,5 +1,5 @@
 import React from 'react';
-import MakeTransferRecipientCard from '../MakeTransferRecipientCard/MakeTransferRecipientCard';
+import MakeTransferCard from '../MakeTransferCard/MakeTransferCard';
 import "./MakeTransferChooseRecipient.scss";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -28,7 +28,7 @@ const MakeTransferChooseRecipient = (props) => {
 
   const userCardListUsed = (userCardList.length !== 0);
   
-  const userCardComponents = userCardList.map((userCard,index) => <MakeTransferRecipientCard key={index} userCard={userCard} />);
+  const userCardComponents = userCardList.map((user,index) => <MakeTransferCard key={index} cardContent={user} type="recipient" handleEvent={()=> alert("working")}/>);
 
   const emptyContactListText = <p className="transfer-page__choose-recipient__recipient-list__empty">You don't seem to have any contacts yet, try adding one!</p>;
 
