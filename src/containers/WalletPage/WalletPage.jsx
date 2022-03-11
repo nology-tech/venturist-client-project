@@ -13,14 +13,7 @@ const WalletPage = (props) => {
         pageFunctionHeading="Wallet"
         textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus."
       />
-      <div className="wallet-page">
-        <Header
-          title="Wallet"
-          pageFunctionHeading="Wallet"
-          textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus."
-        />
-        <Wallet liveRateData={liveRateData} profileData={profileData} />
-      </div>
+      <Wallet liveRateData={liveRateData} profileData={profileData} />
     </div>
   );
 };
