@@ -6,7 +6,7 @@ import MakeTransferConfirmAccount from "../../components/MakeTransferPages/MakeT
 import MakeTransferForm from "../../components/MakeTransferPages/MakeTransferForm/MakeTransferForm";
 
 
-const MakeTransferPage = props => {
+const MakeTransferPage = (props) => {
   const { liveRateData, profileData, contactData } = props;
 
   const exchangeBase = {
@@ -32,9 +32,9 @@ const MakeTransferPage = props => {
     
   }
 
-  const handleShowForm = event => {
-    const amountInput = document.getElementById("amountInput").value;
+  const handleShowForm = (event) => {
     event.preventDefault(); 
+    const amountInput = document.getElementById("amountInput").value;
     if(!(amountInput < exchangeInfo.exchangeFrom.user.holdings[exchangeInfo.exchangeFrom.currency.currencyCode])) {
       alert("You don't have enough of that currency to send.");
       return;
@@ -45,6 +45,10 @@ const MakeTransferPage = props => {
       setShowConfirmAccount(true);
     }
   };
+
+  const handleShowConfirmation = (event) => {
+    event.preventDefault();
+  }
 
   return (
     <div className="make-transfer" data-testid="make-transfer">
@@ -64,7 +68,12 @@ const MakeTransferPage = props => {
       )}
 
       {showConfirmAccount && (
-        <MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={handleAddRecipient} setExchangeInfo={setExchangeInfo} />
+        <MakeTransferConfirmAccount 
+          exchangeInfo={exchangeInfo} 
+          setExchangeInfo={setExchangeInfo} 
+          data={contactData} 
+          handleAddRecipient={handleAddRecipient} 
+        />
       )}
     </div>
   );
