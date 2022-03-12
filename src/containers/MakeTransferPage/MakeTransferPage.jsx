@@ -52,10 +52,10 @@ const MakeTransferPage = props => {
 
       {showInitialForm && (
         <MakeTransferForm
-          exchangeInfo={exchangeInfo} // 
-          setExchangeInfo={setExchangeInfo} //
-          handleShowForm={handleShowForm} // 
-          liveRateData={liveRateData} //
+          exchangeInfo={exchangeInfo}  
+          setExchangeInfo={setExchangeInfo} 
+          handleShowForm={handleShowForm} 
+          liveRateData={liveRateData} 
         />
       )}
 
