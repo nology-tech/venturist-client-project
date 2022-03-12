@@ -67,7 +67,7 @@ describe ("Testing that elements render on screen", () => {
       
     
       fireEvent.click(selectButton);
-      const chooseRecipientContainer = screen.getByTestId("chooseRecipientContainer")
+      const chooseRecipientContainer = screen.getByTestId("choose-modal")
       
       expect(chooseRecipientContainer).toBeInTheDocument();
     });

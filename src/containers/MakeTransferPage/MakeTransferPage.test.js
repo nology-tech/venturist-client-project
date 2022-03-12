@@ -18,7 +18,7 @@ test('Test the pop-up appears for currency from', () => {
 
   const currencyFromButton = screen.getByTestId("currencyFrom");
   fireEvent.click(currencyFromButton);
-  const currencyPopUp = screen.getByTestId("choose-currency");
+  const currencyPopUp = screen.getByTestId("choose-modal");
 
   expect(currencyPopUp).toBeInTheDocument();
 });
@@ -28,7 +28,7 @@ test('Test the pop-up appears for currency to', () => {
 
   const currencyToButton = screen.getByTestId("currencyTo");
   fireEvent.click(currencyToButton);
-  const currencyPopUp = screen.getByTestId("choose-currency");
+  const currencyPopUp = screen.getByTestId("choose-modal");
 
   expect(currencyPopUp).toBeInTheDocument();
 });

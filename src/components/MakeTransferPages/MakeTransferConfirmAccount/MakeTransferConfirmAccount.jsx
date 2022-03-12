@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import "./MakeTransferConfirmAccount.scss";
-import MakeTransferChooseRecipient from '../MakeTransferChooseRecipient/MakeTransferChooseRecipient';
+import MakeTransferChooseModal from '../MakeTransferChooseModal/MakeTransferChooseModal';
 import Button from "../../Button/Button";
 
 const MakeTransferConfirmAccount = (props) => {
@@ -32,12 +32,11 @@ const MakeTransferConfirmAccount = (props) => {
         <div className="transfer-page__confirm__sendContainer__button">
         <Button  buttonName="Select Recipient" buttonFunction={toggleChooseRecipients} />
         <div className="transfer-page__confirm__sendContainer__divider"> </div>
-        {/* <h1 className="transfer-page__confirm__sendContainer__divider">|</h1> */}
         <Button  buttonName="+ Pay Someone New" buttonStyle="clear" buttonFunction={handleAddRecipient} />
         </div>
       </div>
 
-        {showChooseRecipients && <MakeTransferChooseRecipient userCardList = {data} toggleChooseRecipients={toggleChooseRecipients} handleSearch={()=>alert("Search")} />}
+        {showChooseRecipients && <MakeTransferChooseModal type="Recipient" content = {data} handleShowModal={toggleChooseRecipients} handleSearch={()=>alert("Search")} handleEvent={()=>alert("Clicked")}/>}
 
     </div>
   )

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import MakeTransferConfirmAccount from "../../components/MakeTransferPages/MakeTransferConfirmAccount/MakeTransferConfirmAccount";
 import MakeTransferForm from "../../components/MakeTransferPages/MakeTransferForm/MakeTransferForm";
-import MakeTransferChooseCurrency from "./../../components/MakeTransferPages/MakeTransferChooseCurrency/MakeTransferChooseCurrency";
+import MakeTransferChooseModal from "../../components/MakeTransferPages/MakeTransferChooseModal/MakeTransferChooseModal";
 import "./MakeTransferPage.scss";
 
 const MakeTransferPage = props => {
@@ -75,10 +75,10 @@ const MakeTransferPage = props => {
       )}
 
       {showCurrencyModal && (
-        <MakeTransferChooseCurrency
-          currencyData={liveRateData}
-          handleCurrency={handleCurrency}
-          handleShowCurrencyModal={handleShowCurrencyModal}
+        <MakeTransferChooseModal type="Currency"
+          content={liveRateData}
+          handleEvent={handleCurrency}
+          handleShowModal={handleShowCurrencyModal}
           handleSearch={()=>alert("Searching")}
         />
       )}
