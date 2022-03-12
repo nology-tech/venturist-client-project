@@ -5,13 +5,17 @@ import Button from "../../Button/Button";
 
 const MakeTransferConfirmAccount = (props) => {
 
-  const {profileData, data, transferAmount, handleAddRecipient, currencySymbol, currencyCode} = props;
+  const {profileData, data, transferAmount, handleAddRecipient, currencyFrom} = props;
 
   const [showChooseRecipients, setShowChooseRecipients] = useState(false);
   
   const toggleChooseRecipients = () => {
     setShowChooseRecipients(!showChooseRecipients);
   };
+  console.log(currencyFrom);
+  const currencySymbol = currencyFrom.currencySymbol;
+  console.log(currencySymbol);
+  const currencyCode = currencyFrom.currencyCode;
 
   return (
     <div className="transfer-page__confirm">

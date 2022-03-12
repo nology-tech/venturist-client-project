@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import Button from "../../Button/Button";
 import "./MakeTransferForm.scss";
 import CurrencyFlag from "react-currency-flags";
+import MakeTransferChooseModal from "../MakeTransferChooseModal/MakeTransferChooseModal";
 
 const MakeTransferForm = props => {
-  const { exchangeFrom, exchangeTo, handleChangingCurrency, handleShowForm } = props;
+  const { handleChangingCurrency, handleShowForm, liveRateData, handleCurrency, handleShowCurrencyModal, showCurrencyModal, exchangeInfo, setExchangeInfo } = props;
 
   const [exchangeAmount, setExchangeAmount] = useState(0.0);
+
+  const exchangeFrom=exchangeInfo.exchangeFrom.currency;
+  const exchangeTo=exchangeInfo.exchangeTo.currency;
 
   const calculateConversion = () => {
     return exchangeTo.liveRate / exchangeFrom.liveRate;
@@ -25,6 +29,7 @@ const MakeTransferForm = props => {
   };
 
   return (
+    <>
     <form className="transfer-page__transfer-form">
       <div className="transfer-form-bar">
         <h4 className="transfer-form-bar__header">You send</h4>
@@ -113,6 +118,15 @@ const MakeTransferForm = props => {
         />
       </div>
     </form>
+    {showCurrencyModal && (
+      <MakeTransferChooseModal type="Currency"
+        content={liveRateData}
+        handleEvent={handleCurrency}
+        handleShowModal={handleShowCurrencyModal}
+        handleSearch={()=>alert("Searching")}
+      />
+    )}
+    </>
   );
 };
 

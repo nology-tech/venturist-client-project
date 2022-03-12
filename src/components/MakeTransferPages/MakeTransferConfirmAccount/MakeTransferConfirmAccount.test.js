@@ -9,7 +9,7 @@ import profileData from "../../../assets/data/samanthaBrooksProfile";
 describe ("Testing that elements render on screen", () => {
     test("Test to render container on screen", () => {
     
-      render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}} currencySymbol={liveRates[0].currencySymbol} currencyCode={liveRates[0].currencyCode}/>);
+      render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}} currencyFrom={liveRates[0]} />);
      
       const container = screen.getByTestId("confirmSendContainer");
       
@@ -17,7 +17,7 @@ describe ("Testing that elements render on screen", () => {
     });
     test("Test that name renders on screen", () => {
         
-        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}} currencySymbol={liveRates[0].currencySymbol} currencyCode={liveRates[0].currencyCode}/>);
+        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}} currencyFrom={liveRates[0]} />);
         
         const Name = screen.queryByText("Samantha Brooks")
         
@@ -25,7 +25,7 @@ describe ("Testing that elements render on screen", () => {
       });
       test("Test that account number renders on screen", () => {
         
-        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}} currencySymbol={liveRates[0].currencySymbol} currencyCode={liveRates[0].currencyCode}/>);
+        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}} currencyFrom={liveRates[0]} />);
         
         const accountNumber = screen.queryByText("12345678")
         
@@ -33,7 +33,7 @@ describe ("Testing that elements render on screen", () => {
       });
       test("Test that sort code renders on screen", () => {
       
-        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}} currencySymbol={liveRates[0].currencySymbol} currencyCode={liveRates[0].currencyCode}/>);
+        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}} currencyFrom={liveRates[0]} />);
         
         const sortCode = screen.queryByText("553456")
         
@@ -41,7 +41,7 @@ describe ("Testing that elements render on screen", () => {
       });
     test("Test that transfer Amount renders on screen", () => {
         
-        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={500} handleAddRecipient={()=>{}} currencySymbol={liveRates[0].currencySymbol} currencyCode={liveRates[0].currencyCode} />);
+        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={500} handleAddRecipient={()=>{}} currencyFrom={liveRates[0]}  />);
         
         const transferAmount = screen.getByTestId("transferAmount").innerHTML;
         
@@ -50,7 +50,7 @@ describe ("Testing that elements render on screen", () => {
 
       test("Test that fund remaining renders on screen correctly - accurate to 2 decimal places", () => {
        
-        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={3000} handleAddRecipient={()=>{}} currencySymbol={liveRates[0].currencySymbol} currencyCode={liveRates[0].currencyCode}/>);
+        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={3000} handleAddRecipient={()=>{}} currencyFrom={liveRates[0]} />);
        
         const remainingAmount = screen.getByTestId("remainingBalance").innerHTML;
        
@@ -62,7 +62,7 @@ describe ("Testing that elements render on screen", () => {
   describe ("Testing that buttons work correctly", () => {
     test("Test that select button brings up user Card list", () => {
       
-      render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}}/>);
+      render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}} currencyFrom={liveRates[0]}/>);
       const selectButton = screen.getAllByRole("button")[0];
       
     
@@ -74,7 +74,7 @@ describe ("Testing that elements render on screen", () => {
     test("Test that select button brings up user Card list", () => {
       
       const onClick = jest.fn();
-      render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={onClick} />);
+      render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={onClick} currencyFrom={liveRates[0]} />);
       const newButton = screen.getAllByRole("button")[1];
       
       

@@ -2,41 +2,53 @@ import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import MakeTransferConfirmAccount from "../../components/MakeTransferPages/MakeTransferConfirmAccount/MakeTransferConfirmAccount";
 import MakeTransferForm from "../../components/MakeTransferPages/MakeTransferForm/MakeTransferForm";
-import MakeTransferChooseModal from "../../components/MakeTransferPages/MakeTransferChooseModal/MakeTransferChooseModal";
 import "./MakeTransferPage.scss";
 
 const MakeTransferPage = props => {
   const { liveRateData, profileData, contactData } = props;
 
-  const [showCurrencyModal, setShowCurrencyModal] = useState(false);
-  const [currencyFrom, setCurrencyFrom] = useState(liveRateData[0]);
-  const [currencyTo, setCurrencyTo] = useState(liveRateData[1]);
-  const [changingCurrency, setChangingCurrency] = useState("to");
-  const [showInitialForm, setShowInitialForm] = useState(true);
-  const [showConfirmAccount, setShowConfirmAccount] = useState(false);
-  const [transferAmount, setTransferAmount] = useState(0);
-  const [transferFee, setTransferFee] = useState(0);
+  const exchangeBase = {
+    exchangeFrom: {
+      user:profileData,
+      currency:liveRateData[0],
+      amount:0
+    },
+    exchangeTo: {
+      user:{},
+      currency:liveRateData[1],
+      amount:0
+    }
+  }
 
+  const [exchangeInfo, setExchangeInfo] = useState(exchangeBase); // Don't move
+
+  const [showCurrencyModal, setShowCurrencyModal] = useState(false); // Put into form
+  const [changingCurrency, setChangingCurrency] = useState("to"); // Put into form
+  const [showInitialForm, setShowInitialForm] = useState(true); // Don't move
+  const [showConfirmAccount, setShowConfirmAccount] = useState(false); // Don't move
+
+  // Put into form
   const handleShowCurrencyModal = () => {
     setShowCurrencyModal(!showCurrencyModal);
   };
 
+  // Put into confirmaccount
   const handleAddRecipient = () => {
     
   }
 
-  
+  // Don't move
   const handleShowForm = event => {
     const amountInput = document.getElementById("amountInput").value;
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
       event.preventDefault(); 
-      setTransferAmount(amountInput);
-      setTransferFee(amountInput*0.01);
-      setShowInitialForm(!showInitialForm);
-      setShowConfirmAccount(!showConfirmAccount);
+      setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeFrom.amount=(amountInput*1.01));
+      setShowInitialForm(false);
+      setShowConfirmAccount(true);
     }
   };
 
+  // Put into form
   const handleChangingCurrency = (event) => {
     if (event.target.classList.contains("transfer-form-bar__currency-to")) {
       setChangingCurrency("to");
@@ -46,13 +58,15 @@ const MakeTransferPage = props => {
     handleShowCurrencyModal();
   };
 
+
+  // Put into form
   const handleCurrency = (event) => {
     const chosenCurrencyCode = event.target.id.slice(21,24);
     const chosenCurrencyObj = liveRateData.filter(currency => currency.currencyCode === chosenCurrencyCode)[0];
     if(changingCurrency==="to") {
-      setCurrencyTo(chosenCurrencyObj);
+      setExchangeInfo({...exchangeInfo},exchangeInfo.exchangeTo.currency=chosenCurrencyObj);
     } else if(changingCurrency==="from"){
-      setCurrencyFrom(chosenCurrencyObj);
+      setExchangeInfo({...exchangeInfo},exchangeInfo.exchangeFrom.currency=chosenCurrencyObj);
     }
     handleShowCurrencyModal();
   }
@@ -62,29 +76,24 @@ const MakeTransferPage = props => {
       <Header
         title="Transfer"
         pageFunctionHeading="Make Transfer"
-        textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus."
+        textDescription="Easily and safely transfer money in different currencies."
       />
 
       {showInitialForm && (
         <MakeTransferForm
-          exchangeFrom={currencyFrom}
-          exchangeTo={currencyTo}
+          exchangeInfo={exchangeInfo}
+          setExchangeInfo={setExchangeInfo}
           handleChangingCurrency={handleChangingCurrency}
           handleShowForm={handleShowForm}
-        />
-      )}
-
-      {showCurrencyModal && (
-        <MakeTransferChooseModal type="Currency"
-          content={liveRateData}
-          handleEvent={handleCurrency}
-          handleShowModal={handleShowCurrencyModal}
-          handleSearch={()=>alert("Searching")}
+          liveRateData={liveRateData}
+          handleCurrency={handleCurrency}
+          handleShowCurrencyModal={handleShowCurrencyModal}
+          showCurrencyModal={showCurrencyModal}
         />
       )}
 
       {showConfirmAccount && (
-        <MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={Number(transferAmount) + Number(transferFee)} handleAddRecipient={handleAddRecipient} currencySymbol={currencyFrom.currencySymbol} currencyCode={currencyFrom.currencyCode} />
+        <MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={exchangeInfo.exchangeFrom.amount} handleAddRecipient={handleAddRecipient} currencyFrom={exchangeInfo.exchangeFrom.currency} />
       )}
     </div>
   );
