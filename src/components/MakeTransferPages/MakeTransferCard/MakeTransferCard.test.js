@@ -6,7 +6,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 test('Check it renders the currency name', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCard type="currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
+  render(<MakeTransferCard type="Currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
 
   //Act
   const currencyName = screen.queryByText("British Pound");
@@ -18,7 +18,7 @@ test('Check it renders the currency name', () => {
 test('Check it renders the currency flag', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCard type="currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
+  render(<MakeTransferCard type="Currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
 
   //Act
   const flagSpan = screen.queryByTestId("currency-flag");
@@ -30,7 +30,7 @@ test('Check it renders the currency flag', () => {
 test('Check it renders the currency rate', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCard type="currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
+  render(<MakeTransferCard type="Currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
 
   //Act
   const currencyRate = screen.queryByText("1.0000");
@@ -42,7 +42,7 @@ test('Check it renders the currency rate', () => {
 test('Check the overlay exists', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCard type="currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
+  render(<MakeTransferCard type="Currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
 
   //Act
   const overlay = screen.getByTestId("overlay")
@@ -54,7 +54,7 @@ test('Check the overlay exists', () => {
 test('Check the overlay click works', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCard type="currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
+  render(<MakeTransferCard type="Currency" cardContent={currency[0]} handleEvent={(onClick)}/>);
 
   //Act
   const overlay = screen.getByTestId("overlay")
@@ -67,7 +67,7 @@ test('Check the overlay click works', () => {
 test('Check it renders the contacts name', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCard type="recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
+  render(<MakeTransferCard type="Recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
 
   //Act
   const contactName = screen.queryByText("Zoe Jansen");
@@ -79,7 +79,7 @@ test('Check it renders the contacts name', () => {
 test('Check it renders the sort code', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCard type="recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
+  render(<MakeTransferCard type="Recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
 
   //Act
   const contactSortCode = screen.queryByText("553456");
@@ -91,7 +91,7 @@ test('Check it renders the sort code', () => {
 test('Check it renders the account number', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCard type="recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
+  render(<MakeTransferCard type="Recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
 
   //Act
   const contactAccountNumber = screen.queryByText("12345689");
@@ -103,7 +103,7 @@ test('Check it renders the account number', () => {
 test('Check the it renders the image', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCard type="recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
+  render(<MakeTransferCard type="Recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
   //Act
   const bankImage = screen.queryByRole("img");
 
@@ -114,7 +114,7 @@ test('Check the it renders the image', () => {
 test('Check the click function works', () => {
   //Arrange
   const onClick = jest.fn();
-  render(<MakeTransferCard type="recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
+  render(<MakeTransferCard type="Recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
   //Act
   const overlay = screen.getByTestId("overlay")
   fireEvent.click(overlay);
