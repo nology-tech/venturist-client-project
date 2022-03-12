@@ -262,7 +262,7 @@ test("Test the fee symbol and amount are correct", () => {
   const onClick = jest.fn();
   render(
     <MakeTransferForm
-      exchangeInfo={exchangeInfo}  
+      exchangeInfo={exchangeInfo2}  
       setExchangeInfo={setExchangeInfo} 
       handleShowForm={onClick} 
       liveRateData={liveRateData} 
@@ -275,7 +275,7 @@ test("Test the fee symbol and amount are correct", () => {
   const symbol = screen.getByTestId("fee-rate");
 
   // Assert
-  expect(symbol).toHaveTextContent("£ 1.00");
+  expect(symbol).toHaveTextContent("$ 1.00");
 });
 
 test("Test the delivery time is correct", () => {

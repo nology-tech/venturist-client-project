@@ -35,7 +35,11 @@ const MakeTransferPage = props => {
   const handleShowForm = event => {
     const amountInput = document.getElementById("amountInput").value;
     event.preventDefault(); 
-    if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0 && amountInput < exchangeInfo.exchangeFrom.user.holdings[exchangeInfo.exchangeFrom.currency.currencyCode]) {
+    if(!(amountInput < exchangeInfo.exchangeFrom.user.holdings[exchangeInfo.exchangeFrom.currency.currencyCode])) {
+      alert("You don't have enough of that currency to send.");
+      return;
+    }
+    if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
       setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeFrom.amount=(amountInput*1.01));
       setShowInitialForm(false);
       setShowConfirmAccount(true);
