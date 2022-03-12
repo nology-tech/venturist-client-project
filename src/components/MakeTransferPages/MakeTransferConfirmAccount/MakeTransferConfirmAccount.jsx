@@ -17,7 +17,6 @@ const MakeTransferConfirmAccount = (props) => {
     const user = data.filter(contact => contact.IBAN === event.target.id)[0];
     setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeTo.user = user);
     toggleChooseRecipients();
-    console.log(exchangeInfo)
   }
   
   const currencySymbol = exchangeInfo.exchangeFrom.currency.currencySymbol;
@@ -30,11 +29,11 @@ const MakeTransferConfirmAccount = (props) => {
       <div className='transfer-page__confirm__sendContainer' data-testid="confirmSendContainer">
 
         <h2 className='transfer-page__confirm__sendContainer__header'>Send From</h2>
-        <div  className='transfer-page__confirm__sendContainer__details'>
+        <div className='transfer-page__confirm__sendContainer__details'>
           <h6 className='transfer-page__confirm__sendContainer__details__name'>{profileData.firstName} {profileData.lastName}</h6>
-          <div className='transfer-page__confirm__sendContainer__details__text'><p >Account Number:</p> <p>{profileData.accountNumber} </p> </div>            
+          <div className='transfer-page__confirm__sendContainer__details__text'><p>Account Number:</p> <p>{profileData.accountNumber} </p> </div>            
           <div className='transfer-page__confirm__sendContainer__details__text' ><p>Sort Code: </p> <p>{profileData.sortCode}</p> </div>
-          <div className='transfer-page__confirm__sendContainer__details__total' > <h5 >Total </h5> <p data-testid="transferAmount">{currencySymbol}{Number(transferAmount).toFixed(2)}</p></div>          
+          <div className='transfer-page__confirm__sendContainer__details__total' > <h5>Total </h5> <p data-testid="transferAmount">{currencySymbol}{Number(transferAmount).toFixed(2)}</p></div>          
           <div className='transfer-page__confirm__sendContainer__details__funds'> <p>Funds Remaining: </p> <p data-testid="remainingBalance">{currencySymbol}{(Number(profileData.holdings[currencyCode]) - transferAmount).toFixed(2)}</p></div>
           
         </div>
