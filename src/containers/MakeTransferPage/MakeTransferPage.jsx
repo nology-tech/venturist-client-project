@@ -64,7 +64,7 @@ const MakeTransferPage = props => {
       )}
 
       {showConfirmAccount && (
-        <MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={handleAddRecipient} />
+        <MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={handleAddRecipient} setExchangeInfo={setExchangeInfo} />
       )}
     </div>
   );

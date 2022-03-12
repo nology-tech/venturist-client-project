@@ -43,14 +43,11 @@ const MakeTransferForm = props => {
   };
 
   const onlyNumber = event => {
-    let amountInputField = event.target.value;
-    setExchangeAmount(event.target.value);
-    setExchangeInfo({...exchangeInfo},exchangeInfo.exchangeTo.amount=event.target.value);
+    let amountInputField = Number(event.target.value);
+    setExchangeAmount(amountInputField);
+    setExchangeInfo({...exchangeInfo},exchangeInfo.exchangeTo.amount=(amountInputField*calculateConversion().toFixed(2)));
 
-    if (
-      !/[0-9.]/.test(event.key) ||
-      (amountInputField.includes(".") && event.key === ".")
-    ) {
+    if (!/[0-9.]/.test(event.key)) {
       event.preventDefault();
     }
   };

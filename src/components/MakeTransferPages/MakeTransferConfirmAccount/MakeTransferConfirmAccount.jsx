@@ -5,13 +5,20 @@ import Button from "../../Button/Button";
 
 const MakeTransferConfirmAccount = (props) => {
 
-  const { data, handleAddRecipient, exchangeInfo } = props;
+  const { data, handleAddRecipient, exchangeInfo, setExchangeInfo } = props;
 
   const [showChooseRecipients, setShowChooseRecipients] = useState(false);
   
   const toggleChooseRecipients = () => {
     setShowChooseRecipients(!showChooseRecipients);
   };
+
+  const handleChooseRecipient = (event) => {
+    const user = data.filter(contact => contact.IBAN === event.target.id)[0];
+    setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeTo.user = user);
+    toggleChooseRecipients();
+    console.log(exchangeInfo)
+  }
   
   const currencySymbol = exchangeInfo.exchangeFrom.currency.currencySymbol;
   const currencyCode = exchangeInfo.exchangeFrom.currency.currencyCode;
@@ -41,7 +48,7 @@ const MakeTransferConfirmAccount = (props) => {
         </div>
       </div>
 
-        {showChooseRecipients && <MakeTransferChooseModal type="Recipient" content = {data} handleShowModal={toggleChooseRecipients} handleSearch={()=>alert("Search")} handleEvent={()=>alert("Clicked")}/>}
+        {showChooseRecipients && <MakeTransferChooseModal type="Recipient" content = {data} handleShowModal={toggleChooseRecipients} handleSearch={()=>alert("Search")} handleEvent={handleChooseRecipient}/>}
 
     </div>
   )
