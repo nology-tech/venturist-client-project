@@ -7,7 +7,7 @@ import MakeTransferChooseModal from "../MakeTransferChooseModal/MakeTransferChoo
 const MakeTransferForm = props => {
   const { handleShowForm, liveRateData, exchangeInfo, setExchangeInfo } = props;
 
-  const [exchangeAmount, setExchangeAmount] = useState(0.0);
+  const [exchangeAmount, setExchangeAmount] = useState(0);
   const [showCurrencyModal, setShowCurrencyModal] = useState(false); 
   const [changingCurrency, setChangingCurrency] = useState("to"); 
 
@@ -74,7 +74,7 @@ const MakeTransferForm = props => {
             </p>
           </div>
           <p className="transfer-form-bar__amount">
-            {exchangeFrom.currencySymbol}
+            {exchangeFrom.currencySymbol} 
             <input
               id="amountInput"
               data-testid="amountInput"
