@@ -23,9 +23,11 @@ const NavItem = (props) => {
   const pathLocation = window.location.pathname.split("/")[1].toLowerCase();
   const propsLabel = props.label.toLowerCase().split(" ").join("");
   let className = 'navbar__nav-item';
+
   if (props.activeButton === props.label || pathLocation===propsLabel) {
     className += " navbar__nav-item--active"
   }
+  
   return (
     <Link to={"/" + propsLabel} style={{ textDecoration: 'none' }} >
       <div className={className} onClick={() => props.handleClick(props.label) } key={props.index} data-testid="navItem">

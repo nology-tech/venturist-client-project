@@ -5,7 +5,6 @@ import Header from "../../components/Header/Header";
 import MakeTransferConfirmAccount from "../../components/MakeTransferPages/MakeTransferConfirmAccount/MakeTransferConfirmAccount";
 import MakeTransferForm from "../../components/MakeTransferPages/MakeTransferForm/MakeTransferForm";
 
-
 const MakeTransferPage = (props) => {
   const { liveRateData, profileData, contactData } = props;
 
@@ -27,7 +26,7 @@ const MakeTransferPage = (props) => {
   const [showInitialForm, setShowInitialForm] = useState(true); 
   const [showConfirmAccount, setShowConfirmAccount] = useState(false); 
 
-  // Put into confirmaccount
+  // Put into confirmAccount
   const handleAddRecipient = () => {
     
   }
