@@ -5,14 +5,11 @@ import "./ConfirmDetailsPopUp.scss";
 
 const ConfirmDetailsPopUp = (props) => {
   const {
-    firstName,
-    lastName,
-    accountNumber,
-    sortCode,
-    accountType,
+    profileData,
     totalAmount,
+    toggleConfirm, 
+    toggleSuccess
   } = props;
-  const { toggleConfirm, toggleSuccess } = props;
 
   return (
     <div className="confirm-popup" id="confirm-popup">
@@ -31,26 +28,26 @@ const ConfirmDetailsPopUp = (props) => {
               Recipient Name
             </p>
             <p className="user-info">
-              {firstName} {lastName}
+              {profileData.firstName} {profileData.lastName}
             </p>
           </div>
           <div className="confirm-popup__content__account-type">
             <p id="header" className="account-details">
               Account Type
             </p>
-            <p className="user-info">{accountType}</p>
+            <p className="user-info">{profileData.cards[0].accountType}</p>
           </div>
           <div className="confirm-popup__content__account-number">
             <p id="header" className="account-details">
               Account Number
             </p>
-            <p className="user-info">{accountNumber}</p>
+            <p className="user-info">{profileData.accountNumber}</p>
           </div>
           <div className="confirm-popup__content__sort-code">
             <p id="header" className="account-details">
               Sort Code
             </p>
-            <p className="user-info">{sortCode}</p>
+            <p className="user-info">{profileData.sortCode}</p>
           </div>
           <div className="confirm-popup__content__total-amount">
             <p id="header" className="account-details">

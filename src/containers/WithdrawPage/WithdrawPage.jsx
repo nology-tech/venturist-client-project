@@ -10,7 +10,7 @@ const WithdrawPage = (props) => {
 
   const {
     profileData,
-    updateProfileData
+    updateProfileData,
   } = props;
 
   const [showConfirm, setShowConfirm] = useState(false);
@@ -29,17 +29,21 @@ const WithdrawPage = (props) => {
     }
   };
 
-  // If account total is less than the amount wanting to withdraw, don't allow!
   const toggleConfirm = event => {
-    setIsDisabled(!isDisabled);
+    event.preventDefault();
     const amountInput = document.getElementById("amount-input").value;
-    if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
+    const hasValidHoldings = (profileData.holdings[profileData.cards[0].currencyType] - parseFloat(amountInput) > 0)  
+    if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0 && hasValidHoldings) {
       event.preventDefault(); 
+      setIsDisabled(!isDisabled);
       setShowConfirm(!showConfirm);
     }
   };
 
-  const toggleSuccess = () => {
+  const toggleSuccess = () => { 
+    const tempProfileData = {...profileData};
+    tempProfileData.holdings[profileData.cards[0].currencyType] -= parseFloat(showAmount);
+    updateProfileData(tempProfileData);
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
   };
@@ -54,25 +58,17 @@ const WithdrawPage = (props) => {
       />
       <TransactionForm
         formTitle="Withdrawal Form"
-        firstName={profileData.firstName}
-        lastName={profileData.lastName}
-        accountNumber={profileData.accountNumber}
-        sortCode={profileData.sortCode}
-        isDisabled = {isDisabled}
-        fundsRemaining={profileData.holdings[profileData.cards[0].currencyType]}
+        buttonName="Withdraw Funds"
+        profileData={profileData}
+        isDisabled= {isDisabled}
         toggleConfirm={toggleConfirm}
         onlyNumber={onlyNumber}
-        buttonName="Withdraw Funds"
       />
       {showConfirm && (
         <ConfirmDetailsPopUp
           toggleSuccess={toggleSuccess}
           toggleConfirm={toggleConfirm}
-          firstName={profileData.firstName}
-          lastName={profileData.lastName}
-          accountNumber={profileData.accountNumber}
-          sortCode={profileData.sortCode}
-          accountType={profileData.cards[0].accountType}
+          profileData={profileData}
           totalAmount={showAmount}
         />
       )}

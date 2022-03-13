@@ -10,13 +10,14 @@ const DepositPage = (props) => {
 
   const {
     profileData,
-    updateProfileData
+    updateProfileData,
   } = props;
 
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   const [showAmount, setShowAmount] = useState(0.0);
+  const [showErrorMessage, setShowErrorMessage] = useState(false)
 
   const onlyNumber = event => {
     let amountInputField = event.target.value;
@@ -30,15 +31,19 @@ const DepositPage = (props) => {
   };
 
   const toggleConfirm = event => {
-    setIsDisabled(!isDisabled);
     const amountInput = document.getElementById("amount-input").value;
-    if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
+    const hasValidAmount = (profileData.cards[0].amount > showAmount) 
+    if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0 && hasValidAmount) { 
       event.preventDefault(); 
+      setIsDisabled(!isDisabled);
       setShowConfirm(!showConfirm);
     }
   };
 
   const toggleSuccess = () => { 
+    const tempProfileData = {...profileData};
+    tempProfileData.holdings[profileData.cards[0].currencyType] += parseFloat(showAmount);
+    updateProfileData(tempProfileData);
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
   };
@@ -51,26 +56,19 @@ const DepositPage = (props) => {
         textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus."
       />
       <TransactionForm
-        formTitle="Deposit Form"
-        firstName={profileData.firstName}
-        lastName={profileData.lastName}
-        accountNumber={profileData.accountNumber}
-        sortCode={profileData.sortCode}
-        isDisabled = {isDisabled}
-        fundsRemaining={profileData.holdings[profileData.cards[0].currencyType]}
-        toggleConfirm={toggleConfirm}
-        onlyNumber={onlyNumber}
-        buttonName="Add Funds"
-      />
+      formTitle="Deposit Form"
+      buttonName="Add Funds"
+      profileData={profileData}
+      isDisabled= {isDisabled}
+      toggleConfirm={toggleConfirm}
+      onlyNumber={onlyNumber}
+    />
+
       {showConfirm && (
         <ConfirmDetailsPopUp
           toggleSuccess={toggleSuccess}
           toggleConfirm={toggleConfirm}
-          firstName={profileData.firstName}
-          lastName={profileData.lastName}
-          accountNumber={profileData.accountNumber}
-          sortCode={profileData.sortCode}
-          accountType={profileData.cards[0].accountType}
+          profileData={profileData}
           totalAmount={showAmount}
         />
       )}

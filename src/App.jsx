@@ -22,7 +22,6 @@ const App = () => {
     setProfileData(newData);
   }
 
-
   return (
     <div className="App">
       <Router>

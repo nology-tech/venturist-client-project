@@ -5,14 +5,12 @@ import Button from "../Button/Button";
 const TransactionForm = (props) => {
   const {
     formTitle,
-    firstName,
-    lastName,
-    accountNumber,
-    sortCode,
-    fundsRemaining,
     buttonName,
+    profileData,
+    toggleConfirm, 
+    onlyNumber, 
+    isDisabled
   } = props;
-  const { toggleConfirm, onlyNumber, isDisabled } = props;
 
   return (
     <section className="deposit-form">
@@ -20,7 +18,7 @@ const TransactionForm = (props) => {
       <div className="deposit-form__table">
         <table>
           <h5 className="deposit-form__table__user-name">
-            {firstName} {lastName}
+            {profileData.firstName} {profileData.lastName}
           </h5>
           <tr>
             <td id="account-details" colspan="2">
@@ -28,7 +26,7 @@ const TransactionForm = (props) => {
             </td>
             <td></td>
             <td className="deposit-form__table__user-details">
-              {accountNumber}
+              {profileData.accountNumber}
             </td>
           </tr>
           <tr>
@@ -36,7 +34,7 @@ const TransactionForm = (props) => {
               Sort Code:
             </td>
             <td></td>
-            <td className="deposit-form__table__user-details">{sortCode}</td>
+            <td className="deposit-form__table__user-details">{profileData.sortCode}</td>
           </tr>
         </table>
 
@@ -46,30 +44,32 @@ const TransactionForm = (props) => {
           <label htmlFor="amount" id="amount">
             Amount
           </label>
-          <input
-            id="amount-input"
-            data-testid="amount-input"
-            className="transaction__input"
-            type="number"
-            step={0.01}
-            min={0.01}
-            pattern="[0-9.]+"
-            onChange={onlyNumber}
-            placeholder="00.00"
-            disabled={isDisabled}
-            required
-          ></input>
+          <div>
+            <p>{profileData.cards[0].currencySymbol}
+            <input
+              id="amount-input"
+              data-testid="amount-input"
+              className="transaction__input"
+              type="number"
+              step={0.01}
+              min={0.01}
+              pattern="[0-9.]+"
+              onChange={onlyNumber}
+              placeholder="00.00"
+              disabled={isDisabled}
+              required>
+            </input>
+            </p>
+          </div>
+
         </form>
 
         <table id="funds-table">
           <tr>
             <td>Funds remaining:</td>
             <td></td>
-            <td
-              id="funds-remaining"
-              className="deposit-form__table__user-details"
-            >
-              {fundsRemaining}
+            <td id="funds-remaining" className="deposit-form__table__user-details">
+              {profileData.holdings[profileData.cards[0].currencyType].toFixed(2)}
             </td>
           </tr>
         </table>
