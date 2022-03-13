@@ -17,7 +17,6 @@ const DepositPage = (props) => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   const [showAmount, setShowAmount] = useState(0.0);
-  const [showErrorMessage, setShowErrorMessage] = useState(false)
 
   const onlyNumber = event => {
     let amountInputField = event.target.value;
