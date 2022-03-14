@@ -13,8 +13,8 @@ const TransactionForm = (props) => {
   } = props;
 
   return (
-    <section className="deposit-form">
-      <p className="deposit-form__title">{formTitle}</p>
+    <section className="deposit-form" data-testid="section-form">
+      <p data-testid="form-title" className="deposit-form__title">{formTitle}</p>
       <div className="deposit-form__table">
         <table>
           <h5 className="deposit-form__table__user-name">
@@ -68,14 +68,15 @@ const TransactionForm = (props) => {
           <tr>
             <td>Funds remaining:</td>
             <td></td>
-            <td id="funds-remaining" className="deposit-form__table__user-details">
+            <td data-testid="funds-remaining" id="funds-remaining" className="deposit-form__table__user-details">
               {profileData.holdings[profileData.cards[0].currencyType].toFixed(2)}
             </td>
           </tr>
         </table>
       </div>
       <div className="button-container">
-        <Button buttonFunction={toggleConfirm} buttonName={buttonName} hasIcon={false} />
+        <Button               data-testid="amount-input" buttonFunction={toggleConfirm} buttonName={buttonName} hasIcon={false} 
+        />
       </div>
       <p id="box-border"></p>
     </section>

@@ -62,7 +62,7 @@ describe("Testing that elements render on screen", () => {
       expect(sortCode).toBeInTheDocument();
     });
     
-    test("Test that transfer Amount renders on screen", () => {
+    test("Test that transfer amount renders on screen", () => {
       render(
         <ConfirmDetailsPopUp 
         toggleSuccess={()=>{}}
@@ -108,7 +108,7 @@ describe("Testing that elements render on screen", () => {
       const selectButton = screen.getAllByRole("button")[1];
 
       fireEvent.click(selectButton);
-      const chooseRecipientContainer = screen.queryByText("Completed");
+      const successfulMessageContainer = screen.queryByText("Completed");
     });
 
   });

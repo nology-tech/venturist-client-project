@@ -32,7 +32,7 @@ const WithdrawPage = (props) => {
   const toggleConfirm = event => {
     event.preventDefault();
     const amountInput = document.getElementById("amount-input").value;
-    const hasValidHoldings = (profileData.holdings[profileData.cards[0].currencyType] - parseFloat(amountInput) > 0)  
+    const hasValidHoldings = (profileData.holdings[profileData.cards[0].currencyType] - parseFloat(amountInput) >= 0)  
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0 && hasValidHoldings) {
       event.preventDefault(); 
       setIsDisabled(!isDisabled);
