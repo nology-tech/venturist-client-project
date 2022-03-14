@@ -20,11 +20,9 @@ library.add(...iconListRegular)
 
 const NavItem = (props) => {
 
-  const location = useLocation();
-  
-
   const [className,setClassName] = useState('navbar__nav-item');
 
+  const location = useLocation();
 
   const handToggle = () => {
     if (window.location.pathname.split("/")[1].toLowerCase() === props.label.split(" ").join("").toLowerCase()) {
@@ -36,11 +34,12 @@ const NavItem = (props) => {
 
   useEffect ( () => {
     handToggle();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location])
 
   return (
     <Link to={"/" + props.label.split(" ").join("").toLowerCase()} style={{ textDecoration: 'none' }} >
-      <div className={className} onClick={() => props.handleClick(props.label) } key={props.index} data-testid="navItem">
+      <div className={className} key={props.index} data-testid="navItem">
         <div className='navbar__nav-item--icon'>{props.icon}</div>
         <p>{props.label}</p>
       </div>
