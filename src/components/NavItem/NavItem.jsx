@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './NavItem.scss'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
 import * as IconsRegular from '@fortawesome/free-regular-svg-icons';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 const iconListSolid = Object
   .keys(IconsSolid)
@@ -19,10 +19,25 @@ const iconListRegular = Object
 library.add(...iconListRegular)
 
 const NavItem = (props) => {
-  let className = 'navbar__nav-item';
-  if (window.location.pathname.split("/")[1].toLowerCase() === props.label.split(" ").join("").toLowerCase()) {
-    className += " navbar__nav-item--active"
+
+  const location = useLocation();
+  
+
+  const [className,setClassName] = useState('navbar__nav-item');
+
+
+  const handToggle = () => {
+    if (window.location.pathname.split("/")[1].toLowerCase() === props.label.split(" ").join("").toLowerCase()) {
+      setClassName(className + ' navbar__nav-item--active')
+    } else {
+      setClassName('navbar__nav-item');
+    }
   }
+
+  useEffect ( () => {
+    handToggle();
+  }, [location])
+
   return (
     <Link to={"/" + props.label.split(" ").join("").toLowerCase()} style={{ textDecoration: 'none' }} >
       <div className={className} onClick={() => props.handleClick(props.label) } key={props.index} data-testid="navItem">
