@@ -31,7 +31,7 @@ const DepositPage = (props) => {
 
   const toggleConfirm = event => {
     const amountInput = document.getElementById("amount-input").value;
-    const hasValidAmount = (profileData.cards[0].amount > showAmount) 
+    const hasValidAmount = (profileData.cards[0].amount >= showAmount) 
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0 && hasValidAmount) { 
       event.preventDefault(); 
       setIsDisabled(!isDisabled);
@@ -42,6 +42,7 @@ const DepositPage = (props) => {
   const toggleSuccess = () => { 
     const tempProfileData = {...profileData};
     tempProfileData.holdings[profileData.cards[0].currencyType] += parseFloat(showAmount);
+    tempProfileData.cards[0].amount -= parseFloat(showAmount);
     updateProfileData(tempProfileData);
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);

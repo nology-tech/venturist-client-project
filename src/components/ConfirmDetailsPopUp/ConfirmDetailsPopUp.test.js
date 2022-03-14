@@ -105,10 +105,11 @@ describe("Testing that elements render on screen", () => {
       />
       );
 
+      const successfulMessage = screen.queryByText("Completed");
       const selectButton = screen.getAllByRole("button")[1];
 
       fireEvent.click(selectButton);
-      const successfulMessageContainer = screen.queryByText("Completed");
+      expect(successfulMessage).toBeInTheDocument();
     });
 
   });

@@ -1,5 +1,5 @@
 import TransactionForm from "./TransactionForm";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import profileData from "../../assets/data/samanthaBrooksProfile";
 
 describe("Testing that elements render on screen", () => {
@@ -139,10 +139,9 @@ describe("Testing that elements render on screen", () => {
       const confirmDetailsComponent = screen.queryByText("Confirm Details");
     });
 
-    test("Should disable input field on button click to confirm details component", () => {
-      
+    test("OnlyNumber prevents multiple decimal points", () => {
+
       const onClick = jest.fn();
-      
       render(
         <TransactionForm
           formTitle="Withdrawal Form"
@@ -151,14 +150,17 @@ describe("Testing that elements render on screen", () => {
           isDisabled= {()=>{}}
           toggleConfirm={onClick}
           onlyNumber={()=>{}}
-      />);
+        />);
+    
+      const container = screen.getByTestId("section-form");
+      const selectButton = screen.getByRole('button');
       
-      const selectButton = screen.getByTestId('button');      
-      const inputField = screen.getByTestId("amount-input")
-      
+      userEvent.type(screen.getByTestId("amoqunt-input"), "100.564");
       fireEvent.click(selectButton);
-      expect(inputField).toHaveAttribute('disabled');
+    
+      expect(container).toBeInTheDocument();
     });
+
 
   });
 

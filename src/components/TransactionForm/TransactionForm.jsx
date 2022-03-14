@@ -75,7 +75,7 @@ const TransactionForm = (props) => {
         </table>
       </div>
       <div className="button-container">
-        <Button               data-testid="amount-input" buttonFunction={toggleConfirm} buttonName={buttonName} hasIcon={false} 
+        <Button data-testid="confirm-button" buttonFunction={toggleConfirm} buttonName={buttonName} hasIcon={false} 
         />
       </div>
       <p id="box-border"></p>
