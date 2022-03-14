@@ -60,7 +60,6 @@ const ConfirmDetailsPopUp = (props) => {
         <div className="button-container">
           <Button
             data-testid="button"
-            role="button"
             buttonName="Go Back"
             buttonStyle="clear"
             buttonFunction={toggleConfirm}
