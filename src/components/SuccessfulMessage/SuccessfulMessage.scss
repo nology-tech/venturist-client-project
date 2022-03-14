@@ -13,33 +13,19 @@
 }
 
 .success {
-<<<<<<< HEAD
   position: absolute;
   width: 500px;
   height: 500px;
-=======
-  width: 595px;
-  height: 573px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  margin-left: -297px;
-  margin-top: -287px;
->>>>>>> 5fe84a542ad45421f47db73bfb467881c9dd375c
   border-radius: 8px;
   background: #ffffff;
   padding-left: 50px;
   padding-right: 60px;
   z-index: 2;
-<<<<<<< HEAD
   position: fixed;
   top: 250px;
   left: 600px;
   right: 0;
   bottom: 0;
-=======
-  box-sizing: border-box;
->>>>>>> 5fe84a542ad45421f47db73bfb467881c9dd375c
 
   &__icon {
     position: absolute;
