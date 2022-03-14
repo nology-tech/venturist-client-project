@@ -45,9 +45,9 @@ const MakeTransferPage = (props) => {
     }
   };
 
-  const handleShowConfirmation = (event) => {
-    event.preventDefault();
-  }
+  // const handleShowConfirmation = (event) => {
+  //   event.preventDefault();
+  // }
 
   return (
     <div className="make-transfer" data-testid="make-transfer">
