@@ -20,11 +20,11 @@ library.add(...iconListRegular)
 
 const NavItem = (props) => {
   let className = 'navbar__nav-item';
-  if (props.activeButton === props.label) {
+  if (window.location.pathname.split("/")[1].toLowerCase() === props.label.split(" ").join("").toLowerCase()) {
     className += " navbar__nav-item--active"
   }
   return (
-    <Link to={"/" + props.label.split(" ").join("")} style={{ textDecoration: 'none' }} >
+    <Link to={"/" + props.label.split(" ").join("").toLowerCase()} style={{ textDecoration: 'none' }} >
       <div className={className} onClick={() => props.handleClick(props.label) } key={props.index} data-testid="navItem">
         <div className='navbar__nav-item--icon'>{props.icon}</div>
         <p>{props.label}</p>
