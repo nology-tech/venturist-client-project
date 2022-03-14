@@ -31,8 +31,7 @@ const MakeTransferPage = (props) => {
     
   }
 
-  const handleShowForm = (event) => {
-    event.preventDefault(); 
+  const handleShowForm = () => {
     const amountInput = document.getElementById("amountInput").value;
     if(!(amountInput < exchangeInfo.exchangeFrom.user.holdings[exchangeInfo.exchangeFrom.currency.currencyCode])) {
       alert("You don't have enough of that currency to send.");
