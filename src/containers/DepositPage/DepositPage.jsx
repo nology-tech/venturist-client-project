@@ -55,13 +55,13 @@ const DepositPage = (props) => {
         textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus."
       />
       <TransactionForm
-      formTitle="Deposit Form"
-      buttonName="Add Funds"
-      profileData={profileData}
-      isDisabled= {isDisabled}
-      toggleConfirm={toggleConfirm}
-      onlyNumber={onlyNumber}
-    />
+        formTitle="Deposit Form"
+        buttonName="Add Funds"
+        profileData={profileData}
+        isDisabled= {isDisabled}
+        toggleConfirm={toggleConfirm}
+        onlyNumber={onlyNumber}
+      />
 
       {showConfirm && (
         <ConfirmDetailsPopUp
