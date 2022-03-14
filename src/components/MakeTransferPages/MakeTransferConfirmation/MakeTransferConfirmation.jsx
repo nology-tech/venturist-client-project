@@ -13,7 +13,9 @@ const MakeTransferConfirmation = (props) => {
     return (Number(to.currency.liveRate)/Number(from.currency.liveRate)).toFixed(4);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    
+  };
 
   return (
     <div className="make-transfer__confirmation">
