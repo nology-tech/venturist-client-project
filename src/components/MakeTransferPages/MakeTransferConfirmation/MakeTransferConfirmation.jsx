@@ -13,6 +13,8 @@ const MakeTransferConfirmation = (props) => {
     return (Number(to.currency.liveRate)/Number(from.currency.liveRate)).toFixed(4);
   };
 
+  const handleSubmit = () => {};
+
   return (
     <div className="make-transfer__confirmation">
       <div className="make-transfer__confirmation__left">
@@ -58,11 +60,11 @@ const MakeTransferConfirmation = (props) => {
         <div className="make-transfer__confirmation__info">
           <div className="make-transfer__confirmation__split make-transfer__confirmation__16px">
             <h5>Rate</h5>
-            <p className="">{calculateConversion()}</p>
+            <p>{calculateConversion()}</p>
           </div>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__16px">
             <h5>Fee</h5>
-            <p >{from.currency.currencySymbol} {from.fee}</p>
+            <p>{from.currency.currencySymbol} {from.fee}</p>
           </div>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__16px">
             <h5>Delivery</h5>
@@ -72,11 +74,11 @@ const MakeTransferConfirmation = (props) => {
         <div className="make-transfer__confirmation__totals">
           <div className="make-transfer__confirmation__split">
             <h4>Total to Pay</h4>
-            <h4>{from.currency.currencySymbol} {Number(from.amount) + Number(from.fee)}</h4>
+            <h4>{from.currency.currencySymbol} {(Number(from.amount) + Number(from.fee)).toFixed(2).toLocaleString("en-us")}</h4>
           </div>
           <div className="make-transfer__confirmation__split">
             <h6>Recipient Recieves</h6>
-            <h6>{to.currency.currencySymbol} {to.amount}</h6>
+            <h6>{to.currency.currencySymbol} {Number(to.amount).toFixed(2).toLocaleString("en-us")}</h6>
           </div>
         </div>
         <div className="make-transfer__confirmation__buttons">
@@ -90,6 +92,7 @@ const MakeTransferConfirmation = (props) => {
             hasIcon={true} 
             iconSrc={""} 
             iconPosition="left"
+            buttonFunction={handleSubmit}
           />
         </div>
       </div>
