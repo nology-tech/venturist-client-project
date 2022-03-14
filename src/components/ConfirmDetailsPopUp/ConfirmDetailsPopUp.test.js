@@ -1,5 +1,5 @@
 import ConfirmDetailsPopUp from "./ConfirmDetailsPopUp";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userProfile from "../../assets/data/samanthaBrooksProfile";
 
 describe("Testing that elements render on screen", () => {
@@ -20,7 +20,7 @@ describe("Testing that elements render on screen", () => {
 
     test("Test that name renders on screen", () => {
       render(
-        <ConfirmDetailsPopUp 
+      <ConfirmDetailsPopUp 
         toggleSuccess={()=>{}}
         toggleConfirm={()=>{}}
         profileData={userProfile}
@@ -34,7 +34,7 @@ describe("Testing that elements render on screen", () => {
     
     test("Test that account number renders on screen", () => {
       render(
-        <ConfirmDetailsPopUp 
+      <ConfirmDetailsPopUp 
         toggleSuccess={()=>{}}
         toggleConfirm={()=>{}}
         profileData={userProfile}
@@ -49,7 +49,7 @@ describe("Testing that elements render on screen", () => {
     
     test("Test that sort code renders on screen", () => {
       render(
-        <ConfirmDetailsPopUp 
+      <ConfirmDetailsPopUp 
         toggleSuccess={()=>{}}
         toggleConfirm={()=>{}}
         profileData={userProfile}
@@ -64,7 +64,7 @@ describe("Testing that elements render on screen", () => {
     
     test("Test that transfer amount renders on screen", () => {
       render(
-        <ConfirmDetailsPopUp 
+      <ConfirmDetailsPopUp 
         toggleSuccess={()=>{}}
         toggleConfirm={()=>{}}
         profileData={userProfile}
@@ -79,7 +79,7 @@ describe("Testing that elements render on screen", () => {
 
     test("Test that component header renders on the screen", () => {
       render(
-        <ConfirmDetailsPopUp 
+      <ConfirmDetailsPopUp 
         toggleSuccess={()=>{}}
         toggleConfirm={()=>{}}
         profileData={userProfile}
@@ -100,7 +100,7 @@ describe("Testing that elements render on screen", () => {
       const onClick = jest.fn();
       
       render(
-        <ConfirmDetailsPopUp 
+      <ConfirmDetailsPopUp 
         toggleSuccess={()=>{}}
         toggleConfirm={()=>{}}
         profileData={userProfile}
@@ -114,8 +114,7 @@ describe("Testing that elements render on screen", () => {
       expect(goBackButton).toBeInTheDocument();
       expect(confirmButton).toBeInTheDocument();
 
-    });
-    
+    }); 
 
   });
 
