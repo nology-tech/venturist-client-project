@@ -6,7 +6,7 @@ const userProfile = {
   accountNumber: 12345689,
   sortCode: "553456",
   IBAN: "GB56HLFX11005310847788",
-  cards = [
+  cards: [
     {
       type: "VISA DEBIT",
       accountType: "Current Account",
@@ -15,7 +15,7 @@ const userProfile = {
       currencyType: "GBP"
     },
   ],
-  holdings = {
+  holdings: {
     EUR: 1753.50
   }
 }

@@ -1,6 +1,6 @@
 @use "../../../assets/sass/global_variables" as *;
 
-.transfer-page__choose-currency {
+.transfer-page__choose {
 
   padding: 50px 50px 0 65px;
   box-sizing: border-box;
@@ -58,7 +58,7 @@
     font-size: 16px;
   }
 
-  &__currency-list {
+  &__list {
     width: 650px;    
 
     h5 {
@@ -79,6 +79,14 @@
 
       &__rate {
         margin-left: 380px;
+      }
+
+      &__account-no {
+        margin-left: 70px;
+      }
+
+      &__sort-code {
+        margin-left: 235px;
       }
     }
 

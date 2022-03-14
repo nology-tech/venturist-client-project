@@ -1,17 +1,49 @@
 import MakeTransferForm from "./MakeTransferForm";
 import { render, screen } from "@testing-library/react";
-import mockData from "../../../assets/data/liveRatesExample";
 import userEvent from "@testing-library/user-event";
+
+import liveRateData from "./../../../assets/data/liveRatesExample";
+import profileData from "./../../../assets/data/samanthaBrooksProfile";
+
+const exchangeInfo = {
+  exchangeFrom: {
+    user: profileData,
+    currency: liveRateData[0],
+    amount: 0
+  },
+  exchangeTo: {
+    user: {},
+    currency: liveRateData[1],
+    amount: 0
+  }
+};
+
+const exchangeInfo2 = {
+  exchangeFrom: {
+    user: profileData,
+    currency: liveRateData[1],
+    amount: 0
+  },
+  exchangeTo: {
+    user: {},
+    currency: liveRateData[0],
+    amount: 0
+  }
+};
+
+// const [exchangeInfo, setExchangeInfo] = useState(exchangeBase); 
+
+const setExchangeInfo = jest.fn();
 
 test("Should render the input box", () => {
   // Arrange
   const onClick = jest.fn();
   render(
     <MakeTransferForm
-      exchangeFrom={mockData[0]}
-      exchangeTo={mockData[1]}
-      handleCurrency={onClick}
-      handleShowForm={onClick}
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
     />
   );
 
@@ -27,10 +59,10 @@ test("Should render the correct placeholder text", () => {
   const onClick = jest.fn();
   render(
     <MakeTransferForm
-      exchangeFrom={mockData[0]}
-      exchangeTo={mockData[1]}
-      handleCurrency={onClick}
-      handleShowForm={onClick}
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
     />
   );
 
@@ -46,10 +78,10 @@ test("Both headers render with correct text", () => {
   const onClick = jest.fn();
   render(
     <MakeTransferForm
-      exchangeFrom={mockData[0]}
-      exchangeTo={mockData[1]}
-      handleCurrency={onClick}
-      handleShowForm={onClick}
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
     />
   );
 
@@ -67,10 +99,10 @@ test("Should render the correct conversion amount", () => {
   const onClick = jest.fn();
   render(
     <MakeTransferForm
-      exchangeFrom={mockData[0]}
-      exchangeTo={mockData[1]}
-      handleCurrency={onClick}
-      handleShowForm={onClick}
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
     />
   );
 
@@ -87,10 +119,10 @@ test("Should render the correct total amount", () => {
   const onClick = jest.fn();
   render(
     <MakeTransferForm
-      exchangeFrom={mockData[0]}
-      exchangeTo={mockData[1]}
-      handleCurrency={onClick}
-      handleShowForm={onClick}
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
     />
   );
 
@@ -107,10 +139,10 @@ test("Should render the button with the correct text content", () => {
   const onClick = jest.fn();
   render(
     <MakeTransferForm
-      exchangeFrom={mockData[0]}
-      exchangeTo={mockData[1]}
-      handleCurrency={onClick}
-      handleShowForm={onClick}
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
     />
   );
 
@@ -127,10 +159,10 @@ test("Check correct currency details render on page - British Pound, US Dollar",
   const onClick = jest.fn();
   render(
     <MakeTransferForm
-      exchangeFrom={mockData[0]}
-      exchangeTo={mockData[1]}
-      handleCurrency={onClick}
-      handleShowForm={onClick}
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
     />
   );
 
@@ -148,10 +180,10 @@ test("Check correct currency details render on page - US Dollar, British Pound",
   const onClick = jest.fn();
   render(
     <MakeTransferForm
-      exchangeFrom={mockData[1]}
-      exchangeTo={mockData[0]}
-      handleCurrency={onClick}
-      handleShowForm={onClick}
+      exchangeInfo={exchangeInfo2}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
     />
   );
 
@@ -169,10 +201,10 @@ test("OnlyNumber prevents multiple decimal points", () => {
   const onClick = jest.fn();
   render(
     <MakeTransferForm
-      exchangeFrom={mockData[0]}
-      exchangeTo={mockData[1]}
-      handleCurrency={onClick}
-      handleShowForm={onClick}
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
     />
   );
 
@@ -190,10 +222,10 @@ test("Total box displays value to max two decimal places", () => {
   const onClick = jest.fn();
   render(
     <MakeTransferForm
-      exchangeFrom={mockData[0]}
-      exchangeTo={mockData[1]}
-      handleCurrency={onClick}
-      handleShowForm={onClick}
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
     />
   );
 
@@ -211,10 +243,10 @@ test("Test the fee is in the document", () => {
   const onClick = jest.fn();
   render(
     <MakeTransferForm
-      exchangeFrom={mockData[2]}
-      exchangeTo={mockData[1]}
-      handleChangingCurrency={onClick}
-      handleShowForm={onClick}
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
     />
   );
 
@@ -229,10 +261,10 @@ test("Test the fee symbol and amount are correct", () => {
   const onClick = jest.fn();
   render(
     <MakeTransferForm
-      exchangeFrom={mockData[2]}
-      exchangeTo={mockData[1]}
-      handleChangingCurrency={onClick}
-      handleShowForm={onClick}
+      exchangeInfo={exchangeInfo2}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
     />
   );
 
@@ -242,7 +274,7 @@ test("Test the fee symbol and amount are correct", () => {
   const symbol = screen.getByTestId("fee-rate");
 
   // Assert
-  expect(symbol).toHaveTextContent("€ 1.00");
+  expect(symbol).toHaveTextContent("$ 1.00");
 });
 
 test("Test the delivery time is correct", () => {
@@ -250,10 +282,10 @@ test("Test the delivery time is correct", () => {
   const onClick = jest.fn();
   render(
     <MakeTransferForm
-      exchangeFrom={mockData[2]}
-      exchangeTo={mockData[1]}
-      handleChangingCurrency={onClick}
-      handleShowForm={onClick}
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
     />
   );
 
