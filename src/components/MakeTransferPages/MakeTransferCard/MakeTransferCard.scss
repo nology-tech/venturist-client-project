@@ -1,17 +1,6 @@
 @use "../../../assets/sass/global_variables" as *;
 
-@mixin grey-16px-text {
-  font-family: $outfit;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 20px;
-  margin-top: 10px;
-
-  color: #8896A3;
-}
-
-.transfer-page__currency__card {
+.transfer-page__card {
   background-color: #FBFBFC;
   border-radius: 8px;
   box-sizing: border-box;
@@ -21,25 +10,46 @@
   justify-content: space-between;
   margin-bottom: 8px;
   height: 58px;
-  
   position: relative;
 
   p {
-    @include grey-16px-text;
+    font-family: $outfit;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: 10px;
+    color: $colourFour;
   }
   
   &--left {
     display: flex;
   }
   
-  &__flag {
+  &__image {
     margin: auto;
     margin-right: 70px;
+    width: 39px;
+    max-height: 39px;
+  }
+
+  &--right {
+    display: flex;
+    text-align: left;
   }
 
   &__rate {
     width: 75px;
     text-align: right;
+  }
+
+  &__sort-code {
+    margin-right: 60px;
+    width: 60px;
+  }
+
+  &__account-number {
+    width: 75px;
   }
 
   &__overlay {

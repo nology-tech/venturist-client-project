@@ -10,7 +10,7 @@ test("Should render the input box", () => {
     <MakeTransferForm
       exchangeFrom={mockData[0]}
       exchangeTo={mockData[1]}
-      handleChangingCurrency={onClick}
+      handleCurrency={onClick}
       handleShowForm={onClick}
     />
   );
@@ -29,7 +29,7 @@ test("Should render the correct placeholder text", () => {
     <MakeTransferForm
       exchangeFrom={mockData[0]}
       exchangeTo={mockData[1]}
-      handleChangingCurrency={onClick}
+      handleCurrency={onClick}
       handleShowForm={onClick}
     />
   );
@@ -48,7 +48,7 @@ test("Both headers render with correct text", () => {
     <MakeTransferForm
       exchangeFrom={mockData[0]}
       exchangeTo={mockData[1]}
-      handleChangingCurrency={onClick}
+      handleCurrency={onClick}
       handleShowForm={onClick}
     />
   );
@@ -69,7 +69,7 @@ test("Should render the correct conversion amount", () => {
     <MakeTransferForm
       exchangeFrom={mockData[0]}
       exchangeTo={mockData[1]}
-      handleChangingCurrency={onClick}
+      handleCurrency={onClick}
       handleShowForm={onClick}
     />
   );
@@ -89,7 +89,7 @@ test("Should render the correct total amount", () => {
     <MakeTransferForm
       exchangeFrom={mockData[0]}
       exchangeTo={mockData[1]}
-      handleChangingCurrency={onClick}
+      handleCurrency={onClick}
       handleShowForm={onClick}
     />
   );
@@ -109,7 +109,7 @@ test("Should render the button with the correct text content", () => {
     <MakeTransferForm
       exchangeFrom={mockData[0]}
       exchangeTo={mockData[1]}
-      handleChangingCurrency={onClick}
+      handleCurrency={onClick}
       handleShowForm={onClick}
     />
   );
@@ -129,7 +129,7 @@ test("Check correct currency details render on page - British Pound, US Dollar",
     <MakeTransferForm
       exchangeFrom={mockData[0]}
       exchangeTo={mockData[1]}
-      handleChangingCurrency={onClick}
+      handleCurrency={onClick}
       handleShowForm={onClick}
     />
   );
@@ -150,7 +150,7 @@ test("Check correct currency details render on page - US Dollar, British Pound",
     <MakeTransferForm
       exchangeFrom={mockData[1]}
       exchangeTo={mockData[0]}
-      handleChangingCurrency={onClick}
+      handleCurrency={onClick}
       handleShowForm={onClick}
     />
   );
@@ -171,7 +171,7 @@ test("OnlyNumber prevents multiple decimal points", () => {
     <MakeTransferForm
       exchangeFrom={mockData[0]}
       exchangeTo={mockData[1]}
-      handleChangingCurrency={onClick}
+      handleCurrency={onClick}
       handleShowForm={onClick}
     />
   );
@@ -192,7 +192,7 @@ test("Total box displays value to max two decimal places", () => {
     <MakeTransferForm
       exchangeFrom={mockData[0]}
       exchangeTo={mockData[1]}
-      handleChangingCurrency={onClick}
+      handleCurrency={onClick}
       handleShowForm={onClick}
     />
   );
