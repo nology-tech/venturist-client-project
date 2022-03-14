@@ -12,7 +12,7 @@ const ConfirmDetailsPopUp = (props) => {
   } = props;
 
   return (
-    <div className="confirm-popup" id="confirm-popup">
+    <div className="confirm-popup" data-testid="confirm-popup">
       <div className="popup-background"></div>
       <div className="confirm-popup">
         <div className="confirm-popup__content">
@@ -53,12 +53,13 @@ const ConfirmDetailsPopUp = (props) => {
             <p id="header" className="account-details">
               Total Amount
             </p>
-            <p className="user-info">{totalAmount}</p>
+            <p className="user-info" data-testid="total-amount">{totalAmount}</p>
           </div>
         </div>
         <p className="border"></p>
         <div className="button-container">
           <Button
+            role="button"
             buttonName="Go Back"
             buttonStyle="clear"
             buttonFunction={toggleConfirm}
