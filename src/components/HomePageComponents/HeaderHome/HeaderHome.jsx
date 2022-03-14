@@ -5,12 +5,8 @@ import LinkItem from "../LinkItem/LinkItem";
 import Button from "../../Button/Button";
 import { Link } from "react-router-dom";
 
-const HeaderHome = (props) => {
-  const { setShowHome } = props;
+const HeaderHome = () => {
   const links = ["Home", "Features", "About", "Contact Us"];
-  const handleToggle = () => {
-    setShowHome(false);
-  };
 
   return (
     <header className="headerHome">
@@ -27,7 +23,7 @@ const HeaderHome = (props) => {
         <a href="https://github.com/nology-tech/venturist-client-project">
           Sign in
         </a>
-        <Link to="/Wallet" onClick={handleToggle}>
+        <Link to="/wallet">
           <Button buttonName="Sign up" />
         </Link>
       </div>

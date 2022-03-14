@@ -9,11 +9,10 @@ import imgConversion from "../../assets/images/convert.png";
 import "./HomePage.scss";
 import HeaderHome from "../../components/HomePageComponents/HeaderHome/HeaderHome";
 
-const HomePage = (props) => {
-  const { setShowHome } = props;
+const HomePage = () => {
   return (
     <div className="home">
-      <HeaderHome setShowHome={setShowHome} />
+      <HeaderHome />
       <main>
         <Home />
         <Partners />

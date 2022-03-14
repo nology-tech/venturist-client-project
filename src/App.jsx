@@ -17,8 +17,6 @@ import contactData from "./assets/data/contactExample";
 import HomePage from "./containers/HomePage/HomePage";
 
 const App = () => {
-  const [showHome, setShowHome] = useState(true);
-
   const [profileData, setProfileData] = useState({ ...userProfile });
   const updateProfileData = (newData) => {
     setProfileData(newData);
@@ -27,49 +25,41 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        {!showHome && <NavBar />}
-        {!showHome && <UserProfile />}
-
-        {/* <NavBar />
-        <UserProfile /> */}
         <Routes>
-          <Route
-            path="/Wallet"
-            element={
-              <WalletPage
-                profileData={profileData}
-                liveRateData={liveRateData}
-              />
-            }
-          ></Route>
-          <Route path="/LiveRates" element={<LiveRatesPage />}></Route>
-          <Route
-            path="/Convert"
-            element={
-              <ConvertPage
-                liveRateData={liveRateData}
-                profileData={profileData}
-                updateProfileData={updateProfileData}
-              />
-            }
-          ></Route>
-          <Route
-            path="/Transfer"
-            element={
-              <MakeTransferPage
-                liveRateData={liveRateData}
-                profileData={profileData}
-                contactData={contactData}
-              />
-            }
-          ></Route>
-          <Route path="/Contacts" element={<ContactsPage />}></Route>
-          <Route path="/Deposit" element={<DepositPage />}></Route>
-          <Route path="/Withdraw" element={<WithdrawPage />}></Route>
-          <Route
-            path="/"
-            element={<HomePage setShowHome={setShowHome} />}
-          ></Route>
+        <Route path="/" element={<HomePage/>}></Route>
+
+          <Route path="/wallet" element={<>
+            <NavBar />
+            <UserProfile />
+            <WalletPage profileData={profileData} 
+            liveRateData={liveRateData} /></>}>
+          </Route>
+          <Route path="/liverates" element={<>
+            <NavBar />
+            <UserProfile />
+            <LiveRatesPage /></>}></Route>
+          <Route path="/convert" element={<>
+            <NavBar />
+            <UserProfile />
+            <ConvertPage liveRateData={liveRateData} profileData={profileData} updateProfileData={updateProfileData}/></>}>
+          </Route>
+          <Route path="/transfer" element={<>
+            <NavBar />
+            <UserProfile />
+            <MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData}/></>}>
+          </Route>
+          <Route path="/contacts" element={<>
+            <NavBar />
+            <UserProfile />
+            <ContactsPage /></>}></Route>
+          <Route path="/deposit" element={<>
+            <NavBar />
+            <UserProfile />
+            <DepositPage /></>}></Route>
+          <Route path="/withdraw" element={<>
+            <NavBar />
+            <UserProfile />
+            <WithdrawPage /></>}></Route>
         </Routes>
       </Router>
     </div>
