@@ -2,29 +2,58 @@ import React, { useState } from "react";
 import Button from "../../Button/Button";
 import "./MakeTransferForm.scss";
 import CurrencyFlag from "react-currency-flags";
+import MakeTransferChooseModal from "../MakeTransferChooseModal/MakeTransferChooseModal";
 
 const MakeTransferForm = props => {
-  const { exchangeFrom, exchangeTo, handleChangingCurrency, handleShowForm } = props;
+  const { handleShowForm, liveRateData, exchangeInfo, setExchangeInfo } = props;
 
-  const [exchangeAmount, setExchangeAmount] = useState(0.0);
+  const [exchangeAmount, setExchangeAmount] = useState(0);
+  const [showCurrencyModal, setShowCurrencyModal] = useState(false); 
+  const [changingCurrency, setChangingCurrency] = useState("to"); 
+
+  const exchangeFrom=exchangeInfo.exchangeFrom.currency;
+  const exchangeTo=exchangeInfo.exchangeTo.currency;
+
+  const handleShowCurrencyModal = () => {
+    setShowCurrencyModal(!showCurrencyModal);
+  };
+
+  const handleChangingCurrency = (event) => {
+    if (event.target.classList.contains("transfer-form-bar__currency-to")) {
+      setChangingCurrency("to");
+    } else if (event.target.classList.contains("transfer-form-bar__currency-from")) {
+      setChangingCurrency("from");
+    }
+    handleShowCurrencyModal();
+  };
+
+  const handleCurrency = (event) => {
+    const chosenCurrencyCode = event.target.id.slice(21,24);
+    const chosenCurrencyObj = liveRateData.filter(currency => currency.currencyCode === chosenCurrencyCode)[0];
+    if(changingCurrency==="to") {
+      setExchangeInfo({...exchangeInfo},exchangeInfo.exchangeTo.currency=chosenCurrencyObj);
+    } else if(changingCurrency==="from"){
+      setExchangeInfo({...exchangeInfo},exchangeInfo.exchangeFrom.currency=chosenCurrencyObj);
+    }
+    handleShowCurrencyModal();
+  };
 
   const calculateConversion = () => {
     return exchangeTo.liveRate / exchangeFrom.liveRate;
   };
 
   const onlyNumber = event => {
-    let amountInputField = event.target.value;
-    setExchangeAmount(event.target.value);
+    let amountInputField = Number(event.target.value);
+    setExchangeAmount(amountInputField);
+    setExchangeInfo({...exchangeInfo},exchangeInfo.exchangeTo.amount=(amountInputField*calculateConversion().toFixed(2)));
 
-    if (
-      !/[0-9.]/.test(event.key) ||
-      (amountInputField.includes(".") && event.key === ".")
-    ) {
+    if (!/[0-9.]/.test(event.key)) {
       event.preventDefault();
     }
   };
 
   return (
+    <>
     <form className="transfer-page__transfer-form">
       <div className="transfer-form-bar">
         <h4 className="transfer-form-bar__header">You send</h4>
@@ -45,7 +74,7 @@ const MakeTransferForm = props => {
             </p>
           </div>
           <p className="transfer-form-bar__amount">
-            {exchangeFrom.currencySymbol}
+            {exchangeFrom.currencySymbol} 
             <input
               id="amountInput"
               data-testid="amountInput"
@@ -113,6 +142,15 @@ const MakeTransferForm = props => {
         />
       </div>
     </form>
+    {showCurrencyModal && (
+      <MakeTransferChooseModal type="Currency"
+        content={liveRateData}
+        handleEvent={handleCurrency}
+        handleShowModal={handleShowCurrencyModal}
+        handleSearch={()=>alert("Searching")}
+      />
+    )}
+    </>
   );
 };
 
