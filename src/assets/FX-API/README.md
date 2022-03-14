@@ -68,9 +68,9 @@ http://api.exchangeratesapi.io/v1/YYYY-MM-DD
 
 **Convert**
 
-Example endpoint for converting GBP to EUR
+Example endpoint for converting EUR to USB
 
-`http://api.exchangeratesapi.io/v1/convert?access_key=a5d70fa4b404edb100ef0ebff23d52bc&from="GBP"&to="EUR"`
+`http://api.exchangeratesapi.io/v1/convert?access_key=a5d70fa4b404edb100ef0ebff23d52bc&from=EUR&to=USD`
 
 ```
 // "convert" endpoint - convert any amount from one currency to another
