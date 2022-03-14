@@ -11,7 +11,7 @@ import HeaderHome from "../../components/HomePageComponents/HeaderHome/HeaderHom
 
 const HomePage = () => {
   return (
-    <div className="home">
+    <div>
       <HeaderHome />
       <main>
         <Home />
