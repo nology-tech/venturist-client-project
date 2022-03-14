@@ -13,7 +13,8 @@ const MakeTransferPage = (props) => {
     exchangeFrom: {
       user: profileData,
       currency: liveRateData[0],
-      amount: 0
+      amount: 0,
+      fee: 0
     },
     exchangeTo: {
       user: {},
@@ -28,11 +29,6 @@ const MakeTransferPage = (props) => {
   const [showConfirmAccount, setShowConfirmAccount] = useState(false); 
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-  // Put into confirmAccount
-  const handleAddRecipient = () => {
-    
-  }
-
   const handleShowForm = () => {
     const amountInput = document.getElementById("amountInput").value;
     if(!(amountInput < exchangeInfo.exchangeFrom.user.holdings[exchangeInfo.exchangeFrom.currency.currencyCode])) {
@@ -40,7 +36,8 @@ const MakeTransferPage = (props) => {
       return;
     }
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
-      setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeFrom.amount=(amountInput*1.01));
+      setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeFrom.amount=Number(amountInput).toFixed(2));
+      setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeFrom.fee=Number(amountInput*0.01).toFixed(2));
       setShowInitialForm(false);
       setShowConfirmAccount(true);
     }
@@ -74,7 +71,6 @@ const MakeTransferPage = (props) => {
           exchangeInfo={exchangeInfo} 
           setExchangeInfo={setExchangeInfo} 
           data={contactData} 
-          handleAddRecipient={handleAddRecipient} 
           handleShowConfirmation={handleShowConfirmation}
         />
       )}

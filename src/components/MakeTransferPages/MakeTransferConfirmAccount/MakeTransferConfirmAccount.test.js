@@ -88,11 +88,12 @@ describe ("Testing that buttons work correctly", () => {
     
     expect(chooseRecipientContainer).toBeInTheDocument();
   });
+
   test("Test that select button brings up user Card list", () => {
     
     const onClick = jest.fn();
     render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
-    const newButton = screen.getAllByRole("button")[1];
+    const newButton = screen.getAllByRole("button")[0];
     
     
     fireEvent.click(newButton);

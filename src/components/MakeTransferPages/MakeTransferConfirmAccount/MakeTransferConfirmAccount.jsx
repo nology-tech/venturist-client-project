@@ -5,12 +5,16 @@ import Button from "../../Button/Button";
 
 const MakeTransferConfirmAccount = (props) => {
 
-  const { data, handleAddRecipient, exchangeInfo, setExchangeInfo, handleShowConfirmation } = props;
+  const { data, exchangeInfo, setExchangeInfo, handleShowConfirmation } = props;
 
   const [showChooseRecipients, setShowChooseRecipients] = useState(false);
   
   const toggleChooseRecipients = () => {
     setShowChooseRecipients(!showChooseRecipients);
+  };
+
+  const handleAddRecipient = () => {
+  
   };
 
   const handleChooseRecipient = (event) => {
@@ -23,7 +27,7 @@ const MakeTransferConfirmAccount = (props) => {
   const currencySymbol = exchangeInfo.exchangeFrom.currency.currencySymbol;
   const currencyCode = exchangeInfo.exchangeFrom.currency.currencyCode;
   const profileData = exchangeInfo.exchangeFrom.user;
-  const transferAmount = exchangeInfo.exchangeFrom.amount;
+  const transferAmount = Number(exchangeInfo.exchangeFrom.amount) + Number(exchangeInfo.exchangeFrom.fee);
 
   return (
     <div className="transfer-page__confirm">
@@ -34,7 +38,7 @@ const MakeTransferConfirmAccount = (props) => {
           <h6 className='transfer-page__confirm__sendContainer__details__name'>{profileData.firstName} {profileData.lastName}</h6>
           <div className='transfer-page__confirm__sendContainer__details__text'><p>Account Number:</p> <p>{profileData.accountNumber} </p> </div>            
           <div className='transfer-page__confirm__sendContainer__details__text' ><p>Sort Code: </p> <p>{profileData.sortCode}</p> </div>
-          <div className='transfer-page__confirm__sendContainer__details__total' > <h5>Total </h5> <p data-testid="transferAmount">{currencySymbol}{Number(transferAmount).toFixed(2)}</p></div>          
+          <div className='transfer-page__confirm__sendContainer__details__total' > <h5>Total </h5> <p data-testid="transferAmount">{currencySymbol}{transferAmount.toFixed(2)}</p></div>          
           <div className='transfer-page__confirm__sendContainer__details__funds'> <p>Funds Remaining: </p> <p data-testid="remainingBalance">{currencySymbol}{(Number(profileData.holdings[currencyCode]) - transferAmount).toFixed(2)}</p></div>
           
         </div>
