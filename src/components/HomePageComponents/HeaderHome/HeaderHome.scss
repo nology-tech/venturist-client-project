@@ -1,0 +1,29 @@
+@use "../../../assets/sass/global_variables" as *;
+
+.headerHome {
+  background-color: $colourTen;
+  color: $colourSix;
+  display: flex;
+  justify-content: space-evenly;
+  height: 13vh;
+  width: 100%;
+  align-items: center;
+  font-family: $outfit;
+  font-weight: 400;
+
+  &__logo,
+  &__links,
+  &__buttons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    gap: 0.5rem;
+  }
+
+  &__links,
+  &__buttons {
+    gap: 2rem;
+  }
+}

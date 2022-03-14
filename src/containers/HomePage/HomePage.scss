@@ -1,0 +1,14 @@
+@use "../../assets/sass/global_variables" as *;
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.home {
+  display: grid;
+  grid-auto-rows: auto;
+}
