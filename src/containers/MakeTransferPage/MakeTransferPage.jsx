@@ -4,6 +4,7 @@ import "./MakeTransferPage.scss";
 import Header from "../../components/Header/Header";
 import MakeTransferConfirmAccount from "../../components/MakeTransferPages/MakeTransferConfirmAccount/MakeTransferConfirmAccount";
 import MakeTransferForm from "../../components/MakeTransferPages/MakeTransferForm/MakeTransferForm";
+import MakeTransferConfirmation from "../../components/MakeTransferPages/MakeTransferConfirmation/MakeTransferConfirmation";
 
 const MakeTransferPage = (props) => {
   const { liveRateData, profileData, contactData } = props;
@@ -25,6 +26,7 @@ const MakeTransferPage = (props) => {
 
   const [showInitialForm, setShowInitialForm] = useState(true); 
   const [showConfirmAccount, setShowConfirmAccount] = useState(false); 
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   // Put into confirmAccount
   const handleAddRecipient = () => {
@@ -44,9 +46,11 @@ const MakeTransferPage = (props) => {
     }
   };
 
-  // const handleShowConfirmation = (event) => {
-  //   event.preventDefault();
-  // }
+  const handleShowConfirmation = (event) => {
+    setShowConfirmation(true);
+    setShowConfirmAccount(false);
+    event.preventDefault();
+  }
 
   return (
     <div className="make-transfer" data-testid="make-transfer">
@@ -71,6 +75,13 @@ const MakeTransferPage = (props) => {
           setExchangeInfo={setExchangeInfo} 
           data={contactData} 
           handleAddRecipient={handleAddRecipient} 
+          handleShowConfirmation={handleShowConfirmation}
+        />
+      )}
+
+      {showConfirmation && (
+        <MakeTransferConfirmation 
+          exchangeInfo={exchangeInfo}
         />
       )}
     </div>

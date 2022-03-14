@@ -5,7 +5,7 @@ import Button from "../../Button/Button";
 
 const MakeTransferConfirmAccount = (props) => {
 
-  const { data, handleAddRecipient, exchangeInfo, setExchangeInfo } = props;
+  const { data, handleAddRecipient, exchangeInfo, setExchangeInfo, handleShowConfirmation } = props;
 
   const [showChooseRecipients, setShowChooseRecipients] = useState(false);
   
@@ -17,6 +17,7 @@ const MakeTransferConfirmAccount = (props) => {
     const user = data.filter(contact => contact.IBAN === event.target.id)[0];
     setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeTo.user = user);
     toggleChooseRecipients();
+    handleShowConfirmation();
   }
   
   const currencySymbol = exchangeInfo.exchangeFrom.currency.currencySymbol;

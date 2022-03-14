@@ -1,0 +1,79 @@
+@use "./../../../assets/sass/global_variables" as *;
+
+.make-transfer__confirmation {
+  width: 626px;
+  height: 781px;
+  background: #FBFBFC;
+  border-radius: 8px;
+  padding: 32px 76px 25px;
+  box-sizing: border-box;
+  margin-top: 45px;
+
+  &__from {
+    width: 475px;
+    height: 173px;
+    background: #F3F3F3;
+    border-radius: 8px; 
+    padding: 22px 40px 22px 33px;
+    box-sizing: border-box;
+  }
+
+  &__border {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-top: 1px solid #E9E9E9;
+  }
+
+  &__split {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__subtext {
+    margin-bottom: 5px;
+  }
+
+  &__to {
+    width: 475px;
+    height: 121px;
+  }
+
+  h4 {
+    font-family: $outfit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    color: #06020A;
+  }
+
+  h5 {
+    font-family: $outfit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #06020A;
+    margin-bottom: 4px;
+  }
+
+  h6 {
+    font-family: $outfit;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #00CED4;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-family: $outfit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #6A6A6A;
+  }
+}
