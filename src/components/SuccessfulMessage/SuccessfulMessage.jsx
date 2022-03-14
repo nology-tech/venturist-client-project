@@ -9,7 +9,7 @@ const SuccessfulMessage = (props) => {
     <>
       <div className="popup-background"></div>
       <div className="success" data-testid="success">
-        <Link to="/Wallet" className="success__icon">
+        <Link to="/wallet" className="success__icon">
           <img src={iconCross} alt="Go back" />
         </Link>
         <p className="success__title">Completed</p>

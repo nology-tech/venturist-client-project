@@ -13,13 +13,18 @@
 }
 
 .success {
-  position: absolute;
   width: 595px;
   height: 573px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -297px;
+  margin-top: -287px;
   border-radius: 8px;
   background: #ffffff;
   padding-left: 62px;
   z-index: 2;
+  box-sizing: border-box;
 
   &__icon {
     position: absolute;

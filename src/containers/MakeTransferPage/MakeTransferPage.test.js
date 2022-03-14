@@ -13,26 +13,29 @@ test('Test the page renders', () => {
   expect(makeTransfer).toBeInTheDocument();
 });
 
+// Move to form
 test('Test the pop-up appears for currency from', () => {
   render(<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />);
 
   const currencyFromButton = screen.getByTestId("currencyFrom");
   fireEvent.click(currencyFromButton);
-  const currencyPopUp = screen.getByTestId("choose-currency");
+  const currencyPopUp = screen.getByTestId("choose-modal");
 
   expect(currencyPopUp).toBeInTheDocument();
 });
 
+// Move to form
 test('Test the pop-up appears for currency to', () => {
   render(<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />);
 
   const currencyToButton = screen.getByTestId("currencyTo");
   fireEvent.click(currencyToButton);
-  const currencyPopUp = screen.getByTestId("choose-currency");
+  const currencyPopUp = screen.getByTestId("choose-modal");
 
   expect(currencyPopUp).toBeInTheDocument();
 });
 
+// Move to form
 test('Test currency changes properly when clicking currency from', () => {
   render(<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />);
 
@@ -45,6 +48,7 @@ test('Test currency changes properly when clicking currency from', () => {
   expect(changedCurrency).toBeInTheDocument();
 });
 
+// Move to form
 test('Test currency changes properly when clicking currency to', () => {
   render(<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />);
 
