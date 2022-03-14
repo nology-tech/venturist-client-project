@@ -1,5 +1,5 @@
 import TransactionForm from "./TransactionForm";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, userEvent } from "@testing-library/react";
 import profileData from "../../assets/data/samanthaBrooksProfile";
 
 describe("Testing that elements render on screen", () => {
@@ -121,46 +121,6 @@ describe("Testing that elements render on screen", () => {
     
       expect(buttonText).toBeInTheDocument();
     });
-
-    test("Test that select button brings up user Confirm Details component", () => {
-      render(
-        <TransactionForm
-          formTitle="Withdrawal Form"
-          buttonName="Withdraw Funds"
-          profileData={profileData}
-          isDisabled= {()=>{}}
-          toggleConfirm={()=>{}}
-          onlyNumber={()=>{}}
-      />);
-
-      const selectButton = screen.getByRole('button');
-
-      fireEvent.click(selectButton);
-      const confirmDetailsComponent = screen.queryByText("Confirm Details");
-    });
-
-    test("OnlyNumber prevents multiple decimal points", () => {
-
-      const onClick = jest.fn();
-      render(
-        <TransactionForm
-          formTitle="Withdrawal Form"
-          buttonName="Withdraw Funds"
-          profileData={profileData}
-          isDisabled= {()=>{}}
-          toggleConfirm={onClick}
-          onlyNumber={()=>{}}
-        />);
-    
-      const container = screen.getByTestId("section-form");
-      const selectButton = screen.getByRole('button');
-      
-      userEvent.type(screen.getByTestId("amoqunt-input"), "100.564");
-      fireEvent.click(selectButton);
-    
-      expect(container).toBeInTheDocument();
-    });
-
 
   });
 

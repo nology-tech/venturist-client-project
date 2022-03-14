@@ -93,9 +93,12 @@ describe("Testing that elements render on screen", () => {
     });
   });
 
-  describe("Testing that buttons work correctly", () => {
+  describe("Testing that button is present", () => {
   
-    test("Test that select button brings up user Successful Message component", () => {
+    test("Should render the button on the page", () => {
+      
+      const onClick = jest.fn();
+      
       render(
         <ConfirmDetailsPopUp 
         toggleSuccess={()=>{}}
@@ -104,13 +107,15 @@ describe("Testing that elements render on screen", () => {
         totalAmount="100"
       />
       );
+    
+      const goBackButton = screen.getAllByTestId("button")[0];
+      const confirmButton = screen.getAllByTestId("button")[1];
+    
+      expect(goBackButton).toBeInTheDocument();
+      expect(confirmButton).toBeInTheDocument();
 
-      const successfulMessage = screen.queryByText("Completed");
-      const selectButton = screen.getAllByRole("button")[1];
-
-      fireEvent.click(selectButton);
-      expect(successfulMessage).toBeInTheDocument();
     });
+    
 
   });
 

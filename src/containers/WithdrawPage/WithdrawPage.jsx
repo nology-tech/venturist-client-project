@@ -43,7 +43,6 @@ const WithdrawPage = (props) => {
   const toggleSuccess = () => { 
     const tempProfileData = {...profileData};
     tempProfileData.holdings[profileData.cards[0].currencyType] -= parseFloat(showAmount);
-    tempProfileData.cards[0].amount += parseFloat(showAmount);
     updateProfileData(tempProfileData);
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);

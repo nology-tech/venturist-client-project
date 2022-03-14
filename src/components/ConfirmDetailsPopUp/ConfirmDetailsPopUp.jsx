@@ -59,12 +59,14 @@ const ConfirmDetailsPopUp = (props) => {
         <p className="border"></p>
         <div className="button-container">
           <Button
+            data-testid="button"
             role="button"
             buttonName="Go Back"
             buttonStyle="clear"
             buttonFunction={toggleConfirm}
           />
           <Button 
+            data-testid="button"
             buttonName="Confirm" 
             buttonFunction={toggleSuccess} 
           />
