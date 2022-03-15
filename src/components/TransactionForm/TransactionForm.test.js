@@ -105,15 +105,13 @@ describe("Testing that elements render on screen", () => {
   
     test("Should render the button on the page", () => {
       
-      const onClick = jest.fn();
-      
       render(
         <TransactionForm
           formTitle="Withdrawal Form"
           buttonName="Withdraw Funds"
           profileData={profileData}
           isDisabled= {()=>{}}
-          toggleConfirm={onClick}
+          toggleConfirm={()=>{}}
           onlyNumber={()=>{}}
       />);
     
@@ -121,6 +119,25 @@ describe("Testing that elements render on screen", () => {
     
       expect(buttonText).toBeInTheDocument();
     });
+
+    test("Should test the input field is not accepting a-z from first input", () => {
+      
+      render(
+        <TransactionForm
+          formTitle="Withdrawal Form"
+          buttonName="Withdraw Funds"
+          profileData={profileData}
+          isDisabled= {()=>{}}
+          toggleConfirm={()=>{}}
+          onlyNumber={()=>{}}
+      />);
+
+      const input = screen.getByTestId('amount-input')
+      fireEvent.change(input, {target: {value: 'e565'}})
+      expect(input.value).toBe('')
+    
+    });
+    
 
   });
 

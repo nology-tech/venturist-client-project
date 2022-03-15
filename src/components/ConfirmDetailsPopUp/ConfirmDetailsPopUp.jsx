@@ -53,7 +53,7 @@ const ConfirmDetailsPopUp = (props) => {
             <p id="header" className="account-details">
               Total Amount
             </p>
-            <p className="user-info" data-testid="total-amount">{totalAmount}</p>
+            <p className="user-info" data-testid="total-amount">{Number(totalAmount).toFixed(2).toLocaleString("en-us")}</p>
           </div>
         </div>
         <p className="border"></p>

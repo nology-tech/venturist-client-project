@@ -97,8 +97,6 @@ describe("Testing that elements render on screen", () => {
   
     test("Should render the button on the page", () => {
       
-      const onClick = jest.fn();
-      
       render(
       <ConfirmDetailsPopUp 
         toggleSuccess={()=>{}}
