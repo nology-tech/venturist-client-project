@@ -31,12 +31,16 @@ const WithdrawPage = (props) => {
 
   const toggleConfirm = event => {
     const amountInput = document.getElementById("amount-input").value;
-    const hasValidHoldings = (profileData.holdings[profileData.cards[0].currencyType] - parseFloat(amountInput) >= 0)  
+    const hasValidHoldings = (profileData.holdings[profileData.cards[0].currencyType] - parseFloat(amountInput) >= 0)
+    if (!hasValidHoldings) {
+      alert("You don't have enough of that currency to withdraw.");
+      return;
+    }  
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0 && hasValidHoldings) {
       event.preventDefault(); 
       setIsDisabled(!isDisabled);
       setShowConfirm(!showConfirm);
-    }
+    } 
   };
 
   const toggleSuccess = () => { 
