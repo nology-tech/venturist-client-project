@@ -9,8 +9,9 @@ const Section = (props) => {
       <h3 className="section__title">{title}</h3>
 
       <p className={`section__p ${type}`}>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat
-        excepturi omnis laborum ullam libero quasi.
+        Convert and hold 54 currencies. Hold multiple currencies, and get the
+        real exchange rate when you convert. Compare our pricing We charge as
+        little as possible. No subscription
       </p>
 
       <img className="section__img" src={img} alt={name} />

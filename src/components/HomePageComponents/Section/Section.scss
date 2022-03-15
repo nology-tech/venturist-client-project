@@ -14,7 +14,7 @@
   display: grid;
   align-items: center;
   justify-items: center;
-  padding: 3rem;
+  padding: 2rem;
 
   &__title {
     display: grid;
@@ -26,6 +26,8 @@
     max-width: 400px;
     text-align: center;
     font-size: 16px;
+    padding: 10px;
+    padding-bottom: 50px;
   }
 
   &__img {
