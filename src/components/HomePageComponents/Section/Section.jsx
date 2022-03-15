@@ -5,7 +5,7 @@ const Section = (props) => {
   const { title, bgColour, img, name } = props;
 
   return (
-    <section className={`section ${bgColour}`}>
+    <section className={`section ${bgColour}`} data-testid="section">
       <h3 className="section_title">{title}</h3>
       <p className="section__p">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat
