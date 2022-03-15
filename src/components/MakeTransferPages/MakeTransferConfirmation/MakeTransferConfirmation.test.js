@@ -67,7 +67,7 @@ test("Check user from name is correct", () => {
 
   const userFromName = screen.getByTestId("user-from-name");
 
-  expect(userFromName).toHaveTextContent("Samantha Brooks");
+  expect(userFromName).toHaveTextContent("Sam Brooks");
 });
 
 test("Check user from account number is correct", () => {
