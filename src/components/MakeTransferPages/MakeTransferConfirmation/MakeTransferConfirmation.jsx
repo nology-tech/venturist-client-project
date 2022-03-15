@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Button from '../../Button/Button';
 import "./MakeTransferConfirmation.scss";
 import SuccessfulMessage from '../../SuccessfulMessage/SuccessfulMessage';
+import icons from "./../../../assets/icons/icons.js";
 
 const MakeTransferConfirmation = (props) => {
 
@@ -96,7 +97,7 @@ const MakeTransferConfirmation = (props) => {
           <Button 
             buttonName="Submit" 
             hasIcon={true} 
-            iconSrc={""} 
+            iconSrc={icons.Transfer} 
             iconPosition="left"
             buttonFunction={handleSubmit}
           />
