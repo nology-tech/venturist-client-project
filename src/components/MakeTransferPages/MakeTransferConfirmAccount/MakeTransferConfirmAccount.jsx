@@ -14,7 +14,7 @@ const MakeTransferConfirmAccount = (props) => {
   };
 
   const handleAddRecipient = () => {
-  
+    alert("Adding new recipient");
   };
 
   const handleChooseRecipient = (event) => {

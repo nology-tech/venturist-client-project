@@ -80,7 +80,7 @@ describe ("Testing that buttons work correctly", () => {
   test("Test that select button brings up user Card list", () => {
     
     const onClick = jest.fn();
-    render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
+    render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleShowConfirmation={onClick} />);
     const selectButton = screen.getAllByRole("button")[0];
     
   
@@ -90,15 +90,15 @@ describe ("Testing that buttons work correctly", () => {
     expect(chooseRecipientContainer).toBeInTheDocument();
   });
 
-  test("Test that select button brings up user Card list", () => {
+  test("Test that select button brings up add new recipient", () => {
     
-    const onClick = jest.fn();
+    global.alert = jest.fn();
+    const onClick=jest.fn();
     render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
-    const newButton = screen.getAllByRole("button")[0];
-    
+    const newButton = screen.getAllByRole("button")[1];
     
     fireEvent.click(newButton);
 
-    expect(onClick).toHaveBeenCalled();
+    expect(global.alert).toHaveBeenCalledTimes(1);
   });
 });
