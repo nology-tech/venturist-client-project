@@ -27,6 +27,8 @@ const HomePage = () => {
           bgColour="white"
           name="Rates Table"
           img={imgRate}
+          padding="extraPadding"
+
         />
       </main>
       <Footer />

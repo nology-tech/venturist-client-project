@@ -4,7 +4,7 @@
   display: grid;
   align-items: center;
   justify-items: center;
-  padding: 2rem;
+  padding: 1rem;
   background-color: $colourTen;
   height: 55vh;
 
@@ -16,7 +16,7 @@
     display: flex;
     align-items: baseline;
     gap: 4rem;
-    padding: 100px;
+    padding: 0 100px;
   }
 
   &__item {

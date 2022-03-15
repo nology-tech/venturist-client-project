@@ -9,7 +9,9 @@
   color: $colourFour;
   background: linear-gradient(150deg, #fcfcfc 50%, $colourOne 50%);
 }
-
+.extraPadding {
+  padding: 45px;
+}
 .section {
   display: grid;
   align-items: center;

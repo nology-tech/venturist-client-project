@@ -4,19 +4,21 @@
   background-color: $colourSix;
   color: $colourEleven;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 13vh;
   align-items: center;
   font-family: $outfit;
   font-weight: 400;
-  width: 100%;
+  padding-left: 100px;
+  padding-right: 100px;
 
   &__logo {
     display: flex;
     align-items: center;
-  }
-
-  &__logo {
     gap: 0.5rem;
+
+    .image {
+      height: 35px;
+    }
   }
 }
