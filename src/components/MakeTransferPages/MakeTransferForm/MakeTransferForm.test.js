@@ -29,9 +29,7 @@ const exchangeInfo2 = {
     currency: liveRateData[0],
     amount: 0
   }
-};
-
-// const [exchangeInfo, setExchangeInfo] = useState(exchangeBase); 
+}; 
 
 const setExchangeInfo = jest.fn();
 
