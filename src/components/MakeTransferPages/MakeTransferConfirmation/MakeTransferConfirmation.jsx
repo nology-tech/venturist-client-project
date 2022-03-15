@@ -22,11 +22,11 @@ const MakeTransferConfirmation = (props) => {
   };
 
   return (
-    <div className="make-transfer__confirmation">
+    <div className="make-transfer__confirmation" data-testid="confirmation">
       <div className="make-transfer__confirmation__left">
         <h4>Send From</h4>
         <div className="make-transfer__confirmation__from">
-          <h6>{from.user.firstName} {from.user.lastName}</h6>
+          <h6 data-testid="user-from-name">{from.user.firstName} {from.user.lastName}</h6>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__subtext">
             <p className="make-transfer__confirmation__p" >Account Number:</p>
             <p className="make-transfer__confirmation__p" >{from.user.accountNumber}</p>
@@ -38,7 +38,7 @@ const MakeTransferConfirmation = (props) => {
           <div className="make-transfer__confirmation__border"></div>
           <div className="make-transfer__confirmation__split">
             <h5>Total</h5>
-            <h5>{from.currency.currencySymbol}{from.amount}</h5>
+            <h5 data-testid="total-from">{from.currency.currencySymbol}{Number(from.amount).toFixed(2)}</h5>
           </div>
           <div className="make-transfer__confirmation__split">
             <p className="make-transfer__confirmation__funds make-transfer__confirmation__p">
