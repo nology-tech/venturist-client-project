@@ -32,7 +32,7 @@ const WithdrawPage = (props) => {
   const toggleConfirm = event => {
     const amountInput = document.getElementById("amount-input").value;
     const hasValidHoldings = (profileData.holdings[profileData.cards[0].currencyType] - parseFloat(amountInput) >= 0)
-    if (!hasValidHoldings) {
+    if (!hasValidHoldings && amountInput) {
       alert("You don't have enough of that currency to withdraw.");
       return;
     }  
