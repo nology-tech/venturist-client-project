@@ -9,7 +9,6 @@ const TransactionForm = (props) => {
     profileData,
     toggleConfirm, 
     onlyNumber, 
-    hasValidFunds,
     isDisabled
   } = props;
 
@@ -75,7 +74,6 @@ const TransactionForm = (props) => {
         </table>
       </div>
       <div className="button-container">
-        {hasValidFunds && <p>Insufficient funds to make this transaction, try again</p>}
         <Button 
           data-testid="confirm-button" 
           buttonFunction={toggleConfirm} 
