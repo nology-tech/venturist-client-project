@@ -31,7 +31,7 @@ describe("Testing that elements render on screen", () => {
           onlyNumber={()=>{}}
       />);
 
-      const Name = screen.queryByText("Samantha Brooks");
+      const Name = screen.queryByText("Sam Brooks");
 
       expect(Name).toBeInTheDocument();
     });
