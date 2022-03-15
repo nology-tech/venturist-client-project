@@ -32,7 +32,7 @@ describe ("Testing that elements render on screen", () => {
       const onClick = jest.fn();
       render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
       
-      const Name = screen.queryByText("Samantha Brooks")
+      const Name = screen.queryByText("Sam Brooks")
       
       expect(Name).toBeInTheDocument();
     });
