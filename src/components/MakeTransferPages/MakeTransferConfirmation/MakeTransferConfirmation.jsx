@@ -28,12 +28,12 @@ const MakeTransferConfirmation = (props) => {
         <div className="make-transfer__confirmation__from">
           <h6 data-testid="user-from-name">{from.user.firstName} {from.user.lastName}</h6>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__subtext">
-            <p className="make-transfer__confirmation__p" >Account Number:</p>
-            <p className="make-transfer__confirmation__p" >{from.user.accountNumber}</p>
+            <p>Account Number:</p>
+            <p>{from.user.accountNumber}</p>
           </div>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__subtext">
-            <p className="make-transfer__confirmation__p"> Sort Code:</p>
-            <p className="make-transfer__confirmation__p">{from.user.sortCode}</p>
+            <p> Sort Code:</p>
+            <p>{from.user.sortCode}</p>
           </div>
           <div className="make-transfer__confirmation__border"></div>
           <div className="make-transfer__confirmation__split">
@@ -41,10 +41,10 @@ const MakeTransferConfirmation = (props) => {
             <h5 data-testid="total-from">{from.currency.currencySymbol}{Number(from.amount).toFixed(2)}</h5>
           </div>
           <div className="make-transfer__confirmation__split">
-            <p className="make-transfer__confirmation__funds make-transfer__confirmation__p">
+            <p className="make-transfer__confirmation__funds">
               Funds Remaining After Fee:
             </p>
-            <p className="make-transfer__confirmation__funds make-transfer__confirmation__p">
+            <p className="make-transfer__confirmation__funds" data-testid="funds-remaining">
               {from.currency.currencySymbol} {(Number(from.user.holdings[from.currency.currencyCode])-Number(from.amount)-Number(from.fee)).toFixed(2).toLocaleString("en-us")}
             </p>
           </div>
@@ -66,11 +66,11 @@ const MakeTransferConfirmation = (props) => {
         <div className="make-transfer__confirmation__info">
           <div className="make-transfer__confirmation__split make-transfer__confirmation__16px">
             <h5>Rate</h5>
-            <p>{calculateConversion()}</p>
+            <p data-testid="rate">{calculateConversion()}</p>
           </div>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__16px">
             <h5>Fee</h5>
-            <p>{from.currency.currencySymbol} {from.fee}</p>
+            <p data-testid="fee">{from.currency.currencySymbol} {Number(from.fee).toFixed(2)}</p>
           </div>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__16px">
             <h5>Delivery</h5>
@@ -80,11 +80,11 @@ const MakeTransferConfirmation = (props) => {
         <div className="make-transfer__confirmation__totals">
           <div className="make-transfer__confirmation__split">
             <h4>Total to Pay</h4>
-            <h4>{from.currency.currencySymbol} {(Number(from.amount) + Number(from.fee)).toFixed(2).toLocaleString("en-us")}</h4>
+            <h4 data-testid="total-to-pay">{from.currency.currencySymbol} {(Number(from.amount) + Number(from.fee)).toFixed(2).toLocaleString("en-us")}</h4>
           </div>
           <div className="make-transfer__confirmation__split">
             <h6>Recipient Recieves</h6>
-            <h6>{to.currency.currencySymbol} {Number(to.amount).toFixed(2).toLocaleString("en-us")}</h6>
+            <h6 data-testid="recipient-recieves">{to.currency.currencySymbol} {Number(to.amount).toFixed(2).toLocaleString("en-us")}</h6>
           </div>
         </div>
         <div className="make-transfer__confirmation__buttons">
