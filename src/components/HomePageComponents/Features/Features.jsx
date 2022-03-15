@@ -6,7 +6,7 @@ import "./Features.scss";
 const Features = () => {
   const features = ["Company 1", "Company 2", "Company 3", "Company 4"];
   return (
-    <section className="features">
+    <section className="features" data-testid="features">
       <h3 className="features__title">Our Award-Winning Features</h3>
       <div className="features__items">
         {features.map((feature, index) => {
