@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '../../Button/Button';
 import "./MakeTransferConfirmation.scss";
+import SuccessfulMessage from '../../SuccessfulMessage/SuccessfulMessage';
 
 const MakeTransferConfirmation = (props) => {
 
   const {exchangeInfo, handleCancel} = props;
+
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const from=exchangeInfo.exchangeFrom;
   const to=exchangeInfo.exchangeTo;
@@ -14,7 +17,8 @@ const MakeTransferConfirmation = (props) => {
   };
 
   const handleSubmit = () => {
-    
+    // Post request?
+    setShowSuccess(true);
   };
 
   return (
@@ -24,12 +28,12 @@ const MakeTransferConfirmation = (props) => {
         <div className="make-transfer__confirmation__from">
           <h6>{from.user.firstName} {from.user.lastName}</h6>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__subtext">
-            <p>Account Number:</p>
-            <p>{from.user.accountNumber}</p>
+            <p className="make-transfer__confirmation__p" >Account Number:</p>
+            <p className="make-transfer__confirmation__p" >{from.user.accountNumber}</p>
           </div>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__subtext">
-            <p>Sort Code:</p>
-            <p>{from.user.sortCode}</p>
+            <p className="make-transfer__confirmation__p"> Sort Code:</p>
+            <p className="make-transfer__confirmation__p">{from.user.sortCode}</p>
           </div>
           <div className="make-transfer__confirmation__border"></div>
           <div className="make-transfer__confirmation__split">
@@ -37,10 +41,10 @@ const MakeTransferConfirmation = (props) => {
             <h5>{from.currency.currencySymbol}{from.amount}</h5>
           </div>
           <div className="make-transfer__confirmation__split">
-            <p className="make-transfer__confirmation__funds">
+            <p className="make-transfer__confirmation__funds make-transfer__confirmation__p">
               Funds Remaining After Fee:
             </p>
-            <p className="make-transfer__confirmation__funds">
+            <p className="make-transfer__confirmation__funds make-transfer__confirmation__p">
               {from.currency.currencySymbol} {(Number(from.user.holdings[from.currency.currencyCode])-Number(from.amount)-Number(from.fee)).toFixed(2).toLocaleString("en-us")}
             </p>
           </div>
@@ -98,6 +102,7 @@ const MakeTransferConfirmation = (props) => {
           />
         </div>
       </div>
+      {showSuccess && <SuccessfulMessage message={"Transaction Successful."} />}
     </div>
   )
 }

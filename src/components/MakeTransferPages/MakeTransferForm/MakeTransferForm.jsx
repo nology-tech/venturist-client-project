@@ -54,7 +54,7 @@ const MakeTransferForm = props => {
 
   return (
     <>
-    <form className="transfer-page__transfer-form">
+    <div className="transfer-page__transfer-form">
       <div className="transfer-form-bar">
         <h4 className="transfer-form-bar__header">You send</h4>
         <div className="transfer-form-bar__container">
@@ -141,7 +141,7 @@ const MakeTransferForm = props => {
           buttonFunction={handleShowForm}
         />
       </div>
-    </form>
+    </div>
     {showCurrencyModal && (
       <MakeTransferChooseModal type="Currency"
         content={liveRateData}

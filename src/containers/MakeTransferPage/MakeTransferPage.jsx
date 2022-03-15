@@ -43,10 +43,9 @@ const MakeTransferPage = (props) => {
     }
   };
 
-  const handleShowConfirmation = (event) => {
+  const handleShowConfirmation = () => {
     setShowConfirmation(true);
     setShowConfirmAccount(false);
-    event.preventDefault();
   }
 
   return (

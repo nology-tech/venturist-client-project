@@ -36,12 +36,6 @@
     margin-bottom: 8px;
   }
 
-  p {
-    font-size: 12px;
-    line-height: 15px;
-    color: #6A6A6A;
-  }
-
   &__from, &__to {
     width: 475px;
     height: 173px;
@@ -101,6 +95,11 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    p {
+      font-size: 12px;
+      line-height: 15px;
+      color: #6A6A6A;
+    }
   }
 
   &__16px {
@@ -113,6 +112,4 @@
   &__subtext {
     margin-bottom: 5px;
   }
-
-
 }
