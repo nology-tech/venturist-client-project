@@ -31,8 +31,7 @@ const DepositPage = (props) => {
 
   const toggleConfirm = event => {
     const amountInput = document.getElementById("amount-input").value;
-    // const hasValidAmount = (profileData.cards[0].amount >= showAmount) 
-    if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {  // && hasValidAmount
+    if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) { 
       event.preventDefault(); 
       setIsDisabled(!isDisabled);
       setShowConfirm(!showConfirm);
