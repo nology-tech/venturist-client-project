@@ -13,7 +13,7 @@ const TransactionForm = (props) => {
   } = props;
 
   return (
-    <section className="deposit-form" data-testid="section-form">
+    <form onSubmit={toggleConfirm} className="deposit-form" data-testid="section-form">
       <p data-testid="form-title" className="deposit-form__title">{formTitle}</p>
       <div className="deposit-form__table">
         <table>
@@ -40,7 +40,7 @@ const TransactionForm = (props) => {
 
         <p id="border"></p>
 
-        <form onSubmit={toggleConfirm} className="transaction">
+        <div className="transaction">
           <label htmlFor="amount" id="amount">
             Amount
           </label>
@@ -61,8 +61,7 @@ const TransactionForm = (props) => {
             </input>
             </p>
           </div>
-
-        </form>
+        </div>
 
         <table id="funds-table">
           <tr>
@@ -83,7 +82,7 @@ const TransactionForm = (props) => {
         />
       </div>
       <p id="box-border"></p>
-    </section>
+    </form>
   );
 };
 
