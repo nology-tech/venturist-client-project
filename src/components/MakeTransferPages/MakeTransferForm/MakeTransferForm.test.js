@@ -1,10 +1,5 @@
 import MakeTransferForm from "./MakeTransferForm";
-<<<<<<< HEAD
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import mockData from "../../../assets/data/liveRatesExample";
-=======
 import { render, screen } from "@testing-library/react";
->>>>>>> 5fe84a542ad45421f47db73bfb467881c9dd375c
 import userEvent from "@testing-library/user-event";
 
 import liveRateData from "./../../../assets/data/liveRatesExample";
