@@ -23,6 +23,7 @@
     display: grid;
     justify-items: center;
     gap: 1.2rem;
+    max-width: 300px;
 
     &__icon {
       color: $colourEight;

@@ -2,7 +2,6 @@ import React from "react";
 import Features from "../../components/HomePageComponents/Features/Features";
 import Footer from "../../components/HomePageComponents/Footer/Footer";
 import Home from "../../components/HomePageComponents/Home/Home";
-import Partners from "../../components/HomePageComponents/Partners/Partners";
 import Section from "../../components/HomePageComponents/Section/Section";
 import imgRate from "../../assets/images/rates.png";
 import imgConversion from "../../assets/images/convert.png";
@@ -15,7 +14,6 @@ const HomePage = () => {
       <HeaderHome />
       <main>
         <Home />
-        <Partners />
         <Features />
         <Section
           title="Make a Conversion"
@@ -24,6 +22,7 @@ const HomePage = () => {
           img={imgConversion}
         />
         <Section
+          type="hide"
           title="View Latest Rates"
           bgColour="white"
           name="Rates Table"

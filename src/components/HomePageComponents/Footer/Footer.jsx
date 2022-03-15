@@ -12,12 +12,6 @@ const Footer = () => {
         <img src={logo} alt="Venturist" />
         <h2>Venturist</h2>
       </div>
-      <div className="footer__links">
-        {links.map((link, index) => {
-          return <LinkItem key={index} link={link} />;
-        })}
-      </div>
-
       <Button buttonName="Sign up" />
     </div>
   );
