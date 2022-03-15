@@ -34,6 +34,7 @@ const WithdrawPage = (props) => {
     const hasValidHoldings = (profileData.holdings[profileData.cards[0].currencyType] - parseFloat(amountInput) >= 0)
     if (!hasValidHoldings && amountInput) {
       alert("You don't have enough of that currency to withdraw.");
+      event.preventDefault();
       return;
     }  
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0 && hasValidHoldings) {
