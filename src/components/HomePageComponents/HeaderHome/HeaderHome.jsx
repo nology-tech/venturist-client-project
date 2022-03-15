@@ -1,7 +1,6 @@
 import React from "react";
 import "./HeaderHome.scss";
 import logo from "../../../assets/logos/logo.png";
-import LinkItem from "../LinkItem/LinkItem";
 import Button from "../../Button/Button";
 import { Link } from "react-router-dom";
 
