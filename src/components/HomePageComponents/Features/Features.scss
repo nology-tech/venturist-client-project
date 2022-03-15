@@ -9,13 +9,12 @@
   height: 55vh;
 
   &__title {
-    display: grid;
-    justify-content: center;
+    padding-left: 50px;
   }
 
   &__items {
     display: flex;
-    justify-content: space-between;
+    align-items: baseline;
     gap: 4rem;
   }
 
@@ -23,7 +22,7 @@
     display: grid;
     justify-items: center;
     gap: 1.2rem;
-    max-width: 300px;
+    max-width: 400px;
 
     &__icon {
       color: $colourEight;
