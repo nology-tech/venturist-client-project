@@ -71,10 +71,10 @@ describe('Rendering components', () => {
     render(<MakeTransferCard type="Recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
 
     //Act
-    const contactSortCode = screen.queryByText("553456");
+    const contactSortCode = screen.getByTestId("sort-code");
 
     //Assert
-    expect(contactSortCode).toBeInTheDocument();
+    expect(contactSortCode).toHaveTextContent("553457");
   });
 
   test('Check it renders the account number', () => {

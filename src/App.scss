@@ -1,3 +1,11 @@
+@use "./assets/sass/global_variables" as *;
+
 .App {
   display: flex;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: $outfit;
 }
