@@ -22,7 +22,6 @@ const App = () => {
     setProfileData(newData);
   }
 
-
   return (
     <div className="App">
       <Router>
@@ -34,8 +33,8 @@ const App = () => {
           <Route path="/convert" element={<ConvertPage liveRateData={liveRateData} profileData={profileData} updateProfileData={updateProfileData} />}></Route>
           <Route path="/transfer" element={<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />}></Route>
           <Route path="/contacts" element={<ContactsPage />}></Route>
-          <Route path="/deposit" element={<DepositPage />}></Route>
-          <Route path="/withdraw" element={<WithdrawPage />}></Route>
+          <Route path="/deposit" element={<DepositPage profileData={profileData} updateProfileData={updateProfileData}/>}></Route>
+          <Route path="/withdraw" element={<WithdrawPage profileData={profileData} updateProfileData={updateProfileData}/>}></Route>
         </Routes>
       </Router>
     </div>
