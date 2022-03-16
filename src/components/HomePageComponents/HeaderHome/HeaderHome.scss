@@ -1,5 +1,9 @@
 @use "../../../assets/sass/global_variables" as *;
 
+* {
+  overflow-x: hidden;
+}
+
 .headerHome {
   background-color: $colourTen;
   color: $colourSix;
