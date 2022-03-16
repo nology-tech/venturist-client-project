@@ -1,7 +1,7 @@
 @use "../../../assets/sass/global_variables" as *;
 
 .footer {
-  background-color: $colourSix;
+  background-color: rgba(0, 0, 0, 0.9);
   color: $colourEleven;
   display: flex;
   justify-content: space-between;
