@@ -8,7 +8,8 @@ const exchangeInfo = {
   exchangeFrom: {
     user: profileData,
     currency: liveRates[0],
-    amount: 3000
+    amount: 3000,
+    fee: 30
   },
   exchangeTo: {
     user: {},
@@ -32,7 +33,7 @@ describe ("Testing that elements render on screen", () => {
       const onClick = jest.fn();
       render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
       
-      const Name = screen.queryByText("Samantha Brooks")
+      const Name = screen.queryByText("Sam Brooks")
       
       expect(Name).toBeInTheDocument();
     });
@@ -60,7 +61,7 @@ describe ("Testing that elements render on screen", () => {
       
       const transferAmount = screen.getByTestId("transferAmount").innerHTML;
       
-      expect(transferAmount).toContain("3000.00");
+      expect(transferAmount).toContain("3030.00");
       });
 
     test("Test that fund remaining renders on screen correctly - accurate to 2 decimal places", () => {
@@ -70,7 +71,7 @@ describe ("Testing that elements render on screen", () => {
       
       const remainingAmount = screen.getByTestId("remainingBalance").innerHTML;
       
-      expect(remainingAmount).toBe("£751.59");
+      expect(remainingAmount).toBe("£721.59");
     });
     
 });
@@ -79,7 +80,7 @@ describe ("Testing that buttons work correctly", () => {
   test("Test that select button brings up user Card list", () => {
     
     const onClick = jest.fn();
-    render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
+    render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleShowConfirmation={onClick} />);
     const selectButton = screen.getAllByRole("button")[0];
     
   
@@ -88,15 +89,16 @@ describe ("Testing that buttons work correctly", () => {
     
     expect(chooseRecipientContainer).toBeInTheDocument();
   });
-  test("Test that select button brings up user Card list", () => {
+
+  test("Test that select button brings up add new recipient", () => {
     
-    const onClick = jest.fn();
+    global.alert = jest.fn();
+    const onClick=jest.fn();
     render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
     const newButton = screen.getAllByRole("button")[1];
     
-    
     fireEvent.click(newButton);
 
-    expect(onClick).toHaveBeenCalled();
+    expect(global.alert).toHaveBeenCalledTimes(1);
   });
 });
