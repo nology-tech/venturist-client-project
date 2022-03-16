@@ -8,10 +8,6 @@
   background-color: $colourTen;
   height: 55vh;
 
-  &__title {
-    padding-left: 50px;
-  }
-
   &__items {
     display: flex;
     align-items: baseline;
@@ -23,7 +19,7 @@
     display: grid;
     justify-items: center;
     gap: 1.2rem;
-    max-width: 400px;
+    width: 400px;
 
     &__icon {
       color: $colourEight;
