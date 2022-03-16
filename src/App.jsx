@@ -1,4 +1,5 @@
 import "./App.scss";
+import { useState } from "react";
 import NavBar from "./containers/NavBar/NavBar";
 import ConvertPage from "./containers/ConvertPage/ConvertPage";
 import UserProfile from "./components/UserProfile/UserProfile";
@@ -13,28 +14,101 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import liveRateData from "./assets/data/liveRatesExample";
 import userProfile from "./assets/data/samanthaBrooksProfile";
 import contactData from "./assets/data/contactExample";
-import { useState } from "react";
+import HomePage from "./containers/HomePage/HomePage";
 
 const App = () => {
-
-  const [profileData,setProfileData] = useState({...userProfile});
+  const [profileData, setProfileData] = useState({ ...userProfile });
   const updateProfileData = (newData) => {
     setProfileData(newData);
-  }
+  };
 
   return (
     <div className="App">
       <Router>
-        <NavBar />
-        <UserProfile />
         <Routes>
-          <Route path="/wallet" element={<WalletPage profileData={profileData} liveRateData={liveRateData} />}></Route>
-          <Route path="/liverates" element={<LiveRatesPage />}></Route>
-          <Route path="/convert" element={<ConvertPage liveRateData={liveRateData} profileData={profileData} updateProfileData={updateProfileData} />}></Route>
-          <Route path="/transfer" element={<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />}></Route>
-          <Route path="/contacts" element={<ContactsPage />}></Route>
-          <Route path="/deposit" element={<DepositPage profileData={profileData} updateProfileData={updateProfileData}/>}></Route>
-          <Route path="/withdraw" element={<WithdrawPage profileData={profileData} updateProfileData={updateProfileData}/>}></Route>
+          <Route path="/" element={<HomePage />}></Route>
+
+          <Route
+            path="/wallet"
+            element={
+              <>
+                <NavBar />
+                <UserProfile />
+                <WalletPage
+                  profileData={profileData}
+                  liveRateData={liveRateData}
+                />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/liverates"
+            element={
+              <>
+                <NavBar />
+                <UserProfile />
+                <LiveRatesPage />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/convert"
+            element={
+              <>
+                <NavBar />
+                <UserProfile />
+                <ConvertPage
+                  liveRateData={liveRateData}
+                  profileData={profileData}
+                  updateProfileData={updateProfileData}
+                />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/transfer"
+            element={
+              <>
+                <NavBar />
+                <UserProfile />
+                <MakeTransferPage
+                  liveRateData={liveRateData}
+                  profileData={profileData}
+                  contactData={contactData}
+                />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/contacts"
+            element={
+              <>
+                <NavBar />
+                <UserProfile />
+                <ContactsPage />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/deposit"
+            element={
+              <>
+                <NavBar />
+                <UserProfile />
+                <DepositPage />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/withdraw"
+            element={
+              <>
+                <NavBar />
+                <UserProfile />
+                <WithdrawPage />
+              </>
+            }
+          ></Route>
         </Routes>
       </Router>
     </div>
