@@ -15,6 +15,7 @@ import liveRateData from "./assets/data/liveRatesExample";
 import userProfile from "./assets/data/samanthaBrooksProfile";
 import contactData from "./assets/data/contactExample";
 import HomePage from "./containers/HomePage/HomePage";
+import LoginPage from "./containers/LoginPage/LoginPage";
 
 const App = () => {
   const [profileData, setProfileData] = useState({ ...userProfile });
@@ -27,7 +28,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-
+          <Route path="/login" element={<LoginPage />}></Route>
           <Route
             path="/wallet"
             element={

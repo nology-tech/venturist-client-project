@@ -1,0 +1,11 @@
+@use "../../assets/sass/global_variables" as *;
+
+.loginform {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 601px;
+    height: 589px;
+    background-color: aquamarine;
+    border: 1px solid gray;
+}
