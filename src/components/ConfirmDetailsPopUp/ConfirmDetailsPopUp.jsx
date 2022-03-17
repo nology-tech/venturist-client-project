@@ -12,9 +12,9 @@ const ConfirmDetailsPopUp = (props) => {
   } = props;
 
   return (
-    <div className="confirm-popup" data-testid="confirm-popup">
+    <div>
       <div className="popup-background"></div>
-      <div className="confirm-popup">
+      <div className="confirm-popup" data-testid="confirm-popup">
         <div className="confirm-popup__content">
           <img
             className="confirm-popup__icon"
@@ -57,7 +57,7 @@ const ConfirmDetailsPopUp = (props) => {
           </div>
         </div>
         <p className="border"></p>
-        <div className="button-container">
+        <div className="confirm-popup__content__button-container">
           <Button
             data-testid="button"
             buttonName="Go Back"
