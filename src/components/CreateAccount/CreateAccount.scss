@@ -1,0 +1,55 @@
+@import "../../assets/sass/global_variables";
+
+.createAccount {
+    background-color: $colourTen;
+    height: 100vh;
+    
+    
+    &__header{        
+        background-color: white;
+        width: 100vw;
+        height: 74px;
+        display: flex;        
+        justify-content: space-between;
+        align-items: center;
+        font-family: $outfit;
+        font-weight: 400;
+
+        &__logo{  
+            display: inherit;
+            padding-left: 3%;
+            gap: 0.5rem;
+            img {
+                height: 35px;
+            }
+    
+        }
+        button {
+            margin-right: 3%;
+            font-size: 16px;
+            font-weight: 600;
+          }
+    }
+
+   &__container {
+       width: 100vw;
+       display: flex;
+       justify-content: center;
+    &__form {
+        background: #ffffff;
+        border-radius: 8px;
+        width: 626px;
+        height: 600px;
+        padding: 40px 76px;
+        margin-top: 5%;
+        box-sizing: border-box;
+        font-family: $outfit;
+       }
+
+   }
+
+    
+
+
+}
+
