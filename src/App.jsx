@@ -15,7 +15,7 @@ import liveRateData from "./assets/data/liveRatesExample";
 import userProfile from "./assets/data/samanthaBrooksProfile";
 import contactData from "./assets/data/contactExample";
 // import HomePage from "./containers/HomePage/HomePage";
-import CreateAccount from "./components/CreateAccount/CreateAccount";
+import CreateAccount from "./components/AuthenticationForms/CreateAccount/CreateAccount"
 
 const App = () => {
   const [profileData, setProfileData] = useState({ ...userProfile });
