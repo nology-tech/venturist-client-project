@@ -4,6 +4,7 @@ import "./MakeTransferPage.scss";
 import Header from "../../components/Header/Header";
 import MakeTransferConfirmAccount from "../../components/MakeTransferPages/MakeTransferConfirmAccount/MakeTransferConfirmAccount";
 import MakeTransferForm from "../../components/MakeTransferPages/MakeTransferForm/MakeTransferForm";
+import MakeTransferConfirmation from "../../components/MakeTransferPages/MakeTransferConfirmation/MakeTransferConfirmation";
 
 const MakeTransferPage = (props) => {
   const { liveRateData, profileData, contactData } = props;
@@ -12,7 +13,8 @@ const MakeTransferPage = (props) => {
     exchangeFrom: {
       user: profileData,
       currency: liveRateData[0],
-      amount: 0
+      amount: 0,
+      fee: 0
     },
     exchangeTo: {
       user: {},
@@ -25,11 +27,7 @@ const MakeTransferPage = (props) => {
 
   const [showInitialForm, setShowInitialForm] = useState(true); 
   const [showConfirmAccount, setShowConfirmAccount] = useState(false); 
-
-  // Put into confirmAccount
-  const handleAddRecipient = () => {
-    
-  }
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleShowForm = () => {
     const amountInput = document.getElementById("amountInput").value;
@@ -38,15 +36,17 @@ const MakeTransferPage = (props) => {
       return;
     }
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
-      setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeFrom.amount=(amountInput*1.01));
+      setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeFrom.amount=Number(amountInput).toFixed(2));
+      setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeFrom.fee=Number(amountInput*0.01).toFixed(2));
       setShowInitialForm(false);
       setShowConfirmAccount(true);
     }
   };
 
-  // const handleShowConfirmation = (event) => {
-  //   event.preventDefault();
-  // }
+  const handleShowConfirmation = () => {
+    setShowConfirmation(true);
+    setShowConfirmAccount(false);
+  }
 
   return (
     <div className="make-transfer" data-testid="make-transfer">
@@ -70,7 +70,13 @@ const MakeTransferPage = (props) => {
           exchangeInfo={exchangeInfo} 
           setExchangeInfo={setExchangeInfo} 
           data={contactData} 
-          handleAddRecipient={handleAddRecipient} 
+          handleShowConfirmation={handleShowConfirmation}
+        />
+      )}
+
+      {showConfirmation && (
+        <MakeTransferConfirmation 
+          exchangeInfo={exchangeInfo}
         />
       )}
     </div>

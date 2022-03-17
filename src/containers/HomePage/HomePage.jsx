@@ -10,7 +10,7 @@ import HeaderHome from "../../components/HomePageComponents/HeaderHome/HeaderHom
 
 const HomePage = () => {
   return (
-    <div>
+    <div data-testid="homePage">
       <HeaderHome />
       <main>
         <Home />

@@ -1,0 +1,77 @@
+@use "../../assets/sass/theme_colours" as *;
+@use "../../assets/sass/typography" as *;
+
+.popup-background {
+  z-index: 1;
+  fill: $colourTwo;
+  background-color: rgba(0, 0, 0, 0.15);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.confirm-popup {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 8px;
+  background: #ffffff;
+  padding-left: 50px;
+  padding-right: 60px;
+  z-index: 2;
+  position: fixed;
+  top: 250px;
+  left: 600px;
+  right: 0;
+  bottom: 0;
+
+  &__icon {
+    position: absolute;
+    right: 36px;
+    top: 36px;
+    color: $colourThree;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  
+
+    &__title {
+      border-bottom: 1px solid $colourEleven;
+      font-family: $outfit;
+      font-size: 32px;
+      padding-top: 30px;
+      padding-bottom: 10px;
+    }
+
+  }
+}
+
+.border {
+  border-bottom: 1px solid $colourEleven;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5em;
+}
+
+#header {
+  font-weight: lighter;
+  color: $colourSix;
+}
+
+p {
+  padding-bottom: 0.15em;
+}
+
+.user-info {
+  color: $colourFour;
+}

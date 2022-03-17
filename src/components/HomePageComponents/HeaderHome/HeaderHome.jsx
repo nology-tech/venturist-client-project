@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const HeaderHome = () => {
   return (
-    <header className="headerHome">
+    <header className="headerHome" data-testid="headerHome">
       <div className="headerHome__logo">
         <img src={logo} alt="Venturist" />
         <h2>Venturist</h2>

@@ -5,7 +5,7 @@ import Button from "../../Button/Button";
 
 const MakeTransferConfirmAccount = (props) => {
 
-  const { data, handleAddRecipient, exchangeInfo, setExchangeInfo } = props;
+  const { data, exchangeInfo, setExchangeInfo, handleShowConfirmation } = props;
 
   const [showChooseRecipients, setShowChooseRecipients] = useState(false);
   
@@ -13,16 +13,21 @@ const MakeTransferConfirmAccount = (props) => {
     setShowChooseRecipients(!showChooseRecipients);
   };
 
+  const handleAddRecipient = () => {
+    alert("Adding new recipient");
+  };
+
   const handleChooseRecipient = (event) => {
     const user = data.filter(contact => contact.IBAN === event.target.id)[0];
     setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeTo.user = user);
     toggleChooseRecipients();
+    handleShowConfirmation();
   }
   
   const currencySymbol = exchangeInfo.exchangeFrom.currency.currencySymbol;
   const currencyCode = exchangeInfo.exchangeFrom.currency.currencyCode;
   const profileData = exchangeInfo.exchangeFrom.user;
-  const transferAmount = exchangeInfo.exchangeFrom.amount;
+  const transferAmount = Number(exchangeInfo.exchangeFrom.amount) + Number(exchangeInfo.exchangeFrom.fee);
 
   return (
     <div className="transfer-page__confirm">
