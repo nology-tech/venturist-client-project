@@ -96,7 +96,10 @@ const App = () => {
               <>
                 <NavBar />
                 <UserProfile />
-                <DepositPage />
+                <DepositPage 
+                  profileData={profileData}
+                  updateProfileData={updateProfileData}
+                  />
               </>
             }
           ></Route>
@@ -106,7 +109,10 @@ const App = () => {
               <>
                 <NavBar />
                 <UserProfile />
-                <WithdrawPage />
+                <WithdrawPage 
+                  profileData={profileData}
+                  updateProfileData={updateProfileData}
+              />
               </>
             }
           ></Route>
