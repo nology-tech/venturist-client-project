@@ -29,7 +29,7 @@ const WelcomeBack = () => {
         </div>
           <div className="loginform__header">
               <h1>Welcome Back!</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>Lorem ipsum ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
           <div className="loginform__email">
             <label>Email</label>
