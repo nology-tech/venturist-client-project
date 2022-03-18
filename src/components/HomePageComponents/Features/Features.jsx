@@ -13,7 +13,7 @@ const Features = () => {
     {
       title: "Moving and living abroad just got simpler.",
       about:
-        "Receive your salary, pension, and more.Relocate without the stress — and without the multiple bank accounts. Share your details with your employer, pension scheme, family or friends.",
+        "Receive your salary, pension, and more. Relocate without the stress — and without the multiple bank accounts. Share your details with your employer, pension scheme, family or friends.",
     },
     {
       title: "Move your money between countries.",
