@@ -1,0 +1,24 @@
+@use "../../../assets/sass/global_variables" as *;
+
+.home {
+  display: grid;
+  justify-items: center;
+  gap: 2rem;
+
+  background: linear-gradient(to bottom, $colourTen 40%, $colourEleven);
+  height: 80vh;
+
+  &__title {
+    padding-top: 2rem;
+  }
+
+  &__p {
+    max-width: 300px;
+    text-align: center;
+  }
+
+  &__img {
+    max-width: 850px;
+    border: 1px solid grey;
+  }
+}

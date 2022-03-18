@@ -1,15 +1,10 @@
 @use "../../../assets/sass/global_variables" as *;
 
-*{
-    padding: 0;
-    margin: 0;
-    font-family: $outfit;
-}
-
 .transfer-page__confirm {
     position: absolute;
     margin-top: 30px;
     width: 512px;
+    font-family: $outfit;
 
     &__transfer{
         color: $colourOne;

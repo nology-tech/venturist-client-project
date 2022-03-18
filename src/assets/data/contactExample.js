@@ -6,8 +6,8 @@ const contacts = [
     bankName: "Venturist",
     bankIcon: "",
     accountNumber: 12345689,
-    sortCode: "553456",
-    IBAN: "GB56HLFX11005310840366",
+    sortCode: "553457",
+    IBAN: "GB56HLFX11005310840367",
     numberOfTransaction: 100,
     lastTransaction: 1645803922
   },
@@ -55,7 +55,7 @@ const contacts = [
     bankIcon: "https://plusbank.pl/video/Plus_Bank_animacja_logo_v3.jpg",
     accountNumber: 39524562,
     sortCode: "594923",
-    IBAN: "GB56HLFX11005310840466",
+    IBAN: "GB56HLFX11005310840465",
     numberOfTransaction: 20,
     lastTransaction: 1645548738321
   },
@@ -67,13 +67,10 @@ const contacts = [
     bankIcon: "https://images.squarespace-cdn.com/content/v1/58775efdd482e90f8535f34f/1613728292558-VRKWPOW5ZKC6BWWHCYAB/primary-small.png",
     accountNumber: 28443674,
     sortCode: "325345",
-    IBAN: "GB56HLFX11005310840466",
+    IBAN: "GB56HLFX11005310840464",
     numberOfTransaction: 5,
     lastTransaction: 1645548734691
   },
-
-
-
 ];
 
 export default contacts;
