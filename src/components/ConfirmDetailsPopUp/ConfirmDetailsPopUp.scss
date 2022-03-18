@@ -1,7 +1,20 @@
 @use "../../assets/sass/theme_colours" as *;
 @use "../../assets/sass/typography" as *;
 
-.popup-background {
+.account-details {
+  font-weight: 500;
+  color: $colourSix;
+}
+
+p {
+  padding-bottom: 0.15em;
+}
+
+.user-info {
+  color: $colourFour;
+}
+
+.confirm-popup-background {
   z-index: 1;
   fill: $colourTwo;
   background-color: rgba(0, 0, 0, 0.15);
@@ -48,30 +61,17 @@
       padding-bottom: 10px;
     }
 
+    &__border-line {
+      border-bottom: 1px solid $colourEleven;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
     &__button-container {
+      padding-top: 0.5em;
       display: flex;
       justify-content: flex-end;
       gap: 0.5em;
     }
-
   }
-}
-
-.border {
-  border-bottom: 1px solid $colourEleven;
-  margin-top: 10px;
-  margin-bottom: 15px;
-}
-
-#header {
-  font-weight: lighter;
-  color: $colourSix;
-}
-
-p {
-  padding-bottom: 0.15em;
-}
-
-.user-info {
-  color: $colourFour;
 }
