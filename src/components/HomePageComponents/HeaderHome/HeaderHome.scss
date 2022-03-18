@@ -1,16 +1,12 @@
 @use "../../../assets/sass/global_variables" as *;
 
-* {
-  overflow-x: hidden;
-}
-
 .headerHome {
   background-color: $colourTen;
   color: $colourSix;
   display: flex;
   justify-content: space-between;
   height: 13vh;
-  width: 100vw;
+  min-width: 99.15vw;
   align-items: center;
   font-family: $outfit;
   font-weight: 400;
