@@ -36,11 +36,13 @@ const CreateAccount = (props) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = ((data) => {setUserData(data);
-     handleShowBankDetails()});
+  const onSubmit = (data) => {
+    setUserData(data);
+    handleShowBankDetails();
+  };
 
   return (
-    <div className="createAccount">
+    <div className="createAccount" data-testid="createAccount-form">
       <div className="createAccount__header">
         <div className="createAccount__header__logo">
           <img src={logo} alt="logo" />
@@ -95,14 +97,18 @@ const CreateAccount = (props) => {
           </div>
           <div className="createAccount__container__form__links">
             <div className="createAccount__container__form__links__signUp">
-              <p className="createAccount__container__form__signin">Already have an account? </p>
+              <p className="createAccount__container__form__signin">
+                Already have an account?{" "}
+              </p>
               <Button buttonName="Sign in" buttonStyle="clear" />
             </div>
           </div>
           <div className="createAccount__container__form__continueButton">
-          <Button buttonName="Continue" buttonFunction={handleSubmit(onSubmit)} />
+            <Button
+              buttonName="Continue"
+              buttonFunction={handleSubmit(onSubmit)}
+            />
           </div>
-          
         </form>
       </div>
     </div>

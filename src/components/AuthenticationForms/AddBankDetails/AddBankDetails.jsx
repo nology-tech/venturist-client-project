@@ -36,7 +36,7 @@ const AddBankDetails = (props) => {
      handleShowBillingAddress()});
 
   return (
-    <div className="createAccount">
+    <div className="createAccount" data-testid="addBankDetails-form">
       <div className="createAccount__header">
         <div className="createAccount__header__logo">
           <img src={logo} alt="logo" />
@@ -89,7 +89,8 @@ const AddBankDetails = (props) => {
               {errors.sortCode?.message}
             </p>
           </div>
-          <div className="createAccount__container__form__continueButton">
+          <div className="border"></div>
+          <div className="createAccount__container__form__form-container">
             <Button buttonName="Go Back" buttonStyle="clear" />
             <Button
               buttonName="Continue"

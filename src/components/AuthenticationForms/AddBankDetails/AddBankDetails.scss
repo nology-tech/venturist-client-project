@@ -94,11 +94,11 @@
         }
       }
 
-      &__continueButton {
-        button {
-          margin-left: 79%;
-        }
+      &__form-container {
+        display: flex;
+        margin-left: 58%;
       }
+
       &__signin {
         color: $colourFour;
       }
@@ -115,4 +115,9 @@
       }
     }
   }
+}
+
+.border {
+  border-top: 1px solid $colourEleven;
+  width: 100%;
 }
