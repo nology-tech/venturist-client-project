@@ -35,6 +35,14 @@
        width: 100vw;
        display: flex;
        justify-content: center;
+
+       &__header{
+           h1{
+            font-weight: 400; 
+           }
+           font-weight: 200;
+            color: $colourSix;   
+       }
     &__form {
         background: #ffffff;
         border-radius: 8px;
@@ -44,14 +52,18 @@
         margin-top: 5%;
         box-sizing: border-box;
         font-family: $outfit;
+        
 
         input {
-            height: 55px;
-            width: 504px;
+            height: 40px;
             background-color: #FBFBFC;
             border: 1px solid #E2E2E2;
             border-radius: 3px;
+            margin-top: 2%;
+            margin-bottom: 2%;
         }
+
+        
 
         &__brand {
             display: inline-flex;
@@ -62,6 +74,8 @@
             }
             &__name {
                 font-size: 20px;
+                color: $colourSix;
+                font-weight: 400;
             }
         }
         &__email, &__password {
@@ -74,6 +88,10 @@
             justify-content: space-between;
             &__signUp {
                 display: flex;
+                width: 100%;
+                padding-bottom: 7%;
+                margin-bottom: 7%;
+                border-bottom: 1px solid $colourEleven;
             }
         }
     
@@ -81,6 +99,7 @@
          padding-top: 5px;
          font-family: $outfit;
          font-size: 16px;
+         color: $colourFour;
     }
        }
 

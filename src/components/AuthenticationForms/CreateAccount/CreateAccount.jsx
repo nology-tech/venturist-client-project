@@ -38,7 +38,7 @@ const CreateAccount = () => {
         <form className="createAccount__container__form" onSubmit={handleSubmit(onSubmit)}>
           <div className="createAccount__container__form__brand">
               <img className="createAccount__container__form__brand__logo" src={logo} alt="" />
-              <p className="createAccount__container__form__brand__name" >Venturist</p>
+              <h2 className="createAccount__container__form__brand__name" >Venturist</h2>
           </div>
             <div className="createAccount__container__header">
                 <h1>Create an account</h1>
@@ -79,12 +79,12 @@ const CreateAccount = () => {
             </div>
             <div className="createAccount__container__form__links">
               <div className="createAccount__container__form__links__signUp" >
-                  <p>Don't have an account? </p>
-                  <Button buttonName="Sign Up" buttonStyle="clear"/>
+                  <p>Already have an account? </p>
+                  <Button buttonName="Login" buttonStyle="clear"/>
               </div>
-              <Button buttonName="Forgotten Password?" buttonStyle="clear"/>
+            
             </div>
-              <Button buttonName="Login" buttonFunction={handleSubmit(onSubmit)} />
+              <Button buttonName="Continue" buttonFunction={handleSubmit(onSubmit)} />
       </form>
 
         </div>
