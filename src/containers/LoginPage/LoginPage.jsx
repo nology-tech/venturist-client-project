@@ -1,6 +1,7 @@
 import React from 'react'
-import WelcomeBack from '../../components/WelcomeBack/WelcomeBack'
+import WelcomeBack from '../../components/LoginPages/WelcomeBack/WelcomeBack'
 import "./LoginPage.scss";
+
 
 const LoginPage = () => {
     return (
