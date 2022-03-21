@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./CreateAccount.scss";
 import Button from "../../Button/Button";
@@ -13,7 +13,10 @@ const schema = yup
       .email("Must be a valid email")
       .max(255)
       .required("Email is required"),
-    password: yup.string().required("Password is required"),
+    password: yup
+      .string()
+      .min(5, "Password must contain at least 5 characters")
+      .required("Password is required"),
     passwordConfirmation: yup
       .string()
       .required("Please retype your password.")
@@ -22,6 +25,8 @@ const schema = yup
   .required();
 
 const CreateAccount = () => {
+  const [userData, setUserData] = useState(null);
+
   const {
     register,
     handleSubmit,
@@ -30,7 +35,7 @@ const CreateAccount = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => setUserData(data);
 
   return (
     <div className="createAccount">
@@ -68,21 +73,27 @@ const CreateAccount = () => {
           <div className="createAccount__container__form__email">
             <label>Email</label>
             <input {...register("email")} />
-            <p>{errors.email?.message}</p>
+            <p className="createAccount__container__form__error">
+              {errors.email?.message}
+            </p>
           </div>
           <div className="createAccount__container__form__password">
             <label>Password</label>
             <input type="password" {...register("password")} />
-            <p>{errors.password?.message}</p>
+            <p className="createAccount__container__form__error">
+              {errors.password?.message}
+            </p>
           </div>
           <div className="createAccount__container__form__password">
             <label>Confirm Password</label>
             <input type="password" {...register("passwordConfirmation")} />
-            <p>{errors.passwordConfirmation?.message}</p>
+            <p className="createAccount__container__form__error">
+              {errors.passwordConfirmation?.message}
+            </p>
           </div>
           <div className="createAccount__container__form__links">
             <div className="createAccount__container__form__links__signUp">
-              <p>Already have an account? </p>
+              <p className="createAccount__container__form__signin">Already have an account? </p>
               <Button buttonName="Sign in" buttonStyle="clear" />
             </div>
           </div>

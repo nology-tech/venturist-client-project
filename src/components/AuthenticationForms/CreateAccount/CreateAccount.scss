@@ -39,9 +39,10 @@
        &__header{
            h1{
             font-weight: 400; 
+            color: $colourSix;
            }
            font-weight: 200;
-            color: $colourSix;   
+           color: $colourFour;  
        }
     &__form {
         background: #ffffff;
@@ -52,8 +53,8 @@
         margin-top: 5%;
         box-sizing: border-box;
         font-family: $outfit;
-        
 
+       
         input {
             height: 40px;
             background-color: #FBFBFC;
@@ -75,8 +76,9 @@
             }
             &__name {
                 font-size: 20px;
-                color: $colourSix;
+                
                 font-weight: 400;
+                color: $colourFour;
             }
         }
         &__email, &__password {
@@ -102,13 +104,24 @@
             }
             
         }
+        &__signin {
+            color: $colourFour;
+        }
+        
+              
+
     
     p {
          padding-top: 5px;
          font-family: $outfit;
          font-size: 16px;
-         color: $colourFour;
+        //  
     }
+
+    &__error {
+        color: $colourSeven;
+        font-size: 12px;
+    }  
 
 
     
