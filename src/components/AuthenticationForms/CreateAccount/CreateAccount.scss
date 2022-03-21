@@ -61,6 +61,7 @@
             border-radius: 3px;
             margin-top: 2%;
             margin-bottom: 2%;
+            padding-left: 1%;
         }
 
         
@@ -94,6 +95,13 @@
                 border-bottom: 1px solid $colourEleven;
             }
         }
+
+        &__continueButton {
+            button {
+            margin-left: 79%;
+            }
+            
+        }
     
     p {
          padding-top: 5px;
@@ -101,6 +109,9 @@
          font-size: 16px;
          color: $colourFour;
     }
+
+
+    
        }
 
     

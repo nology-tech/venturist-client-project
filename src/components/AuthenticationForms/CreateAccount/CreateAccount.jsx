@@ -82,12 +82,14 @@ const CreateAccount = () => {
           </div>
           <div className="createAccount__container__form__links">
             <div className="createAccount__container__form__links__signUp">
-              <p>Don't have an account? </p>
-              <Button buttonName="Sign Up" buttonStyle="clear" />
+              <p>Already have an account? </p>
+              <Button buttonName="Sign in" buttonStyle="clear" />
             </div>
-            <Button buttonName="Forgotten Password?" buttonStyle="clear" />
           </div>
-          <Button buttonName="Login" buttonFunction={handleSubmit(onSubmit)} />
+          <div className="createAccount__container__form__continueButton">
+          <Button buttonName="Continue" buttonFunction={handleSubmit(onSubmit)} />
+          </div>
+          
         </form>
       </div>
     </div>
