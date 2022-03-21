@@ -20,7 +20,7 @@ const LoginPage = () => {
     return (
         <>
         {showWelcomeBack && <WelcomeBack togglePage={togglePage} />}
-        {showForgotPassword && <ForgotPassword />}
+        {showForgotPassword && <ForgotPassword togglePage={togglePage}/>}
         </>
     )
 }

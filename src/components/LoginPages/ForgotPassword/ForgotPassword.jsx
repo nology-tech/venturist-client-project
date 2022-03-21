@@ -4,13 +4,9 @@ import Button from "../../Button/Button";
 import logo from "../../../assets/logos/logo.png";
 import icons from "../../../assets/icons/icons";
 
-const style = (error) => {
-  if (error) {
-    return { border: "2px red solid" };
-    }
-  }
+const ForgotPassword = (props) => {
+  const { togglePage } = props;
 
-const ForgotPassword = () => {
   return (
     <div className="forgot-password-form">
       <div className="forgot-password-form__header">
@@ -39,12 +35,12 @@ const ForgotPassword = () => {
               <label>Email Address</label>
               <input 
                 className="forgot-password-form__container__form__email__input"
-                // style={style(errors.email)}
                 type="text" 
               />
             </div>
             <div className="forgot-password-form__container__form__line"></div>
             <div className="forgot-password-form__container__form__button">
+              <Button buttonName="Go Back" buttonStyle="clear" buttonFunction={togglePage}/>
               <Button buttonName="Send" /> 
             </div>
           </form>

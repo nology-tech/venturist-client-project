@@ -14,11 +14,11 @@ const WelcomeBack = (props) => {
 
   const [showPassword, setShowPassword] = useState('password')
 
-const style = (error) => {
-  if (error) {
-    return { border: "2px red solid" };
+  const style = (error) => {
+    if (error) {
+      return { border: "2px red solid" };
+      }
     }
-  }
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
@@ -80,7 +80,7 @@ const style = (error) => {
                 })}
               />
               <i onClick={toggleShowPassword}>
-              {icons.EyeShow}
+              {showPassword === "password" ? icons.EyeShow : icons.EyeHide}
               </i>
               {errors.password && <p>{errors.password.message}</p>}
             </div>
