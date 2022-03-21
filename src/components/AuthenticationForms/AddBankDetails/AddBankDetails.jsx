@@ -87,7 +87,8 @@ const AddBankDetails = () => {
               {errors.sortCode?.message}
             </p>
           </div>
-          <div className="createAccount__container__form__continueButton">
+          <div className="border"></div>
+          <div className="createAccount__container__form__form-container">
             <Button buttonName="Go Back" buttonStyle="clear" />
             <Button
               buttonName="Continue"
