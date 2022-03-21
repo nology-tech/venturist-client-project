@@ -1,97 +1,97 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import "./CreateAccount.scss"
+import "./CreateAccount.scss";
 import Button from "../../Button/Button";
-import logo from "../../../assets/logos/logo.png"
+import logo from "../../../assets/logos/logo.png";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup
+  .object({
+    email: yup
+      .string()
+      .email("Must be a valid email")
+      .max(255)
+      .required("Email is required"),
+    password: yup.string().required("Password is required"),
+    passwordConfirmation: yup
+      .string()
+      .required("Please retype your password.")
+      .oneOf([yup.ref("password")], "Your passwords do not match."),
+  })
+  .required();
 
 const CreateAccount = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm({
-      mode: 'onSubmit' 
-    });
-  
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  const style = (error) => {
-    if (error) {
-      return { backgroundColor: "rgba(255, 0, 0, 0.5)" };
-      }
-    }
-
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
-  };
+  const onSubmit = (data) => console.log(data);
 
   return (
     <div className="createAccount">
-        <div className="createAccount__header">
-            <div className="createAccount__header__logo">
-            <img src={logo} alt="logo" />
-            <h2>Venturist</h2>
-            </div>            
-            <Button buttonName={"login"}
-            buttonStyle={"blue"}
-            hasIcon={false}
-            buttonFunction={() => {}}
-             />
+      <div className="createAccount__header">
+        <div className="createAccount__header__logo">
+          <img src={logo} alt="logo" />
+          <h2>Venturist</h2>
         </div>
-        <div className="createAccount__container">
-
-        <form className="createAccount__container__form" onSubmit={handleSubmit(onSubmit)}>
+        <Button
+          buttonName={"login"}
+          buttonStyle={"blue"}
+          hasIcon={false}
+          buttonFunction={() => {}}
+        />
+      </div>
+      <div className="createAccount__container">
+        <form
+          className="createAccount__container__form"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <div className="createAccount__container__form__brand">
-              <img className="createAccount__container__form__brand__logo" src={logo} alt="" />
-              <p className="createAccount__container__form__brand__name" >Venturist</p>
+            <img
+              className="createAccount__container__form__brand__logo"
+              src={logo}
+              alt=""
+            />
+            <p className="createAccount__container__form__brand__name">
+              Venturist
+            </p>
           </div>
-            <div className="createAccount__container__header">
-                <h1>Create an account</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <div className="createAccount__container__header">
+            <h1>Create an account</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          <div className="createAccount__container__form__email">
+            <label>Email</label>
+            <input {...register("email")} />
+            <p>{errors.email?.message}</p>
+          </div>
+          <div className="createAccount__container__form__password">
+            <label>Password</label>
+            <input {...register("password")} />
+            <p>{errors.password?.message}</p>
+          </div>
+          <div className="createAccount__container__form__password">
+            <label>Confirm Password</label>
+            <input {...register("passwordConfirmation")} />
+            <p>{errors.password?.message}</p>
+          </div>
+          <div className="createAccount__container__form__links">
+            <div className="createAccount__container__form__links__signUp">
+              <p>Don't have an account? </p>
+              <Button buttonName="Sign Up" buttonStyle="clear" />
             </div>
-            <div className="createAccount__container__form__email">
-              <label>Email</label>
-              <input 
-                style={style(errors.email)}
-                type="text" 
-                {...register("email", {
-                  required: "Please enter your Venturist email address",
-                })} 
-              />
-              {errors.email && <p>{errors.email.message}</p>}
-            </div>
-            <div className="createAccount__container__form__password">
-              <label>Password</label>
-              <input 
-                style={style(errors.password)}
-                type="password" 
-                {...register("password", {
-                  required: "Please enter your Venturist password"
-                })}
-              />
-              {errors.password && <p>{errors.password.message}</p>}
-            </div>
-            <div className="createAccount__container__form__password">
-              <label>Confirm Password</label>
-              <input 
-                style={style(errors.password)}
-                type="password" 
-                {...register("password", {
-                  required: "Please enter your Venturist password"
-                })}
-              />
-              {errors.password && <p>{errors.password.message}</p>}
-            </div>
-            <div className="createAccount__container__form__links">
-              <div className="createAccount__container__form__links__signUp" >
-                  <p>Don't have an account? </p>
-                  <Button buttonName="Sign Up" buttonStyle="clear"/>
-              </div>
-              <Button buttonName="Forgotten Password?" buttonStyle="clear"/>
-            </div>
-              <Button buttonName="Login" buttonFunction={handleSubmit(onSubmit)} />
-      </form>
-
-        </div>
-        
-
+            <Button buttonName="Forgotten Password?" buttonStyle="clear" />
+          </div>
+          <Button buttonName="Login" buttonFunction={handleSubmit(onSubmit)} />
+        </form>
+      </div>
     </div>
   );
-}
+};
 
 export default CreateAccount;
