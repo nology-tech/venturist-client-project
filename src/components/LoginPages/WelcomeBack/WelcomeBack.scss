@@ -66,6 +66,7 @@
         }
 
         &__email, &__password {
+            position: relative;
             display: flex;
             flex-direction: column;
             gap: 0.25em;
@@ -87,6 +88,9 @@
             justify-content: space-between;
             &__signup {
                 display: flex;
+                align-items: baseline;
+
+
             }
         }
 
@@ -97,7 +101,7 @@
 
         &__button {
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-end; 
         }
     }
 
@@ -117,6 +121,7 @@ h1 {
 
 .fa-eye {
     position: absolute;
-    right: 180px;
-    bottom: 352px;
+    top: 38px;
+    left: 440px;
 }
+
