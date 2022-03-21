@@ -1,4 +1,4 @@
-@use "../../assets/sass/global_variables" as *;
+@use "../../../assets/sass/global_variables" as *;
 
 .loginform {
     background-color: $colourTen;
@@ -112,4 +112,10 @@ p {
 
 h1 {
     color: $colourSix
+}
+
+.fa-eye {
+    position: absolute;
+    right: 180px;
+    bottom: 352px;
 }

@@ -1,8 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import "./WelcomeBack.scss";
-import Button from "../Button/Button";
-import logo from "../../assets/logos/logo.png";
+import Button from "../../Button/Button";
+import logo from "../../../assets/logos/logo.png";
+import icons from "../../../assets/icons/icons";
 
 const WelcomeBack = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -60,11 +61,12 @@ const style = (error) => {
               <input
                 className="loginform__container__form__password__input" 
                 style={style(errors.password)}
-                type="password" 
+                type="password" //State
                 {...register("password", {
                   required: "Please enter your Venturist password"
                 })}
               />
+              {icons.EyeShow}
               {errors.password && <p>{errors.password.message}</p>}
             </div>
             <div className="loginform__container__form__links">
