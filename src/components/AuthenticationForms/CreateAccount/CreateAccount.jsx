@@ -24,8 +24,9 @@ const schema = yup
   })
   .required();
 
-const CreateAccount = () => {
+const CreateAccount = (props) => {
   const [userData, setUserData] = useState(null);
+  const { handleShowBankDetails } = props;
 
   const {
     register,
@@ -35,7 +36,8 @@ const CreateAccount = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => setUserData(data);
+  const onSubmit = ((data) => {setUserData(data);
+     handleShowBankDetails()});
 
   return (
     <div className="createAccount">
