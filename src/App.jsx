@@ -15,7 +15,7 @@ import liveRateData from "./assets/data/liveRatesExample";
 import userProfile from "./assets/data/samanthaBrooksProfile";
 import contactData from "./assets/data/contactExample";
 // import HomePage from "./containers/HomePage/HomePage";
-import CreateAccount from "./components/AuthenticationForms/CreateAccount/CreateAccount"
+import CreateAccountPage from "./containers/CreateAccountPage/CreateAccountPage";
 
 const App = () => {
   const [profileData, setProfileData] = useState({ ...userProfile });
@@ -28,7 +28,7 @@ const App = () => {
       
       <Router>
         <Routes>
-          <Route path="/" element={<CreateAccount />}></Route>
+          <Route path="/" element={<CreateAccountPage />}></Route>
 
           <Route
             path="/wallet"
