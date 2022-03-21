@@ -20,8 +20,9 @@ const schema = yup.object({
     .required("Sort Code is required"),
 });
 
-const AddBankDetails = () => {
+const AddBankDetails = (props) => {
   const [userData, setUserData] = useState(null);
+  const { handleShowBillingAddress } = props; 
 
   const {
     register,
@@ -31,7 +32,8 @@ const AddBankDetails = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => setUserData(data);
+  const onSubmit = ((data) => {setUserData(data);
+     handleShowBillingAddress()});
 
   return (
     <div className="createAccount">

@@ -1,6 +1,6 @@
 @import "../../../assets/sass/global_variables";
 
-.createAccount {
+.billingAddress {
   background-color: $colourTen;
   height: 100vh;
 
@@ -76,8 +76,10 @@
           color: $colourFour;
         }
       }
-      &__email,
-      &__password {
+      &__number,
+      &__name,
+      &__postcode,
+      &__city {
         display: flex;
         flex-direction: column;
         gap: 0.25em;
@@ -112,10 +114,7 @@
       &__error {
         color: $colourSeven;
         font-size: 12px;
-      }     
-       
-    }   
-
-   }  
-
+      }
+    }
+  }
 }

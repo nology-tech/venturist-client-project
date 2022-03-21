@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import CreateAccount from "../../components/AuthenticationForms/CreateAccount/CreateAccount";
+import AddBankDetails from "../../components/AuthenticationForms/AddBankDetails/AddBankDetails";
 import "./CreateAccountPage.scss";
+import BillingAddress from "../../components/AuthenticationForms/BillingAddress/BillingAddress";
 
 
 const CreateAccountPage = () => {
@@ -23,18 +25,18 @@ const CreateAccountPage = () => {
 
   return (
     <div className="createAccount" data-testid="createAccount">
-
-      {showCreateAccount && (
+             <BillingAddress />
+      {/* {showCreateAccount && (
         <CreateAccount handleShowBankDetails={handleShowBankDetails}/>
       )}
 
     {showBankDetails && (
-        <h1>Banking Here</h1>
+        <AddBankDetails handleShowBillingAddress={handleShowBillingAddress} />
       )}
 
     {showBillingAddress && (
         <h1>Billing Here</h1>
-        )}
+        )} */}
 
       
     </div>
