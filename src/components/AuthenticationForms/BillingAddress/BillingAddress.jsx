@@ -6,23 +6,16 @@ import logo from "../../../assets/logos/logo.png";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-const schema = yup
-  .object({
-    email: yup
-      .string()
-      .email("Must be a valid email")
-      .max(255)
-      .required("Email is required"),
-    password: yup
-      .string()
-      .min(5, "Password must contain at least 5 characters")
-      .required("Password is required"),
-    passwordConfirmation: yup
-      .string()
-      .required("Please retype your password.")
-      .oneOf([yup.ref("password")], "Your passwords do not match."),
-  })
-  .required();
+const schema = yup.object({
+    houseNumber: yup
+    .number()
+    .typeError("Must contain numbers only")
+    .min(1, "Must contain at least one number")
+    .required("House number is required"),
+    streetName: yup.string().max(100).required("Street name is required"),
+    city: yup.string().max(40).required("City is required"),
+    postcode: yup.string().min(6).max(8).required("Valid postcode is required")
+  });
 
 const BillingAddress = (props) => {
   const [userData, setUserData] = useState(null);
@@ -74,33 +67,34 @@ const BillingAddress = (props) => {
           </div>
           <div className="billingAddress__container__form__number">
             <label>House Number</label>
-            <input {...register("email")} />
+            <input {...register("houseNumber")} />
             <p className="billingAddress__container__form__error">
-              {errors.email?.message}
+              {errors.houseNumber?.message}
             </p>
           </div>
           <div className="billingAddress__container__form__name">
             <label>Street Name</label>
-            <input type="Street" {...register("password")} />
+            <input {...register("streetName")} />
             <p className="billingAddress__container__form__error">
-              {errors.password?.message}
+              {errors.streetName?.message}
             </p>
           </div>
           <div className="billingAddress__container__form__city">
             <label>City</label>
-            <input type="city" {...register("passwordConfirmation")} />
+            <input type="city" {...register("city")} />
             <p className="billingAddress__container__form__error">
-              {errors.passwordConfirmation?.message}
+              {errors.city?.message}
             </p>
           </div>
           <div className="billingAddress__container__form__postcode">
             <label>Postcode</label>
-            <input type="postcode" {...register("passwordConfirmation")} />
+            <input {...register("postcode")} />
             <p className="billingAddress__container__form__error">
-              {errors.passwordConfirmation?.message}
+              {errors.postcode?.message}
             </p>
           </div>
-          <div className="billingAddress__container__form__continueButton">
+          <div className="border"></div>
+          <div className="billingAddress__container__form__form-container">
           <Button buttonName="Go Back" buttonStyle="clear" />
           <Button buttonName="Create Account" buttonFunction={handleSubmit(onSubmit)} />
           </div>
