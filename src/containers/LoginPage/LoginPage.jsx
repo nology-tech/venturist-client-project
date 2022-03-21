@@ -1,5 +1,7 @@
 import React from 'react'
-import WelcomeBack from '../../components/WelcomeBack/WelcomeBack'
+import WelcomeBack from '../../components/LoginPages/WelcomeBack/WelcomeBack'
+import ForgotPassword from '../../components/LoginPages/ForgotPassword/ForgotPassword';
+import ChangePassword from '../../components/LoginPages/ChangePassword/ChangePassword'
 import "./LoginPage.scss";
 
 
