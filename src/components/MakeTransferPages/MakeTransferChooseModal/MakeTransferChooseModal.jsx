@@ -23,7 +23,7 @@ library.add(...iconListRegular)
 
 const MakeTransferChooseModal = (props) => {
 
-  const {type, content, handleEvent, handleSearch, handleShowModal} = props;
+  const {type, content, handleEvent, handleInput, handleShowModal, searchTerm} = props;
 
   const emptyList = content.length === 0;
 
@@ -46,7 +46,7 @@ const MakeTransferChooseModal = (props) => {
       <img src={cross} alt="Close menu" className="transfer-page__choose__close-menu" onClick={handleShowModal}/>
       <h4 className="transfer-page__choose__subheader">Search</h4>
       {icons.Search}
-      <input type="text" placeholder="Search..." className="transfer-page__choose__search" onChange={handleSearch} />
+      <input type="text" placeholder="Search..." className="transfer-page__choose__search" onInput={handleInput} value={searchTerm} />
 
       <div className="transfer-page__choose__list">
         <div className="transfer-page__choose__list__headers">
