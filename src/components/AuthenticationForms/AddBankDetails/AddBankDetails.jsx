@@ -34,7 +34,7 @@ const AddBankDetails = () => {
   const onSubmit = (data) => setUserData(data);
 
   return (
-    <div className="createAccount">
+    <div className="createAccount" data-testid="addBankDetails-form">
       <div className="createAccount__header">
         <div className="createAccount__header__logo">
           <img src={logo} alt="logo" />
