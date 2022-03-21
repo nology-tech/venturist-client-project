@@ -82,8 +82,6 @@ const style = (error) => {
             </div>
           </form>
         </div>
-        
-
     </div>
   )
 }
