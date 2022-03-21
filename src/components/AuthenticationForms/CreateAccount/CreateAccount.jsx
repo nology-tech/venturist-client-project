@@ -72,13 +72,13 @@ const CreateAccount = () => {
           </div>
           <div className="createAccount__container__form__password">
             <label>Password</label>
-            <input {...register("password")} />
+            <input type="password" {...register("password")} />
             <p>{errors.password?.message}</p>
           </div>
           <div className="createAccount__container__form__password">
             <label>Confirm Password</label>
-            <input {...register("passwordConfirmation")} />
-            <p>{errors.password?.message}</p>
+            <input type="password" {...register("passwordConfirmation")} />
+            <p>{errors.passwordConfirmation?.message}</p>
           </div>
           <div className="createAccount__container__form__links">
             <div className="createAccount__container__form__links__signUp">
