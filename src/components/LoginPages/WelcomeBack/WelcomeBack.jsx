@@ -12,7 +12,7 @@ const WelcomeBack = () => {
 
 const style = (error) => {
   if (error) {
-    return { backgroundColor: "rgba(255, 0, 0, 0.5)" };
+    return { border: "2px red solid" };
     }
   }
 
