@@ -16,11 +16,19 @@ import userProfile from "./assets/data/samanthaBrooksProfile";
 import contactData from "./assets/data/contactExample";
 import HomePage from "./containers/HomePage/HomePage";
 
+import useFxApi from "./Hooks/FX/useFxApi";
+
 const App = () => {
   const [profileData, setProfileData] = useState({ ...userProfile });
   const updateProfileData = (newData) => {
     setProfileData(newData);
   };
+
+  const { loading, data, serverError } = useFxApi(
+    "https://venturist-app.nw.r.appspot.com/currencies"
+  );
+
+  console.log(data);
 
   return (
     <div className="App">
@@ -95,10 +103,10 @@ const App = () => {
               <>
                 <NavBar />
                 <UserProfile />
-                <DepositPage 
+                <DepositPage
                   profileData={profileData}
                   updateProfileData={updateProfileData}
-                  />
+                />
               </>
             }
           ></Route>
@@ -108,10 +116,10 @@ const App = () => {
               <>
                 <NavBar />
                 <UserProfile />
-                <WithdrawPage 
+                <WithdrawPage
                   profileData={profileData}
                   updateProfileData={updateProfileData}
-              />
+                />
               </>
             }
           ></Route>
