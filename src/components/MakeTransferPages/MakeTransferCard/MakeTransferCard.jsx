@@ -10,7 +10,7 @@ const MakeTransferCard = (props) => {
   let rightContent;
   let overlayId;
 
-  if(type==="currency") {
+  if(type==="Currency") {
 
     const leftImage = <CurrencyFlag currency={cardContent.currencyCode} width={40} className = "transfer-page__card__image" data-testid={"currency-flag"} key={1} />;
     const leftText = <p key={2}>{cardContent.currencyName}</p>;
@@ -18,16 +18,16 @@ const MakeTransferCard = (props) => {
     rightContent = <p className="transfer-page__card__rate">{cardContent.liveRate.toFixed(4)}</p>
     overlayId = `transfer-page__card__${cardContent.currencyCode}`;
 
-  } else if(type==="recipient") {
+  } else if(type==="Recipient") {
 
     let personName = cardContent.firstName + " " + ((cardContent.middleNames) ? cardContent.middleNames + " " : "") + cardContent.lastName;
 
     const leftImage = <img src={cardContent.bankIcon} alt={cardContent.bankName} className="transfer-page__card__image" key={3}></img>;
     const leftText = <p key={4}>{personName}</p>;
     leftContent = [leftImage, leftText];
-    rightContent = [<p className="transfer-page__card__sort-code" key={5}>{cardContent.sortCode}</p>, 
+    rightContent = [<p className="transfer-page__card__sort-code" key={5} data-testid="sort-code">{cardContent.sortCode}</p>, 
     <p className="transfer-page__card__account-number" key={6}>{cardContent.accountNumber}</p>];
-    overlayId = `transfer-page__card__${cardContent.accountNumber}`;
+    overlayId = cardContent.IBAN;
   }
 
   return (

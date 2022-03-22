@@ -28,8 +28,6 @@ const LiveRates = (props) => {
     setBaseCurrency(value);
   };
 
-  console.log(addCurrenciesByCode("USD"));
-
   const renderEdit = () => {
     return (
       <LiveRatesItemEdit

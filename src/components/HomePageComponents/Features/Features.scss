@@ -1,0 +1,38 @@
+@use "../../../assets/sass/global_variables" as *;
+
+.features {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: 1rem;
+  background-color: $colourTen;
+  height: 55vh;
+
+  &__items {
+    display: flex;
+    align-items: baseline;
+    gap: 4rem;
+    padding: 0 100px;
+  }
+
+  &__item {
+    display: grid;
+    justify-items: center;
+    gap: 1.2rem;
+    width: 400px;
+
+    &__icon {
+      color: $colourEight;
+    }
+
+    &__p {
+      text-align: center;
+    }
+  }
+
+  &__button {
+    width: 300px;
+    display: grid;
+    justify-items: center;
+  }
+}

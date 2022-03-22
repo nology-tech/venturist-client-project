@@ -1,6 +1,6 @@
 const userProfile = {
 
-  firstName: "Samantha",
+  firstName: "Sam",
   middleNames: "",
   lastName: "Brooks",
   accountNumber: 12345678,
