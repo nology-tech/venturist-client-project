@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
 
+
 const schema = yup.object({
   houseNumber: yup
     .string()
@@ -27,7 +28,7 @@ const schema = yup.object({
 
 const BillingAddress = (props) => {
   const [userData, setUserData] = useState(null);
-  const { handleShowBankDetails } = props;
+  const {handleReturnBillingToBank, handleFormSubmit} = props;
 
   const {
     register,
@@ -39,7 +40,6 @@ const BillingAddress = (props) => {
 
   const onSubmit = (data) => {
     setUserData(data);
-    handleShowBankDetails();
   };
 
   console.log(userData);
@@ -109,11 +109,11 @@ const BillingAddress = (props) => {
           </div>
           <div className="border"></div>
           <div className="billingAddress__container__form__form-container">
-            <Button buttonName="Go Back" buttonStyle="clear" />
+            <Button buttonName="Go Back" buttonStyle="clear" buttonFunction={handleReturnBillingToBank} />
             <Button
               buttonName="Create Account"
               buttonFunction={handleSubmit(onSubmit)}
-            />
+            />           
           </div>
         </form>
       </div>
