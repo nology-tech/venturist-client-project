@@ -7,15 +7,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const schema = yup.object({
-    houseNumber: yup
+  houseNumber: yup
     .number()
     .typeError("Must contain numbers only")
     .min(1, "Must contain at least one number")
     .required("House number is required"),
-    streetName: yup.string().max(100).required("Street name is required"),
-    city: yup.string().max(40).required("City is required"),
-    postcode: yup.string().min(6).max(8).required("Valid postcode is required")
-  });
+  streetName: yup.string().max(100).required("Street name is required"),
+  city: yup.string().max(40).required("City is required"),
+  postcode: yup.string().min(6).max(8).required("Valid postcode is required"),
+});
 
 const BillingAddress = (props) => {
   const [userData, setUserData] = useState(null);
@@ -29,11 +29,13 @@ const BillingAddress = (props) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = ((data) => {setUserData(data);
-     handleShowBankDetails()});
+  const onSubmit = (data) => {
+    setUserData(data);
+    handleShowBankDetails();
+  };
 
   return (
-    <div className="billingAddress">
+    <div className="billingAddress" data-testid="billingAddress">
       <div className="billingAddress__header">
         <div className="billingAddress__header__logo">
           <img src={logo} alt="logo" />
@@ -95,10 +97,12 @@ const BillingAddress = (props) => {
           </div>
           <div className="border"></div>
           <div className="billingAddress__container__form__form-container">
-          <Button buttonName="Go Back" buttonStyle="clear" />
-          <Button buttonName="Create Account" buttonFunction={handleSubmit(onSubmit)} />
+            <Button buttonName="Go Back" buttonStyle="clear" />
+            <Button
+              buttonName="Create Account"
+              buttonFunction={handleSubmit(onSubmit)}
+            />
           </div>
-          
         </form>
       </div>
     </div>
