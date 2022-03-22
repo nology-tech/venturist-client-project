@@ -5,6 +5,7 @@ import Button from "../../Button/Button";
 import logo from "../../../assets/logos/logo.png";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { Link } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -102,7 +103,9 @@ const CreateAccount = (props) => {
               <p className="createAccount__container__form__signin">
                 Already have an account?{" "}
               </p>
-              <Button buttonName="Sign in" buttonStyle="clear" />
+              <Link to="/wallet">
+                <Button buttonName="Sign in" buttonStyle="clear" />
+              </Link>              
             </div>
           </div>
           <div className="createAccount__container__form__continueButton">
