@@ -8,13 +8,12 @@ import * as yup from "yup";
 
 const schema = yup.object({
     houseNumber: yup
-    .number()
-    .typeError("Must contain numbers only")
-    .min(1, "Must contain at least one number")
-    .required("House number is required"),
+    .mixed()
+    .min(1, "Must contain at least one character")
+    .required("House number/name is required"),
     streetName: yup.string().max(100).required("Street name is required"),
     city: yup.string().max(40).required("City is required"),
-    postcode: yup.string().min(6).max(8).required("Valid postcode is required")
+    postcode: yup.string().min(6, "Postcode must be at least 6 characters").max(8).required("Valid postcode is required")
   });
 
 const BillingAddress = (props) => {
