@@ -54,11 +54,13 @@ const BillingAddress = (props) => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="billingAddress__container__form__brand">
-            <img
-              className="billingAddress__container__form__brand__logo"
-              src={logo}
-              alt=""
-            />
+            <Link to="/">
+              <img
+                className="billingAddress__container__form__brand__logo"
+                src={logo}
+                alt=""
+              />
+            </Link>
             <p className="billingAddress__container__form__brand__name">
               Venturist
             </p>

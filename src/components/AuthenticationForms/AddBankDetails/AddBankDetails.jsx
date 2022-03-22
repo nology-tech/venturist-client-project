@@ -5,6 +5,7 @@ import Button from "../../Button/Button";
 import logo from "../../../assets/logos/logo.png";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { Link } from "react-router-dom";
 
 const schema = yup.object({
   nameAccount: yup.string().max(35).required("Account Name is required"),
@@ -22,7 +23,7 @@ const schema = yup.object({
 
 const AddBankDetails = (props) => {
   const [userData, setUserData] = useState(null);
-  const { handleShowBillingAddress } = props; 
+  const { handleShowBillingAddress } = props;
 
   const {
     register,
@@ -32,14 +33,18 @@ const AddBankDetails = (props) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = ((data) => {setUserData(data);
-     handleShowBillingAddress()});
+  const onSubmit = (data) => {
+    setUserData(data);
+    handleShowBillingAddress();
+  };
 
   return (
     <div className="createAccount" data-testid="addBankDetails-form">
       <div className="createAccount__header">
         <div className="createAccount__header__logo">
-          <img src={logo} alt="logo" />
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
           <h2>Venturist</h2>
         </div>
         <Button

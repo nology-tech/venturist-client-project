@@ -21,20 +21,15 @@ const CreateAccountPage = () => {
 
   return (
     <div className="createAccount" data-testid="createAccount">
-             <BillingAddress />
-      {/* {showCreateAccount && (
-        <CreateAccount handleShowBankDetails={handleShowBankDetails}/>
+      {showCreateAccount && (
+        <CreateAccount handleShowBankDetails={handleShowBankDetails} />
       )}
 
-    {showBankDetails && (
+      {showBankDetails && (
         <AddBankDetails handleShowBillingAddress={handleShowBillingAddress} />
       )}
 
-    {showBillingAddress && (
-        <h1>Billing Here</h1>
-        )} */}
-
-      
+      {showBillingAddress && <h1>Billing Here</h1>}
     </div>
   );
 };
