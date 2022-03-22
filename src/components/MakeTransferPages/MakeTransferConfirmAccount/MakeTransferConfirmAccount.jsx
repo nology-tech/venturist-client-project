@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import "./MakeTransferConfirmAccount.scss";
 import MakeTransferChooseModal from '../MakeTransferChooseModal/MakeTransferChooseModal';
+import MakeTransferAddRecipient from "./../MakeTransferAddRecipient/MakeTransferAddRecipient";
 import Button from "../../Button/Button";
 
 const MakeTransferConfirmAccount = (props) => {
@@ -8,13 +9,14 @@ const MakeTransferConfirmAccount = (props) => {
   const { data, exchangeInfo, setExchangeInfo, handleShowConfirmation } = props;
 
   const [showChooseRecipients, setShowChooseRecipients] = useState(false);
+  const [showAddRecipient, setShowAddRecipient] = useState(false);
   
   const toggleChooseRecipients = () => {
     setShowChooseRecipients(!showChooseRecipients);
   };
 
-  const handleAddRecipient = () => {
-    alert("Adding new recipient");
+  const toggleAddRecipient = () => {
+    setShowAddRecipient(!showAddRecipient);
   };
 
   const handleChooseRecipient = (event) => {
@@ -48,12 +50,13 @@ const MakeTransferConfirmAccount = (props) => {
         <div className="transfer-page__confirm__sendContainer__button">
         <Button  buttonName="Select Recipient" buttonFunction={toggleChooseRecipients} />
         <div className="transfer-page__confirm__sendContainer__divider"> </div>
-        <Button  buttonName="+ Pay Someone New" buttonStyle="clear" buttonFunction={handleAddRecipient} />
+        <Button  buttonName="+ Pay Someone New" buttonStyle="clear" buttonFunction={toggleAddRecipient} />
         </div>
       </div>
 
         {showChooseRecipients && <MakeTransferChooseModal type="Recipient" content = {data} handleShowModal={toggleChooseRecipients} handleSearch={()=>alert("Search")} handleEvent={handleChooseRecipient}/>}
 
+        {showAddRecipient && <MakeTransferAddRecipient toggleAddRecipient={toggleAddRecipient} exchangeInfo={exchangeInfo} setExchangeInfo={setExchangeInfo} handleShowConfirmation={handleShowConfirmation} />}
     </div>
   )
 }
