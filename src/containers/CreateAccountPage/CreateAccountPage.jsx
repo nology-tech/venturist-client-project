@@ -3,6 +3,7 @@ import CreateAccount from "../../components/AuthenticationForms/CreateAccount/Cr
 import AddBankDetails from "../../components/AuthenticationForms/AddBankDetails/AddBankDetails";
 import "./CreateAccountPage.scss";
 import BillingAddress from "../../components/AuthenticationForms/BillingAddress/BillingAddress";
+import { Redirect } from "react-router-dom";
 
 const CreateAccountPage = () => {
   const [showCreateAccount, setShowCreateAccount] = useState(true);
@@ -19,6 +20,17 @@ const CreateAccountPage = () => {
     setShowBillingAddress(true);
   };
 
+  const handleReturn = () => {
+    setShowBankDetails(false);
+    setShowCreateAccount(true);
+  }
+
+  const handleReturnBillingToBank = () => {
+    setShowBillingAddress(false);
+    setShowBankDetails(true);
+  }
+
+
   return (
     <div className="createAccount" data-testid="createAccount">
       {showCreateAccount && (
@@ -26,10 +38,10 @@ const CreateAccountPage = () => {
       )}
 
       {showBankDetails && (
-        <AddBankDetails handleShowBillingAddress={handleShowBillingAddress} />
+        <AddBankDetails handleShowBillingAddress={handleShowBillingAddress} handleReturn={handleReturn} />
       )}
 
-      {showBillingAddress && <BillingAddress />}
+      {showBillingAddress && <BillingAddress handleReturnBillingToBank={handleReturnBillingToBank} />}
     </div>
   );
 };

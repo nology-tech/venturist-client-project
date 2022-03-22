@@ -23,7 +23,7 @@ const schema = yup.object({
 
 const AddBankDetails = (props) => {
   const [userData, setUserData] = useState(null);
-  const { handleShowBillingAddress } = props;
+  const { handleShowBillingAddress, handleReturn } = props;
 
   const {
     register,
@@ -98,7 +98,7 @@ const AddBankDetails = (props) => {
           </div>
           <div className="border"></div>
           <div className="createAccount__container__form__form-container">
-            <Button buttonName="Go Back" buttonStyle="clear" />
+            <Button buttonName="Go Back" buttonStyle="clear" buttonFunction={handleReturn}/>
             <Button
               buttonName="Continue"
               buttonFunction={handleSubmit(onSubmit)}

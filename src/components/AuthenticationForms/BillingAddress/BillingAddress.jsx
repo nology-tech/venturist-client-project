@@ -29,6 +29,7 @@ const BillingAddress = (props) => {
   const [userData, setUserData] = useState(null);
   const { handleShowBankDetails } = props;
   let navigate = useNavigate();
+  const { handleReturnBillingToBank, handleFormSubmit } = props;
 
   const {
     register,
@@ -110,7 +111,11 @@ const BillingAddress = (props) => {
           </div>
           <div className="border"></div>
           <div className="billingAddress__container__form__form-container">
-            <Button buttonName="Go Back" buttonStyle="clear" />
+            <Button
+              buttonName="Go Back"
+              buttonStyle="clear"
+              buttonFunction={handleReturnBillingToBank}
+            />
             <Button
               buttonName="Create Account"
               buttonFunction={handleSubmit(onSubmit)}
