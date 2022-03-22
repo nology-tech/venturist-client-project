@@ -1,26 +1,24 @@
 @use "../../../assets/sass/global_variables" as *;
 
 .footer {
-  background-color: $colourSix;
+  background-color: rgba(0, 0, 0, 0.9);
   color: $colourEleven;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 13vh;
   align-items: center;
   font-family: $outfit;
   font-weight: 400;
-  width: 100%;
-
-  &__logo,
-  &__links {
-    display: flex;
-    align-items: center;
-  }
+  padding-left: 100px;
+  padding-right: 100px;
 
   &__logo {
+    display: flex;
+    align-items: center;
     gap: 0.5rem;
-  }
-  &__links {
-    gap: 2rem;
+
+    .image {
+      height: 35px;
+    }
   }
 }
