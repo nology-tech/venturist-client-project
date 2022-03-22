@@ -17,8 +17,6 @@ import contactData from "./assets/data/contactExample";
 import HomePage from "./containers/HomePage/HomePage";
 import CreateAccountPage from "./containers/CreateAccountPage/CreateAccountPage";
 
-
-
 const App = () => {
   const [profileData, setProfileData] = useState({ ...userProfile });
   const updateProfileData = (newData) => {
@@ -27,11 +25,10 @@ const App = () => {
 
   return (
     <div className="App">
-      
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="/signupp" element={<CreateAccountPage />}></Route>
+          <Route path="/signup" element={<CreateAccountPage />}></Route>
           <Route
             path="/wallet"
             element={
@@ -99,10 +96,10 @@ const App = () => {
               <>
                 <NavBar />
                 <UserProfile />
-                <DepositPage 
+                <DepositPage
                   profileData={profileData}
                   updateProfileData={updateProfileData}
-                  />
+                />
               </>
             }
           ></Route>
@@ -112,10 +109,10 @@ const App = () => {
               <>
                 <NavBar />
                 <UserProfile />
-                <WithdrawPage 
+                <WithdrawPage
                   profileData={profileData}
                   updateProfileData={updateProfileData}
-              />
+                />
               </>
             }
           ></Route>

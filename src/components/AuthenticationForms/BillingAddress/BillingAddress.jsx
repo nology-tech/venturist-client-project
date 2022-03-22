@@ -5,7 +5,7 @@ import Button from "../../Button/Button";
 import logo from "../../../assets/logos/logo.png";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const schema = yup.object({
   houseNumber: yup
@@ -28,6 +28,7 @@ const schema = yup.object({
 const BillingAddress = (props) => {
   const [userData, setUserData] = useState(null);
   const { handleShowBankDetails } = props;
+  let navigate = useNavigate();
 
   const {
     register,
@@ -39,7 +40,7 @@ const BillingAddress = (props) => {
 
   const onSubmit = (data) => {
     setUserData(data);
-    handleShowBankDetails();
+    navigate("/wallet", { replace: true });
   };
 
   console.log(userData);
