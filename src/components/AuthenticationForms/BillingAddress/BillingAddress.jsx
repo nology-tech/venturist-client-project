@@ -27,9 +27,8 @@ const schema = yup.object({
 
 const BillingAddress = (props) => {
   const [userData, setUserData] = useState(null);
-  const { handleShowBankDetails } = props;
+  const { handleReturnBillingToBank } = props;
   let navigate = useNavigate();
-  const { handleReturnBillingToBank, handleFormSubmit } = props;
 
   const {
     register,
