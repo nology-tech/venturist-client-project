@@ -31,7 +31,7 @@ const CreateAccountPage = () => {
       )}
 
     {showBillingAddress && (
-        <h1><BillingAddress /></h1>
+        <BillingAddress />
         )}
 
       

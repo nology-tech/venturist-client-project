@@ -35,6 +35,8 @@ const BillingAddress = (props) => {
     handleShowBankDetails();
   };
 
+  console.log(userData)
+
   return (
     <div className="billingAddress" data-testid="billingAddress">
       <div className="billingAddress__header">
