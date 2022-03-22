@@ -13,7 +13,6 @@ describe("Testing Input Fields", () => {
   it('should render email input box', async () => {
     //Act
     const inputEmailElement = screen.getByTestId('email-input')
-    const inputPasswordElement = screen.getByTestId('password-input')
 
     //Assert
     expect(inputEmailElement).toBeInTheDocument();
