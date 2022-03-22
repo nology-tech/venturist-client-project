@@ -14,8 +14,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import liveRateData from "./assets/data/liveRatesExample";
 import userProfile from "./assets/data/samanthaBrooksProfile";
 import contactData from "./assets/data/contactExample";
-// import HomePage from "./containers/HomePage/HomePage";
+import HomePage from "./containers/HomePage/HomePage";
 import CreateAccountPage from "./containers/CreateAccountPage/CreateAccountPage";
+
 
 
 const App = () => {
@@ -29,8 +30,8 @@ const App = () => {
       
       <Router>
         <Routes>
-          <Route path="/" element={<CreateAccountPage />}></Route>
-
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/signupp" element={<CreateAccountPage />}></Route>
           <Route
             path="/wallet"
             element={
