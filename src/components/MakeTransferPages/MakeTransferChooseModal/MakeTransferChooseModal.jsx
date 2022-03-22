@@ -52,7 +52,7 @@ const MakeTransferChooseModal = (props) => {
         <div className="transfer-page__choose__list__headers">
           {headers}
         </div>
-        <div className="transfer-page__choose__list__cards">
+        <div className="transfer-page__choose__list__cards" data-testid="choose-cards">
           {!emptyList && listComponents}
           {emptyList && emptyText}
         </div>

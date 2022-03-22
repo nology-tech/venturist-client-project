@@ -30,7 +30,12 @@ const MakeTransferConfirmAccount = props => {
   };
 
   let searchedData = data.filter(person => {
-    let fullName = person.firstName + " " + person.middleNames + " " + person.lastName;
+    let fullName;
+    if (person.middleNames) {
+      fullName = person.firstName + " " + person.middleNames + " " + person.lastName;
+    } else {
+      fullName = person.firstName + " " + person.lastName;
+    }
     return fullName.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
