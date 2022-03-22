@@ -29,7 +29,7 @@ const CreateAccountPage = () => {
         <AddBankDetails handleShowBillingAddress={handleShowBillingAddress} />
       )}
 
-      {showBillingAddress && <h1>Billing Here</h1>}
+      {showBillingAddress && <BillingAddress />}
     </div>
   );
 };

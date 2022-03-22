@@ -42,6 +42,8 @@ const CreateAccount = (props) => {
     handleShowBankDetails();
   };
 
+  console.log(userData)
+
   return (
     <div className="createAccount" data-testid="createAccount-form">
       <div className="createAccount__header">

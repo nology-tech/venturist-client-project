@@ -17,6 +17,7 @@ import contactData from "./assets/data/contactExample";
 // import HomePage from "./containers/HomePage/HomePage";
 import CreateAccountPage from "./containers/CreateAccountPage/CreateAccountPage";
 
+
 const App = () => {
   const [profileData, setProfileData] = useState({ ...userProfile });
   const updateProfileData = (newData) => {

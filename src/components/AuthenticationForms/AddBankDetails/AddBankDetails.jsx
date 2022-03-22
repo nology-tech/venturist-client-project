@@ -38,6 +38,8 @@ const AddBankDetails = (props) => {
     handleShowBillingAddress();
   };
 
+  console.log(userData)
+
   return (
     <div className="createAccount" data-testid="addBankDetails-form">
       <div className="createAccount__header">
