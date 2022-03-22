@@ -48,7 +48,9 @@ const CreateAccount = (props) => {
     <div className="createAccount" data-testid="createAccount-form">
       <div className="createAccount__header">
         <div className="createAccount__header__logo">
-          <img src={logo} alt="logo" />
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
           <h2>Venturist</h2>
         </div>
         <Button

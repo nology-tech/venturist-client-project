@@ -5,6 +5,7 @@ import Button from "../../Button/Button";
 import logo from "../../../assets/logos/logo.png";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { Link } from "react-router-dom";
 
 const schema = yup.object({
   houseNumber: yup
@@ -13,9 +14,15 @@ const schema = yup.object({
     .required("House number is required"),
   streetName: yup.string().max(100).required("Street name is required"),
   city: yup.string().max(40).required("City is required"),
-  postcode: yup.string()
-  .matches(/^([A-Z][A-HJ-Y]?[0-9][A-Z0-9]? ?[0-9][A-Z]{2}|GIR ?0A{2})$/i, "Must be valid postcode")
-  .min(5, "Must be valid postcode").max(8).required("Valid postcode is required"),
+  postcode: yup
+    .string()
+    .matches(
+      /^([A-Z][A-HJ-Y]?[0-9][A-Z0-9]? ?[0-9][A-Z]{2}|GIR ?0A{2})$/i,
+      "Must be valid postcode"
+    )
+    .min(5, "Must be valid postcode")
+    .max(8)
+    .required("Valid postcode is required"),
 });
 
 const BillingAddress = (props) => {
@@ -35,7 +42,7 @@ const BillingAddress = (props) => {
     handleShowBankDetails();
   };
 
-  console.log(userData)
+  console.log(userData);
 
   return (
     <div className="billingAddress" data-testid="billingAddress">
@@ -57,11 +64,13 @@ const BillingAddress = (props) => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="billingAddress__container__form__brand">
-            <img
-              className="billingAddress__container__form__brand__logo"
-              src={logo}
-              alt=""
-            />
+            <Link to="/">
+              <img
+                className="billingAddress__container__form__brand__logo"
+                src={logo}
+                alt=""
+              />
+            </Link>
             <p className="billingAddress__container__form__brand__name">
               Venturist
             </p>
