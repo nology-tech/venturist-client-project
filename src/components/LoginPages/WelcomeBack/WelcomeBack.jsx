@@ -6,19 +6,19 @@ import logo from "../../../assets/logos/logo.png";
 import icons from "../../../assets/icons/icons";
 
 const WelcomeBack = (props) => {
+  const { togglePage } = props;
+
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: 'onSubmit' 
   });
-
-  const { togglePage } = props;
 
   const [showPassword, setShowPassword] = useState('password')
 
   const style = (error) => {
     if (error) {
-      return { border: "2px red solid" };
-      }
+      return { border: "2px #37d8dd solid" };
     }
+  }
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
@@ -41,7 +41,7 @@ const WelcomeBack = (props) => {
           <h2>Venturist</h2>
           </div>            
           <Button 
-            buttonName={"login"}
+            buttonName={"Sign up"}
             buttonStyle={"blue"}
             hasIcon={false}
             buttonFunction={() => {}}
@@ -61,28 +61,30 @@ const WelcomeBack = (props) => {
               <label>Email</label>
               <input 
                 className="loginform__container__form__email__input"
+                data-testid="email-input"
                 style={style(errors.email)}
                 type="text" 
                 {...register("email", {
-                  required: "Please enter your Venturist email address",
+                  required: "*This field is required",
                 })} 
               />
-              {errors.email && <p>{errors.email.message}</p>}
+              {errors.email && <p className="loginform__container__form__password__error">{errors.email.message}</p>}
             </div>
             <div className="loginform__container__form__password">
               <label>Password</label>
               <input
                 className="loginform__container__form__password__input" 
+                data-testid="password-input"
                 style={style(errors.password)}
                 type={showPassword} 
                 {...register("password", {
-                  required: "Please enter your Venturist password"
+                  required: "*This field is required"
                 })}
               />
-              <i onClick={toggleShowPassword}>
+              <i data-testid="eye-show" onClick={toggleShowPassword}>
               {showPassword === "password" ? icons.EyeShow : icons.EyeHide}
               </i>
-              {errors.password && <p>{errors.password.message}</p>}
+              {errors.password && <p className="loginform__container__form__password__error">{errors.password.message}</p>}
             </div>
             <div className="loginform__container__form__links">
               <div className="loginform__container__form__links__signup" >
@@ -93,7 +95,7 @@ const WelcomeBack = (props) => {
             </div>
             <div className="loginform__container__form__line"></div>
             <div className="loginform__container__form__button">
-              <Button buttonName="Login" buttonFunction={handleSubmit(onSubmit)} /> 
+              <Button data-testid="login-button" buttonName="Login" buttonFunction={handleSubmit(onSubmit)} /> 
             </div>
           </form>
         </div>

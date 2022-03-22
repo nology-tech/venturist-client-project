@@ -81,16 +81,19 @@
                 border: 1px solid #E2E2E2;
                 border-radius: 3px;
             }
+
+            &__error {
+                font-size: 14px;
+            }
         }
 
         &__links {
             display: flex;
             justify-content: space-between;
+            
             &__signup {
                 display: flex;
                 align-items: baseline;
-
-
             }
         }
 
@@ -121,8 +124,8 @@ h1 {
 
 .fa-eye-slash,
 .fa-eye {
+    padding-bottom: 0px;
     position: absolute;
     top: 38px;
     left: 440px;
 }
-
