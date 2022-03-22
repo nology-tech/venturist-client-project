@@ -29,7 +29,7 @@ const MakeTransferConfirmAccount = props => {
     setSearchTerm(cleanInput);
   };
 
-  let searchedData = data.filter(person => {
+  const searchedData = data.filter(person => {
     let fullName;
     if (person.middleNames) {
       fullName = person.firstName + " " + person.middleNames + " " + person.lastName;

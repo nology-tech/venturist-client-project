@@ -284,16 +284,4 @@ describe("Functionality tests, recipient", () => {
 
     expect(onClick).toHaveBeenCalled();
   });
-
-  // test('Search should have a function', () => {
-  //   const onClick = jest.fn();
-  //   const onSearch = jest.fn();
-  //   render(<MakeTransferChooseModal type="Recipient" content={contactData} handleEvent={onClick} handleSearch={onSearch} handleShowModal={onClick} />);
-
-  //   const search = screen.getByRole("textbox");
-  //   fireEvent.change(search, {target: {value: 'test'}});
-
-  //   expect(onSearch).toHaveBeenCalled();
-  //   expect(search.value).toBe('test');
-  // });
 });

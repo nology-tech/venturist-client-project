@@ -3,6 +3,9 @@ import liveRates from "../../../assets/data/liveRatesExample";
 import { fireEvent, render, screen } from "@testing-library/react";
 import contactData from "../../../assets/data/contactExample";
 import profileData from "../../../assets/data/samanthaBrooksProfile";
+import MakeTransferChooseModal from "../MakeTransferChooseModal/MakeTransferChooseModal";
+import userEvent from "@testing-library/user-event";
+import { toHaveTextContent } from "@testing-library/jest-dom/dist/matchers";
 
 const exchangeInfo = {
   exchangeFrom: {
@@ -101,4 +104,24 @@ describe ("Testing that buttons work correctly", () => {
 
     expect(global.alert).toHaveBeenCalledTimes(1);
   });
+});
+
+describe ("Choose recipient search box", () => {
+  test("That correct search items appear based on input", () => {
+    const onClick=jest.fn();
+    render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
+    const selectButton = screen.getAllByRole("button")[0];
+  
+    fireEvent.click(selectButton);
+    const search = screen.getByPlaceholderText("Search...");
+    userEvent.type(search, "Z");
+    const chooseRecipientContainer = screen.getByTestId("choose-modal")
+    
+    expect(chooseRecipientContainer).toHaveTextContent("Zoe Jansen")
+    expect(chooseRecipientContainer).toHaveTextContent("Mateusz Seredyn")
+    expect(chooseRecipientContainer).not.toHaveTextContent("Ollie Holden")
+
+  });
+
+
 });
