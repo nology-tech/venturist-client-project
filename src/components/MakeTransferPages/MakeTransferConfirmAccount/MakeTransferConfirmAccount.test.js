@@ -3,9 +3,7 @@ import liveRates from "../../../assets/data/liveRatesExample";
 import { fireEvent, render, screen } from "@testing-library/react";
 import contactData from "../../../assets/data/contactExample";
 import profileData from "../../../assets/data/samanthaBrooksProfile";
-import MakeTransferChooseModal from "../MakeTransferChooseModal/MakeTransferChooseModal";
 import userEvent from "@testing-library/user-event";
-import { toHaveTextContent } from "@testing-library/jest-dom/dist/matchers";
 
 const exchangeInfo = {
   exchangeFrom: {
