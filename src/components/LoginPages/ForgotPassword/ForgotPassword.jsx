@@ -39,11 +39,11 @@ const ForgotPassword = (props) => {
           <form className="forgot-password-form__container__form">
             <div className="forgot-password-form__container__form__brand">
               <img className="forgot-password-form__container__form__brand__logo" src={logo} alt="" />
-              <p className="forgot-password-form__container__form__brand__name" >Venturist</p>
+              <p className="forgot-password-form__container__form__brand__name ptag" >Venturist</p>
             </div>
             <div className="forgot-password-form__container__form__header">
               <h1>Password Reset</h1>
-              <p>Enter your Venturist email address that you used to register. We'll email you with your username and a link to reset your password.</p>
+              <p className='ptag'>Enter your Venturist email address that you used to register. We'll email you with your username and a link to reset your password.</p>
             </div>
             <div className="forgot-password-form__container__form__email">
               <label>Email Address</label>
@@ -56,7 +56,7 @@ const ForgotPassword = (props) => {
                   required: "*This field is required",
                 })} 
               />
-              {errors.email && <p className="forgot-password-form__container__form__password__error">{errors.email.message}</p>}
+              {errors.email && <p className="forgot-password-form__container__form__password__error ptag">{errors.email.message}</p>}
             </div>
             <div className="forgot-password-form__container__form__line"></div>
             <div className="forgot-password-form__container__form__button">

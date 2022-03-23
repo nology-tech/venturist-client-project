@@ -38,11 +38,11 @@ const style = (error) => {
           <form className="changepassword__container__form" onSubmit={handleSubmit(onSubmit)}>
             <div className="changepassword__container__form__brand">
               <img className="changepassword__container__form__brand__logo" src={logo} alt="" />
-              <p className="changepassword__container__form__brand__name" >Venturist</p>
+              <p className="changepassword__container__form__brand__name ptag" >Venturist</p>
             </div>
             <div className="changepassword__container__form__header">
               <h1>Change Password</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p className="ptag">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
             <div className="changepassword__container__form__email">
               <label>New Password</label>
@@ -56,20 +56,20 @@ const style = (error) => {
                 })} 
               />
               {icons.EyeShow}
-              {errors.newpassword && <p>{errors.newpassword.message}</p>}
+              {errors.newpassword && <p className="ptag">{errors.newpassword.message}</p>}
             </div>
             <div className="changepassword__container__form__password">
               <label>Confirm Password</label>
               <input
                 className="changepassword__container__form__password__input" 
                 style={style(errors.password)}
-                type="password" //State
+                type="password"
                 {...register("confirmpassword", {
                   required: "Please enter a Password that matches"
                 })}
               />
               {icons.EyeShow}
-              {errors.confirmpassword && <p>{errors.confirmpassword.message}</p>}
+              {errors.confirmpassword && <p className="ptag">{errors.confirmpassword.message}</p>}
             </div>
             <div className="changepassword__container__form__line"></div>
             <div className="changepassword__container__form__button">

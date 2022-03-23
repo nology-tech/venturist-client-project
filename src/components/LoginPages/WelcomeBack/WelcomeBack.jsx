@@ -51,11 +51,11 @@ const WelcomeBack = (props) => {
           <form className="loginform__container__form">
             <div className="loginform__container__form__brand">
               <img className="loginform__container__form__brand__logo" src={logo} alt="" />
-              <p className="loginform__container__form__brand__name" >Venturist</p>
+              <p className="loginform__container__form__brand__name ptag" >Venturist</p>
             </div>
             <div className="loginform__container__form__header">
               <h1>Welcome Back!</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p className="ptag">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
             <div className="loginform__container__form__email">
               <label>Email</label>
@@ -68,7 +68,7 @@ const WelcomeBack = (props) => {
                   required: "*This field is required",
                 })} 
               />
-              {errors.email && <p className="loginform__container__form__password__error">{errors.email.message}</p>}
+              {errors.email && <p className="loginform__container__form__password__error ptag">{errors.email.message}</p>}
             </div>
             <div className="loginform__container__form__password">
               <label>Password</label>
@@ -84,11 +84,11 @@ const WelcomeBack = (props) => {
               <i data-testid="eye-show" onClick={toggleShowPassword}>
               {showPassword === "password" ? icons.EyeShow : icons.EyeHide}
               </i>
-              {errors.password && <p className="loginform__container__form__password__error">{errors.password.message}</p>}
+              {errors.password && <p className="loginform__container__form__password__error ptag">{errors.password.message}</p>}
             </div>
             <div className="loginform__container__form__links">
               <div className="loginform__container__form__links__signup" >
-                  <p className="loginform__container__form__links__signup__text">Don't have an account? </p>
+                  <p className="loginform__container__form__links__signup__text ptag">Don't have an account? </p>
                   <Button buttonName="Sign Up" buttonStyle="clear" />
               </div>
               <Button buttonName="Forgotten Password?" buttonStyle="clear" buttonFunction={togglePage} />
