@@ -105,7 +105,7 @@ const CreateAccount = (props) => {
               <p className="createAccount__container__form__signin">
                 Already have an account?{" "}
               </p>
-              <Link to="/wallet">
+              <Link to="/login">
                 <Button buttonName="Sign in" buttonStyle="clear" />
               </Link>              
             </div>
