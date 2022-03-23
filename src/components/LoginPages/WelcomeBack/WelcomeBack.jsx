@@ -95,7 +95,7 @@ const WelcomeBack = (props) => {
             </div>
             <div className="loginform__container__form__line"></div>
             <div className="loginform__container__form__button">
-              <Button data-testid="login-button" buttonName="Login" buttonFunction={handleSubmit(onSubmit)} /> 
+              <Button buttonName="Login" buttonFunction={handleSubmit(onSubmit)} /> 
             </div>
           </form>
         </div>

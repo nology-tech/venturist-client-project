@@ -47,6 +47,7 @@ const style = (error) => {
             <div className="changepassword__container__form__email">
               <label>New Password</label>
               <input 
+                data-testid="password-input"
                 className="changepassword__container__form__email__input"
                 style={style(errors.email)}
                 type="password" 
