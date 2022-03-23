@@ -109,7 +109,7 @@ describe('Check functions', () => {
 
     //Act
     const getSortCode = screen.queryAllByRole("textbox")[3];
-    userEvent.type(getSortCode , "5556792")
+    userEvent.type(getSortCode , "5556792");
   
     //Assert
     expect(getSortCode).toHaveDisplayValue("5556792")
@@ -136,18 +136,144 @@ describe('Check functions', () => {
     const onClick = jest.fn();
     const onExchange = jest.fn();
     const onConfirmation = jest.fn();
+    window.alert = jest.fn();
 
     render(<MakeTransferAddRecipient toggleAddRecipient={(onClick)} exchangeInfo={exchangeInfo} setExchangeInfo={(onExchange)} handleShowConfirmation={(onConfirmation)} />);
 
     //Act
+    const getNameInput = screen.queryAllByRole("textbox")[0];
+    userEvent.type(getNameInput, "ebrima");
+    const getAccountType = screen.queryAllByRole("textbox")[1];
+    userEvent.type(getAccountType, "current-account");
+    const getAccountNumber = screen.queryAllByRole("textbox")[2];
+    userEvent.type(getAccountNumber, "235556792");
+    const getSortCode = screen.queryAllByRole("textbox")[3];
+    userEvent.type(getSortCode , "555679");
+
     const getButton = screen.queryByRole("button", {name:"Continue"});
-    userEvent.click(getButton)
-    
+    userEvent.click(getButton);
   
     //Assert
     expect(onClick).toBeCalled()
     expect(onExchange).toBeCalled()
     expect(onConfirmation).toBeCalled()
+  });
+
+  test('Check if the button response onClick does not continue if no inputs', () => {
+    //Arrange
+    const onClick = jest.fn();
+    const onExchange = jest.fn();
+    const onConfirmation = jest.fn();
+    window.alert = jest.fn();
+
+    render(<MakeTransferAddRecipient toggleAddRecipient={(onClick)} exchangeInfo={exchangeInfo} setExchangeInfo={(onExchange)} handleShowConfirmation={(onConfirmation)} />);
+
+    //Act
+    const getButton = screen.queryByRole("button", {name:"Continue"});
+    userEvent.click(getButton);
+  
+    //Assert
+    expect(window.alert).toBeCalled();
+  });
+
+  test('Check if the button response onClick does not continue if bad sort code', () => {
+    //Arrange
+    const onClick = jest.fn();
+    const onExchange = jest.fn();
+    const onConfirmation = jest.fn();
+    window.alert = jest.fn();
+
+    render(<MakeTransferAddRecipient toggleAddRecipient={(onClick)} exchangeInfo={exchangeInfo} setExchangeInfo={(onExchange)} handleShowConfirmation={(onConfirmation)} />);
+
+    //Act
+    const getNameInput = screen.queryAllByRole("textbox")[0];
+    userEvent.type(getNameInput, "ebrima");
+    const getAccountType = screen.queryAllByRole("textbox")[1];
+    userEvent.type(getAccountType, "current-account");
+    const getAccountNumber = screen.queryAllByRole("textbox")[2];
+    userEvent.type(getAccountNumber, "235556792");
+    const getSortCode = screen.queryAllByRole("textbox")[3];
+    userEvent.type(getSortCode , "5556791");
+
+    const getButton = screen.queryByRole("button", {name:"Continue"});
+    userEvent.click(getButton);
+  
+    //Assert
+    expect(window.alert).toBeCalled();
+  });
+
+  test('Check if the button response onClick does not continue if bad account number', () => {
+    //Arrange
+    const onClick = jest.fn();
+    const onExchange = jest.fn();
+    const onConfirmation = jest.fn();
+    window.alert = jest.fn();
+
+    render(<MakeTransferAddRecipient toggleAddRecipient={(onClick)} exchangeInfo={exchangeInfo} setExchangeInfo={(onExchange)} handleShowConfirmation={(onConfirmation)} />);
+
+    //Act
+    const getNameInput = screen.queryAllByRole("textbox")[0];
+    userEvent.type(getNameInput, "ebrima");
+    const getAccountType = screen.queryAllByRole("textbox")[1];
+    userEvent.type(getAccountType, "current-account");
+    const getAccountNumber = screen.queryAllByRole("textbox")[2];
+    userEvent.type(getAccountNumber, "2355567911111");
+    const getSortCode = screen.queryAllByRole("textbox")[3];
+    userEvent.type(getSortCode , "555679");
+
+    const getButton = screen.queryByRole("button", {name:"Continue"});
+    userEvent.click(getButton);
+  
+    //Assert
+    expect(window.alert).toBeCalled();
+  });
+
+  test('Check if the button response onClick does not continue if no name', () => {
+    //Arrange
+    const onClick = jest.fn();
+    const onExchange = jest.fn();
+    const onConfirmation = jest.fn();
+    window.alert = jest.fn();
+
+    render(<MakeTransferAddRecipient toggleAddRecipient={(onClick)} exchangeInfo={exchangeInfo} setExchangeInfo={(onExchange)} handleShowConfirmation={(onConfirmation)} />);
+
+    //Act
+    const getAccountType = screen.queryAllByRole("textbox")[1];
+    userEvent.type(getAccountType, "current-account");
+    const getAccountNumber = screen.queryAllByRole("textbox")[2];
+    userEvent.type(getAccountNumber, "235556792");
+    const getSortCode = screen.queryAllByRole("textbox")[3];
+    userEvent.type(getSortCode , "555679");
+
+    const getButton = screen.queryByRole("button", {name:"Continue"});
+    userEvent.click(getButton);
+  
+    //Assert
+    expect(window.alert).toBeCalled();
+  });
+
+  test('Check if the button response onClick does not continue if no type', () => {
+    //Arrange
+    const onClick = jest.fn();
+    const onExchange = jest.fn();
+    const onConfirmation = jest.fn();
+    window.alert = jest.fn();
+
+    render(<MakeTransferAddRecipient toggleAddRecipient={(onClick)} exchangeInfo={exchangeInfo} setExchangeInfo={(onExchange)} handleShowConfirmation={(onConfirmation)} />);
+
+    //Act
+    const getNameInput = screen.queryAllByRole("textbox")[0];
+    userEvent.type(getNameInput, "ebrima");
+    const getAccountNumber = screen.queryAllByRole("textbox")[2];
+    userEvent.type(getAccountNumber, "235556792");
+    const getSortCode = screen.queryAllByRole("textbox")[3];
+    userEvent.type(getSortCode , "555679");
+
+    const getButton = screen.queryByRole("button", {name:"Continue"});
+    userEvent.click(getButton);
+  
+    //Assert
+    expect(window.alert).toBeCalled();
   });
 
   test('Check if the button cross symbol response to onClick', () => {

@@ -93,14 +93,14 @@ describe ("Testing that buttons work correctly", () => {
 
   test("Test that select button brings up add new recipient", () => {
     
-    global.alert = jest.fn();
     const onClick=jest.fn();
     render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
     const newButton = screen.getAllByRole("button")[1];
     
     fireEvent.click(newButton);
+    const addRecipient = screen.getByTestId("add-recipient");
 
-    expect(global.alert).toHaveBeenCalledTimes(1);
+    expect(addRecipient).toBeInTheDocument();
   });
 });
 

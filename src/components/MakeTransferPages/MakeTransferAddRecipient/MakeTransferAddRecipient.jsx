@@ -33,14 +33,18 @@ const MakeTransferAddRecipient = (props) => {
   };
   
   const handleAddRecipient = () => {
-    setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeTo.user = {
-      firstName: name,
-      type: type,
-      accountNumber: accountNumber,
-      sortCode: sortCode
-    });
-    toggleAddRecipient();
-    handleShowConfirmation();
+    if(type !== "" && name !== "" && sortCode.length === 6 && !isNaN(sortCode) && (accountNumber.length >= 8 && accountNumber.length <= 11) && !isNaN(accountNumber)) {
+      setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeTo.user = {
+        firstName: name,
+        type: type,
+        accountNumber: accountNumber,
+        sortCode: sortCode
+      });
+      toggleAddRecipient();
+      handleShowConfirmation();
+    } else {
+      alert("Please input valid parameters.");
+    }
   };
 
   return (
