@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import WelcomeBack from '../../components/LoginPages/WelcomeBack/WelcomeBack'
 import ForgotPassword from '../../components/LoginPages/ForgotPassword/ForgotPassword';
-import ChangePassword from '../../components/LoginPages/ChangePassword/ChangePassword'
 import "./LoginPage.scss";
 
 
