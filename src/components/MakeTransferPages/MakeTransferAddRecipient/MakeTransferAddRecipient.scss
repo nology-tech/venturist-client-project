@@ -23,6 +23,11 @@
     cursor: pointer;
   }
 
+  &__error {
+    height: 22px;
+    color: red;
+  }
+
   &__header {
     border-bottom: 1px solid #EEEEEE;
     padding-bottom: 26px;
@@ -53,7 +58,7 @@
     box-sizing: border-box;
     border-radius: 8px;
     font-size: 20px;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
     padding-left: 10px;
   }
 
