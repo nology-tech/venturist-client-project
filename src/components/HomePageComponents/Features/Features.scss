@@ -4,25 +4,22 @@
   display: grid;
   align-items: center;
   justify-items: center;
-  padding: 2rem;
+  padding: 1rem;
   background-color: $colourTen;
   height: 55vh;
 
-  &__title {
-    display: grid;
-    justify-content: center;
-  }
-
   &__items {
     display: flex;
-    justify-content: space-between;
+    align-items: baseline;
     gap: 4rem;
+    padding: 0 100px;
   }
 
   &__item {
     display: grid;
     justify-items: center;
     gap: 1.2rem;
+    width: 400px;
 
     &__icon {
       color: $colourEight;

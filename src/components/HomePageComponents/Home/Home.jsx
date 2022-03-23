@@ -5,12 +5,10 @@ import img from "../../../assets/images/liveratescreenshot.png";
 const Home = () => {
   return (
     <section className="home" data-testid="home">
-      <h1 className="home__title">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-      </h1>
+      <h1 className="home__title">Make your money go places.</h1>
       <p className="home__p">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur
-        ducimus nihil tempora culpa, a aliquid?
+        Send money cheaper and easier than old-school banks. Send money at the
+        real exchange rate with no hidden fees.
       </p>
       <img
         className="home__img"
