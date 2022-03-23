@@ -11,7 +11,7 @@ const Footer = () => {
         <img src={logo} alt="Venturist" className="image" />
         <h2>Venturist</h2>
       </div>
-      <Link to="/wallet">
+      <Link to="/signup">
         <Button buttonName="Sign up" />
       </Link>
     </div>

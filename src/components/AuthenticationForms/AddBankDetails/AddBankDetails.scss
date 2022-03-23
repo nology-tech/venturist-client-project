@@ -1,0 +1,123 @@
+@import "../../../assets/sass/global_variables";
+
+.createAccount {
+  background-color: $colourTen;
+  height: 100vh;
+
+  &__header {
+    background-color: white;
+    width: 100vw;
+    height: 74px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: $outfit;
+    font-weight: 400;
+
+    &__logo {
+      display: inherit;
+      padding-left: 3%;
+      gap: 0.5rem;
+      img {
+        height: 35px;
+      }
+    }
+    button {
+      margin-right: 3%;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+
+  &__container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+
+    &__header {
+      h1 {
+        font-weight: 400;
+        color: $colourSix;
+      }
+      font-weight: 200;
+      color: $colourFour;
+    }
+    &__form {
+      background: #ffffff;
+      border-radius: 8px;
+      width: 626px;
+      height: 600px;
+      padding: 40px 76px;
+      margin-top: 5%;
+      box-sizing: border-box;
+      font-family: $outfit;
+
+      input {
+        height: 40px;
+        background-color: #fbfbfc;
+        border: 1px solid #e2e2e2;
+        border-radius: 3px;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        padding-left: 1%;
+      }
+
+      &__brand {
+        display: inline-flex;
+        gap: 0.5em;
+        &__logo {
+          width: 32px;
+          height: 32px;
+        }
+        &__name {
+          font-size: 20px;
+
+          font-weight: 400;
+          color: $colourFour;
+        }
+      }
+      &__email,
+      &__password {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25em;
+      }
+      &__links {
+        display: flex;
+        justify-content: space-between;
+        &__signUp {
+          display: flex;
+          width: 100%;
+          padding-bottom: 7%;
+          margin-bottom: 7%;
+          border-bottom: 1px solid $colourEleven;
+        }
+      }
+
+      &__form-container {
+        display: flex;
+        margin-left: 58%;
+      }
+
+      &__signin {
+        color: $colourFour;
+      }
+
+      p {
+        padding-top: 5px;
+        font-family: $outfit;
+        font-size: 16px;
+      }
+
+      &__error {
+        color: $colourSeven;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.border {
+  border-top: 1px solid $colourEleven;
+  width: 100%;
+}
