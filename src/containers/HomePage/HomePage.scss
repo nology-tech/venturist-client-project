@@ -1,5 +1,9 @@
 @use "../../assets/sass/global_variables" as *;
 
+.landing {
+  overflow-x: hidden;
+}
+
 a,
 a:hover,
 a:focus,
