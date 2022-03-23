@@ -2,7 +2,6 @@ import React from 'react'
 import { useForm } from "react-hook-form";
 import Button from "../../Button/Button";
 import logo from "../../../assets/logos/logo.png";
-import icons from "../../../assets/icons/icons";
 import "./ForgotPassword.scss";
 
 const ForgotPassword = (props) => {

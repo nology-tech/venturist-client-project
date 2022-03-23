@@ -26,7 +26,7 @@ const WelcomeBack = (props) => {
 
   const toggleShowPassword = (event) => {
     event.preventDefault()
-    if(showPassword == 'password') {
+    if(showPassword === 'password') {
       setShowPassword('text')
     } else {
       setShowPassword('password')
