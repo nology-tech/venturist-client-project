@@ -1,23 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../../components/Button/Button";
 import LiveRatesItem from "../../components/LiveRatesItem/LiveRatesItem";
 import LiveRatesItemEdit from "../../components/LiveRatesItemEdit/LiveRatesItemEdit";
 import liveRatesArr from "../../assets/data/liveRatesExample";
 import "./LiveRates.scss";
 import DropDown from "../../components/DropDown/DropDown";
+import useFxApi from "../../Hooks/FX/useFxApi";
 
 const LiveRates = (props) => {
+  const [ratesObj, setRatesObj] = useState(null);
+  const [baseCurrency, setBaseCurrency] = useState("GBP");
+  const [currencyList, setCurrencyList] = useState([]);
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [editBaseCurrency, setEditBaseCurrency] = useState(false);
+  const [ratesArr, setRatesArr] = useState([]);
+
+  const url = "https://venturist-app.nw.r.appspot.com/currencies";
+
+  const { loaded, data, serverError } = useFxApi(url);
+
   const addCurrenciesByCode = (code) => {
     return liveRatesArr.filter((currency) => currency.currencyCode === code)[0];
   };
 
-  const [baseCurrency, setBaseCurrency] = useState("GBP");
-  const [currencyList, setCurrencyList] = useState([
-    addCurrenciesByCode("USD"),
-    addCurrenciesByCode("EUR"),
-  ]);
-  const [showDropDown, setShowDropDown] = useState(false);
-  const [editBaseCurrency, setEditBaseCurrency] = useState(false);
+  const dataToArray = () => {
+    if (ratesObj !== null && ratesObj !== "blank") {
+      setBaseCurrency(ratesObj.base);
+      const tempArr = Object.entries(ratesObj.rates);
+      const mapped = tempArr.map((item) => {
+        const obj = { currencyCode: item[0], liveRate: item[1] };
+        return obj;
+      });
+      setRatesArr(mapped);
+      // console.log(mapped);
+    }
+  };
+  useEffect(() => {
+    setRatesObj(data);
+    if (loaded) {
+      dataToArray();
+    }
+  }, [loaded]);
 
   const handleAmount = (event) => {
     console.log(event.target.value);
@@ -113,7 +136,7 @@ const LiveRates = (props) => {
             <th>&nbsp;</th>
           </tr>
           {!editBaseCurrency ? renderBaseCurrency() : renderEdit()}
-          {renderList()}
+          {loaded && renderList()}
         </tbody>
       </table>
       <div className="liverate__add">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const useFxApi = (url) => {
-  const [loading, setIsLoading] = useState(false);
+  const [loaded, setIsLoaded] = useState(false);
   const [data, setData] = useState("blank");
   const [serverError, setServerError] = useState(null);
 
@@ -11,19 +11,18 @@ const useFxApi = (url) => {
       const response = await axios.get(url);
       const data = await response?.data;
       setData(data);
-      setIsLoading(false);
+      setIsLoaded(true);
     } catch (error) {
       setServerError(error);
-      setIsLoading(false);
+      setIsLoaded(false);
     }
   };
 
   useEffect(() => {
-    setIsLoading(true);
     fetchData();
   }, [url]);
 
-  return { loading, data, serverError };
+  return { loaded, data, serverError };
 };
 
 export default useFxApi;
