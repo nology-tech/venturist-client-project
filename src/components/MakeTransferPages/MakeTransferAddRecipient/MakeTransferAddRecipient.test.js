@@ -48,6 +48,9 @@ describe('Rendering components', () => {
     expect(getNameInput).toBeInTheDocument();
   });
 
+});
+
+describe('Check functions', () => {
   test('Check if the typed message is in the name input box', () => {
     //Arrange
     const onClick = jest.fn();
