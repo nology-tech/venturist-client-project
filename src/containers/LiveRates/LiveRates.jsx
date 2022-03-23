@@ -6,6 +6,7 @@ import liveRatesArr from "../../assets/data/liveRatesExample";
 import "./LiveRates.scss";
 import DropDown from "../../components/DropDown/DropDown";
 import useFxApi from "../../Hooks/FX/useFxApi";
+import { getParamByParam } from "iso-country-currency";
 
 const LiveRates = (props) => {
   const [ratesObj, setRatesObj] = useState(null);
@@ -15,24 +16,25 @@ const LiveRates = (props) => {
   const [editBaseCurrency, setEditBaseCurrency] = useState(false);
   const [ratesArr, setRatesArr] = useState([]);
 
-  const url = "https://venturist-app.nw.r.appspot.com/currencies";
+  const url =
+    "https://venturist-app.nw.r.appspot.com/currencies/" + baseCurrency + "";
 
   const { loaded, data, serverError } = useFxApi(url);
 
-  const addCurrenciesByCode = (code) => {
-    return liveRatesArr.filter((currency) => currency.currencyCode === code)[0];
-  };
-
   const dataToArray = () => {
     if (ratesObj !== null && ratesObj !== "blank") {
-      setBaseCurrency(ratesObj.base);
+      // setBaseCurrency(ratesObj.base);
       const tempArr = Object.entries(ratesObj.rates);
       const mapped = tempArr.map((item) => {
-        const obj = { currencyCode: item[0], liveRate: item[1] };
+        const obj = {
+          currencyCode: item[0],
+          liveRate: item[1],
+          currencyName: item[0],
+          currencySymbol: "",
+        };
         return obj;
       });
       setRatesArr(mapped);
-      // console.log(mapped);
     }
   };
   useEffect(() => {
@@ -41,6 +43,10 @@ const LiveRates = (props) => {
       dataToArray();
     }
   }, [loaded]);
+
+  const addCurrenciesByCode = (code) => {
+    return ratesArr.filter((currency) => currency.currencyCode === code)[0];
+  };
 
   const handleAmount = (event) => {
     console.log(event.target.value);
@@ -79,7 +85,7 @@ const LiveRates = (props) => {
   };
 
   const renderList = () => {
-    return currencyList.map((currency, index) => {
+    return ratesArr.map((currency, index) => {
       const {
         currencyFlag,
         currencyCode,
@@ -104,7 +110,7 @@ const LiveRates = (props) => {
   };
 
   const remainingCurrencyCodes = () => {
-    return liveRatesArr
+    return ratesArr
       .filter(
         (currency1) =>
           !currencyList.find(
@@ -115,7 +121,7 @@ const LiveRates = (props) => {
   };
 
   const handleAddCurrency = (value) => {
-    const newList = [...currencyList, addCurrenciesByCode(value.toUpperCase())];
+    const newList = [...ratesArr, addCurrenciesByCode(value.toUpperCase())];
     setCurrencyList(newList);
     setShowDropDown(false);
   };
@@ -135,7 +141,9 @@ const LiveRates = (props) => {
             <th>Rate </th>
             <th>&nbsp;</th>
           </tr>
-          {!editBaseCurrency ? renderBaseCurrency() : renderEdit()}
+
+          {loaded && !editBaseCurrency ? renderBaseCurrency() : renderEdit()}
+
           {loaded && renderList()}
         </tbody>
       </table>
