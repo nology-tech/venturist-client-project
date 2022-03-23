@@ -15,6 +15,7 @@ import liveRateData from "./assets/data/liveRatesExample";
 import userProfile from "./assets/data/samanthaBrooksProfile";
 import contactData from "./assets/data/contactExample";
 import HomePage from "./containers/HomePage/HomePage";
+import useFxApi from "./Hooks/FX/useFxApi";
 
 const App = () => {
   const [profileData, setProfileData] = useState({ ...userProfile });

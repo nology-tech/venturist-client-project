@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const useFxApi = () => {
-  const firstUpdate = useRef(true);
+const useFxApi = (url) => {
   const [loading, setIsLoading] = useState(false);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState("blank");
   const [serverError, setServerError] = useState(null);
-  const [apiUrl, seApiUrl] = useState("";)
 
   const fetchData = async () => {
     try {
@@ -22,15 +20,10 @@ const useFxApi = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    if(!firstUpdate.current){
-      fetchData()
-    }
-    firstUpdate.current = false;
-    
     fetchData();
-  }, [apiUrl]);
+  }, [url]);
 
-  return { loading, data, serverError, callApi: seApiUrl };
+  return { loading, data, serverError };
 };
 
 export default useFxApi;
