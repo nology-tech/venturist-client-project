@@ -107,7 +107,7 @@ describe ("Testing that buttons work correctly", () => {
 });
 
 describe ("Choose recipient search box", () => {
-  test("That correct search items appear based on input", () => {
+  test("That correct search items appear based on input - Z", () => {
     const onClick=jest.fn();
     render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
     const selectButton = screen.getAllByRole("button")[0];
@@ -120,7 +120,34 @@ describe ("Choose recipient search box", () => {
     expect(chooseRecipientContainer).toHaveTextContent("Zoe Jansen")
     expect(chooseRecipientContainer).toHaveTextContent("Mateusz Seredyn")
     expect(chooseRecipientContainer).not.toHaveTextContent("Ollie Holden")
+  });
 
+  test("That correct search items appear based on input - C", () => {
+    const onClick=jest.fn();
+    render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
+    const selectButton = screen.getAllByRole("button")[0];
+  
+    fireEvent.click(selectButton);
+    const search = screen.getByPlaceholderText("Search...");
+    userEvent.type(search, "C");
+    const chooseRecipientContainer = screen.getByTestId("choose-modal")
+    
+    expect(chooseRecipientContainer).toHaveTextContent("No results found.")
+    expect(chooseRecipientContainer).not.toHaveTextContent("Ollie Holden")
+  });
+
+  test("Search bar is case insensitive", () => {
+    const onClick=jest.fn();
+    render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
+    const selectButton = screen.getAllByRole("button")[0];
+  
+    fireEvent.click(selectButton);
+    const search = screen.getByPlaceholderText("Search...");
+    userEvent.type(search, "ZOE JANSEN");
+    const chooseRecipientContainer = screen.getByTestId("choose-modal")
+    
+    expect(chooseRecipientContainer).toHaveTextContent("Zoe Jansen")
+    expect(chooseRecipientContainer).not.toHaveTextContent("Mateusz Seredyn")
   });
 
 
