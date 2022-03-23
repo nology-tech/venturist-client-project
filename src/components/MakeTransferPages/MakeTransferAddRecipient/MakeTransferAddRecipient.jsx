@@ -45,7 +45,7 @@ const MakeTransferAddRecipient = (props) => {
 
   return (
     <>
-    <div className="transfer-page__add-recipient">
+    <div className="transfer-page__add-recipient" data-testid="add-recipient">
       <h2 className="transfer-page__add-recipient__header">Add Recipient</h2>
       <img src={cross} alt="Close menu" className="transfer-page__add-recipient__close-menu" onClick={handleCancel}/>
       <div className="transfer-page__add-recipient__content">
