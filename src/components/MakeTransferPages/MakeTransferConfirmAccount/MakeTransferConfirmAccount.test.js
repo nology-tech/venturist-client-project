@@ -89,16 +89,4 @@ describe ("Testing that buttons work correctly", () => {
     
     expect(chooseRecipientContainer).toBeInTheDocument();
   });
-
-  test("Test that select button brings up add new recipient", () => {
-    
-    global.alert = jest.fn();
-    const onClick=jest.fn();
-    render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
-    const newButton = screen.getAllByRole("button")[1];
-    
-    fireEvent.click(newButton);
-
-    expect(global.alert).toHaveBeenCalledTimes(1);
-  });
 });
