@@ -18,6 +18,6 @@ afterAll(() => server.close());
 
 test("should return with default state", async () => {
   const { result } = renderHook(() => useFxApi(""));
-  expect(result.current.loading).toBe(true);
-  expect(result.current.data).toBe("blank");
+  expect(result.current.loaded).toBe(false);
+  expect(result.current.data).toBe(null);
 });

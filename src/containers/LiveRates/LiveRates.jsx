@@ -9,21 +9,21 @@ import useFxApi from "../../Hooks/FX/useFxApi";
 import { getParamByParam } from "iso-country-currency";
 
 const LiveRates = (props) => {
+  const [baseCurrency, setBaseCurrency] = useState("USD");
+
+  const url = `https://venturist-app.nw.r.appspot.com/currencies/${baseCurrency}`;
+
+  const { loaded, data, status } = useFxApi(url);
+
   const [ratesObj, setRatesObj] = useState(null);
-  const [baseCurrency, setBaseCurrency] = useState("GBP");
   const [currencyList, setCurrencyList] = useState([]);
   const [showDropDown, setShowDropDown] = useState(false);
   const [editBaseCurrency, setEditBaseCurrency] = useState(false);
   const [ratesArr, setRatesArr] = useState([]);
 
-  const url =
-    "https://venturist-app.nw.r.appspot.com/currencies/" + baseCurrency + "";
-
-  const { loaded, data, serverError } = useFxApi(url);
-
   const dataToArray = () => {
-    if (ratesObj !== null && ratesObj !== "blank") {
-      // setBaseCurrency(ratesObj.base);
+    if (ratesObj !== null) {
+      console.log("sanity");
       const tempArr = Object.entries(ratesObj.rates);
       const mapped = tempArr.map((item) => {
         const obj = {
@@ -38,11 +38,15 @@ const LiveRates = (props) => {
     }
   };
   useEffect(() => {
-    setRatesObj(data);
-    if (loaded) {
-      dataToArray();
+    if (status === "success") {
+      try {
+        setRatesObj(data);
+        dataToArray();
+      } catch (err) {
+        console.log(err);
+      }
     }
-  }, [loaded]);
+  }, [status, loaded, baseCurrency]);
 
   const addCurrenciesByCode = (code) => {
     return ratesArr.filter((currency) => currency.currencyCode === code)[0];
@@ -70,42 +74,39 @@ const LiveRates = (props) => {
   };
 
   const renderBaseCurrency = () => {
-    const base = addCurrenciesByCode(baseCurrency);
-    return (
-      <LiveRatesItem
-        currencyCode={base.currencyCode}
-        flagImg={base.currencyFlag}
-        currency={base.currencyCode}
-        amount={base.liveRate}
-        rate={""}
-        buttonName="Edit"
-        buttonFunction={() => setEditBaseCurrency(true)}
-      />
-    );
+    if (ratesArr !== null) {
+      const base = ratesArr.filter(
+        (currency) => currency.currencyCode === baseCurrency
+      )[0];
+      if (base) {
+        return (
+          <LiveRatesItem
+            currencyCode={base.currencyCode}
+            currency={base.currencyCode}
+            amount={base.liveRate}
+            rate={""}
+            buttonName="Edit"
+            buttonFunction={() => setEditBaseCurrency(true)}
+          />
+        );
+      }
+    } else return <></>;
   };
 
   const renderList = () => {
     return ratesArr.map((currency, index) => {
-      const {
-        currencyFlag,
-        currencyCode,
-        liveRate,
-        changeOfRate,
-        currencyName,
-      } = currency;
-      if (currency.currencyCode !== baseCurrency) {
-        return (
-          <LiveRatesItem
-            key={index}
-            currencyCode={currencyCode}
-            flagImg={currencyFlag}
-            currency={currencyName}
-            amount={liveRate}
-            rate={changeOfRate}
-            buttonName="Send"
-          />
-        );
-      } else return <div></div>;
+      const { currencyCode, liveRate, currencyName } = currency;
+      console.log("sanity 2");
+      return (
+        <LiveRatesItem
+          key={index}
+          currencyCode={currencyCode}
+          currency={currencyName}
+          amount={liveRate}
+          rate={liveRate}
+          buttonName="Send"
+        />
+      );
     });
   };
 
@@ -141,10 +142,8 @@ const LiveRates = (props) => {
             <th>Rate </th>
             <th>&nbsp;</th>
           </tr>
-
-          {loaded && !editBaseCurrency ? renderBaseCurrency() : renderEdit()}
-
-          {loaded && renderList()}
+          {status === "success" && renderBaseCurrency()}
+          {status === "success" && renderList()}
         </tbody>
       </table>
       <div className="liverate__add">

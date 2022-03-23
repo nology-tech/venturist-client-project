@@ -3,8 +3,8 @@ import axios from "axios";
 
 const useFxApi = (url) => {
   const [loaded, setIsLoaded] = useState(false);
-  const [data, setData] = useState("blank");
-  const [serverError, setServerError] = useState(null);
+  const [status, setStatus] = useState("pending");
+  const [data, setData] = useState(null);
 
   const fetchData = async () => {
     try {
@@ -12,8 +12,9 @@ const useFxApi = (url) => {
       const data = await response?.data;
       setData(data);
       setIsLoaded(true);
+      setStatus("success");
     } catch (error) {
-      setServerError(error);
+      setStatus("error");
       setIsLoaded(false);
     }
   };
@@ -22,7 +23,7 @@ const useFxApi = (url) => {
     fetchData();
   }, [url]);
 
-  return { loaded, data, serverError };
+  return { loaded, data, status };
 };
 
 export default useFxApi;
