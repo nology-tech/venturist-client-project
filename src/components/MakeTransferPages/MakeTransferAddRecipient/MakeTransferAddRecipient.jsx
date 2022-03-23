@@ -50,13 +50,13 @@ const MakeTransferAddRecipient = (props) => {
       <img src={cross} alt="Close menu" className="transfer-page__add-recipient__close-menu" onClick={handleCancel}/>
       <div className="transfer-page__add-recipient__content">
         <label htmlFor="name" className="transfer-page__add-recipient__label">Recipient Name</label>
-        <input type="text" name="name" className="transfer-page__add-recipient__input" onChange={handleName}></input>
+        <input type="text" name="name" className="transfer-page__add-recipient__input" onChange={handleName} required ></input>
         <label htmlFor="accountType" className="transfer-page__add-recipient__label">Account Type</label>
-        <input type="text" name="accountType" className="transfer-page__add-recipient__input" onChange={handleType}></input>
+        <input type="text" name="accountType" className="transfer-page__add-recipient__input" onChange={handleType} required ></input>
         <label htmlFor="accountNumber" className="transfer-page__add-recipient__label">Account Number</label>
-        <input type="text" name="accountNumber" className="transfer-page__add-recipient__input" onChange={handleNumber}></input>
+        <input type="text" name="accountNumber" className="transfer-page__add-recipient__input" onChange={handleNumber} required ></input>
         <label htmlFor="sort" className="transfer-page__add-recipient__label">Sort Code</label>
-        <input type="text" name="sort" className="transfer-page__add-recipient__input" onChange={handleSort}></input>
+        <input type="text" name="sort" className="transfer-page__add-recipient__input" onChange={handleSort} required ></input>
       </div>
       <div className="transfer-page__add-recipient__buttons">
         <Button buttonName="Cancel" buttonStyle="clear" buttonFunction={handleCancel} />
