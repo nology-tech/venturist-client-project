@@ -13,11 +13,11 @@ const schema = yup.object({
     .number()
     .test(
       "len",
-      "Must be exactly 11 characters",
-      (val) => val.toString().length === 11
+      "Must contain between 8 and 11 numbers",
+      (val) => val.toString().length >= 8 && val.toString().length <= 11
     )
 
-    .typeError("Must contain 11 numbers")
+    .typeError("Must contain between 8 and 11 numbers")
     .required("Account Number is required"),
   sortCode: yup
     .number()
