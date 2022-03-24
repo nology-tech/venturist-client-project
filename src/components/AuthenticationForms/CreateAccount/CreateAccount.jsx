@@ -53,12 +53,14 @@ const CreateAccount = (props) => {
           </Link>
           <h2>Venturist</h2>
         </div>
-        <Button
-          buttonName={"login"}
-          buttonStyle={"blue"}
-          hasIcon={false}
-          buttonFunction={() => {}}
-        />
+        <Link to="/login">
+          <Button
+            buttonName={"Login"}
+            buttonStyle={"blue"}
+            hasIcon={false}
+            buttonFunction={() => {}}
+          />
+        </Link>
       </div>
       <div className="createAccount__container">
         <form
@@ -105,7 +107,7 @@ const CreateAccount = (props) => {
               <p className="createAccount__container__form__signin">
                 Already have an account?{" "}
               </p>
-              <Link to="/wallet">
+              <Link to="/login">
                 <Button buttonName="Sign in" buttonStyle="clear" />
               </Link>              
             </div>

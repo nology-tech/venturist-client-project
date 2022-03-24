@@ -12,8 +12,8 @@ const HeaderHome = () => {
         <h2>Venturist</h2>
       </div>
       <div className="headerHome__buttons">
-        <Link to="/wallet">
-          Sign in
+        <Link to="/login">
+          <Button buttonName="Sign in" />
         </Link>
         <Link to="/signup">
           <Button buttonName="Sign up" />
