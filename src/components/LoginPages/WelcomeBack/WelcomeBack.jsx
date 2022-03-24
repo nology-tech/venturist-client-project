@@ -60,7 +60,7 @@ const WelcomeBack = (props) => {
             </div>
             <div className="loginform__container__form__header">
               <h1>Welcome Back!</h1>
-              <p className="ptag">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p className="ptag">Sign in to view your account.</p>
             </div>
             <div className="loginform__container__form__email">
               <label>Email</label>
