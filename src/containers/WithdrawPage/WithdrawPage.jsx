@@ -58,7 +58,7 @@ const WithdrawPage = (props) => {
       <Header
         title="Withdraw"
         pageFunctionHeading="Withdraw Funds"
-        textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus."
+        textDescription="Withdraw money stored with Venturist and send it elsewhere."
       />
       <TransactionForm
         formTitle="Withdrawal Form"
