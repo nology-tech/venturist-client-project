@@ -55,11 +55,11 @@ const MakeTransferAddRecipient = (props) => {
     <div className="transfer-page__add-recipient" data-testid="add-recipient">
       <h2 className="transfer-page__add-recipient__header">Add Recipient</h2>
       <img src={cross} alt="Close menu" className="transfer-page__add-recipient__close-menu" onClick={handleCancel}/>
-      <form className="transfer-page__add-recipient__content">
+      <form className="transfer-page__add-recipient__content" onSubmit={handleSubmit(handleAddRecipient)}>
         <label htmlFor="name" className="transfer-page__add-recipient__label">Recipient Name</label>
         <input {...register("name")} className="transfer-page__add-recipient__input" type="text" />
         <p className="transfer-page__add-recipient__error">{errors.name?.message}</p>
-        <label htmlFor="accountType" className="transfer-page__add-recipient__label">Account Type</label>
+        <label htmlFor="type" className="transfer-page__add-recipient__label">Account Type</label>
         <input {...register("type")} className="transfer-page__add-recipient__input" type="text" />
         <p className="transfer-page__add-recipient__error">{errors.type?.message}</p>
         <label htmlFor="accountNumber" className="transfer-page__add-recipient__label">Account Number</label>
