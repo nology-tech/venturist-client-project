@@ -1,16 +1,5 @@
 @use "../../assets/sass/global_variables" as *;
 
-body {
-  font-family: $outfit;
-  font-weight: 400;
-}
-
-table {
-  width: 455px;
-  padding-top: 0.75em;
-  font-size: 12px;
-}
-
 #funds-remaining {
   color: $colourFour;
   padding-top: 0;
@@ -20,7 +9,6 @@ table {
 #amount-input {
   width: 100px;
 }
-
 
 .deposit-form {
   margin-top: 50px;
@@ -42,6 +30,12 @@ table {
     width: 455px;
     height: 170px;
     border-radius: 6px;
+
+    &__details {
+      width: 455px;
+      padding-top: 0.75em;
+      font-size: 12px;
+    }
 
     &__user-name {
       color: $colourOne;

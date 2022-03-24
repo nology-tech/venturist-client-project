@@ -16,7 +16,7 @@ const TransactionForm = (props) => {
     <form onSubmit={toggleConfirm} className="deposit-form" data-testid="section-form">
       <p className="deposit-form__title" data-testid="form-title">{formTitle}</p>
       <div className="deposit-form__table">
-        <table>
+        <table className="deposit-form__table__details">
           <h5 className="deposit-form__table__user-name">
             {profileData.firstName} {profileData.lastName}
           </h5>
