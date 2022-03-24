@@ -15,7 +15,7 @@ const HeaderHome = () => {
         <Link to="/login">
           <Button buttonName="Sign in" />
         </Link>
-        <Link to="/wallet">
+        <Link to="/signup">
           <Button buttonName="Sign up" />
         </Link>
       </div>

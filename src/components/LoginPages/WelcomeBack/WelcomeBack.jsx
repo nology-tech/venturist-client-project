@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import "./WelcomeBack.scss";
 import Button from "../../Button/Button";
 import logo from "../../../assets/logos/logo.png";
@@ -37,15 +38,19 @@ const WelcomeBack = (props) => {
     <div className="loginform">
       <div className="loginform__header">
           <div className="loginform__header__logo">
-          <img src={logo} alt="logo" />
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
           <h2>Venturist</h2>
-          </div>            
-          <Button 
-            buttonName={"Sign up"}
-            buttonStyle={"blue"}
-            hasIcon={false}
-            buttonFunction={() => {}}
-          />
+          </div>
+          <Link to="/signup">
+                <Button 
+                buttonName={"Sign up"}
+                buttonStyle={"blue"}
+                hasIcon={false}
+                buttonFunction={() => {}}
+              />
+          </Link>     
         </div>
         <div className="loginform__container">
           <form className="loginform__container__form">
@@ -89,7 +94,9 @@ const WelcomeBack = (props) => {
             <div className="loginform__container__form__links">
               <div className="loginform__container__form__links__signup" >
                   <p className="loginform__container__form__links__signup__text ptag">Don't have an account? </p>
-                  <Button buttonName="Sign Up" buttonStyle="clear" />
+                  <Link to="/signup">
+                    <Button buttonName="Sign Up" buttonStyle="clear" />
+                  </Link>
               </div>
               <Button buttonName="Forgotten Password?" buttonStyle="clear" buttonFunction={togglePage} />
             </div>

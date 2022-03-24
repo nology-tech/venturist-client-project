@@ -16,6 +16,7 @@ import userProfile from "./assets/data/samanthaBrooksProfile";
 import contactData from "./assets/data/contactExample";
 import HomePage from "./containers/HomePage/HomePage";
 import LoginPage from "./containers/LoginPage/LoginPage";
+import CreateAccountPage from "./containers/CreateAccountPage/CreateAccountPage";
 
 const App = () => {
   const [profileData, setProfileData] = useState({ ...userProfile });
@@ -29,6 +30,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/signup" element={<CreateAccountPage />}></Route>
           <Route
             path="/wallet"
             element={
@@ -96,10 +98,10 @@ const App = () => {
               <>
                 <NavBar />
                 <UserProfile />
-                <DepositPage 
+                <DepositPage
                   profileData={profileData}
                   updateProfileData={updateProfileData}
-                  />
+                />
               </>
             }
           ></Route>
@@ -109,10 +111,10 @@ const App = () => {
               <>
                 <NavBar />
                 <UserProfile />
-                <WithdrawPage 
+                <WithdrawPage
                   profileData={profileData}
                   updateProfileData={updateProfileData}
-              />
+                />
               </>
             }
           ></Route>

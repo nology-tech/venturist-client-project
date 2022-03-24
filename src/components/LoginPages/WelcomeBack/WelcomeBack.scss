@@ -4,7 +4,9 @@
     background-color: $colourTen;
     height: 100vh;
     
-    &__header{        
+    &__header{   
+        box-sizing: border-box;  
+        padding-right: 50px;   
         background-color: white;
         width: 100vw;
         height: 74px;
@@ -28,7 +30,7 @@
         button {
             margin-right: 3%;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 200;
           }
 
     }
@@ -116,7 +118,7 @@
 
             button {
                 font-size: 16px;
-                font-weight: 600;
+                font-weight: 200;
               }
         }
     }
