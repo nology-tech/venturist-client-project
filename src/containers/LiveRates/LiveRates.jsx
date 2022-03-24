@@ -27,7 +27,7 @@ const LiveRates = (props) => {
       const mapped = tempArr.map((item) => {
         const obj = {
           currencyCode: item[0],
-          liveRate: item[1] * baseAmount,
+          liveRate: item[1],
           currencyName: item[0],
           currencySymbol: "",
         };
@@ -59,8 +59,12 @@ const LiveRates = (props) => {
     setBaseCurrency(value);
   };
 
+  const current = new Date();
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+
   const renderEdit = () => {
     return (
+      
       <LiveRatesItemEdit
         buttonName="Confirm"
         buttonFunction={() => {
@@ -100,7 +104,7 @@ const LiveRates = (props) => {
           key={index}
           currencyCode={currencyCode}
           currency={currencyName}
-          amount={liveRate}
+          amount={liveRate * baseAmount}
           rate={liveRate}
           buttonName="Send"
         />

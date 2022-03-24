@@ -5,9 +5,12 @@ import Header from "../../components/Header/Header";
 import MakeTransferConfirmAccount from "../../components/MakeTransferPages/MakeTransferConfirmAccount/MakeTransferConfirmAccount";
 import MakeTransferForm from "../../components/MakeTransferPages/MakeTransferForm/MakeTransferForm";
 import MakeTransferConfirmation from "../../components/MakeTransferPages/MakeTransferConfirmation/MakeTransferConfirmation";
+import { useParams} from "react-router-dom";
 
 const MakeTransferPage = (props) => {
   const { liveRateData, profileData, contactData } = props;
+
+  const params = useParams();
 
   const exchangeBase = {
     exchangeFrom: {
