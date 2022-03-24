@@ -9,6 +9,11 @@ const useFxApi = () => {
   const [apiURL, setApiUrl] = useState("");
   const [ratesArr, setRatesArr] = useState([]);
 
+  const getSymbol = (codeStr) => {
+    const symbol = getParamByParam("currency", code, "symbol");
+    return symbol !== null;
+  };
+
   const dataToArray = (obj) => {
     if (obj !== null) {
       const tempArr = Object.entries(obj.rates);
@@ -17,7 +22,7 @@ const useFxApi = () => {
           currencyCode: item[0],
           liveRate: item[1],
           currencyName: item[0],
-          currencySymbol: "",
+          currencySymbol: getSymbol(currencyCode),
         };
         return obj;
       });

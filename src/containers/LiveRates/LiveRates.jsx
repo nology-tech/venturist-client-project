@@ -14,40 +14,32 @@ const LiveRates = (props) => {
 
   const { data, status, ratesArr, getData } = useFxApi();
 
-  const [currencyList, setCurrencyList] = useState([]);
   const [showDropDown, setShowDropDown] = useState(false);
   const [editBaseCurrency, setEditBaseCurrency] = useState(false);
-  //const [ratesArr, setRatesArr] = useState([]);
   const [baseAmount, setBaseAmount] = useState(1);
+  const [defaultCurrencies, setDefaultCurrencies] = useState(["USD", "EUR"]);
+  const [filteredRates, setFilteredRates] = useState([]);
 
-  // const dataToArray = (obj) => {
-  //   if (obj !== null) {
-  //     const tempArr = Object.entries(obj.rates);
-  //     const mapped = tempArr.map((item) => {
-  //       const obj = {
-  //         currencyCode: item[0],
-  //         liveRate: item[1],
-  //         currencyName: item[0],
-  //         currencySymbol: "",
-  //       };
-  //       return obj;
-  //     });
-  //     setRatesArr(mapped);
-  //   }
-  // };
   useEffect(() => {
     getData(url);
     if (status === "success") {
       try {
-        // dataToArray(data);
+        setFilteredRates(filterRates());
       } catch (err) {
         console.log(err);
       }
     }
-  }, [status, data, editBaseCurrency]);
+  }, [status, data, editBaseCurrency, defaultCurrencies]);
+
+  const filterRates = () => {
+    return ratesArr.filter((item) =>
+      defaultCurrencies.includes(item.currencyCode)
+    );
+  };
 
   const addCurrenciesByCode = (code) => {
-    return ratesArr.filter((currency) => currency.currencyCode === code)[0];
+    return ratesArr.filter((currency) => currency.currencyCode === code)[0]
+      .currencyCode;
   };
 
   const handleAmount = (event) => {
@@ -92,7 +84,7 @@ const LiveRates = (props) => {
   };
 
   const renderList = () => {
-    return ratesArr.map((currency, index) => {
+    return filteredRates.map((currency, index) => {
       const { currencyCode, liveRate, currencyName } = currency;
       return (
         <LiveRatesItem
@@ -107,11 +99,11 @@ const LiveRates = (props) => {
     });
   };
 
-  const remainingCurrencyCodes = () => {
-    return ratesArr
+  const remainingCurrencyCodes = (arrayTo, arrayFrom) => {
+    return arrayTo
       .filter(
         (currency1) =>
-          !currencyList.find(
+          !arrayFrom.find(
             (currency2) => currency1.currencyCode === currency2.currencyCode
           )
       )
@@ -119,8 +111,11 @@ const LiveRates = (props) => {
   };
 
   const handleAddCurrency = (value) => {
-    const newList = [...ratesArr, addCurrenciesByCode(value.toUpperCase())];
-    setCurrencyList(newList);
+    const newList = [
+      ...defaultCurrencies,
+      addCurrenciesByCode(value.toUpperCase()),
+    ];
+    setDefaultCurrencies(newList);
     setShowDropDown(false);
   };
 
@@ -151,8 +146,8 @@ const LiveRates = (props) => {
           />
           {showDropDown && (
             <DropDown
-              codes={remainingCurrencyCodes().map((currency) =>
-                currency.currencyCode.toLowerCase()
+              codes={remainingCurrencyCodes(ratesArr, defaultCurrencies).map(
+                (currency) => currency.currencyCode.toLowerCase()
               )}
               handleChange={handleAddCurrency}
             />
