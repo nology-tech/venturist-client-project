@@ -34,7 +34,7 @@ const App = () => {
             element={
               <>
                 <NavBar />
-                <UserProfile />
+                <UserProfile name={profileData.firstName + " " +  profileData.lastName}/>
                 <WalletPage
                   profileData={profileData}
                   liveRateData={liveRateData}

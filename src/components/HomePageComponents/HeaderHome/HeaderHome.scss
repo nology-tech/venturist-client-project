@@ -40,3 +40,16 @@
 
 }
 
+@media screen and (max-width: 600px) {
+  .headerHome {
+
+    &__logo {
+      padding: 10px;
+      padding-left: 30px;
+    }
+
+    &__buttons {
+      padding: 10px;
+    }
+  }
+}

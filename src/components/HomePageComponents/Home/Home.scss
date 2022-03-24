@@ -22,3 +22,16 @@
     border: 1px solid grey;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .home {
+    justify-items: center;
+    padding-top: 80px;
+    height: 600px;
+    padding-right: -20px;
+
+    &__img {
+      display: none;
+    }
+  }
+}
