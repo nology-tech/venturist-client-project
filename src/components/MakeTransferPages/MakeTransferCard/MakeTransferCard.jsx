@@ -27,7 +27,7 @@ const MakeTransferCard = (props) => {
     leftContent = [leftImage, leftText];
     rightContent = [<p className="transfer-page__card__sort-code" key={5} data-testid="sort-code">{cardContent.sortCode}</p>, 
     <p className="transfer-page__card__account-number" key={6}>{cardContent.accountNumber}</p>];
-    overlayId = cardContent.accountNumber;
+    overlayId = cardContent.IBAN;
   }
 
   return (
