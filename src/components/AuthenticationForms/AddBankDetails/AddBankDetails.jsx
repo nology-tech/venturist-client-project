@@ -73,7 +73,8 @@ const AddBankDetails = (props) => {
           </div>
           <div className="createAccount__container__header">
             <h1>Add Bank Details</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Enter the details of the bank account you want to link with Venturist.</p>
+            <br/>
           </div>
           <div className="createAccount__container__form__email">
             <label>Account Name</label>
