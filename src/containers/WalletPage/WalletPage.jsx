@@ -10,7 +10,7 @@ const WalletPage = (props) => {
   return (
     <div className="wallet-page">
       <div className="wallet-page__banner">
-        <img src={logo} className="wallet-page__logo" />
+        <img src={logo} className="wallet-page__logo" alt="Venturist Logo" />
         <h2>Venturist</h2>
       </div>
       <Header
