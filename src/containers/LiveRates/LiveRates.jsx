@@ -9,11 +9,11 @@ import useFxApi from "../../Hooks/FX/useFxApi";
 import { getParamByParam } from "iso-country-currency";
 
 const LiveRates = (props) => {
-  const [baseCurrency, setBaseCurrency] = useState("USD");
+  const [baseCurrency, setBaseCurrency] = useState("GBP");
 
   const url = `https://venturist-app.nw.r.appspot.com/currencies/${baseCurrency}`;
 
-  const { loaded, data, status } = useFxApi(url);
+  const { loaded, data, status, getData } = useFxApi();
 
   const [currencyList, setCurrencyList] = useState([]);
   const [showDropDown, setShowDropDown] = useState(false);
@@ -37,6 +37,7 @@ const LiveRates = (props) => {
     }
   };
   useEffect(() => {
+    getData(url);
     if (status === "success") {
       try {
         dataToArray(data);
@@ -44,7 +45,7 @@ const LiveRates = (props) => {
         console.log(err);
       }
     }
-  }, [status, baseCurrency, data]);
+  }, [status, data, editBaseCurrency]);
 
   const addCurrenciesByCode = (code) => {
     return ratesArr.filter((currency) => currency.currencyCode === code)[0];
@@ -62,10 +63,13 @@ const LiveRates = (props) => {
     return (
       <LiveRatesItemEdit
         buttonName="Confirm"
-        buttonFunction={() => setEditBaseCurrency(false)}
+        buttonFunction={() => {
+          setEditBaseCurrency(false);
+        }}
         codes={liveRatesArr.map((item) => item.currencyCode.toLowerCase())}
         handleAmount={handleAmount}
         handleCurrency={handleCurrency}
+        code={baseCurrency}
       />
     );
   };
@@ -79,7 +83,7 @@ const LiveRates = (props) => {
         <LiveRatesItem
           currencyCode={base.currencyCode}
           currency={base.currencyCode}
-          amount={base.liveRate * baseAmount}
+          amount={baseAmount}
           rate={""}
           buttonName="Edit"
           buttonFunction={() => setEditBaseCurrency(true)}
@@ -121,7 +125,7 @@ const LiveRates = (props) => {
     setShowDropDown(false);
   };
 
-  if (status == "success" && data != null) {
+  if (status === "success" && data != null) {
     return (
       <div className="liverate">
         <table

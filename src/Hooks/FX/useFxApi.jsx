@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const useFxApi = (url) => {
+const useFxApi = () => {
   const [loaded, setIsLoaded] = useState(false);
   const [status, setStatus] = useState("pending");
   const [data, setData] = useState(null);
+  const [apiURL, setApiUrl] = useState("");
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(apiURL);
       const data = await response?.data;
       setData(data);
       setIsLoaded(true);
@@ -21,9 +22,9 @@ const useFxApi = (url) => {
 
   useEffect(() => {
     fetchData();
-  }, [url]);
+  }, [apiURL]);
 
-  return { loaded, data, status };
+  return { loaded, data, status, getData: setApiUrl };
 };
 
 export default useFxApi;
