@@ -6,41 +6,40 @@ import liveRatesArr from "../../assets/data/liveRatesExample";
 import "./LiveRates.scss";
 import DropDown from "../../components/DropDown/DropDown";
 import useFxApi from "../../Hooks/FX/useFxApi";
-import { getParamByParam } from "iso-country-currency";
 
 const LiveRates = (props) => {
   const [baseCurrency, setBaseCurrency] = useState("GBP");
 
   const url = `https://venturist-app.nw.r.appspot.com/currencies/${baseCurrency}`;
 
-  const { loaded, data, status, getData } = useFxApi();
+  const { data, status, ratesArr, getData } = useFxApi();
 
   const [currencyList, setCurrencyList] = useState([]);
   const [showDropDown, setShowDropDown] = useState(false);
   const [editBaseCurrency, setEditBaseCurrency] = useState(false);
-  const [ratesArr, setRatesArr] = useState([]);
+  //const [ratesArr, setRatesArr] = useState([]);
   const [baseAmount, setBaseAmount] = useState(1);
 
-  const dataToArray = (obj) => {
-    if (obj !== null) {
-      const tempArr = Object.entries(obj.rates);
-      const mapped = tempArr.map((item) => {
-        const obj = {
-          currencyCode: item[0],
-          liveRate: item[1] * baseAmount,
-          currencyName: item[0],
-          currencySymbol: "",
-        };
-        return obj;
-      });
-      setRatesArr(mapped);
-    }
-  };
+  // const dataToArray = (obj) => {
+  //   if (obj !== null) {
+  //     const tempArr = Object.entries(obj.rates);
+  //     const mapped = tempArr.map((item) => {
+  //       const obj = {
+  //         currencyCode: item[0],
+  //         liveRate: item[1],
+  //         currencyName: item[0],
+  //         currencySymbol: "",
+  //       };
+  //       return obj;
+  //     });
+  //     setRatesArr(mapped);
+  //   }
+  // };
   useEffect(() => {
     getData(url);
     if (status === "success") {
       try {
-        dataToArray(data);
+        // dataToArray(data);
       } catch (err) {
         console.log(err);
       }
