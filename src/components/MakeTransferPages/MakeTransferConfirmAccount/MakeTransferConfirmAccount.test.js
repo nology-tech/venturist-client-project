@@ -3,9 +3,7 @@ import liveRates from "../../../assets/data/liveRatesExample";
 import { fireEvent, render, screen } from "@testing-library/react";
 import contactData from "../../../assets/data/contactExample";
 import profileData from "../../../assets/data/samanthaBrooksProfile";
-import MakeTransferChooseModal from "../MakeTransferChooseModal/MakeTransferChooseModal";
 import userEvent from "@testing-library/user-event";
-import { toHaveTextContent } from "@testing-library/jest-dom/dist/matchers";
 
 const exchangeInfo = {
   exchangeFrom: {
@@ -95,14 +93,14 @@ describe ("Testing that buttons work correctly", () => {
 
   test("Test that select button brings up add new recipient", () => {
     
-    global.alert = jest.fn();
     const onClick=jest.fn();
     render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
     const newButton = screen.getAllByRole("button")[1];
     
     fireEvent.click(newButton);
+    const addRecipient = screen.getByTestId("add-recipient");
 
-    expect(global.alert).toHaveBeenCalledTimes(1);
+    expect(addRecipient).toBeInTheDocument();
   });
 });
 
