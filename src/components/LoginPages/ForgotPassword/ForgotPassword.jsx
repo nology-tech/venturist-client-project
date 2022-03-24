@@ -29,7 +29,7 @@ const ForgotPassword = (props) => {
             <h2>Venturist</h2>
           </div>            
           <Button 
-            buttonName={"login"}
+            buttonName={"Login"}
             buttonStyle={"blue"}
             hasIcon={false}
             buttonFunction={() => {}}
