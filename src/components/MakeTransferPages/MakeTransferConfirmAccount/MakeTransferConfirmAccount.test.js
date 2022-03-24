@@ -1,85 +1,154 @@
 import MakeTransferConfirmAccount from "./MakeTransferConfirmAccount";
 import liveRates from "../../../assets/data/liveRatesExample";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import contactData from "../../../assets/data/contactExample";
 import profileData from "../../../assets/data/samanthaBrooksProfile";
+import MakeTransferChooseModal from "../MakeTransferChooseModal/MakeTransferChooseModal";
+import userEvent from "@testing-library/user-event";
+import { toHaveTextContent } from "@testing-library/jest-dom/dist/matchers";
 
-
+const exchangeInfo = {
+  exchangeFrom: {
+    user: profileData,
+    currency: liveRates[0],
+    amount: 3000,
+    fee: 30
+  },
+  exchangeTo: {
+    user: {},
+    currency: liveRates[1],
+    amount: 0
+  }
+}
 
 describe ("Testing that elements render on screen", () => {
     test("Test to render container on screen", () => {
     
-      render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}} currencySymbol={liveRates[0].currencySymbol} currencyCode={liveRates[0].currencyCode}/>);
+      const onClick = jest.fn();
+      render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
      
       const container = screen.getByTestId("confirmSendContainer");
       
       expect(container).toBeInTheDocument();
     });
     test("Test that name renders on screen", () => {
-        
-        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}} currencySymbol={liveRates[0].currencySymbol} currencyCode={liveRates[0].currencyCode}/>);
-        
-        const Name = screen.queryByText("Samantha Brooks")
-        
-        expect(Name).toBeInTheDocument();
-      });
-      test("Test that account number renders on screen", () => {
-        
-        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}} currencySymbol={liveRates[0].currencySymbol} currencyCode={liveRates[0].currencyCode}/>);
-        
-        const accountNumber = screen.queryByText("12345678")
-        
-        expect(accountNumber).toBeInTheDocument();
-      });
-      test("Test that sort code renders on screen", () => {
-      
-        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}} currencySymbol={liveRates[0].currencySymbol} currencyCode={liveRates[0].currencyCode}/>);
-        
-        const sortCode = screen.queryByText("553456")
-        
-        expect(sortCode).toBeInTheDocument();
-      });
-    test("Test that transfer Amount renders on screen", () => {
-        
-        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={500} handleAddRecipient={()=>{}} currencySymbol={liveRates[0].currencySymbol} currencyCode={liveRates[0].currencyCode} />);
-        
-        const transferAmount = screen.getByTestId("transferAmount").innerHTML;
-        
-        expect(transferAmount).toContain("500");
-      });
-
-      test("Test that fund remaining renders on screen correctly - accurate to 2 decimal places", () => {
-       
-        render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={3000} handleAddRecipient={()=>{}} currencySymbol={liveRates[0].currencySymbol} currencyCode={liveRates[0].currencyCode}/>);
-       
-        const remainingAmount = screen.getByTestId("remainingBalance").innerHTML;
-       
-        expect(remainingAmount).toBe("£751.59");
-      });
-    
-  });
-
-  describe ("Testing that buttons work correctly", () => {
-    test("Test that select button brings up user Card list", () => {
-      
-      render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={()=>{}}/>);
-      const selectButton = screen.getAllByRole("button")[0];
-      
-    
-      fireEvent.click(selectButton);
-      const chooseRecipientContainer = screen.getByTestId("chooseRecipientContainer")
-      
-      expect(chooseRecipientContainer).toBeInTheDocument();
-    });
-    test("Test that select button brings up user Card list", () => {
       
       const onClick = jest.fn();
-      render(<MakeTransferConfirmAccount profileData={profileData} data={contactData} transferAmount={0} handleAddRecipient={onClick} />);
-      const newButton = screen.getAllByRole("button")[1];
+      render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
       
+      const Name = screen.queryByText("Sam Brooks")
       
-      fireEvent.click(newButton);
-  
-      expect(onClick).toHaveBeenCalled();
+      expect(Name).toBeInTheDocument();
     });
+    test("Test that account number renders on screen", () => {
+      
+      const onClick = jest.fn();
+      render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);    
+      const accountNumber = screen.queryByText("12345678")
+      
+      expect(accountNumber).toBeInTheDocument();
+    });
+    test("Test that sort code renders on screen", () => {
+      
+      const onClick = jest.fn();
+      render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
+      
+      const sortCode = screen.queryByText("553456")
+      
+      expect(sortCode).toBeInTheDocument();
+    });
+    test("Test that transfer Amount renders on screen", () => {
+        
+      const onClick = jest.fn();
+      render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
+      
+      const transferAmount = screen.getByTestId("transferAmount").innerHTML;
+      
+      expect(transferAmount).toContain("3030.00");
+      });
+
+    test("Test that fund remaining renders on screen correctly - accurate to 2 decimal places", () => {
+      
+      const onClick = jest.fn();
+      render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
+      
+      const remainingAmount = screen.getByTestId("remainingBalance").innerHTML;
+      
+      expect(remainingAmount).toBe("£721.59");
+    });
+    
+});
+
+describe ("Testing that buttons work correctly", () => {
+  test("Test that select button brings up user Card list", () => {
+    
+    const onClick = jest.fn();
+    render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleShowConfirmation={onClick} />);
+    const selectButton = screen.getAllByRole("button")[0];
+    
+  
+    fireEvent.click(selectButton);
+    const chooseRecipientContainer = screen.getByTestId("choose-modal")
+    
+    expect(chooseRecipientContainer).toBeInTheDocument();
   });
+
+  test("Test that select button brings up add new recipient", () => {
+    
+    global.alert = jest.fn();
+    const onClick=jest.fn();
+    render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
+    const newButton = screen.getAllByRole("button")[1];
+    
+    fireEvent.click(newButton);
+
+    expect(global.alert).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe ("Choose recipient search box", () => {
+  test("That correct search items appear based on input - Z", () => {
+    const onClick=jest.fn();
+    render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
+    const selectButton = screen.getAllByRole("button")[0];
+  
+    fireEvent.click(selectButton);
+    const search = screen.getByPlaceholderText("Search...");
+    userEvent.type(search, "Z");
+    const chooseRecipientContainer = screen.getByTestId("choose-modal")
+    
+    expect(chooseRecipientContainer).toHaveTextContent("Zoe Jansen")
+    expect(chooseRecipientContainer).toHaveTextContent("Mateusz Seredyn")
+    expect(chooseRecipientContainer).not.toHaveTextContent("Ollie Holden")
+  });
+
+  test("That correct search items appear based on input - C", () => {
+    const onClick=jest.fn();
+    render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
+    const selectButton = screen.getAllByRole("button")[0];
+  
+    fireEvent.click(selectButton);
+    const search = screen.getByPlaceholderText("Search...");
+    userEvent.type(search, "C");
+    const chooseRecipientContainer = screen.getByTestId("choose-modal")
+    
+    expect(chooseRecipientContainer).toHaveTextContent("No results found.")
+    expect(chooseRecipientContainer).not.toHaveTextContent("Ollie Holden")
+  });
+
+  test("Search bar is case insensitive", () => {
+    const onClick=jest.fn();
+    render(<MakeTransferConfirmAccount exchangeInfo={exchangeInfo} data={contactData} handleAddRecipient={onClick} />);
+    const selectButton = screen.getAllByRole("button")[0];
+  
+    fireEvent.click(selectButton);
+    const search = screen.getByPlaceholderText("Search...");
+    userEvent.type(search, "ZOE JANSEN");
+    const chooseRecipientContainer = screen.getByTestId("choose-modal")
+    
+    expect(chooseRecipientContainer).toHaveTextContent("Zoe Jansen")
+    expect(chooseRecipientContainer).not.toHaveTextContent("Mateusz Seredyn")
+  });
+
+
+});

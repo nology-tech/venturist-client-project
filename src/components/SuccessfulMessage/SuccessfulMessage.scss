@@ -14,12 +14,18 @@
 
 .success {
   position: absolute;
-  width: 595px;
-  height: 573px;
+  width: 500px;
+  height: 500px;
   border-radius: 8px;
   background: #ffffff;
-  padding-left: 62px;
+  padding-left: 50px;
+  padding-right: 60px;
   z-index: 2;
+  position: fixed;
+  top: 250px;
+  left: 600px;
+  right: 0;
+  bottom: 0;
 
   &__icon {
     position: absolute;
@@ -36,7 +42,8 @@
     font-size: 32px;
     line-height: 40px;
     text-align: center;
-    padding-top: 50px;
+    padding-top: 30px;
+    padding-bottom: 10px;
   }
 
   &__message {
@@ -54,7 +61,7 @@
     width: 465px;
     height: 1px;
     background: $colourEleven;
-    margin-top: 98px;
+    margin-top: 80px;
   }
 
   &__line-bottom {
