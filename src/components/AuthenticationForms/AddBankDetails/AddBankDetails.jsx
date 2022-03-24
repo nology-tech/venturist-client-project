@@ -11,13 +11,21 @@ const schema = yup.object({
   nameAccount: yup.string().max(35).required("Account Name is required"),
   numberAccount: yup
     .number()
-    .typeError("Must contain 11 numbers")
-    .min(11, "Must contain 11 numbers")
+    .test(
+      "len",
+      "Must contain between 8 and 11 numbers",
+      (val) => val.toString().length >= 8 && val.toString().length <= 11
+    )
+    .typeError("Must contain between 8 and 11 numbers")
     .required("Account Number is required"),
   sortCode: yup
     .number()
+    .test(
+      "len",
+      "Must be exactly 6 characters",
+      (val) => val.toString().length === 6
+    )
     .typeError("Must contain 6 numbers")
-    .min(6, "Must contain 6 numbers")
     .required("Sort Code is required"),
 });
 
@@ -99,7 +107,11 @@ const AddBankDetails = (props) => {
           </div>
           <div className="border"></div>
           <div className="createAccount__container__form__form-container">
-            <Button buttonName="Go Back" buttonStyle="clear" buttonFunction={handleReturn}/>
+            <Button
+              buttonName="Go Back"
+              buttonStyle="clear"
+              buttonFunction={handleReturn}
+            />
             <Button
               buttonName="Continue"
               buttonFunction={handleSubmit(onSubmit)}
