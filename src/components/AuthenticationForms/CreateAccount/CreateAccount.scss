@@ -5,6 +5,8 @@
   height: 100vh;
 
   &__header {
+    box-sizing: border-box;  
+    padding-right: 50px;   
     background-color: white;
     width: 100vw;
     height: 74px;

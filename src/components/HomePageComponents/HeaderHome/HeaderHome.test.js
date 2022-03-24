@@ -26,7 +26,8 @@ describe("Testing header", () => {
       </Router>
     );
     //Act
-    const button = screen.getByTestId("button");
+    const button = screen.getByText(/Sign in/i);
+
     //Assert
     expect(button).toBeInTheDocument();
   });

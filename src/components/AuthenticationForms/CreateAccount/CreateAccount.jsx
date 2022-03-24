@@ -53,12 +53,14 @@ const CreateAccount = (props) => {
           </Link>
           <h2>Venturist</h2>
         </div>
-        <Button
-          buttonName={"Login"}
-          buttonStyle={"blue"}
-          hasIcon={false}
-          buttonFunction={() => {}}
-        />
+        <Link to="/login">
+          <Button
+            buttonName={"Login"}
+            buttonStyle={"blue"}
+            hasIcon={false}
+            buttonFunction={() => {}}
+          />
+        </Link>
       </div>
       <div className="createAccount__container">
         <form
