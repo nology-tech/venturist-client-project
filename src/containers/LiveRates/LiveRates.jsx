@@ -73,7 +73,7 @@ const LiveRates = (props) => {
       return (
         <LiveRatesItem
           currencyCode={base.currencyCode}
-          currency={base.currencyCode}
+          currency={base.currencyCode + " " + base.currencySymbol}
           amount={baseAmount}
           rate={""}
           buttonName="Edit"
@@ -85,12 +85,12 @@ const LiveRates = (props) => {
 
   const renderList = () => {
     return filteredRates.map((currency, index) => {
-      const { currencyCode, liveRate, currencyName } = currency;
+      const { currencyCode, liveRate, currencyName, currencySymbol } = currency;
       return (
         <LiveRatesItem
           key={index}
           currencyCode={currencyCode}
-          currency={currencyName}
+          currency={currencyName + " " + currencySymbol}
           amount={liveRate}
           rate={liveRate}
           buttonName="Send"
