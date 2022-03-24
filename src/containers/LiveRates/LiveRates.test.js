@@ -17,7 +17,7 @@ test("Test that LiveRates renders with default props", () => {
   //Arrange
   render(<LiveRates {...defaultProps} />);
   //Act
-  const table = screen.getByTestId("liverate-table");
+  const table = screen.getByTestId("liverate-loading");
 
   //Assert
   expect(table).toBeInTheDocument();

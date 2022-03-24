@@ -15,20 +15,19 @@ const LiveRates = (props) => {
 
   const { loaded, data, status } = useFxApi(url);
 
-  const [ratesObj, setRatesObj] = useState(null);
   const [currencyList, setCurrencyList] = useState([]);
   const [showDropDown, setShowDropDown] = useState(false);
   const [editBaseCurrency, setEditBaseCurrency] = useState(false);
   const [ratesArr, setRatesArr] = useState([]);
+  const [baseAmount, setBaseAmount] = useState(1);
 
-  const dataToArray = () => {
-    if (ratesObj !== null) {
-      console.log("sanity");
-      const tempArr = Object.entries(ratesObj.rates);
+  const dataToArray = (obj) => {
+    if (obj !== null) {
+      const tempArr = Object.entries(obj.rates);
       const mapped = tempArr.map((item) => {
         const obj = {
           currencyCode: item[0],
-          liveRate: item[1],
+          liveRate: item[1] * baseAmount,
           currencyName: item[0],
           currencySymbol: "",
         };
@@ -40,24 +39,22 @@ const LiveRates = (props) => {
   useEffect(() => {
     if (status === "success") {
       try {
-        setRatesObj(data);
-        dataToArray();
+        dataToArray(data);
       } catch (err) {
         console.log(err);
       }
     }
-  }, [status, loaded, baseCurrency]);
+  }, [status, baseCurrency, data]);
 
   const addCurrenciesByCode = (code) => {
     return ratesArr.filter((currency) => currency.currencyCode === code)[0];
   };
 
   const handleAmount = (event) => {
-    console.log(event.target.value);
+    setBaseAmount(event.target.value);
   };
 
   const handleCurrency = (value) => {
-    console.log(value);
     setBaseCurrency(value);
   };
 
@@ -65,7 +62,7 @@ const LiveRates = (props) => {
     return (
       <LiveRatesItemEdit
         buttonName="Confirm"
-        buttonFunction={() => setEditBaseCurrency(!editBaseCurrency)}
+        buttonFunction={() => setEditBaseCurrency(false)}
         codes={liveRatesArr.map((item) => item.currencyCode.toLowerCase())}
         handleAmount={handleAmount}
         handleCurrency={handleCurrency}
@@ -74,29 +71,26 @@ const LiveRates = (props) => {
   };
 
   const renderBaseCurrency = () => {
-    if (ratesArr !== null) {
-      const base = ratesArr.filter(
-        (currency) => currency.currencyCode === baseCurrency
-      )[0];
-      if (base) {
-        return (
-          <LiveRatesItem
-            currencyCode={base.currencyCode}
-            currency={base.currencyCode}
-            amount={base.liveRate}
-            rate={""}
-            buttonName="Edit"
-            buttonFunction={() => setEditBaseCurrency(true)}
-          />
-        );
-      }
-    } else return <></>;
+    const base = ratesArr.filter(
+      (currency) => currency.currencyCode === baseCurrency
+    )[0];
+    if (base) {
+      return (
+        <LiveRatesItem
+          currencyCode={base.currencyCode}
+          currency={base.currencyCode}
+          amount={base.liveRate * baseAmount}
+          rate={""}
+          buttonName="Edit"
+          buttonFunction={() => setEditBaseCurrency(true)}
+        />
+      );
+    }
   };
 
   const renderList = () => {
     return ratesArr.map((currency, index) => {
       const { currencyCode, liveRate, currencyName } = currency;
-      console.log("sanity 2");
       return (
         <LiveRatesItem
           key={index}
@@ -127,41 +121,45 @@ const LiveRates = (props) => {
     setShowDropDown(false);
   };
 
-  return (
-    <div className="liverate">
-      <table
-        cellPadding={0}
-        cellSpacing={0}
-        className="liverate-table"
-        data-testid="liverate-table"
-      >
-        <tbody className="liverate-table__body">
-          <tr className="liverate-table__body-headings">
-            <th>Currency </th>
-            <th>Amount </th>
-            <th>Rate </th>
-            <th>&nbsp;</th>
-          </tr>
-          {status === "success" && renderBaseCurrency()}
-          {status === "success" && renderList()}
-        </tbody>
-      </table>
-      <div className="liverate__add">
-        <Button
-          buttonName={"Add Currency"}
-          buttonFunction={() => setShowDropDown(!showDropDown)}
-        />
-        {showDropDown && (
-          <DropDown
-            codes={remainingCurrencyCodes().map((currency) =>
-              currency.currencyCode.toLowerCase()
-            )}
-            handleChange={handleAddCurrency}
+  if (status == "success" && data != null) {
+    return (
+      <div className="liverate">
+        <table
+          cellPadding={0}
+          cellSpacing={0}
+          className="liverate-table"
+          data-testid="liverate-table"
+        >
+          <tbody className="liverate-table__body">
+            <tr className="liverate-table__body-headings">
+              <th>Currency </th>
+              <th>Amount </th>
+              <th>Rate </th>
+              <th>&nbsp;</th>
+            </tr>
+            {!editBaseCurrency ? renderBaseCurrency() : renderEdit()}
+            {renderList()}
+          </tbody>
+        </table>
+        <div className="liverate__add">
+          <Button
+            buttonName={"Add Currency"}
+            buttonFunction={() => setShowDropDown(!showDropDown)}
           />
-        )}
+          {showDropDown && (
+            <DropDown
+              codes={remainingCurrencyCodes().map((currency) =>
+                currency.currencyCode.toLowerCase()
+              )}
+              handleChange={handleAddCurrency}
+            />
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <p data-testid="liverate-loading">Loading live rates...</p>;
+  }
 };
 
 export default LiveRates;
