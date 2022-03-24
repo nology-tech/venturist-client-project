@@ -53,6 +53,11 @@
         box-sizing: border-box;
         font-family: $outfit;
         gap: 1em;
+
+        h1 {
+            color: $colourSix;
+            font-weight: 400;
+        }
         
         &__brand {
             display: inline-flex;
@@ -61,10 +66,6 @@
             &__logo {
                 width: 32px;
                 height: 32px;
-            }
-
-            h1 {
-                color: $colourSix
             }
             
             &__name {
