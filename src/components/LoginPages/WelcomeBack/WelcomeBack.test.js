@@ -1,12 +1,13 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import WelcomeBack from "./WelcomeBack";
+import { BrowserRouter, Router } from "react-router-dom";
 
 const mockTogglePage = jest.fn()
 
 //Arrange
 beforeEach(() => {
-  render(<WelcomeBack togglePage={mockTogglePage} />);
+  render(<BrowserRouter><WelcomeBack togglePage={mockTogglePage}/></BrowserRouter>);
 }) 
 
 describe("Testing Input Fields", () => {
