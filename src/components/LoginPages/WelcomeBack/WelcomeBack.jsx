@@ -115,7 +115,7 @@ const WelcomeBack = (props) => {
             </div>
             <div className="loginform__container__form__line"></div>
             <div className="loginform__container__form__button">
-              <button type="submit" className="button button--blue" >Sign in</button> 
+              <button type="submit" className="button button--blue" data-testid="button" >Sign in</button> 
             </div>
           </form>
         </div>
