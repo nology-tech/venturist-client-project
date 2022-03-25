@@ -9,7 +9,7 @@ export const LiveRatesPage = () => {
       <Header
         title="Live Rates"
         pageFunctionHeading="Live Conversion Rates"
-        textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus."
+        textDescription="Get accurate and reliable foreign exchange rates. Compare all major world currencies effortlessly."
       />
       <LiveRates />
     </div>

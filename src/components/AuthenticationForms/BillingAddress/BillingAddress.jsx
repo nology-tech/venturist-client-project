@@ -78,7 +78,9 @@ const BillingAddress = (props) => {
           </div>
           <div className="billingAddress__container__header">
             <h1>Add Billing Address</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            
+            <p>Enter the home address your bank account is registered to.</p>
+            <br/>
           </div>
           <div className="billingAddress__container__form__number">
             <label>House Number</label>
