@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { act } from "react-test-renderer";
 import LiveRates from "./LiveRates";
 
 const defaultProps = {
@@ -13,11 +14,15 @@ const defaultProps = {
   ],
 };
 
-test("Test that LiveRates renders with default props", () => {
+test("Test that LiveRates renders with default props", async () => {
   //Arrange
   render(<LiveRates {...defaultProps} />);
+  let table;
   //Act
-  const table = screen.getByTestId("liverate-loading");
+
+  await act(() => {
+    table = screen.getByTestId("liverate-loading");
+  });
 
   //Assert
   expect(table).toBeInTheDocument();

@@ -19,6 +19,7 @@ const LiveRates = (props) => {
   const [baseAmount, setBaseAmount] = useState(1);
   const [defaultCurrencies, setDefaultCurrencies] = useState(["USD", "EUR"]);
   const [filteredRates, setFilteredRates] = useState([]);
+  const [message, setMessage] = useState("Loading live rates...");
 
   useEffect(() => {
     getData(url);
@@ -26,7 +27,7 @@ const LiveRates = (props) => {
       try {
         setFilteredRates(filterRates());
       } catch (err) {
-        console.log(err);
+        setMessage("Error getting rates. Please try again later");
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -159,7 +160,7 @@ const LiveRates = (props) => {
       </div>
     );
   } else {
-    return <p data-testid="liverate-loading">Loading live rates...</p>;
+    return <p data-testid="liverate-loading">{message}</p>;
   }
 };
 

@@ -43,7 +43,6 @@ const useFxApi = () => {
       setIsLoaded(true);
       dataToArray(data);
       setStatus("success");
-      console.log("called");
     } catch (error) {
       setStatus("error");
       setIsLoaded(false);
