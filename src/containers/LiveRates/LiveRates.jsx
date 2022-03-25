@@ -29,6 +29,7 @@ const LiveRates = (props) => {
         console.log(err);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status, editBaseCurrency]);
 
   const handleAddCurrency = (value) => {
