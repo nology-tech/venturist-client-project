@@ -4,25 +4,22 @@
   display: grid;
   align-items: center;
   justify-items: center;
-  padding: 2rem;
+  padding: 1rem;
   background-color: $colourTen;
   height: 55vh;
 
-  &__title {
-    display: grid;
-    justify-content: center;
-  }
-
   &__items {
     display: flex;
-    justify-content: space-between;
+    align-items: baseline;
     gap: 4rem;
+    padding: 0 100px;
   }
 
   &__item {
     display: grid;
     justify-items: center;
     gap: 1.2rem;
+    width: 400px;
 
     &__icon {
       color: $colourEight;
@@ -37,5 +34,34 @@
     width: 300px;
     display: grid;
     justify-items: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .features {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    height: auto;
+    width: 100%;
+    padding-left: 0;
+
+    &__items {
+      flex-wrap: wrap;
+      width: 80%;
+    }
+
+    &__item {
+      width: auto;
+      gap: 0.25rem;
+    }
+
+    h3 {
+      margin-bottom: 30px;
+      font-size: 1.25em;
+    }
+
+    svg, button {
+      display: none;
+    }
   }
 }

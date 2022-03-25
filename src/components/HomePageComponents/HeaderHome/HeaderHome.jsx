@@ -12,10 +12,10 @@ const HeaderHome = () => {
         <h2>Venturist</h2>
       </div>
       <div className="headerHome__buttons">
-        <a href="https://github.com/nology-tech/venturist-client-project">
-          Sign in
-        </a>
-        <Link to="/wallet">
+        <Link to="/login">
+          <Button buttonName="Sign in" />
+        </Link>
+        <Link to="/signup">
           <Button buttonName="Sign up" />
         </Link>
       </div>

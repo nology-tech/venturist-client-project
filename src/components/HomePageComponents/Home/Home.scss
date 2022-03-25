@@ -4,9 +4,9 @@
   display: grid;
   justify-items: center;
   gap: 2rem;
+  padding-bottom: 4rem;
 
   background: linear-gradient(to bottom, $colourTen 40%, $colourEleven);
-  height: 80vh;
 
   &__title {
     padding-top: 2rem;
@@ -20,5 +20,18 @@
   &__img {
     max-width: 850px;
     border: 1px solid grey;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .home {
+    justify-items: center;
+    padding-top: 80px;
+    height: 200px;
+    padding-right: -20px;
+
+    &__img {
+      display: none;
+    }
   }
 }

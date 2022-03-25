@@ -14,14 +14,14 @@ const TransactionForm = (props) => {
 
   return (
     <form onSubmit={toggleConfirm} className="deposit-form" data-testid="section-form">
-      <p data-testid="form-title" className="deposit-form__title">{formTitle}</p>
+      <p className="deposit-form__title" data-testid="form-title">{formTitle}</p>
       <div className="deposit-form__table">
-        <table>
+        <table className="deposit-form__table__details">
           <h5 className="deposit-form__table__user-name">
             {profileData.firstName} {profileData.lastName}
           </h5>
           <tr>
-            <td id="account-details" colspan="2">
+            <td className="deposit-form__table__account-details" colspan="2">
               Account Number:
             </td>
             <td></td>
@@ -30,7 +30,7 @@ const TransactionForm = (props) => {
             </td>
           </tr>
           <tr>
-            <td id="account-details" colspan="2">
+            <td className="deposit-form__table__account-details" colspan="2">
               Sort Code:
             </td>
             <td></td>
@@ -38,10 +38,10 @@ const TransactionForm = (props) => {
           </tr>
         </table>
 
-        <p id="border"></p>
+        <p className="deposit-form__table__border-line"></p>
 
-        <div className="transaction">
-          <label htmlFor="amount" id="amount">
+        <div className="deposit-form__table__transaction">
+          <label htmlFor="amount" className="deposit-form__table__transaction__amount">
             Amount
           </label>
           <div>
@@ -49,7 +49,7 @@ const TransactionForm = (props) => {
             <input
               id="amount-input"
               data-testid="amount-input"
-              className="transaction__input"
+              className="deposit-form__table__transaction__input"
               type="number"
               step={0.01}
               min={0.01}
@@ -63,25 +63,25 @@ const TransactionForm = (props) => {
           </div>
         </div>
 
-        <table id="funds-table">
+        <table className="deposit-form__table__funds-table">
           <tr>
-            <td>Funds remaining:</td>
+            <td id="funds-remaining">Funds remaining:</td>
             <td></td>
             <td data-testid="funds-remaining" id="funds-remaining" className="deposit-form__table__user-details">
               {profileData.holdings[profileData.cards[0].currencyType].toFixed(2)}
             </td>
           </tr>
         </table>
+        <div className="deposit-form__button-container">
+          <Button 
+            data-testid="confirm-button" 
+            buttonFunction={toggleConfirm} 
+            buttonName={buttonName} 
+            hasIcon={false} 
+          />
+        </div>
       </div>
-      <div className="button-container">
-        <Button 
-          data-testid="confirm-button" 
-          buttonFunction={toggleConfirm} 
-          buttonName={buttonName} 
-          hasIcon={false} 
-        />
-      </div>
-      <p id="box-border"></p>
+      <p id="deposit-form__box-border"></p>
     </form>
   );
 };
