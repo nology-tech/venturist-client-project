@@ -79,7 +79,8 @@ const CreateAccount = (props) => {
           </div>
           <div className="createAccount__container__header">
             <h1>Create an account</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Make a new Venturist account and get your money moving.</p>
+            <br />
           </div>
           <div className="createAccount__container__form__email">
             <label>Email</label>

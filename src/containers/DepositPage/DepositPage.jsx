@@ -51,7 +51,7 @@ const DepositPage = (props) => {
       <Header
         title="Deposit"
         pageFunctionHeading="Deposit Funds"
-        textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus."
+        textDescription="Need a top up? Add money to your wallet whenever you need. "
       />
       <TransactionForm
         formTitle="Deposit Form"

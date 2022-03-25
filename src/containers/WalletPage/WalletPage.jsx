@@ -11,7 +11,7 @@ const WalletPage = (props) => {
       <Header
         title="Wallet"
         pageFunctionHeading="Wallet"
-        textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus."
+        textDescription= "Send money online fast, 24/7, from over 100 currencies. Don't see the currency you're looking for? Visit the convert page."
       />
       <Wallet liveRateData={liveRateData} profileData={profileData} />
     </div>
