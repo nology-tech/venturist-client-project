@@ -66,7 +66,7 @@ const WelcomeBack = (props) => {
           </Link>     
         </div>
         <div className="loginform__container">
-          <form className="loginform__container__form">
+          <form className="loginform__container__form" onSubmit={handleSubmit(onSubmit)}>
             <div className="loginform__container__form__brand">
               <img className="loginform__container__form__brand__logo" src={logo} alt="" />
               <p className="loginform__container__form__brand__name ptag" >Venturist</p>
@@ -108,14 +108,14 @@ const WelcomeBack = (props) => {
               <div className="loginform__container__form__links__signup" >
                   <p className="loginform__container__form__links__signup__text ptag">Don't have an account? </p>
                   <Link to="/signup">
-                    <Button buttonName="Sign Up" buttonStyle="clear" />
+                    <Button buttonName="Sign up" buttonStyle="clear" />
                   </Link>
               </div>
               <Button buttonName="Forgotten Password?" buttonStyle="clear" buttonFunction={togglePage} />
             </div>
             <div className="loginform__container__form__line"></div>
             <div className="loginform__container__form__button">
-              <Button buttonName="Login" buttonFunction={handleSubmit(onSubmit)} /> 
+              <button type="submit" className="button button--blue" >Sign in</button> 
             </div>
           </form>
         </div>

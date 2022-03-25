@@ -34,12 +34,12 @@ const NavBar = (props) => {
 
   return (
     <nav className="navbar" data-testid="navbar">
-      <Link to="/" className="navbar__header" style={{ textDecoration: 'none' }}>
+      <div className="navbar__header">
         <div className="navbar__header--logo" >
           <img src={logo} alt="" />
           <h2>VENTURIST</h2>
         </div>
-      </Link>
+      </div>
 
       <section className="navbar__menu">
         {buttons}
