@@ -41,7 +41,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="/login" element={<LoginPage setUid={setUid} />}></Route>
+          <Route path="/signin" element={<LoginPage setUid={setUid} />}></Route>
           <Route path="/signup" element={<CreateAccountPage />}></Route>
           {userID && (
             <>
