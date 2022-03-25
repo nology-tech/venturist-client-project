@@ -4,7 +4,7 @@ import ForgotPassword from '../../components/LoginPages/ForgotPassword/ForgotPas
 import "./LoginPage.scss";
 
 
-const LoginPage = () => {
+const LoginPage = (props) => {
 
     const [showForgotPassword, setShowForgotPassword] = useState(false);
     const [showWelcomeBack, setShowWelcomeBack] = useState(true);
@@ -18,7 +18,7 @@ const LoginPage = () => {
 
     return (
         <>
-        {showWelcomeBack && <WelcomeBack togglePage={togglePage} />}
+        {showWelcomeBack && <WelcomeBack togglePage={togglePage} setUid={props.setUid} />}
         {showForgotPassword && <ForgotPassword togglePage={togglePage}/>}
         </>
     )

@@ -98,7 +98,7 @@
 
       &__form-container {
         display: flex;
-        margin-left: 58%;
+        justify-content: flex-end;
       }
 
       &__continueButton {
@@ -128,3 +128,10 @@
     border-top: 1px solid $colourEleven;
     width: 100%;
   }
+
+@media screen and (max-width: 600px) {
+  .billingAddress__container__form {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+}

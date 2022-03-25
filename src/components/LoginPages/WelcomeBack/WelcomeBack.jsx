@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./WelcomeBack.scss";
 import Button from "../../Button/Button";
 import logo from "../../../assets/logos/logo.png";
 import icons from "../../../assets/icons/icons";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app } from "../../../firebase";
+
 
 const WelcomeBack = (props) => {
-  const { togglePage } = props;
+  const { togglePage, setUid } = props;
+
+  const nav = useNavigate();
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: 'onSubmit' 
@@ -22,7 +27,15 @@ const WelcomeBack = (props) => {
   }
 
   const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+    const auth = getAuth(app);
+    signInWithEmailAndPassword(auth,data.email,data.password)
+      .then(response => {
+        setUid(response.user.uid);
+        nav("/wallet");
+      })
+      .catch((error) => alert("Something went wrong :c"));
+
+
   };
 
   const toggleShowPassword = (event) => {
@@ -60,7 +73,7 @@ const WelcomeBack = (props) => {
             </div>
             <div className="loginform__container__form__header">
               <h1>Welcome Back!</h1>
-              <p className="ptag">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p className="ptag">Sign in to view your account.</p>
             </div>
             <div className="loginform__container__form__email">
               <label>Email</label>

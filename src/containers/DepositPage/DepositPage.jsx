@@ -55,7 +55,7 @@ const DepositPage = (props) => {
       />
       <TransactionForm
         formTitle="Deposit Form"
-        buttonName="Add Funds"
+        buttonName="Deposit Funds"
         profileData={profileData}
         isDisabled= {isDisabled}
         toggleConfirm={toggleConfirm}
