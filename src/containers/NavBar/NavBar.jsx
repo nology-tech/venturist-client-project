@@ -4,7 +4,7 @@ import './NavBar.scss';
 import logo from "../../assets/logos/logo.png";
 import icons from "../../assets/icons/icons";
 import Button from "../../components/Button/Button"
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 import { getAuth, signOut } from "firebase/auth";
 import { app } from "../../firebase";
