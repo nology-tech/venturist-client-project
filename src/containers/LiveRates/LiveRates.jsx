@@ -25,12 +25,20 @@ const LiveRates = (props) => {
     if (status === "success") {
       try {
         setFilteredRates(filterRates());
-        console.log(ratesArr);
       } catch (err) {
         console.log(err);
       }
     }
-  }, [status, data, editBaseCurrency, defaultCurrencies]);
+  }, [status, editBaseCurrency]);
+
+  const handleAddCurrency = (value) => {
+    const newList = [
+      ...defaultCurrencies,
+      addCurrenciesByCode(value.toUpperCase()),
+    ];
+    setDefaultCurrencies(newList);
+    setShowDropDown(false);
+  };
 
   const filterRates = () => {
     return ratesArr.filter((item) =>
@@ -53,7 +61,6 @@ const LiveRates = (props) => {
 
   const renderEdit = () => {
     return (
-      
       <LiveRatesItemEdit
         buttonName="Confirm"
         buttonFunction={() => {
@@ -79,7 +86,9 @@ const LiveRates = (props) => {
           amount={baseAmount}
           rate={""}
           buttonName="Edit"
-          buttonFunction={() => setEditBaseCurrency(true)}
+          buttonFunction={() => {
+            setEditBaseCurrency(true);
+          }}
         />
       );
     }
@@ -110,15 +119,6 @@ const LiveRates = (props) => {
           )
       )
       .filter((currency) => currency.currencyCode !== baseCurrency);
-  };
-
-  const handleAddCurrency = (value) => {
-    const newList = [
-      ...defaultCurrencies,
-      addCurrenciesByCode(value.toUpperCase()),
-    ];
-    setDefaultCurrencies(newList);
-    setShowDropDown(false);
   };
 
   if (status === "success" && data != null) {
