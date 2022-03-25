@@ -3,16 +3,19 @@ import Header from "../../components/Header/Header";
 import Wallet from "../../components/Wallet/Wallet";
 import logo from "./../../assets/logos/logo.png";
 import "./WalletPage.scss";
+import {Link} from "react-router-dom";
 
 const WalletPage = (props) => {
   const { liveRateData, profileData } = props;
 
   return (
     <div className="wallet-page">
-      <div className="wallet-page__banner">
-        <img src={logo} className="wallet-page__logo" alt="Venturist Logo" />
-        <h2>Venturist</h2>
-      </div>
+      <Link to="/">
+        <div className="wallet-page__banner">
+          <img src={logo} className="wallet-page__logo" alt="Venturist Logo" />
+          <h2>Venturist</h2>
+        </div>
+      </Link>
       <Header
         title="Wallet"
         pageFunctionHeading="Wallet"
