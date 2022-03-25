@@ -21,7 +21,7 @@ const UserProfile = (props) => {
   return (
     <div className="user-grid" data-testid="user">
       <h3>
-        {name}
+        {props.userID}
       </h3>
      <FontAwesomeIcon
         icon="fa-solid fa-chevron-down"

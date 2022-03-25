@@ -12,6 +12,7 @@
     "@testing-library/react": "^12.1.3",
     "currency-flag": "^0.0.6",
     "currency-flags": "^3.3.0",
+    "firebase": "^9.6.9",
     "flag-icons": "^6.1.1",
     "react": "^17.0.2",
     "react-currency-flags": "^0.1.2",
