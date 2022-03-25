@@ -1,11 +1,39 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { getParamByParam } from "iso-country-currency";
 
 const useFxApi = () => {
   const [loaded, setIsLoaded] = useState(false);
   const [status, setStatus] = useState("pending");
   const [data, setData] = useState(null);
   const [apiURL, setApiUrl] = useState("");
+  const [ratesArr, setRatesArr] = useState([]);
+
+  const getSymbol = (codeStr) => {
+    let symbol;
+    try {
+      symbol = getParamByParam("currency", codeStr, "symbol");
+    } catch (e) {
+      symbol = "";
+    }
+    return symbol;
+  };
+
+  const dataToArray = (obj) => {
+    if (obj !== null) {
+      const tempArr = Object.entries(obj.rates);
+      const mapped = tempArr.map((item) => {
+        const obj = {
+          currencyCode: item[0],
+          liveRate: item[1],
+          currencyName: item[0],
+          currencySymbol: getSymbol(item[0]),
+        };
+        return obj;
+      });
+      setRatesArr(mapped);
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -13,6 +41,7 @@ const useFxApi = () => {
       const data = await response?.data;
       setData(data);
       setIsLoaded(true);
+      dataToArray(data);
       setStatus("success");
     } catch (error) {
       setStatus("error");
@@ -24,7 +53,7 @@ const useFxApi = () => {
     fetchData();
   }, [apiURL]);
 
-  return { loaded, data, status, getData: setApiUrl };
+  return { loaded, data, status, ratesArr, getData: setApiUrl };
 };
 
 export default useFxApi;

@@ -30,7 +30,7 @@ const App = () => {
           <Route path="/" element={<HomePage />}></Route>
 
           <Route
-            path="/wallet/:currency"
+            path="/wallet"
             element={
               <>
                 <NavBar />
@@ -43,7 +43,7 @@ const App = () => {
             }
           ></Route>
           <Route
-            path="/liverates/:currency"
+            path="/liverates"
             element={
               <>
                 <NavBar />
@@ -53,7 +53,7 @@ const App = () => {
             }
           ></Route>
           <Route
-            path="/convert/:currency"
+            path="/convert"
             element={
               <>
                 <NavBar />
@@ -67,7 +67,7 @@ const App = () => {
             }
           ></Route>
           <Route
-            path="/transfer/:currency"
+            path="/transfer"
             element={
               <>
                 <NavBar />
@@ -81,7 +81,7 @@ const App = () => {
             }
           ></Route>
           <Route
-            path="/contacts/:currency"
+            path="/contacts"
             element={
               <>
                 <NavBar />
@@ -91,7 +91,7 @@ const App = () => {
             }
           ></Route>
           <Route
-            path="/deposit/:currency"
+            path="/deposit"
             element={
               <>
                 <NavBar />
@@ -104,7 +104,7 @@ const App = () => {
             }
           ></Route>
           <Route
-            path="/withdraw/:currency"
+            path="/withdraw"
             element={
               <>
                 <NavBar />

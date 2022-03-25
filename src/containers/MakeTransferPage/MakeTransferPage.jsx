@@ -10,7 +10,6 @@ import { useParams} from "react-router-dom";
 const MakeTransferPage = (props) => {
   const { liveRateData, profileData, contactData } = props;
 
-  const params = useParams();
 
   const exchangeBase = {
     exchangeFrom: {

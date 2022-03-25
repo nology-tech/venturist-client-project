@@ -38,7 +38,7 @@ const NavItem = (props) => {
   }, [location])
 
   return (
-    <Link to={"/" + props.label.split(" ").join("").toLowerCase() + `/${"GBP"}`} style={{ textDecoration: 'none' }} >
+    <Link to={"/" + props.label.split(" ").join("").toLowerCase()} style={{ textDecoration: 'none' }} >
       <div className={className} key={props.index} data-testid="navItem">
         <div className='navbar__nav-item--icon'>{props.icon}</div>
         <p>{props.label}</p>
