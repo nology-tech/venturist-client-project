@@ -1,0 +1,25 @@
+@use "../../assets/sass/global_variables" as *;
+
+.errorPage {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  color: $colourThree;
+
+  &__box {
+    max-width: 500px;
+    height: 430px;
+    display: grid;
+    justify-items: center;
+  }
+
+  &__img {
+    opacity: 55%;
+  }
+
+  &__text {
+    text-align: center;
+  }
+}
