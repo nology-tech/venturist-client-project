@@ -21,7 +21,7 @@ const UserProfile = (props) => {
   return (
     <div className="user-grid" data-testid="user">
       <h3>
-        Sam Brooks
+        {props.userID}
         {/* {name} */}
       </h3>
         <img

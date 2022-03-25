@@ -9,7 +9,7 @@ import LiveRatesPage from "./containers/LiveRatesPage/LiveRatesPage";
 import ContactsPage from "./containers/ContactsPage/ContactsPage";
 import DepositPage from "./containers/DepositPage/DepositPage";
 import WithdrawPage from "./containers/WithdrawPage/WithdrawPage";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 
 import liveRateData from "./assets/data/liveRatesExample";
 import userProfile from "./assets/data/samanthaBrooksProfile";
@@ -18,25 +18,35 @@ import HomePage from "./containers/HomePage/HomePage";
 import LoginPage from "./containers/LoginPage/LoginPage";
 import CreateAccountPage from "./containers/CreateAccountPage/CreateAccountPage";
 
+
 const App = () => {
   const [profileData, setProfileData] = useState({ ...userProfile });
   const updateProfileData = (newData) => {
     setProfileData(newData);
   };
+  const [userID,setUserID] = useState("");
+
+
+
+  const setUid = (uid) => {
+    setUserID(uid);
+    console.log(userID);
+  }
+
 
   return (
     <div className="App">
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/login" element={<LoginPage setUid={setUid} />}></Route>
           <Route path="/signup" element={<CreateAccountPage />}></Route>
-          <Route
+          {userID && <><Route
             path="/wallet"
             element={
               <>
-                <NavBar />
-                <UserProfile />
+                <NavBar setUserID={setUserID} />
+                <UserProfile userID={userID}/>
                 <WalletPage
                   profileData={profileData}
                   liveRateData={liveRateData}
@@ -48,8 +58,8 @@ const App = () => {
             path="/liverates"
             element={
               <>
-                <NavBar />
-                <UserProfile />
+                <NavBar setUserID={setUserID} />
+                <UserProfile userID={userID}/>
                 <LiveRatesPage />
               </>
             }
@@ -58,8 +68,8 @@ const App = () => {
             path="/convert"
             element={
               <>
-                <NavBar />
-                <UserProfile />
+                <NavBar setUserID={setUserID} />
+                <UserProfile userID={userID}/>
                 <ConvertPage
                   liveRateData={liveRateData}
                   profileData={profileData}
@@ -72,8 +82,8 @@ const App = () => {
             path="/transfer"
             element={
               <>
-                <NavBar />
-                <UserProfile />
+                <NavBar setUserID={setUserID} />
+                <UserProfile userID={userID} />
                 <MakeTransferPage
                   liveRateData={liveRateData}
                   profileData={profileData}
@@ -86,8 +96,8 @@ const App = () => {
             path="/contacts"
             element={
               <>
-                <NavBar />
-                <UserProfile />
+                <NavBar setUserID={setUserID} />
+                <UserProfile userID={userID} />
                 <ContactsPage />
               </>
             }
@@ -96,8 +106,8 @@ const App = () => {
             path="/deposit"
             element={
               <>
-                <NavBar />
-                <UserProfile />
+                <NavBar setUserID={setUserID} />
+                <UserProfile userID={userID} />
                 <DepositPage
                   profileData={profileData}
                   updateProfileData={updateProfileData}
@@ -109,15 +119,16 @@ const App = () => {
             path="/withdraw"
             element={
               <>
-                <NavBar />
-                <UserProfile />
+                <NavBar setUserID={setUserID} />
+                <UserProfile userID={userID} />
                 <WithdrawPage
                   profileData={profileData}
                   updateProfileData={updateProfileData}
                 />
               </>
             }
-          ></Route>
+          ></Route> </>}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
     </div>
