@@ -117,3 +117,13 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .createAccount {
+    &__container__header {
+      h1 {
+        font-size: 20px;
+      }
+    }
+  }
+}

@@ -36,3 +36,32 @@
     justify-items: center;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .features {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    height: auto;
+    width: 100%;
+    padding-left: 0;
+
+    &__items {
+      flex-wrap: wrap;
+      width: 80%;
+    }
+
+    &__item {
+      width: auto;
+      gap: 0.25rem;
+    }
+
+    h3 {
+      margin-bottom: 30px;
+      font-size: 1.25em;
+    }
+
+    svg, button {
+      display: none;
+    }
+  }
+}

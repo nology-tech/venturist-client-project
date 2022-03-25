@@ -4,4 +4,36 @@
   flex-direction: column;
   gap: 40px;
   width: 100%;
+
+  &__banner {
+    display: none;
+  }
+
+  &__logo {
+    display: none;
+    width: 40px;
+
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wallet-page {
+    margin-left: 20px;
+    margin-top: 50px;
+    margin-right: 20px;
+    overflow-x: hidden;
+
+    &__logo {
+      display: block;
+    }
+
+    &__banner {
+      display: flex;
+      gap: 10px;
+    }
+  }
+
+  .header__description {
+    display: none;
+  }
 }
