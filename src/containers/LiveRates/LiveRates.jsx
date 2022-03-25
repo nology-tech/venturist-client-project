@@ -25,6 +25,7 @@ const LiveRates = (props) => {
     if (status === "success") {
       try {
         setFilteredRates(filterRates());
+        console.log(ratesArr);
       } catch (err) {
         console.log(err);
       }
