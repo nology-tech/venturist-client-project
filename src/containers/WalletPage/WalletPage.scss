@@ -1,5 +1,5 @@
 .wallet-page {
-  margin: 90px 65px 0px 295px;
+  margin: 50px 65px 0px 295px;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -19,7 +19,6 @@
 @media screen and (max-width: 600px) {
   .wallet-page {
     margin-left: 20px;
-    margin-top: 50px;
     margin-right: 20px;
     overflow-x: hidden;
 

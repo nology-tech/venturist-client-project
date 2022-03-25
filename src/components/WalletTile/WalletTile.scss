@@ -6,8 +6,6 @@
   position: static;
   min-width: 230px;
   min-height: 120px;
-  // height: 120px;
-
   
   &__fund-box{
     position: absolute;
@@ -16,13 +14,13 @@
     height: 120px;
     background-color: $colourOne;
     color: $colourEleven;
-    z-index: 0;
+    z-index: -1;
     overflow: hidden;
     
 
     &__header{
       margin: 5px;
-      z-index: 3;
+      z-index: 0;
       font-size: 20px;
       font-weight: 500;
       padding-top: 10px;
@@ -32,7 +30,7 @@
     &__amount{
       margin: 5px;
       overflow-wrap: break-word;
-      z-index: 3;
+      z-index: 0;
       font-size: 30px;
       font-weight: 500;
       padding-left: 20px;
@@ -46,7 +44,7 @@
       position: relative;
       left: 38%;
       bottom: 230%;
-      z-index: -1;
+      z-index: -2;
     }
   }
 }
