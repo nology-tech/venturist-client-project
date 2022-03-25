@@ -11,11 +11,11 @@ export default function ContactsList() {
       <div>
         <div className="headers-grid">
           <div></div>
-          <p>Name</p>
-          <p>Sort Code</p>
-          <p>Account No</p>
-          <p>Bank</p>
-          <p>IBAN</p>
+          <p className="headers-grid__name">Name</p>
+          <p className="headers-grid__sort-code">Sort Code</p>
+          <p className="headers-grid__account-no">Account No</p>
+          <p className="headers-grid__bank">Bank</p>
+          <p className="headers-grid__iban">IBAN</p>
           <div></div>
         </div>
         {filteredData.map((item, index) => {

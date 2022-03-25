@@ -2,15 +2,48 @@
 
 .headers-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  font: $outfit;
+  grid-template-columns: repeat(8, 1fr);
+  font-family: $outfit;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 35px;
   color: $colourThree;
+  margin-top: 45px;
+  font-weight: 500;
+  padding-bottom: 8px;
+
+  &__page {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 30px;
+  }
+  
+  &__name {
+    padding-left: 7px;
+  }
+  
+  &__sort-code {
+    padding-left: 16px;
+  }
+  
+  &__account-no {
+    padding-left: 25px;
+  }
+  
+  &__bank {
+    padding-left: 32px;
+  }
+
+  &__iban {
+    padding-left: 42px;
+  }
+
 }
 
-.page {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 30px;
-}
+
+
+// ="name">Name</p>
+//           <p className="sort-code">Sort Code</p>
+//           <p className="account-no">Account No</p>
+//           <p className="bank">Bank</p>
+//           <p className="iban">IBAN</p>
+//           <div></div>
