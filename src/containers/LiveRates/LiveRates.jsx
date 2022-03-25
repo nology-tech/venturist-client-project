@@ -53,6 +53,7 @@ const LiveRates = (props) => {
 
   const renderEdit = () => {
     return (
+      
       <LiveRatesItemEdit
         buttonName="Confirm"
         buttonFunction={() => {
@@ -92,7 +93,7 @@ const LiveRates = (props) => {
           key={index}
           currencyCode={currencyCode}
           currency={currencyName + " " + currencySymbol}
-          amount={liveRate}
+          amount={liveRate * baseAmount}
           rate={liveRate}
           buttonName="Send"
         />

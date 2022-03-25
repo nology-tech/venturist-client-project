@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../Button/Button";
 import "./LiveRatesItem.scss";
 import CurrencyFlag from "react-currency-flags";
+import { Link, useParams } from "react-router-dom";
 
 const LiveRatesItem = (props) => {
   const { currencyCode, currency, amount, rate, buttonFunction, buttonName } =
