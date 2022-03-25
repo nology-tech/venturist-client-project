@@ -19,8 +19,8 @@ const NavBar = (props) => {
     const auth = getAuth(app);
     signOut(auth)
       .then(() => {
-        props.setUserID("");
         nav("/")
+        props.setUserID("");
       })
       .catch((error) => alert("Something Went Wrong :c"))
   }
