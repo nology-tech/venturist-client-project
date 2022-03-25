@@ -22,6 +22,7 @@ import contactData from "./assets/data/contactExample";
 import HomePage from "./containers/HomePage/HomePage";
 import LoginPage from "./containers/LoginPage/LoginPage";
 import CreateAccountPage from "./containers/CreateAccountPage/CreateAccountPage";
+import ErrorPage from "./containers/404Page/404Page";
 
 const App = () => {
   const [profileData, setProfileData] = useState({ ...userProfile });
@@ -133,7 +134,8 @@ const App = () => {
               ></Route>{" "}
             </>
           )}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/404-page" element={<ErrorPage />}></Route>
+          <Route path="*" element={<Navigate to="/404-page" replace />} />
         </Routes>
       </Router>
     </div>
