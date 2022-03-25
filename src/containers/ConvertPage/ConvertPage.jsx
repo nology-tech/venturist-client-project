@@ -23,7 +23,7 @@ const ConvertPage = (props) => {
   return (
 
     <section className='convert-page'>
-      <Header title="Convert" pageFunctionHeading="Currency Converter" textDescription="Buy and exchange currencies with ease" /> 
+      <Header title="Convert" pageFunctionHeading="Currency Converter" textDescription="Buy and exchange currencies with ease." /> 
       <div className="tiles">
       <Wallet profileData={profileData} liveRateData={liveRateData}/>
       </div>

@@ -4,9 +4,26 @@ import './NavBar.scss';
 import logo from "../../assets/logos/logo.png";
 import icons from "../../assets/icons/icons";
 import Button from "../../components/Button/Button"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
-const NavBar = () => {
+import { getAuth, signOut } from "firebase/auth";
+import { app } from "../../firebase";
+
+
+
+const NavBar = (props) => {
+
+  const nav = useNavigate();
+
+  const logOut = () => {
+    const auth = getAuth(app);
+    signOut(auth)
+      .then(() => {
+        props.setUserID("");
+        nav("/")
+      })
+      .catch((error) => alert("Something Went Wrong :c"))
+  }
 
   const buttonLabels = ["Wallet","Live Rates","Convert","Transfer","Contacts","Deposit","Withdraw"];
 
@@ -28,7 +45,7 @@ const NavBar = () => {
         {buttons}
       </section>
       <div className="navbar__button">
-        <Button buttonName="Sign Out" hasIcon={true} iconSrc={icons.SignOut}/>
+        <Button buttonName="Sign Out" hasIcon={true} iconSrc={icons.SignOut} buttonFunction={logOut} />
       </div>
 
     </nav>

@@ -6,15 +6,17 @@
 }
 
 .white {
-  color: $colourFour;
+  color: $colourSix;
   background: linear-gradient(150deg, #fcfcfc 50%, $colourOne 50%);
 }
-
+.extraPadding {
+  padding: 45px;
+}
 .section {
   display: grid;
   align-items: center;
   justify-items: center;
-  padding: 3rem;
+  padding: 2rem;
 
   &__title {
     display: grid;
@@ -25,11 +27,22 @@
   &__p {
     max-width: 400px;
     text-align: center;
-    padding: 2rem;
     font-size: 16px;
+    padding: 10px;
+    padding-bottom: 50px;
   }
 
   &__img {
     border: 1px solid grey;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .section {
+    display: none;
   }
 }
