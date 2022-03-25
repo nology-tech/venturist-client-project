@@ -52,6 +52,7 @@ const useFxApi = () => {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apiURL]);
 
   return { loaded, data, status, ratesArr, getData: setApiUrl };
