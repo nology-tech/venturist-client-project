@@ -12,7 +12,7 @@
     display: flex;
     align-items: baseline;
     gap: 4rem;
-    padding: 0 100px;
+    padding: 0 auto;
   }
 
   &__item {
@@ -34,5 +34,34 @@
     width: 300px;
     display: grid;
     justify-items: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .features {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    height: auto;
+    width: 100%;
+    padding-left: 0;
+
+    &__items {
+      flex-wrap: wrap;
+      width: 80%;
+    }
+
+    &__item {
+      width: auto;
+      gap: 0.25rem;
+    }
+
+    h3 {
+      margin-bottom: 30px;
+      font-size: 1.25em;
+    }
+
+    svg, button {
+      display: none;
+    }
   }
 }

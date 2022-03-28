@@ -5,7 +5,7 @@ import './ContactsPage.scss'
 const ContactsPage = () => {
   return (
     <div className='contacts-page'>
-      <Header title="Contacts" pageFunctionHeading="Your Contacts" textDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh sit eu sagittis. Integer amet, donec massa fermentum nunc eget netus." />
+      <Header title="Contacts" pageFunctionHeading="Your Contacts" textDescription="View your contacts here." />
     </div>
   )
 }

@@ -74,7 +74,7 @@ describe("Testing Input Fields", () => {
 describe("Testing Buttons", () => {
     it('should render button on the page', async () => {
     //Act
-    const buttonElement = screen.getByText(/Login/i);
+    const buttonElement = screen.getByText("Sign in");
   
     //Assert
     expect(buttonElement).toBeInTheDocument();

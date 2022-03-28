@@ -4,9 +4,26 @@ import './NavBar.scss';
 import logo from "../../assets/logos/logo.png";
 import icons from "../../assets/icons/icons";
 import Button from "../../components/Button/Button"
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
-const NavBar = () => {
+import { getAuth, signOut } from "firebase/auth";
+import { app } from "../../firebase";
+
+
+
+const NavBar = (props) => {
+
+  const nav = useNavigate();
+
+  const logOut = () => {
+    const auth = getAuth(app);
+    signOut(auth)
+      .then(() => {
+        nav("/")
+        props.setUserID("");
+      })
+      .catch((error) => alert("Something Went Wrong :c"))
+  }
 
   const buttonLabels = ["Wallet","Live Rates","Convert","Transfer","Contacts","Deposit","Withdraw"];
 
@@ -17,18 +34,18 @@ const NavBar = () => {
 
   return (
     <nav className="navbar" data-testid="navbar">
-      <Link to="/" className="navbar__header" style={{ textDecoration: 'none' }}>
+      <div className="navbar__header">
         <div className="navbar__header--logo" >
           <img src={logo} alt="" />
           <h2>VENTURIST</h2>
         </div>
-      </Link>
+      </div>
 
       <section className="navbar__menu">
         {buttons}
       </section>
       <div className="navbar__button">
-        <Button buttonName="Sign Out" hasIcon={true} iconSrc={icons.SignOut}/>
+        <Button buttonName="Sign Out" hasIcon={true} iconSrc={icons.SignOut} buttonFunction={logOut} />
       </div>
 
     </nav>

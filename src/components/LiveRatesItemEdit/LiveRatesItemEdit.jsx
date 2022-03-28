@@ -4,13 +4,23 @@ import "./LiveRatesItemEdit.scss";
 import DropDown from "../DropDown/DropDown";
 
 const LiveRatesItemEdit = (props) => {
-  const { buttonFunction, buttonName, codes, handleCurrency, handleAmount } =
-    props;
+  const {
+    buttonFunction,
+    buttonName,
+    codes,
+    handleCurrency,
+    handleAmount,
+    code,
+  } = props;
 
   return (
     <tr className="liverate-row" data-testid="liverate-row-edit">
       <td className="liverate-row__currency">
-        <DropDown codes={codes} handleChange={handleCurrency} />
+        <DropDown
+          codes={codes}
+          handleChange={handleCurrency}
+          currentCode={code}
+        />
       </td>
       <td>
         <input
