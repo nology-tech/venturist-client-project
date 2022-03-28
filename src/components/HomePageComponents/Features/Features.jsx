@@ -6,9 +6,9 @@ import "./Features.scss";
 const Features = () => {
   const features = [
     {
-      title: "Receive payments in 10 currencies.",
+      title: "Receive payments in multiple currencies.",
       about:
-        "Get your own UK account number, Euro IBAN, US routing number, and more.",
+        "Transfer in all currencies with the latest exchange rates.",
     },
     {
       title: "Moving and living abroad just got simpler.",

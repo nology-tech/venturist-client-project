@@ -12,12 +12,13 @@
   display: flex;
   flex-direction: column;
   position: fixed;
+  z-index: 1;
 
 
   &__header {
     margin-top: 20px;
     margin-bottom: 50px;
-    cursor: pointer;
+    cursor: default;
 
     &--logo {
       display: flex;
@@ -45,4 +46,12 @@
     margin-bottom: 50px;
   }
 
+}
+
+
+@media screen and (max-width: 600px) {
+  .navbar {
+    display: none;
+    width: 0;
+  }
 }

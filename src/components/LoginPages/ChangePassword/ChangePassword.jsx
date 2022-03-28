@@ -42,7 +42,7 @@ const style = (error) => {
             </div>
             <div className="changepassword__container__form__header">
               <h1>Change Password</h1>
-              <p className="ptag">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p className="ptag"></p>
             </div>
             <div className="changepassword__container__form__email">
               <label>New Password</label>

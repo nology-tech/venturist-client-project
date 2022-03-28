@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./WelcomeBack.scss";
 import Button from "../../Button/Button";
 import logo from "../../../assets/logos/logo.png";
 import icons from "../../../assets/icons/icons";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app } from "../../../firebase";
+
 
 const WelcomeBack = (props) => {
-  const { togglePage } = props;
+  const { togglePage, setUid } = props;
+
+  const nav = useNavigate();
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: 'onSubmit' 
@@ -22,7 +27,15 @@ const WelcomeBack = (props) => {
   }
 
   const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+    const auth = getAuth(app);
+    signInWithEmailAndPassword(auth,data.email,data.password)
+      .then(response => {
+        setUid(response.user.uid);
+        nav("/wallet");
+      })
+      .catch((error) => alert("Something went wrong :c"));
+
+
   };
 
   const toggleShowPassword = (event) => {
@@ -53,14 +66,14 @@ const WelcomeBack = (props) => {
           </Link>     
         </div>
         <div className="loginform__container">
-          <form className="loginform__container__form">
+          <form className="loginform__container__form" onSubmit={handleSubmit(onSubmit)}>
             <div className="loginform__container__form__brand">
               <img className="loginform__container__form__brand__logo" src={logo} alt="" />
               <p className="loginform__container__form__brand__name ptag" >Venturist</p>
             </div>
             <div className="loginform__container__form__header">
               <h1>Welcome Back!</h1>
-              <p className="ptag">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p className="ptag">Sign in to view your account.</p>
             </div>
             <div className="loginform__container__form__email">
               <label>Email</label>
@@ -95,14 +108,14 @@ const WelcomeBack = (props) => {
               <div className="loginform__container__form__links__signup" >
                   <p className="loginform__container__form__links__signup__text ptag">Don't have an account? </p>
                   <Link to="/signup">
-                    <Button buttonName="Sign Up" buttonStyle="clear" />
+                    <Button buttonName="Sign up" buttonStyle="clear" />
                   </Link>
               </div>
               <Button buttonName="Forgotten Password?" buttonStyle="clear" buttonFunction={togglePage} />
             </div>
             <div className="loginform__container__form__line"></div>
             <div className="loginform__container__form__button">
-              <Button buttonName="Login" buttonFunction={handleSubmit(onSubmit)} /> 
+              <button type="submit" className="button button--blue" data-testid="button" >Sign in</button> 
             </div>
           </form>
         </div>

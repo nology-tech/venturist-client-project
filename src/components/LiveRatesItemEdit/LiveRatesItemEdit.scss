@@ -15,11 +15,12 @@
 
   &__currency {
     font-weight: 400;
+    min-width: 150px;
   }
 
   &__input {
     padding: 5px;
-    min-width: 100px;
+    min-width: 50px;
     min-height: 35px;
     border: 0;
     border-radius: 3px;

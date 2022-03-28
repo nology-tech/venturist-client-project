@@ -96,7 +96,7 @@
 
       &__form-container {
         display: flex;
-        margin-left: 58%;
+        justify-content: flex-end;
       }
 
       &__signin {
@@ -120,4 +120,10 @@
 .border {
   border-top: 1px solid $colourEleven;
   width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .createAccount__container__form {
+    overflow-x: hidden;
+  }
 }

@@ -141,3 +141,13 @@
     top: 38px;
     left: 440px;
 }
+
+@media screen and (max-width: 600px) {
+    .fa-eye, .fa-eye-slash {
+        left: 85%;
+    }
+
+    .loginform__container__form {
+        overflow-x: hidden;
+    }
+}
