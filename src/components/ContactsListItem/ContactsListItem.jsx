@@ -36,7 +36,6 @@ export default function ListItem(props) {
       <p>{item.sortCode}</p>
       <p>{item.accountNumber}</p>
       <p>{item.bankName}</p>
-      <p>{item.IBAN}</p>
       <div className="item-grid__align-img">
         <FontAwesomeIcon
           data-testid="delete-button"

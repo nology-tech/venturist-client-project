@@ -2,7 +2,7 @@
 
 .headers-grid {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   font-family: $outfit;
   font-size: 18px;
   line-height: 35px;
@@ -19,24 +19,29 @@
   }
 
   &__name {
-    padding-left: 7px;
+    padding-left:1px;
   }
 
   &__sort-code {
-    padding-left: 16px;
+    padding-left: 3px;
   }
 
   &__account-no {
-    padding-left: 25px;
+    padding-left: 5px;
   }
 
   &__bank {
-    padding-left: 32px;
+    padding-left: 6px;
   }
 
-  &__iban {
-    padding-left: 42px;
-  }
+
+  
+}
+
+.add-contact {
+  display: flex;
+  justify-content: right;
+  width: 850px;
 }
 
 // ="name">Name</p>

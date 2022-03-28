@@ -2,7 +2,7 @@
 
 .item-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
   background-color: #f7f7f7;
   margin-bottom: 10px;
@@ -10,7 +10,7 @@
   font-weight: 400;
   font-size: 16px;
   color: $colourThree;
-  width: 1000px;
+  width: 850px;
   height: 65px;
   align-items: center;
 
