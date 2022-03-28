@@ -54,7 +54,7 @@ const ConvertPage = (props) => {
       <div className="tiles">
       <Wallet profileData={profileData} liveRateData={ratesArr}/>
       </div>
-      <CurrencyConverter profileData={profileData} liveRateData={ratesArr} handleConversion={handleConversion} />
+      <CurrencyConverter profileData={profileData} handleConversion={handleConversion} />
       <Header
         title="Live Rates"
         pageFunctionHeading="View Live Rates"
