@@ -7,14 +7,14 @@ import Button from '../../components/Button/Button'
 import useFxApi from '../../Hooks/FX/useFxApi'
 
 const CurrencyConverter = (props) => {
-
+  const {profileData, handleConversion} = props;
   const [baseCurrency, setBaseCurrency] = useState("GBP");
   const { status, ratesArr, getData } = useFxApi();
   const [defaultCurrencies, setDefaultCurrencies] = useState(["USD", "EUR"]);
   const [filteredRates, setFilteredRates] = useState([]);
   const [message, setMessage] = useState("Loading live rates...");
 
-  const {profileData, handleConversion} = props;
+  
 
   const url = `https://venturist-app.nw.r.appspot.com/currencies/${baseCurrency}`;
   
