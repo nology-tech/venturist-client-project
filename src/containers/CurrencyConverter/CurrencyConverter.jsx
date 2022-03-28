@@ -1,13 +1,41 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './CurrencyConverter.scss'
 import DropDown from '../../components/DropDown/DropDown'
 import CircularButton from '../../components/CircularButton/CircularButton'
 import icons from '../../assets/icons/icons'
 import Button from '../../components/Button/Button'
+import useFxApi from '../../Hooks/FX/useFxApi'
 
 const CurrencyConverter = (props) => {
 
+  const [baseCurrency, setBaseCurrency] = useState("GBP");
+  const { data, status, ratesArr, getData } = useFxApi();
+  const [baseAmount, setBaseAmount] = useState(1);
+  const [defaultCurrencies, setDefaultCurrencies] = useState(["USD", "EUR"]);
+  const [filteredRates, setFilteredRates] = useState([]);
+  const [message, setMessage] = useState("Loading live rates...");
+
   const {liveRateData, profileData, handleConversion} = props;
+
+  const url = `https://venturist-app.nw.r.appspot.com/currencies/${baseCurrency}`;
+  
+  useEffect(() => {
+    getData(url);
+    if (status === "success") {
+      try {
+        setFilteredRates(filterRates());
+      } catch (err) {
+        setMessage("Error getting rates. Please try again later");
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status]);
+
+  const filterRates = () => {
+    return ratesArr.filter((item) =>
+      defaultCurrencies.includes(item.currencyCode)
+    );
+  };
 
   const swap = (value) => {
     if ((to && from) && (to !== from) && (ownedCurrencies.includes(to.toLowerCase())))  {
@@ -43,7 +71,8 @@ const CurrencyConverter = (props) => {
   }
 
   const ownedCurrencies = Object.keys(profileData.holdings).map(code => code.toLocaleLowerCase());
-  const convertibleCurrencies = liveRateData.map(currency => currency.currencyCode.toLowerCase());
+  const convertibleCurrencies = ratesArr.map(currency => currency.currencyCode.toLowerCase());
+  console.log(convertibleCurrencies);
 
   const convertPressed = () => {
     setTime(new Date());
@@ -64,7 +93,7 @@ const CurrencyConverter = (props) => {
     let tempFrom = 1;
     const temp = [...currencyNames];
 
-    for (let rateObject of liveRateData) {
+    for (let rateObject of ratesArr) {
       if (rateObject.currencyCode === to) {
         tempTo = rateObject.liveRate;
         temp[1] = rateObject.currencyName;
