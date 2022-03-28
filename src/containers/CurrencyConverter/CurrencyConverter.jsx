@@ -9,13 +9,12 @@ import useFxApi from '../../Hooks/FX/useFxApi'
 const CurrencyConverter = (props) => {
 
   const [baseCurrency, setBaseCurrency] = useState("GBP");
-  const { data, status, ratesArr, getData } = useFxApi();
-  const [baseAmount, setBaseAmount] = useState(1);
+  const { status, ratesArr, getData } = useFxApi();
   const [defaultCurrencies, setDefaultCurrencies] = useState(["USD", "EUR"]);
   const [filteredRates, setFilteredRates] = useState([]);
   const [message, setMessage] = useState("Loading live rates...");
 
-  const {liveRateData, profileData, handleConversion} = props;
+  const {profileData, handleConversion} = props;
 
   const url = `https://venturist-app.nw.r.appspot.com/currencies/${baseCurrency}`;
   
@@ -72,7 +71,6 @@ const CurrencyConverter = (props) => {
 
   const ownedCurrencies = Object.keys(profileData.holdings).map(code => code.toLocaleLowerCase());
   const convertibleCurrencies = ratesArr.map(currency => currency.currencyCode.toLowerCase());
-  console.log(convertibleCurrencies);
 
   const convertPressed = () => {
     setTime(new Date());
