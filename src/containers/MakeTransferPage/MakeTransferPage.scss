@@ -1,3 +1,9 @@
 .make-transfer {
   margin: 90px 65px 0px 295px;
 }
+
+@media screen and (max-width: 600px) {
+  .make-transfer {
+    display: none;
+  }
+}
