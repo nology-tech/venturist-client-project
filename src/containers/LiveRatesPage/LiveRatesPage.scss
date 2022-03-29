@@ -2,3 +2,9 @@
   margin: 90px 65px 0px 295px;
   width: 100%;
 }
+
+@media screen and (max-width: 600px) {
+  .live-rates-page {
+    display: none;
+  }
+}

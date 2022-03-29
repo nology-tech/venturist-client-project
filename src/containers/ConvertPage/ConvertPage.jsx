@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header'
 import CurrencyConverter from '../CurrencyConverter/CurrencyConverter';
 import LiveRates from "../LiveRates/LiveRates";
 import Wallet from '../../components/Wallet/Wallet';
+import MobileNotFound from "./../../components/MobileNotFound/MobileNotFound";
 
 const ConvertPage = (props) => {
 
@@ -21,7 +22,7 @@ const ConvertPage = (props) => {
   }
   
   return (
-
+    <>
     <section className='convert-page'>
       <Header title="Convert" pageFunctionHeading="Currency Converter" textDescription="Buy and exchange currencies with ease." /> 
       <div className="tiles">
@@ -37,6 +38,8 @@ const ConvertPage = (props) => {
         <LiveRates />
       </section>
     </section>
+    <MobileNotFound />
+    </>
   );
 };
 
