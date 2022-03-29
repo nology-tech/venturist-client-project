@@ -1,6 +1,6 @@
 @use "./../../../assets/sass/global_variables" as *;
 
-.transfer-page__add-recipient {
+.contact-page__add-recipient {
   padding: 50px 50px 0 65px;
   box-sizing: border-box;
   z-index: 2;
@@ -13,7 +13,7 @@
   top: 50%;
   margin-left: -297px;
   margin-top: -327px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 8px;
 
   &__close-menu {
@@ -29,7 +29,7 @@
   }
 
   &__header {
-    border-bottom: 1px solid #EEEEEE;
+    border-bottom: 1px solid #eeeeee;
     padding-bottom: 26px;
     width: 465px;
     margin-bottom: 37px;
@@ -44,7 +44,7 @@
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
-    border-bottom: 1px solid #EEEEEE;
+    border-bottom: 1px solid #eeeeee;
     justify-content: space-evenly;
     margin-bottom: 25px;
     padding-bottom: 20px;
@@ -53,8 +53,8 @@
   &__input {
     width: 337px;
     height: 45px;
-    background: #FBFBFC;
-    border: 1px solid #E2E2E2;
+    background: #fbfbfc;
+    border: 1px solid #e2e2e2;
     box-sizing: border-box;
     border-radius: 8px;
     font-size: 20px;
@@ -69,16 +69,30 @@
     font-size: 20px;
     line-height: 20px;
     margin-bottom: 10px;
-    color: #06020A;
+    color: #06020a;
   }
 
   &__buttons {
+    border-top: 1px solid #eeeeee;
+    padding-top: 26px;
     display: flex;
     justify-content: flex-end;
     gap: 10px;
   }
-}
 
+  &__contactInfo {
+    color: #8896a3;
+  }
+
+  &__container {
+    height: 400px;
+  }
+
+  p {
+    font-size: 20px;
+    padding: 4px 0px;
+  }
+}
 
 .overlay-background {
   z-index: 1;
@@ -88,5 +102,5 @@
   width: 100vw;
   position: fixed;
   top: 0px;
-  left: 0px;     
+  left: 0px;
 }

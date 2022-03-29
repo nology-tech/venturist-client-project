@@ -38,7 +38,7 @@ const ContactsPage = () => {
       <Header title="Contacts" pageFunctionHeading="Your Contacts" textDescription="View your contacts here." />
       <ContactsList toggleAddRecipient={toggleAddRecipient}/>
       {showAddRecipient && <AddContact toggleAddRecipient={toggleAddRecipient} toggleConfirmAddContact={toggleConfirmAddContact} setNewContact={setNewContact} />}
-      {showConfirmAddContact && <ConfirmAddContact newContact={newContact} toggleConfirmAddContact={toggleConfirmAddContact} />}
+      {showConfirmAddContact && <ConfirmAddContact newContact={newContact} toggleConfirmAddContact={toggleConfirmAddContact} showConfirmAddContact={showConfirmAddContact} />}
     </div>
   )
 }
