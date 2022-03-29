@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header";
 import MakeTransferConfirmAccount from "../../components/MakeTransferPages/MakeTransferConfirmAccount/MakeTransferConfirmAccount";
 import MakeTransferForm from "../../components/MakeTransferPages/MakeTransferForm/MakeTransferForm";
 import MakeTransferConfirmation from "../../components/MakeTransferPages/MakeTransferConfirmation/MakeTransferConfirmation";
-//import { useParams} from "react-router-dom";
+import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 
 const MakeTransferPage = (props) => {
   const { liveRateData, profileData, contactData } = props;
@@ -32,14 +32,7 @@ const MakeTransferPage = (props) => {
 
   const handleShowForm = () => {
     const amountInput = document.getElementById("amountInput").value;
-    if (
-      !(
-        amountInput <
-        exchangeInfo.exchangeFrom.user.holdings[
-          exchangeInfo.exchangeFrom.currency.currencyCode
-        ]
-      )
-    ) {
+    if(!(Number(amountInput)*1.01 < exchangeInfo.exchangeFrom.user.holdings[exchangeInfo.exchangeFrom.currency.currencyCode])) {
       alert("You don't have enough of that currency to send.");
       return;
     }
@@ -63,6 +56,7 @@ const MakeTransferPage = (props) => {
   };
 
   return (
+    <>
     <div className="make-transfer" data-testid="make-transfer">
       <Header
         title="Transfer"
@@ -92,6 +86,8 @@ const MakeTransferPage = (props) => {
         <MakeTransferConfirmation exchangeInfo={exchangeInfo} />
       )}
     </div>
+    <MobileNotFound />
+    </>
   );
 };
 

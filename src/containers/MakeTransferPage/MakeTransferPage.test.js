@@ -4,9 +4,10 @@ import liveRateData from "../../assets/data/liveRatesExample";
 import profileData from "../../assets/data/samanthaBrooksProfile";
 import contactData from "../../assets/data/contactExample";
 import userEvent from "@testing-library/user-event";
+import {BrowserRouter as Router} from "react-router-dom";
 
 test('Test the page renders', () => {
-  render(<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />);
+  render(<Router><MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} /></Router>);
 
   const makeTransfer = screen.getByTestId("make-transfer");
 
@@ -15,7 +16,7 @@ test('Test the page renders', () => {
 
 // Move to form
 test('Test the pop-up appears for currency from', () => {
-  render(<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />);
+  render(<Router><MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} /></Router>);
 
   const currencyFromButton = screen.getByTestId("currencyFrom");
   fireEvent.click(currencyFromButton);
@@ -26,7 +27,7 @@ test('Test the pop-up appears for currency from', () => {
 
 // Move to form
 test('Test the pop-up appears for currency to', () => {
-  render(<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />);
+  render(<Router><MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} /></Router>);
 
   const currencyToButton = screen.getByTestId("currencyTo");
   fireEvent.click(currencyToButton);
@@ -37,7 +38,7 @@ test('Test the pop-up appears for currency to', () => {
 
 // Move to form
 test('Test currency changes properly when clicking currency from', () => {
-  render(<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />);
+  render(<Router><MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} /></Router>);
 
   const currencyFromButton = screen.getByTestId("currencyFrom");
   fireEvent.click(currencyFromButton);
@@ -50,7 +51,7 @@ test('Test currency changes properly when clicking currency from', () => {
 
 // Move to form
 test('Test currency changes properly when clicking currency to', () => {
-  render(<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />);
+  render(<Router><MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} /></Router>);
 
   const currencyToButton = screen.getByTestId("currencyTo");
   fireEvent.click(currencyToButton);
@@ -62,11 +63,11 @@ test('Test currency changes properly when clicking currency to', () => {
 });
 
 test('Test going to next page from form', () => {
-  render(<MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} />);
+  render(<Router><MakeTransferPage liveRateData={liveRateData} profileData={profileData} contactData={contactData} /></Router>);
 
   const youSendInput = screen.getByTestId("amountInput");
   userEvent.type(youSendInput, "1000");
-  const continueButton = screen.getByTestId("button");
+  const continueButton = screen.getAllByTestId("button")[0];
   fireEvent.click(continueButton);
 
   const nextPage = screen.getByTestId("confirmSendContainer");

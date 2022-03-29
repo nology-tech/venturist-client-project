@@ -5,6 +5,7 @@ import TransactionForm from "../../components/TransactionForm/TransactionForm";
 import "./WithdrawPage.scss";
 import ConfirmDetailsPopUp from "../../components/ConfirmDetailsPopUp/ConfirmDetailsPopUp";
 import SuccessfulMessage from "../../components/SuccessfulMessage/SuccessfulMessage";
+import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 
 const WithdrawPage = (props) => {
 
@@ -54,6 +55,7 @@ const WithdrawPage = (props) => {
 
 
   return (
+    <>
     <div className="withdraw-page">
       <Header
         title="Withdraw"
@@ -83,6 +85,8 @@ const WithdrawPage = (props) => {
         />
       )}
     </div>
+    <MobileNotFound />
+    </>
   );
 };
 

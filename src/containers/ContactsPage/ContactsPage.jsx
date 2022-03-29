@@ -3,6 +3,8 @@ import AddContact from '../../components/ContactsPages/AddContact/AddContact';
 import ConfirmAddContact from '../../components/ContactsPages/ConfirmAddContact/ConfirmAddContact';
 import Header from '../../components/Header/Header';
 import ContactsList from '../ContactsList/ContactsList';
+import MobileNotFound from '../../components/MobileNotFound/MobileNotFound';
+
 import './ContactsPage.scss'
 
 const ContactsPage = () => {
@@ -34,12 +36,15 @@ const ContactsPage = () => {
   // };
   
   return (
+    <>
     <div className='contacts-page'>
       <Header title="Contacts" pageFunctionHeading="Your Contacts" textDescription="View your contacts here." />
       <ContactsList toggleAddRecipient={toggleAddRecipient}/>
       {showAddRecipient && <AddContact toggleAddRecipient={toggleAddRecipient} toggleConfirmAddContact={toggleConfirmAddContact} setNewContact={setNewContact} />}
       {showConfirmAddContact && <ConfirmAddContact newContact={newContact} toggleConfirmAddContact={toggleConfirmAddContact} showConfirmAddContact={showConfirmAddContact} />}
     </div>
+    <MobileNotFound />
+    </>
   )
 }
 
