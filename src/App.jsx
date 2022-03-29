@@ -42,7 +42,7 @@ const App = () => {
   }
 
   const checkSessionStorage = () => {
-    if(new Date().getTime() - Number(window.sessionStorage.getItem('lastUpdateTime')) > 600000 || window.sessionStorage.getItem('userID') === "") {
+    if(new Date().getTime() - Number(window.sessionStorage.getItem('lastUpdateTime')) > 600000) {
       setUserID("");
     } else {
       setUserID(window.sessionStorage.getItem('userID'));
