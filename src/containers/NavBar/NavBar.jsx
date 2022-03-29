@@ -4,7 +4,7 @@ import './NavBar.scss';
 import logo from "../../assets/logos/logo.png";
 import icons from "../../assets/icons/icons";
 import Button from "../../components/Button/Button"
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 import { getAuth, signOut } from "firebase/auth";
 import { app } from "../../firebase";
@@ -19,8 +19,8 @@ const NavBar = (props) => {
     const auth = getAuth(app);
     signOut(auth)
       .then(() => {
-        props.setUserID("");
         nav("/")
+        props.setUserID("");
       })
       .catch((error) => alert("Something Went Wrong :c"))
   }
@@ -34,12 +34,12 @@ const NavBar = (props) => {
 
   return (
     <nav className="navbar" data-testid="navbar">
-      <Link to="/" className="navbar__header" style={{ textDecoration: 'none' }}>
+      <div className="navbar__header">
         <div className="navbar__header--logo" >
           <img src={logo} alt="" />
           <h2>VENTURIST</h2>
         </div>
-      </Link>
+      </div>
 
       <section className="navbar__menu">
         {buttons}

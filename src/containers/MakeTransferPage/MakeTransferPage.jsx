@@ -15,19 +15,19 @@ const MakeTransferPage = (props) => {
       user: profileData,
       currency: liveRateData[0],
       amount: 0,
-      fee: 0
+      fee: 0,
     },
     exchangeTo: {
       user: {},
       currency: liveRateData[1],
-      amount: 0
-    }
+      amount: 0,
+    },
   };
 
-  const [exchangeInfo, setExchangeInfo] = useState(exchangeBase); 
+  const [exchangeInfo, setExchangeInfo] = useState(exchangeBase);
 
-  const [showInitialForm, setShowInitialForm] = useState(true); 
-  const [showConfirmAccount, setShowConfirmAccount] = useState(false); 
+  const [showInitialForm, setShowInitialForm] = useState(true);
+  const [showConfirmAccount, setShowConfirmAccount] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleShowForm = () => {
@@ -37,8 +37,14 @@ const MakeTransferPage = (props) => {
       return;
     }
     if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
-      setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeFrom.amount=Number(amountInput).toFixed(2));
-      setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeFrom.fee=Number(amountInput*0.01).toFixed(2));
+      setExchangeInfo(
+        { ...exchangeInfo },
+        (exchangeInfo.exchangeFrom.amount = Number(amountInput).toFixed(2))
+      );
+      setExchangeInfo(
+        { ...exchangeInfo },
+        (exchangeInfo.exchangeFrom.fee = Number(amountInput * 0.01).toFixed(2))
+      );
       setShowInitialForm(false);
       setShowConfirmAccount(true);
     }
@@ -47,7 +53,7 @@ const MakeTransferPage = (props) => {
   const handleShowConfirmation = () => {
     setShowConfirmation(true);
     setShowConfirmAccount(false);
-  }
+  };
 
   return (
     <>
@@ -60,26 +66,24 @@ const MakeTransferPage = (props) => {
 
       {showInitialForm && (
         <MakeTransferForm
-          exchangeInfo={exchangeInfo}  
-          setExchangeInfo={setExchangeInfo} 
-          handleShowForm={handleShowForm} 
-          liveRateData={liveRateData} 
+          exchangeInfo={exchangeInfo}
+          setExchangeInfo={setExchangeInfo}
+          handleShowForm={handleShowForm}
+          liveRateData={liveRateData}
         />
       )}
 
       {showConfirmAccount && (
-        <MakeTransferConfirmAccount 
-          exchangeInfo={exchangeInfo} 
-          setExchangeInfo={setExchangeInfo} 
-          data={contactData} 
+        <MakeTransferConfirmAccount
+          exchangeInfo={exchangeInfo}
+          setExchangeInfo={setExchangeInfo}
+          data={contactData}
           handleShowConfirmation={handleShowConfirmation}
         />
       )}
 
       {showConfirmation && (
-        <MakeTransferConfirmation 
-          exchangeInfo={exchangeInfo}
-        />
+        <MakeTransferConfirmation exchangeInfo={exchangeInfo} />
       )}
     </div>
     <MobileNotFound />

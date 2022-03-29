@@ -49,6 +49,7 @@ const Button = props => {
     <>
       <button
         className={`button ${buttonStyleSelect()} ${iconPositionSet()}`}
+        type="button"
         onClick={buttonFunction}
         data-testid="button"
       >
