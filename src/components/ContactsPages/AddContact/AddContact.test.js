@@ -1,31 +1,16 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import AddContact from "./AddContact.test.js";
+import { render, screen } from "@testing-library/react";
+import AddContact from "./AddContact";
 import userEvent from '@testing-library/user-event';
-import { act } from "react-dom/test-utils";
 
-const exchangeInfo = {
-  exchangeFrom: {
-    user:"",
-    currency:"",
-    amount: "",
-    fee: ""
-  },
-  exchangeTo: {
-    user: {},
-    currency:"",
-    amount: 0
-  }
-};
 
 describe('Rendering components', () => {
 
   test('Check it renders the page', () => {
     //Arrange
     const onClick = jest.fn();
-    const onExchange = jest.fn();
     const onConfirmation = jest.fn();
 
-    render(<MakeTransferAddRecipient toggleAddRecipient={(onClick)} exchangeInfo={exchangeInfo} setExchangeInfo={(onExchange)} handleShowConfirmation={(onConfirmation)} />);
+    render(<AddContact toggleAddRecipient={(onClick)} toggleConfirmAddContact={onClick} setNewContact={onClick} handleShowConfirmation={(onConfirmation)} />);
 
     //Act
     const addRecipient = screen.queryByTestId("add-recipient");
@@ -37,10 +22,9 @@ describe('Rendering components', () => {
   test('Check if the input renders', () => {
     //Arrange
     const onClick = jest.fn();
-    const onExchange = jest.fn();
     const onConfirmation = jest.fn();
 
-    render(<MakeTransferAddRecipient toggleAddRecipient={(onClick)} exchangeInfo={exchangeInfo} setExchangeInfo={(onExchange)} handleShowConfirmation={(onConfirmation)} />);
+    render(<AddContact toggleAddRecipient={(onClick)} toggleConfirmAddContact={onClick} setNewContact={onClick} handleShowConfirmation={(onConfirmation)} />);
 
     //Act
     const getNameInput = screen.queryAllByRole("textbox")[0];
@@ -55,10 +39,9 @@ describe('Check functions', () => {
   test('Check if the typed message is in the name input box', () => {
     //Arrange
     const onClick = jest.fn();
-    const onExchange = jest.fn();
     const onConfirmation = jest.fn();
 
-    render(<MakeTransferAddRecipient toggleAddRecipient={(onClick)} exchangeInfo={exchangeInfo} setExchangeInfo={(onExchange)} handleShowConfirmation={(onConfirmation)} />);
+    render(<AddContact toggleAddRecipient={(onClick)} toggleConfirmAddContact={onClick} setNewContact={onClick} handleShowConfirmation={(onConfirmation)} />);
 
     //Act
     const getNameInput = screen.queryAllByRole("textbox")[0];
@@ -71,10 +54,9 @@ describe('Check functions', () => {
   test('Check if the typed message is in the account type input box', () => {
     //Arrange
     const onClick = jest.fn();
-    const onExchange = jest.fn();
     const onConfirmation = jest.fn();
 
-    render(<MakeTransferAddRecipient toggleAddRecipient={(onClick)} exchangeInfo={exchangeInfo} setExchangeInfo={(onExchange)} handleShowConfirmation={(onConfirmation)} />);
+    render(<AddContact toggleAddRecipient={(onClick)} toggleConfirmAddContact={onClick} setNewContact={onClick} handleShowConfirmation={(onConfirmation)} />);
 
     //Act
     const getAccountType = screen.queryAllByRole("textbox")[1];
@@ -87,10 +69,9 @@ describe('Check functions', () => {
   test('Check if the typed message is in the account number input box', () => {
     //Arrange
     const onClick = jest.fn();
-    const onExchange = jest.fn();
     const onConfirmation = jest.fn();
 
-    render(<MakeTransferAddRecipient toggleAddRecipient={(onClick)} exchangeInfo={exchangeInfo} setExchangeInfo={(onExchange)} handleShowConfirmation={(onConfirmation)} />);
+    render(<AddContact toggleAddRecipient={(onClick)} toggleConfirmAddContact={onClick} setNewContact={onClick} handleShowConfirmation={(onConfirmation)} />);
 
     //Act
     const getAccountNumber = screen.queryAllByRole("textbox")[2];
@@ -100,13 +81,13 @@ describe('Check functions', () => {
     expect(getAccountNumber).toHaveDisplayValue("235556792")
   });
 
+
   test('Check if the typed message is in the sort-code input box', () => {
     //Arrange
     const onClick = jest.fn();
-    const onExchange = jest.fn();
     const onConfirmation = jest.fn();
 
-    render(<MakeTransferAddRecipient toggleAddRecipient={(onClick)} exchangeInfo={exchangeInfo} setExchangeInfo={(onExchange)} handleShowConfirmation={(onConfirmation)} />);
+    render(<AddContact toggleAddRecipient={(onClick)} toggleConfirmAddContact={onClick} setNewContact={onClick} handleShowConfirmation={(onConfirmation)} />);
 
     //Act
     const getSortCode = screen.queryAllByRole("textbox")[3];
@@ -116,14 +97,14 @@ describe('Check functions', () => {
     expect(getSortCode).toHaveDisplayValue("5556792")
   });
 
+
   test('Check if the button response onClick for cancel', () => {
     //Arrange
     const onClick = jest.fn();
-    const onExchange = jest.fn();
     const onConfirmation = jest.fn();
 
-    render(<MakeTransferAddRecipient toggleAddRecipient={(onClick)} exchangeInfo={exchangeInfo} setExchangeInfo={(onExchange)} handleShowConfirmation={(onConfirmation)} />);
-
+    render(<AddContact toggleAddRecipient={(onClick)} toggleConfirmAddContact={onClick} setNewContact={onClick} handleShowConfirmation={(onConfirmation)} />);
+    
     //Act
     const getButton = screen.queryByRole("button", {name:"Cancel"});
     userEvent.click(getButton);
@@ -132,13 +113,13 @@ describe('Check functions', () => {
     expect(onClick).toBeCalled();
   });
 
+
   test('Check if the button cross symbol response to onClick', () => {
     //Arrange
     const onClick = jest.fn();
-    const onExchange = jest.fn();
     const onConfirmation = jest.fn();
 
-    render(<MakeTransferAddRecipient toggleAddRecipient={(onClick)} exchangeInfo={exchangeInfo} setExchangeInfo={(onExchange)} handleShowConfirmation={(onConfirmation)} />);
+    render(<AddContact toggleAddRecipient={(onClick)} toggleConfirmAddContact={onClick} setNewContact={onClick} handleShowConfirmation={(onConfirmation)} />);
 
     //Act
     const getCrosButton = screen.queryByAltText("Close menu");
@@ -147,4 +128,5 @@ describe('Check functions', () => {
     //Assert
     expect(onClick).toBeCalled()
   });
+
 });

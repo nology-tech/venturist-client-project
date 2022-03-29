@@ -13,17 +13,6 @@ const ConfirmAddContact = (props) => {
   const handleCancel = () => {
     toggleConfirmAddContact(!showConfirmAddContact);
   };
-  
-//   const handleAddRecipient = (data) => {
-//     setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeTo.user = {
-//       firstName: data.name,
-//       type: data.type,
-//       accountNumber: data.accountNumber,
-//       sortCode: data.sortCode
-//     });
-//     toggleAddRecipient();
-//     handleShowConfirmation();
-//   };
 
   return (
     <>
@@ -32,7 +21,7 @@ const ConfirmAddContact = (props) => {
       <img src={cross} alt="Close menu" className="contact-page__add-recipient__close-menu" onClick={handleCancel}/>
 
       <div className='contact-page__add-recipient__container'>
-        <p>Contact Name</p>
+        <p data-testid="contactName">Contact Name</p>
         <p className='contact-page__add-recipient__contactInfo'>{newContact.firstName}</p>
         <br />
         <p>Bank Name</p>
@@ -47,7 +36,7 @@ const ConfirmAddContact = (props) => {
 
       <div className="contact-page__add-recipient__buttons">
         <Button buttonName="Cancel" buttonStyle="clear" buttonFunction={handleCancel} />
-        <Button buttonName="Continue" onClick={console.log("twat")}
+        <Button buttonName="Continue" buttonFunction={() => alert(newContact.firstName)}
         // buttonFunction={handleSubmit(handleAddRecipient)} 
         />
       </div>

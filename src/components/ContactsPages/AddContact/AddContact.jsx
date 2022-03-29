@@ -40,7 +40,6 @@ const AddContact = (props) => {
   };
   
   const handleAddRecipient = (data) => {
-    console.log("test")
     setNewContact({
       firstName: data.name,
       type: data.type,
