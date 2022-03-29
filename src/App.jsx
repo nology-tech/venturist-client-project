@@ -44,6 +44,11 @@ const App = () => {
   const [filteredRates, setFilteredRates] = useState([]);
   const [message, setMessage] = useState("Loading live rates...");
 
+  console.log(setBaseCurrency)
+  console.log(setDefaultCurrencies)
+  console.log(filteredRates)
+  console.log(message)
+
   const url = `https://venturist-app.nw.r.appspot.com/currencies/${baseCurrency}`;
   
   useEffect(() => {
