@@ -106,7 +106,7 @@ const App = () => {
                     <NavBar setUserID={setUserID} />
                     <UserProfile userID={userID} />
                     <ConvertPage
-                      liveRateData={liveRateData}
+                      liveRateData={ratesArr}
                       profileData={profileData}
                       updateProfileData={updateProfileData}
                     />
