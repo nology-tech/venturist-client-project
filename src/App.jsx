@@ -1,5 +1,5 @@
 import "./App.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "./containers/NavBar/NavBar";
 import ConvertPage from "./containers/ConvertPage/ConvertPage";
 import UserProfile from "./components/UserProfile/UserProfile";
@@ -32,18 +32,37 @@ const App = () => {
   const [userID, setUserID] = useState("");
 
   const setUid = (uid) => {
+    updateSessionStorage(uid);
     setUserID(uid);
-    console.log(userID);
   };
+
+  const updateSessionStorage = (uid) => {
+    window.sessionStorage.setItem('userID', uid);
+    window.sessionStorage.setItem('lastUpdateTime', new Date().getTime());
+  }
+
+  const checkSessionStorage = () => {
+    if(new Date().getTime() - Number(window.sessionStorage.getItem('lastUpdateTime')) > 600000 || window.sessionStorage.getItem('userID') === "") {
+      setUserID("");
+    } else {
+      setUserID(window.sessionStorage.getItem('userID'));
+    }
+  }
+  
+  useEffect(() => {
+    checkSessionStorage();
+  },[]);
 
   return (
     <div className="App">
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="/signin" element={<LoginPage setUid={setUid} />}></Route>
+          {userID && <Route path="/signin" element={<Navigate to="/wallet" replace />} />}
+          {!userID && <Route path="/signin" element={<LoginPage setUid={setUid} />}></Route>}
           <Route path="/signup" element={<CreateAccountPage />}></Route>
-          {userID && (
+          {(new Date().getTime() - window.sessionStorage.getItem('lastUpdateTime') <= 600000) && 
+          (window.sessionStorage.getItem('userID') !== "") && (
             <>
               <Route
                 path="/wallet"
