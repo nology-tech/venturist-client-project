@@ -23,15 +23,13 @@ const LiveRates = (props) => {
 
   useEffect(() => {
     getData(url);
-    if (status === "success") {
-      try {
-        setFilteredRates(filterRates());
-      } catch (err) {
-        setMessage("Error getting rates. Please try again later");
-      }
+    try {
+      setFilteredRates(filterRates());
+    } catch (error) {
+      setMessage("Error getting rates");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [status, editBaseCurrency]);
+  }, [data, editBaseCurrency, ratesArr, defaultCurrencies]);
 
   const handleAddCurrency = (value) => {
     const newList = [

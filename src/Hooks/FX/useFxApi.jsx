@@ -3,7 +3,6 @@ import axios from "axios";
 import { getParamByParam } from "iso-country-currency";
 
 const useFxApi = () => {
-  const [loaded, setIsLoaded] = useState(false);
   const [status, setStatus] = useState("pending");
   const [data, setData] = useState(null);
   const [apiURL, setApiUrl] = useState("");
@@ -40,12 +39,10 @@ const useFxApi = () => {
       const response = await axios.get(apiURL);
       const data = await response?.data;
       setData(data);
-      setIsLoaded(true);
       dataToArray(data);
       setStatus("success");
     } catch (error) {
       setStatus("error");
-      setIsLoaded(false);
     }
   };
 
@@ -54,7 +51,7 @@ const useFxApi = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apiURL]);
 
-  return { loaded, data, status, ratesArr, getData: setApiUrl };
+  return { status, data, ratesArr, getData: setApiUrl };
 };
 
 export default useFxApi;

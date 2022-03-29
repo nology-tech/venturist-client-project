@@ -18,7 +18,7 @@ import { act } from "react-test-renderer";
 test("should return with default state", async () => {
   const { result } = renderHook(() => useFxApi(""));
   act(() => {
-    expect(result.current.loaded).toBe(false);
+    expect(result.current.status).toBe("pending");
     expect(result.current.data).toBe(null);
   });
 });
