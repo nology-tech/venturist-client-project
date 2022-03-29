@@ -8,7 +8,7 @@ import Button from "../../Button/Button";
 const ConfirmAddContact = (props) => {
     
     
-    const {toggleAddRecipient, exchangeInfo, setExchangeInfo, handleShowConfirmation, newContact, toggleConfirmAddContact, showConfirmAddContact} = props;
+    const { newContact, toggleConfirmAddContact, showConfirmAddContact} = props;
 
   const handleCancel = () => {
     toggleConfirmAddContact(!showConfirmAddContact);
