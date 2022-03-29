@@ -9,6 +9,7 @@ import useFxApi from "../../Hooks/FX/useFxApi";
 
 const LiveRates = (props) => {
   const [baseCurrency, setBaseCurrency] = useState("GBP");
+  
 
   const url = `https://venturist-app.nw.r.appspot.com/currencies/${baseCurrency}`;
 
