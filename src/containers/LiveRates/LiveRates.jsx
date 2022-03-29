@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Button from "../../components/Button/Button";
 import LiveRatesItem from "../../components/LiveRatesItem/LiveRatesItem";
 import LiveRatesItemEdit from "../../components/LiveRatesItemEdit/LiveRatesItemEdit";
-import liveRatesArr from "../../assets/data/liveRatesExample";
 import "./LiveRates.scss";
 import DropDown from "../../components/DropDown/DropDown";
 import useFxApi from "../../Hooks/FX/useFxApi";
@@ -67,7 +66,7 @@ const LiveRates = (props) => {
         buttonFunction={() => {
           setEditBaseCurrency(false);
         }}
-        codes={liveRatesArr.map((item) => item.currencyCode.toLowerCase())}
+        codes={ratesArr.map((item) => item.currencyCode.toLowerCase())}
         handleAmount={handleAmount}
         handleCurrency={handleCurrency}
         code={baseCurrency}

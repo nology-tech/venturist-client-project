@@ -16,7 +16,6 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import liveRateData from "./assets/data/liveRatesExample";
 import userProfile from "./assets/data/samanthaBrooksProfile";
 import contactData from "./assets/data/contactExample";
 import HomePage from "./containers/HomePage/HomePage";
