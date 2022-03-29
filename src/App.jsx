@@ -1,5 +1,5 @@
 import "./App.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "./containers/NavBar/NavBar";
 import ConvertPage from "./containers/ConvertPage/ConvertPage";
 import UserProfile from "./components/UserProfile/UserProfile";
@@ -23,6 +23,7 @@ import HomePage from "./containers/HomePage/HomePage";
 import LoginPage from "./containers/LoginPage/LoginPage";
 import CreateAccountPage from "./containers/CreateAccountPage/CreateAccountPage";
 import ErrorPage from "./containers/404Page/404Page";
+import useFxApi from "./Hooks/FX/useFxApi";
 
 const App = () => {
   const [profileData, setProfileData] = useState({ ...userProfile });
@@ -35,6 +36,36 @@ const App = () => {
     setUserID(uid);
     console.log(userID);
   };
+
+
+//API fetching ratesArr// 
+  const [baseCurrency, setBaseCurrency] = useState("GBP");
+  const { status, ratesArr, getData } = useFxApi();
+  const [defaultCurrencies, setDefaultCurrencies] = useState(["USD", "EUR"]);
+  const [filteredRates, setFilteredRates] = useState([]);
+  const [message, setMessage] = useState("Loading live rates...");
+
+  const url = `https://venturist-app.nw.r.appspot.com/currencies/${baseCurrency}`;
+  
+  useEffect(() => {
+    getData(url);
+    if (status === "success") {
+      try {
+        setFilteredRates(filterRates());
+      } catch (err) {
+        setMessage("Error getting rates. Please try again later");
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status]);
+
+  const filterRates = () => {
+    return ratesArr.filter((item) =>
+      defaultCurrencies.includes(item.currencyCode)
+    );
+  };
+
+  //API END//
 
   return (
     <div className="App">
@@ -53,7 +84,7 @@ const App = () => {
                     <UserProfile userID={userID} />
                     <WalletPage
                       profileData={profileData}
-                      liveRateData={liveRateData}
+                      liveRateData={ratesArr}
                     />
                   </>
                 }
@@ -89,7 +120,7 @@ const App = () => {
                     <NavBar setUserID={setUserID} />
                     <UserProfile userID={userID} />
                     <MakeTransferPage
-                      liveRateData={liveRateData}
+                      liveRateData={ratesArr}
                       profileData={profileData}
                       contactData={contactData}
                     />
