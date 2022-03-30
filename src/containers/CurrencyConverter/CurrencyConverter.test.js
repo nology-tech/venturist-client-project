@@ -1,9 +1,9 @@
-import { render, screen, fireEvent} from '@testing-library/react';
+import { render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import CurrencyConverter from "./CurrencyConverter";
 
 let profileData = {holdings: {
-  USD: 50,
+  USD: 51,
   GBP: 20,
 }};
 
