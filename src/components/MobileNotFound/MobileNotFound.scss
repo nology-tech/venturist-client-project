@@ -1,0 +1,34 @@
+@use "./../../assets/sass/global_variables" as *;
+
+.mobile-empty {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .mobile-empty {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    align-items: center;
+    margin-top: 30vh;
+    text-align: center;
+    padding: 20px;
+
+    &__header {
+      color: $colourOne;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    &__text {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      margin-top: 30px;
+    }
+  }
+}

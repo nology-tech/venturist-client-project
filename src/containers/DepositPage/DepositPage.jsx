@@ -5,6 +5,7 @@ import TransactionForm from "../../components/TransactionForm/TransactionForm";
 import "./DepositPage.scss";
 import ConfirmDetailsPopUp from "../../components/ConfirmDetailsPopUp/ConfirmDetailsPopUp";
 import SuccessfulMessage from "../../components/SuccessfulMessage/SuccessfulMessage";
+import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 
 const DepositPage = (props) => {
 
@@ -47,6 +48,7 @@ const DepositPage = (props) => {
   };
 
   return (
+    <>
     <div className="deposit-page">
       <Header
         title="Deposit"
@@ -77,6 +79,8 @@ const DepositPage = (props) => {
         />
       )}
     </div>
+    <MobileNotFound />
+    </>
   );
 };
 
