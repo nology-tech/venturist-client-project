@@ -44,7 +44,6 @@ const CurrencyConverter = (props) => {
 
   const ownedCurrencies = Object.keys(profileData.holdings).map(code => code.toLocaleLowerCase());
   const convertibleCurrencies = liveRateData.map(currency => currency.currencyCode.toLowerCase());
-  console.log(liveRateData)
 
   const convertPressed = () => {
     setTime(new Date());
