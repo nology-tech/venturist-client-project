@@ -4,12 +4,13 @@ import DropDown from '../../components/DropDown/DropDown'
 import CircularButton from '../../components/CircularButton/CircularButton'
 import icons from '../../assets/icons/icons'
 import Button from '../../components/Button/Button'
+import {getCurrencyName} from 'currency-iso';
 
 const CurrencyConverter = (props) => {
-  const {liveRateData, profileData, userHoldings, handleConversion} = props;
+  const {liveRateData, profileData, userHoldings, getUserData} = props;
 
 
-  const swap = (value) => {
+  const swap = () => {
     if ((to && from) && (to !== from) && (ownedCurrencies.includes(to.toLowerCase())))  {
       const temp = to;
       setTo(from);
@@ -31,16 +32,27 @@ const CurrencyConverter = (props) => {
   const [rateTo,setRateTo] = useState(0);
   const [time, setTime]=useState(0);
   const [holdingFrom,setHoldingFrom] = useState([]);
+  const [holdingTo,setHoldingTo] = useState([]);
 
   const changeTo = (selected) => {
     setTo(selected);
-    console.log(selected);
+    if (ownedCurrencies.includes(selected.toLowerCase())) {
+      setHoldingTo(...[...userHoldings.filter(holding => (holding.currencyCode===selected))]);
+      console.log("using a holding we have");
+    }
+    else {
+      console.log("new holding")
+      setHoldingTo({
+        userID: profileData.userID,
+        currencyName: getCurrencyName(selected),
+        currencyCode: selected,
+        currencySymbol: ""
+      })
+    };
   }
   const changeFrom = (selected) => {
     setFrom(selected)
-    console.log(selected)
     setHoldingFrom(...[...userHoldings.filter(holding => (holding.currencyCode===selected))]);
-    console.log(holdingFrom)
   }
 
   const updateAmount = (event) => {
@@ -85,7 +97,60 @@ const CurrencyConverter = (props) => {
     setCurrencyNames(temp);
 
   }
+  const fetchConversion = async () => {
+    await fetch(`https://venturist-app.nw.r.appspot.com/holdings`, {
+      method: "PUT",
+      headers: {
+        "Accept": "application/JSON",
+        "Content-Type": "application/JSON"
+      },
+      body: JSON.stringify({
+        userID: holdingFrom.userID,
+        currencyName: holdingFrom.currencyName,
+        amount: holdingFrom.amount - amount,
+        currencyCode: holdingFrom.currencyCode,
+        currencySymbol: holdingFrom.currencySymbol
+      })
+    })
+      .catch(error => alert(error));
 
+    if (ownedCurrencies.includes(to.toLowerCase())) {
+      await fetch(`https://venturist-app.nw.r.appspot.com/holdings`, {
+        method: "PUT",
+        headers: {
+          "Accept": "application/JSON",
+          "Content-Type": "application/JSON"
+        },
+        body: JSON.stringify({
+          userID: profileData.userID,
+          currencyName: "",
+          amount: Number((holdingTo.amount + convertedAmount).toFixed(2)),
+          currencyCode: to,
+          currencySymbol: ""
+        })
+      })
+        .catch(error => alert(error));
+
+    } else {
+      await fetch(`https://venturist-app.nw.r.appspot.com/holding`, {
+      method: "POST",
+      headers: {
+        "Accept": "application/JSON",
+        "Content-Type": "application/JSON"
+      },
+      body: JSON.stringify({
+        userID: holdingTo.userID,
+        currencyName: holdingTo.currencyName,
+        amount: convertedAmount,
+        currencyCode: holdingTo.currencyCode,
+        currencySymbol: holdingTo.currencySymbol
+      })
+    })
+      .catch(error => alert(error));
+    }
+
+    await getUserData();
+  }
 
   return (
     <section className='currency-converter' data-testid="currency-converter">
@@ -113,7 +178,9 @@ const CurrencyConverter = (props) => {
         <div className="currency-converter__convert--right">
           <Button buttonName="Make Transfer" hasIcon={false} buttonFunction={()=> {
             setConvert(false);
-            handleConversion(amount, Number(convertedAmount.toFixed(2)), from, to)}}/>
+            fetchConversion();
+            // handleConversion(amount, Number(convertedAmount.toFixed(2)), from, to)
+          }}/>
         </div>
         </div>}
       

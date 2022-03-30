@@ -50,18 +50,18 @@ const App = () => {
     }
   }
 
-  const getUserData = () => {
-    fetch(`https://venturist-app.nw.r.appspot.com/user/${userID}`)
+  const getUserData = async () => {
+    await fetch(`https://venturist-app.nw.r.appspot.com/user/${userID}`)
       .then(response => response.json())
       .then(data => setProfileData(data))
       .catch(error => alert(error));
 
-    fetch(`https://venturist-app.nw.r.appspot.com/user-holding/${userID}`)
+    await fetch(`https://venturist-app.nw.r.appspot.com/user-holding/${userID}`)
       .then(response => response.json())
       .then(data => setUserHoldings(data))
       .catch(error => alert(error));
 
-    console.log(userProfile);
+    console.log(profileData);
     console.log(userHoldings);
   }
 
@@ -142,7 +142,7 @@ const App = () => {
                       liveRateData={ratesArr}
                       profileData={profileData}
                       userHoldings={userHoldings}
-                      updateProfileData={updateProfileData}
+                      getUserData={getUserData}
                     />
                   </>
                 }

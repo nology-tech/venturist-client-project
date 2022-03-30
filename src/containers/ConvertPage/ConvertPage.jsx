@@ -8,37 +8,7 @@ import MobileNotFound from "./../../components/MobileNotFound/MobileNotFound";
 
 const ConvertPage = (props) => {
 
-  const {liveRateData, profileData, userHoldings, updateProfileData} = props;
-
-  const handleConversion = (fromAmount, toAmount, from, to ) => {
-    // // const temp = {...profileData};
-    // temp.holdings[from] -= fromAmount;
-    // if(!Object.keys(temp.holdings).includes(to)){
-    //   temp.holdings[to]= toAmount;
-    // } else {
-    //   temp.holdings[to] += toAmount;
-    // } 
-    const ownedCurrencies = userHoldings.map(holding => holding.currencyCode);
-
-    const temp = [...userHoldings].map(holding => {
-      if (holding.currencyCode == from) {
-        holding.amount -= fromAmount;
-      }
-      if (holding.currencyCode == to) {
-        holding.amount += toAmount;
-      }
-      return holding;
-    });
-    if (!ownedCurrencies.includes(to)) {
-      temp.push({
-        currencyName: "",
-        currencyCode: to,
-        amount: toAmount,
-        currencySymbol: ""
-      });
-    }
-    updateProfileData(temp);
-  }
+  const {liveRateData, profileData, userHoldings, getUserData} = props;
   
   return (
     <>
@@ -47,7 +17,7 @@ const ConvertPage = (props) => {
       <div className="tiles">
       {userHoldings && <Wallet userHoldings={userHoldings} />}
       </div>
-      <CurrencyConverter profileData={profileData} userHoldings={userHoldings} liveRateData={liveRateData} handleConversion={handleConversion} />
+      <CurrencyConverter profileData={profileData} userHoldings={userHoldings} liveRateData={liveRateData} getUserData={getUserData} />
       <Header
         title="Live Rates"
         pageFunctionHeading="View Live Rates"
