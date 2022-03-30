@@ -1,5 +1,5 @@
 import "./App.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "./containers/NavBar/NavBar";
 import ConvertPage from "./containers/ConvertPage/ConvertPage";
 import UserProfile from "./components/UserProfile/UserProfile";
@@ -16,13 +16,13 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import liveRateData from "./assets/data/liveRatesExample";
 import userProfile from "./assets/data/samanthaBrooksProfile";
 import contactData from "./assets/data/contactExample";
 import HomePage from "./containers/HomePage/HomePage";
 import LoginPage from "./containers/LoginPage/LoginPage";
 import CreateAccountPage from "./containers/CreateAccountPage/CreateAccountPage";
 import ErrorPage from "./containers/404Page/404Page";
+import useFxApi from "./Hooks/FX/useFxApi";
 
 const App = () => {
   const [profileData, setProfileData] = useState({ ...userProfile });
@@ -33,8 +33,31 @@ const App = () => {
 
   const setUid = (uid) => {
     setUserID(uid);
-    console.log(userID);
   };
+
+//API fetching ratesArr// 
+
+  const { status, ratesArr, getData } = useFxApi();
+
+  const [message, setMessage] = useState("Loading live rates...");
+
+  console.log(message)
+
+  const url = `https://venturist-app.nw.r.appspot.com/currencies/GBP`;
+  
+  useEffect(() => {
+    getData(url);
+    if (status === "success") {
+      try {
+        setMessage("Success")
+      } catch (err) {
+        setMessage("Error getting rates. Please try again later");
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status]);
+
+  //API END//
 
   return (
     <div className="App">
@@ -53,7 +76,7 @@ const App = () => {
                     <UserProfile userID={userID} />
                     <WalletPage
                       profileData={profileData}
-                      liveRateData={liveRateData}
+                      liveRateData={ratesArr}
                     />
                   </>
                 }
@@ -75,7 +98,7 @@ const App = () => {
                     <NavBar setUserID={setUserID} />
                     <UserProfile userID={userID} />
                     <ConvertPage
-                      liveRateData={liveRateData}
+                      liveRateData={ratesArr}
                       profileData={profileData}
                       updateProfileData={updateProfileData}
                     />
@@ -89,7 +112,7 @@ const App = () => {
                     <NavBar setUserID={setUserID} />
                     <UserProfile userID={userID} />
                     <MakeTransferPage
-                      liveRateData={liveRateData}
+                      liveRateData={ratesArr}
                       profileData={profileData}
                       contactData={contactData}
                     />
