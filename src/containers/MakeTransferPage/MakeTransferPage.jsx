@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MakeTransferPage.scss";
 
 import Header from "../../components/Header/Header";
@@ -6,20 +6,38 @@ import MakeTransferConfirmAccount from "../../components/MakeTransferPages/MakeT
 import MakeTransferForm from "../../components/MakeTransferPages/MakeTransferForm/MakeTransferForm";
 import MakeTransferConfirmation from "../../components/MakeTransferPages/MakeTransferConfirmation/MakeTransferConfirmation";
 import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
+import useFxApi from "../../Hooks/FX/useFxApi";
 
 const MakeTransferPage = (props) => {
-  const { liveRateData, profileData, contactData } = props;
+  const { ratesArr, profileData, contactData, status } = props;
+
+  const [message, setMessage] = useState("Loading live rates...");
+
+  console.log(message)
+
+  const url = `https://venturist-app.nw.r.appspot.com/currencies/GBP`;
+  
+  useEffect(() => {
+    if (status === "success") {
+      try {
+        setMessage("Success")
+      } catch (err) {
+        setMessage("Error getting rates. Please try again later");
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status]);
 
   const exchangeBase = {
     exchangeFrom: {
       user: profileData,
-      currency: liveRateData[0],
+      currency: ratesArr[0],
       amount: 0,
       fee: 0,
     },
     exchangeTo: {
       user: {},
-      currency: liveRateData[1],
+      currency: ratesArr[1],
       amount: 0,
     },
   };
@@ -64,12 +82,12 @@ const MakeTransferPage = (props) => {
         textDescription="Easily and safely transfer money in different currencies."
       />
 
-      {showInitialForm && (
+      {showInitialForm && status==="success" && (
         <MakeTransferForm
           exchangeInfo={exchangeInfo}
           setExchangeInfo={setExchangeInfo}
           handleShowForm={handleShowForm}
-          liveRateData={liveRateData}
+          liveRatesData={ratesArr}
         />
       )}
 
