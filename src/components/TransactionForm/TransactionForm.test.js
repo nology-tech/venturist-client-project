@@ -2,7 +2,7 @@ import TransactionForm from "./TransactionForm";
 import { fireEvent, render, screen, userEvent } from "@testing-library/react";
 import profileData from "../../assets/data/samanthaBrooksProfile";
 
-describe("Testing that elements render on screen", () => {
+xdescribe("Testing that elements render on screen", () => {
   
   test("Test to render container on screen", () => {
     render(
@@ -101,7 +101,7 @@ describe("Testing that elements render on screen", () => {
     });
   });
 
-  describe("Testing that buttons work correctly", () => {
+  xdescribe("Testing that buttons work correctly", () => {
   
     test("Should render the button on the page", () => {
       
