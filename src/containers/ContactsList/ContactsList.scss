@@ -9,7 +9,7 @@
   color: $colourThree;
   margin-top: 45px;
   font-weight: 500;
-  padding-bottom: 8px;
+  padding: 0px 0px 8px 40px;
   width: 1000px;
 
   &__page {
@@ -23,15 +23,15 @@
   }
 
   &__sort-code {
-    padding-left: 3px;
+    padding-left: 18px;
   }
 
   &__account-no {
-    padding-left: 5px;
+    padding-left: 38px;
   }
 
   &__bank {
-    padding-left: 6px;
+    padding-left: 58px;
   }
 
 
@@ -41,7 +41,7 @@
 .add-contact {
   display: flex;
   justify-content: right;
-  width: 850px;
+  width: 840px;
 }
 
 // ="name">Name</p>

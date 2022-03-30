@@ -29,9 +29,6 @@ export default function ListItem(props) {
 
   return (
     <div key={index} className="item-grid" data-testid="item-grid">
-      <div className="item-grid__align-img">
-        <img src={item.bankIcon} alt={item.bankName} width="50px" />
-      </div>
       <p data-testid="name-test">{`${item.firstName} ${item.lastName}`}</p>
       <p>{item.sortCode}</p>
       <p>{item.accountNumber}</p>

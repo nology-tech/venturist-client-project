@@ -20,7 +20,6 @@ export default function ContactsList(props) {
         <Button buttonName={"Add Contact"} hasIcon={true} iconSrc={icons.Contacts} buttonFunction={toggleAddRecipient}/>
         </div>
         <div className="headers-grid">
-          <div></div>
           <p className="headers-grid__name">Name</p>
           <p className="headers-grid__sort-code">Sort Code</p>
           <p className="headers-grid__account-no">Account No</p>
