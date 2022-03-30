@@ -1,0 +1,29 @@
+@use "../../../assets/sass/global_variables" as *;
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  background-color: #f7f7f7;
+  margin-bottom: 10px;
+  font: $outfit;
+  font-weight: 400;
+  font-size: 16px;
+  color: $colourThree;
+  width: 800px;
+  height: 65px;
+  align-items: center;
+  padding-left: 40px;
+
+  &__align-img {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+  }
+
+  &__bin {
+    color: #ff000085;
+    cursor: pointer;
+    font-size: 16px;
+  }
+}
