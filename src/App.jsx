@@ -33,9 +33,7 @@ const App = () => {
 
   const setUid = (uid) => {
     setUserID(uid);
-    console.log(userID);
   };
-
 
 //API fetching ratesArr// 
   const [baseCurrency, setBaseCurrency] = useState("GBP");
@@ -43,11 +41,6 @@ const App = () => {
   const [defaultCurrencies, setDefaultCurrencies] = useState(["USD", "EUR"]);
   const [filteredRates, setFilteredRates] = useState([]);
   const [message, setMessage] = useState("Loading live rates...");
-
-  console.log(setBaseCurrency)
-  console.log(setDefaultCurrencies)
-  console.log(filteredRates)
-  console.log(message)
 
   const url = `https://venturist-app.nw.r.appspot.com/currencies/${baseCurrency}`;
   
