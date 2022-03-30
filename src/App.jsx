@@ -9,14 +9,7 @@ import LiveRatesPage from "./containers/LiveRatesPage/LiveRatesPage";
 import ContactsPage from "./containers/ContactsPage/ContactsPage";
 import DepositPage from "./containers/DepositPage/DepositPage";
 import WithdrawPage from "./containers/WithdrawPage/WithdrawPage";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-
-import userProfile from "./assets/data/samanthaBrooksProfile";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import contactData from "./assets/data/contactExample";
 import HomePage from "./containers/HomePage/HomePage";
 import LoginPage from "./containers/LoginPage/LoginPage";
@@ -26,9 +19,6 @@ import useFxApi from "./Hooks/FX/useFxApi";
 
 const App = () => {
   const [profileData, setProfileData] = useState(false);
-  const updateProfileData = (newData) => {
-    setProfileData(newData);
-  };
   const [userID, setUserID] = useState(false);
   const [userHoldings,setUserHoldings] = useState(false);
 
@@ -42,6 +32,7 @@ const App = () => {
     window.sessionStorage.setItem('lastUpdateTime', new Date().getTime());
   }
 
+  // Data persistence //
   const checkSessionStorage = () => {
     if(new Date().getTime() - Number(window.sessionStorage.getItem('lastUpdateTime')) > 600000) {
       setUserID(false);
@@ -50,6 +41,7 @@ const App = () => {
     }
   }
 
+  // API fetching user data //
   const getUserData = async () => {
     await fetch(`https://venturist-app.nw.r.appspot.com/user/${userID}`)
       .then(response => response.json())
@@ -60,9 +52,6 @@ const App = () => {
       .then(response => response.json())
       .then(data => setUserHoldings(data))
       .catch(error => alert(error));
-
-    console.log(profileData);
-    console.log(userHoldings);
   }
 
   const clearData = () => {
@@ -74,6 +63,7 @@ const App = () => {
   useEffect(() => {
     checkSessionStorage();
     if (userID) getUserData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userID]);
 
   
@@ -138,12 +128,7 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <ConvertPage
-                      liveRateData={ratesArr}
-                      profileData={profileData}
-                      userHoldings={userHoldings}
-                      getUserData={getUserData}
-                    />
+                    <ConvertPage liveRateData={ratesArr} profileData={profileData} userHoldings={userHoldings} getUserData={getUserData} />
                   </>
                 }
               ></Route>
@@ -153,11 +138,7 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <MakeTransferPage
-                      liveRateData={ratesArr}
-                      profileData={profileData}
-                      contactData={contactData}
-                    />
+                    <MakeTransferPage liveRateData={ratesArr} profileData={profileData} contactData={contactData} />
                   </>
                 }
               ></Route>
@@ -177,10 +158,7 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <DepositPage
-                      profileData={profileData}
-                      updateProfileData={updateProfileData}
-                    />
+                    <DepositPage profileData={profileData} userHoldings={userHoldings} />
                   </>
                 }
               ></Route>
@@ -190,10 +168,7 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <WithdrawPage
-                      profileData={profileData}
-                      updateProfileData={updateProfileData}
-                    />
+                    <WithdrawPage profileData={profileData} userHoldings={userHoldings} />
                   </>
                 }
               ></Route>{" "}
