@@ -13,7 +13,7 @@ const MakeTransferPage = (props) => {
   const exchangeBase = {
     exchangeFrom: {
       user: profileData,
-      currency: liveRateData[49],
+      currency: liveRateData[0],
       amount: 0,
       fee: 0,
     },
