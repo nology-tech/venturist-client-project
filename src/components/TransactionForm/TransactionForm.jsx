@@ -65,9 +65,9 @@ const TransactionForm = (props) => {
 
         <table className="deposit-form__table__funds-table">
           <tr>
-            <td id="funds-remaining">Funds remaining:</td>
+            <td id="funds-remaining-header">Funds remaining:</td>
             <td></td>
-            <td data-testid="funds-remaining" id="funds-remaining" className="deposit-form__table__user-details">
+            <td data-testid="funds-remaining" id="funds-remaining-value" className="deposit-form__table__user-details">
               {profileData.holdings[profileData.cards[0].currencyType].toFixed(2)}
             </td>
           </tr>
