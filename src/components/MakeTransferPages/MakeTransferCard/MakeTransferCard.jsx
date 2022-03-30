@@ -21,10 +21,8 @@ const MakeTransferCard = (props) => {
   } else if(type==="Recipient") {
 
     let personName = cardContent.firstName + " " + ((cardContent.middleNames) ? cardContent.middleNames + " " : "") + cardContent.lastName;
-
-    const leftImage = <img src={cardContent.bankIcon} alt={cardContent.bankName} className="transfer-page__card__image" key={3}></img>;
     const leftText = <p key={4}>{personName}</p>;
-    leftContent = [leftImage, leftText];
+    leftContent = leftText;
     rightContent = [<p className="transfer-page__card__sort-code" key={5} data-testid="sort-code">{cardContent.sortCode}</p>, 
     <p className="transfer-page__card__account-number" key={6}>{cardContent.accountNumber}</p>];
     overlayId = cardContent.IBAN;

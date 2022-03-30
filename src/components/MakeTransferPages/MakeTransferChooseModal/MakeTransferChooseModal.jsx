@@ -36,7 +36,9 @@ const MakeTransferChooseModal = (props) => {
     headers = [<h5 key={1}>Currency</h5>,
     <h5 className="transfer-page__choose__list__headers__rate" key={2} >Rate</h5>]
   } else if(type==="Recipient") {
-    headers = [<h5 key={1} >Name</h5>,           <h5 className="transfer-page__choose__list__headers__sort-code" key={2} >Sort Code</h5>,           <h5 className="transfer-page__choose__list__headers__account-no" key={3} >Account No</h5>]
+    headers = [<h5 key={1} >Name</h5>,
+    <h5 className="transfer-page__choose__list__headers__sort-code" key={2} >Sort Code</h5>,
+    <h5 className="transfer-page__choose__list__headers__account-no" key={3} >Account No</h5>]
   }
 
   return (
