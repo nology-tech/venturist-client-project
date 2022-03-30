@@ -70,7 +70,7 @@ const MakeTransferForm = props => {
               onClick={handleChangingCurrency}
               data-testid="currencyFrom"
             > 
-              {exchangeFrom.currencyCode} - {exchangeFrom.currencyName}
+              {exchangeFrom.currencyCode}
             </p>
           </div>
           <p className="transfer-form-bar__amount">
@@ -103,7 +103,7 @@ const MakeTransferForm = props => {
               onClick={handleChangingCurrency}
               data-testid="currencyTo"
             >
-              {exchangeTo.currencyCode} - {exchangeTo.currencyName}
+              {exchangeTo.currencyCode}
             </p>
           </div>
           <p className="transfer-form-bar__amount" data-testid="amountOutput">

@@ -44,7 +44,7 @@ test('Test currency changes properly when clicking currency from', () => {
   fireEvent.click(currencyFromButton);
   const currencyCHF = screen.getAllByTestId("overlay")[3];
   fireEvent.click(currencyCHF);
-  const changedCurrency = screen.getByText("CHF - Swiss Franc");
+  const changedCurrency = screen.getByText("CHF");
 
   expect(changedCurrency).toBeInTheDocument();
 });
@@ -57,7 +57,7 @@ test('Test currency changes properly when clicking currency to', () => {
   fireEvent.click(currencyToButton);
   const currencyCHF = screen.getAllByTestId("overlay")[3];
   fireEvent.click(currencyCHF);
-  const changedCurrency = screen.getByText("CHF - Swiss Franc");
+  const changedCurrency = screen.getByText("CHF");
 
   expect(changedCurrency).toBeInTheDocument();
 });
