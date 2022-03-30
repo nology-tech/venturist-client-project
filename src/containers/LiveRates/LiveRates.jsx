@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import Button from "../../components/Button/Button";
 import LiveRatesItem from "../../components/LiveRatesItem/LiveRatesItem";
 import LiveRatesItemEdit from "../../components/LiveRatesItemEdit/LiveRatesItemEdit";
-import liveRatesArr from "../../assets/data/liveRatesExample";
 import "./LiveRates.scss";
 import DropDown from "../../components/DropDown/DropDown";
 import useFxApi from "../../Hooks/FX/useFxApi";
 
 const LiveRates = (props) => {
   const [baseCurrency, setBaseCurrency] = useState("GBP");
+  
 
   const url = `https://venturist-app.nw.r.appspot.com/currencies/${baseCurrency}`;
 
@@ -23,15 +23,13 @@ const LiveRates = (props) => {
 
   useEffect(() => {
     getData(url);
-    if (status === "success") {
-      try {
-        setFilteredRates(filterRates());
-      } catch (err) {
-        setMessage("Error getting rates. Please try again later");
-      }
+    try {
+      setFilteredRates(filterRates());
+    } catch (error) {
+      setMessage("Error getting rates");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [status, editBaseCurrency]);
+  }, [data, editBaseCurrency, ratesArr, defaultCurrencies]);
 
   const handleAddCurrency = (value) => {
     const newList = [
@@ -68,7 +66,7 @@ const LiveRates = (props) => {
         buttonFunction={() => {
           setEditBaseCurrency(false);
         }}
-        codes={liveRatesArr.map((item) => item.currencyCode.toLowerCase())}
+        codes={ratesArr.map((item) => item.currencyCode.toLowerCase())}
         handleAmount={handleAmount}
         handleCurrency={handleCurrency}
         code={baseCurrency}

@@ -6,8 +6,8 @@ import icons from '../../assets/icons/icons'
 import Button from '../../components/Button/Button'
 
 const CurrencyConverter = (props) => {
-
   const {liveRateData, profileData, handleConversion} = props;
+
 
   const swap = (value) => {
     if ((to && from) && (to !== from) && (ownedCurrencies.includes(to.toLowerCase())))  {
@@ -44,6 +44,7 @@ const CurrencyConverter = (props) => {
 
   const ownedCurrencies = Object.keys(profileData.holdings).map(code => code.toLocaleLowerCase());
   const convertibleCurrencies = liveRateData.map(currency => currency.currencyCode.toLowerCase());
+  console.log(liveRateData)
 
   const convertPressed = () => {
     setTime(new Date());
