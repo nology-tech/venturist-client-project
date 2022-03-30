@@ -36,7 +36,7 @@ it("should render the contacts list item", () => {
       setFilteredData={() => {}}
       filteredData={testfile}
     />
-  );206
+  );
 
   // 2. Act
   const contact = screen.getAllByTestId("item-grid");
