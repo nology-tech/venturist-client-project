@@ -36,31 +36,26 @@ const App = () => {
   };
 
 //API fetching ratesArr// 
-  const [baseCurrency, setBaseCurrency] = useState("GBP");
+
   const { status, ratesArr, getData } = useFxApi();
-  const [defaultCurrencies, setDefaultCurrencies] = useState(["USD", "EUR"]);
-  const [filteredRates, setFilteredRates] = useState([]);
+
   const [message, setMessage] = useState("Loading live rates...");
 
-  const url = `https://venturist-app.nw.r.appspot.com/currencies/${baseCurrency}`;
+  console.log(message)
+
+  const url = `https://venturist-app.nw.r.appspot.com/currencies/GBP`;
   
   useEffect(() => {
     getData(url);
     if (status === "success") {
       try {
-        setFilteredRates(filterRates());
+        setMessage("Success")
       } catch (err) {
         setMessage("Error getting rates. Please try again later");
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
-
-  const filterRates = () => {
-    return ratesArr.filter((item) =>
-      defaultCurrencies.includes(item.currencyCode)
-    );
-  };
 
   //API END//
 
