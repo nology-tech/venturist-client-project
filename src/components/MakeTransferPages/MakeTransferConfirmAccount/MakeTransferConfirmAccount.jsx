@@ -9,11 +9,11 @@ const MakeTransferConfirmAccount = props => {
 
   const [showChooseRecipients, setShowChooseRecipients] = useState(false);
   const [showAddRecipient, setShowAddRecipient] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
   const [searchedData, setSearchedData] = useState(data);
 
   const toggleChooseRecipients = () => {
     setShowChooseRecipients(!showChooseRecipients);
+    setSearchedData(data);
   };
 
   const toggleAddRecipient = () => {
@@ -91,7 +91,7 @@ const MakeTransferConfirmAccount = props => {
         </div>
       </div>
 
-        {showChooseRecipients && <MakeTransferChooseModal type="Recipient" content={searchedData} handleShowModal={toggleChooseRecipients} handleSearch={handleInput} searchTerm={searchTerm} handleEvent={handleChooseRecipient}/>}
+        {showChooseRecipients && <MakeTransferChooseModal type="Recipient" content={searchedData} handleShowModal={toggleChooseRecipients} handleSearch={handleInput} handleEvent={handleChooseRecipient}/>}
 
         {showAddRecipient && <MakeTransferAddRecipient toggleAddRecipient={toggleAddRecipient} exchangeInfo={exchangeInfo} setExchangeInfo={setExchangeInfo} handleShowConfirmation={handleShowConfirmation} />}
     </div>

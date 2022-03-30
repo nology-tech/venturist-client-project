@@ -23,7 +23,7 @@ library.add(...iconListRegular)
 
 const MakeTransferChooseModal = (props) => {
 
-  const {type, content, handleEvent, handleSearch, handleShowModal, searchTerm} = props;
+  const {type, content, handleEvent, handleSearch, handleShowModal} = props;
 
   const emptyList = content.length === 0;
 
