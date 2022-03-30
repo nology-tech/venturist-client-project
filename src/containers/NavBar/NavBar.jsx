@@ -21,8 +21,10 @@ const NavBar = (props) => {
       .then(() => {
         nav("/")
         props.setUserID("");
+        window.sessionStorage.setItem('userID', "");
+        window.sessionStorage.setItem('lastUpdateTime', 0);
       })
-      .catch((error) => alert("Something Went Wrong :c"))
+      .catch((error) => alert("Something Went Wrong"));
   }
 
   const buttonLabels = ["Wallet","Live Rates","Convert","Transfer","Contacts","Deposit","Withdraw"];

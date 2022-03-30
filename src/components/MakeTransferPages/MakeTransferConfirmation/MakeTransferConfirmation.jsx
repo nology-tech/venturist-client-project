@@ -3,6 +3,7 @@ import Button from '../../Button/Button';
 import "./MakeTransferConfirmation.scss";
 import SuccessfulMessage from '../../SuccessfulMessage/SuccessfulMessage';
 import icons from "./../../../assets/icons/icons.js";
+import {Link} from "react-router-dom";
 
 const MakeTransferConfirmation = (props) => {
 
@@ -89,18 +90,10 @@ const MakeTransferConfirmation = (props) => {
           </div>
         </div>
         <div className="make-transfer__confirmation__buttons">
-          <Button 
-            buttonName="Cancel" 
-            buttonFunction={handleCancel} 
-            buttonStyle="clear"  
-          />
-          <Button 
-            buttonName="Submit" 
-            hasIcon={true} 
-            iconSrc={icons.Transfer} 
-            iconPosition="left"
-            buttonFunction={handleSubmit}
-          />
+          <Link to="/wallet">
+          <Button buttonName="Cancel" buttonFunction={handleCancel} buttonStyle="clear" />
+          </Link>
+          <Button buttonName="Submit" hasIcon={true} iconSrc={icons.Transfer} iconPosition="left" buttonFunction={handleSubmit} />
         </div>
       </div>
       {showSuccess && <SuccessfulMessage message={"Transaction Successful."} />}
