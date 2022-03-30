@@ -88,17 +88,6 @@ describe('Rendering components', () => {
     //Assert
     expect(contactAccountNumber).toBeInTheDocument();
   });
-
-  test('Check the it renders the image', () => {
-    //Arrange
-    const onClick = jest.fn();
-    render(<MakeTransferCard type="Recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
-    //Act
-    const bankImage = screen.queryByRole("img");
-
-    //Assert
-    expect(bankImage).toBeInTheDocument();
-  });
 });
 
 describe('Functionality tests', () => {

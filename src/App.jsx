@@ -32,9 +32,28 @@ const App = () => {
   const [userID, setUserID] = useState("");
 
   const setUid = (uid) => {
+    updateSessionStorage(uid);
     setUserID(uid);
   };
 
+  const updateSessionStorage = (uid) => {
+    window.sessionStorage.setItem('userID', uid);
+    window.sessionStorage.setItem('lastUpdateTime', new Date().getTime());
+  }
+
+  const checkSessionStorage = () => {
+    if(new Date().getTime() - Number(window.sessionStorage.getItem('lastUpdateTime')) > 600000) {
+      setUserID("");
+    } else {
+      setUserID(window.sessionStorage.getItem('userID'));
+    }
+  }
+  
+  useEffect(() => {
+    checkSessionStorage();
+  },[]);
+
+  
 //API fetching ratesArr// 
 
   const { status, ratesArr, getData } = useFxApi();
@@ -64,9 +83,11 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="/signin" element={<LoginPage setUid={setUid} />}></Route>
+          {userID && <Route path="/signin" element={<Navigate to="/wallet" replace />} />}
+          {!userID && <Route path="/signin" element={<LoginPage setUid={setUid} />}></Route>}
           <Route path="/signup" element={<CreateAccountPage />}></Route>
-          {userID && (
+          {(new Date().getTime() - window.sessionStorage.getItem('lastUpdateTime') <= 600000) && 
+          (window.sessionStorage.getItem('userID') !== "") && (
             <>
               <Route
                 path="/wallet"

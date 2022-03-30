@@ -9,10 +9,11 @@ const MakeTransferConfirmAccount = props => {
 
   const [showChooseRecipients, setShowChooseRecipients] = useState(false);
   const [showAddRecipient, setShowAddRecipient] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchedData, setSearchedData] = useState(data);
 
   const toggleChooseRecipients = () => {
     setShowChooseRecipients(!showChooseRecipients);
+    setSearchedData(data);
   };
 
   const toggleAddRecipient = () => {
@@ -27,19 +28,18 @@ const MakeTransferConfirmAccount = props => {
   };
 
   const handleInput = event => {
-    const cleanInput = event.target.value;
-    setSearchTerm(cleanInput);
+    setSearchedData(data.filter(person => {
+      let fullName;
+      if (person.middleNames) {
+        fullName = person.firstName + " " + person.middleNames + " " + person.lastName;
+      } else {
+        fullName = person.firstName + " " + person.lastName;
+      }
+      return fullName.toLowerCase().includes(event.target.value.toLowerCase());
+    }));
   };
 
-  const searchedData = data.filter(person => {
-    let fullName;
-    if (person.middleNames) {
-      fullName = person.firstName + " " + person.middleNames + " " + person.lastName;
-    } else {
-      fullName = person.firstName + " " + person.lastName;
-    }
-    return fullName.toLowerCase().includes(searchTerm.toLowerCase());
-  });
+
 
   const currencySymbol = exchangeInfo.exchangeFrom.currency.currencySymbol;
   const currencyCode = exchangeInfo.exchangeFrom.currency.currencyCode;
@@ -91,7 +91,7 @@ const MakeTransferConfirmAccount = props => {
         </div>
       </div>
 
-        {showChooseRecipients && <MakeTransferChooseModal type="Recipient" content={searchedData} handleShowModal={toggleChooseRecipients} handleInput={handleInput} searchTerm={searchTerm} handleEvent={handleChooseRecipient}/>}
+        {showChooseRecipients && <MakeTransferChooseModal type="Recipient" content={searchedData} handleShowModal={toggleChooseRecipients} handleSearch={handleInput} handleEvent={handleChooseRecipient}/>}
 
         {showAddRecipient && <MakeTransferAddRecipient toggleAddRecipient={toggleAddRecipient} exchangeInfo={exchangeInfo} setExchangeInfo={setExchangeInfo} handleShowConfirmation={handleShowConfirmation} />}
     </div>

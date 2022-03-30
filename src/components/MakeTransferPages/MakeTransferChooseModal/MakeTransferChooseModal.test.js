@@ -124,7 +124,7 @@ describe("Functionality tests, currency", () => {
         type="Currency"
         content={liveRateData}
         handleEvent={onClick}
-        handleInput={onSearch}
+        handleSearch={onSearch}
         handleShowModal={onClick}
       />
     );

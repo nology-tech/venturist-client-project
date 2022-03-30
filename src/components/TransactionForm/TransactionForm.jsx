@@ -21,7 +21,7 @@ const TransactionForm = (props) => {
             {profileData.firstName} {profileData.lastName}
           </h5>
           <tr>
-            <td className="deposit-form__table__account-details" colspan="2">
+            <td className="deposit-form__table__account-details" colSpan="2">
               Account Number:
             </td>
             <td></td>
@@ -30,7 +30,7 @@ const TransactionForm = (props) => {
             </td>
           </tr>
           <tr>
-            <td className="deposit-form__table__account-details" colspan="2">
+            <td className="deposit-form__table__account-details" colSpan="2">
               Sort Code:
             </td>
             <td></td>
