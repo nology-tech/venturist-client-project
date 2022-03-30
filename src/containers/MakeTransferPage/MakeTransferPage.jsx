@@ -9,15 +9,18 @@ import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 import useFxApi from "../../Hooks/FX/useFxApi";
 
 const MakeTransferPage = (props) => {
-  const { ratesArr, profileData, contactData, status } = props;
+  const { profileData, contactData } = props;
+
+  const { status, ratesArr, getData } = useFxApi();
 
   const [message, setMessage] = useState("Loading live rates...");
 
-  console.log(message)
+  // console.log(message)
 
   const url = `https://venturist-app.nw.r.appspot.com/currencies/GBP`;
   
   useEffect(() => {
+    getData(url);
     if (status === "success") {
       try {
         setMessage("Success")
@@ -25,6 +28,7 @@ const MakeTransferPage = (props) => {
         setMessage("Error getting rates. Please try again later");
       }
     }
+    setExchangeInfo(exchangeBase);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 
@@ -82,7 +86,9 @@ const MakeTransferPage = (props) => {
         textDescription="Easily and safely transfer money in different currencies."
       />
 
-      {showInitialForm && status==="success" && (
+      {showInitialForm && message!=="Success" && (<p className="make-transfer__loading">{message}</p>)}
+
+      {showInitialForm && message==="Success" && (
         <MakeTransferForm
           exchangeInfo={exchangeInfo}
           setExchangeInfo={setExchangeInfo}

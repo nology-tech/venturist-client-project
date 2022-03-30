@@ -133,8 +133,6 @@ const App = () => {
                     <NavBar setUserID={setUserID} />
                     <UserProfile userID={userID} />
                     <MakeTransferPage
-                      ratesArr={ratesArr}
-                      status={status}
                       profileData={profileData}
                       contactData={contactData}
                     />
