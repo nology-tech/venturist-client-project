@@ -38,10 +38,8 @@ const CurrencyConverter = (props) => {
     setTo(selected);
     if (ownedCurrencies.includes(selected.toLowerCase())) {
       setHoldingTo(...[...userHoldings.filter(holding => (holding.currencyCode===selected))]);
-      console.log("using a holding we have");
     }
     else {
-      console.log("new holding")
       setHoldingTo({
         userID: profileData.userID,
         currencyName: getCurrencyName(selected),
@@ -107,7 +105,7 @@ const CurrencyConverter = (props) => {
       body: JSON.stringify({
         userID: holdingFrom.userID,
         currencyName: holdingFrom.currencyName,
-        amount: holdingFrom.amount - amount,
+        amount: Number((holdingFrom.amount - amount).toFixed(2)),
         currencyCode: holdingFrom.currencyCode,
         currencySymbol: holdingFrom.currencySymbol
       })
@@ -141,7 +139,7 @@ const CurrencyConverter = (props) => {
       body: JSON.stringify({
         userID: holdingTo.userID,
         currencyName: holdingTo.currencyName,
-        amount: convertedAmount,
+        amount: Number((convertedAmount).toFixed(2)),
         currencyCode: holdingTo.currencyCode,
         currencySymbol: holdingTo.currencySymbol
       })
