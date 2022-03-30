@@ -96,6 +96,7 @@ const App = () => {
                     <NavBar setUserID={setUserID} />
                     <UserProfile userID={userID} />
                     <WalletPage
+                      setUserID={setUserID}
                       profileData={profileData}
                       liveRateData={ratesArr}
                     />

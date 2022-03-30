@@ -1,11 +1,29 @@
 import React, {useState, useEffect} from 'react'
 import WalletTile from '../WalletTile/WalletTile';
 import "./Wallet.scss";
+import { getAuth, signOut } from "firebase/auth";
+import { app } from "../../firebase";
+import {useNavigate} from "react-router-dom";
+import Button from '../Button/Button';
+import icons from "../../assets/icons/icons";
 
 const Wallet = (props) => {
 
-  const {profileData, liveRateData} = props;
+  const {profileData, liveRateData, setUserID} = props;
 
+  const nav = useNavigate();
+
+  const logOut = () => {
+    const auth = getAuth(app);
+    signOut(auth)
+      .then(() => {
+        nav("/")
+        setUserID("");
+        window.sessionStorage.setItem('userID', "");
+        window.sessionStorage.setItem('lastUpdateTime', 0);
+      })
+      .catch((error) => alert("Something Went Wrong"));
+  }
 
   const [tiles,setTiles] = useState([]);
   useEffect(() => {
@@ -25,7 +43,12 @@ const Wallet = (props) => {
   }, [profileData,liveRateData])
 
   return (
-    <div data-testid="wallet" className="wallet">{tiles}</div>
+    <div>
+      <div data-testid="wallet" className="wallet">{tiles}</div>
+      <div className='wallet-signout'>
+          <Button className="wallet-signout__button" buttonName="Sign Out" hasIcon={true} iconSrc={icons.SignOut} buttonFunction={logOut} />
+      </div>
+    </div>
   )
 }
 

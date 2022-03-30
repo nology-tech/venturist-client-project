@@ -4,9 +4,23 @@
   flex-wrap: wrap;
 }
 
+.wallet-signout {
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
   .wallet {
     justify-content: center;
-    margin: 0 auto;
+    margin: -25px auto 0 auto;
+  }
+
+  .wallet-signout {
+    display: flex;
+    justify-content: center;
+    margin: 60px auto 0px auto;
+
+    Button {
+      width: 230px;
+    }
   }
 }
