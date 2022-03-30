@@ -23,13 +23,13 @@ const userHoldings = [
 
 describe("Testing the wallet", () => {
   test("Check to see if wallet renders", () => {
-    render(<Wallet userHoldings={userHoldings} />)
+    render(<Router><Wallet userHoldings={userHoldings} /></Router>)
 
     expect(screen.getByTestId("wallet")).toBeInTheDocument();
   });
 
   test("Check for correct number for tiles", () => {
-    render(<Wallet userHoldings={userHoldings} />)
+    render(<Router><Wallet userHoldings={userHoldings} /></Router>)
 
     expect(screen.getAllByTestId("tiles").length).toBe(2);
   });
