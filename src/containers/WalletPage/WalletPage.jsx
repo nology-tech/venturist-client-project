@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 
 const WalletPage = (props) => {
   const { userHoldings } = props;
+  const { liveRateData, profileData, setUserID } = props;
 
   return (
     <div className="wallet-page">
@@ -22,6 +23,7 @@ const WalletPage = (props) => {
         textDescription= "Send money online fast, 24/7, from over 100 currencies. Don't see the currency you're looking for? Visit the convert page."
       />
       {userHoldings && <Wallet userHoldings={userHoldings} />}
+      <Wallet userHoldings={userHoldings} setUserID={setUserID} />
     </div>
   );
 };
