@@ -1,6 +1,11 @@
 import React from 'react'
 import WalletTile from '../WalletTile/WalletTile';
 import "./Wallet.scss";
+import { getAuth, signOut } from "firebase/auth";
+import { app } from "../../firebase";
+import {useNavigate} from "react-router-dom";
+import Button from '../Button/Button';
+import icons from "../../assets/icons/icons";
 
 const Wallet = (props) => {
 
