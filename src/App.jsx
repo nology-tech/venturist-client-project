@@ -25,11 +25,12 @@ import ErrorPage from "./containers/404Page/404Page";
 import useFxApi from "./Hooks/FX/useFxApi";
 
 const App = () => {
-  const [profileData, setProfileData] = useState({ ...userProfile });
+  const [profileData, setProfileData] = useState(false);
   const updateProfileData = (newData) => {
     setProfileData(newData);
   };
-  const [userID, setUserID] = useState("");
+  const [userID, setUserID] = useState(false);
+  const [userHoldings,setUserHoldings] = useState(false);
 
   const setUid = (uid) => {
     updateSessionStorage(uid);
@@ -43,15 +44,37 @@ const App = () => {
 
   const checkSessionStorage = () => {
     if(new Date().getTime() - Number(window.sessionStorage.getItem('lastUpdateTime')) > 600000) {
-      setUserID("");
+      setUserID(false);
     } else {
       setUserID(window.sessionStorage.getItem('userID'));
     }
   }
+
+  const getUserData = () => {
+    fetch(`https://venturist-app.nw.r.appspot.com/user/${userID}`)
+      .then(response => response.json())
+      .then(data => setProfileData(data))
+      .catch(error => alert(error));
+
+    fetch(`https://venturist-app.nw.r.appspot.com/user-holding/${userID}`)
+      .then(response => response.json())
+      .then(data => setUserHoldings(data))
+      .catch(error => alert(error));
+
+    console.log(userProfile);
+    console.log(userHoldings);
+  }
+
+  const clearData = () => {
+    setUid("");
+    setProfileData(false);
+    setUserHoldings(false);
+  }
   
   useEffect(() => {
     checkSessionStorage();
-  },[]);
+    if (userID) getUserData();
+  }, [userID]);
 
   
 //API fetching ratesArr// 
@@ -93,12 +116,9 @@ const App = () => {
                 path="/wallet"
                 element={
                   <>
-                    <NavBar setUserID={setUserID} />
-                    <UserProfile userID={userID} />
-                    <WalletPage
-                      profileData={profileData}
-                      liveRateData={ratesArr}
-                    />
+                    <NavBar clearData={clearData} />
+                    <UserProfile profileData={profileData} />
+                    <WalletPage userHoldings={userHoldings}/>
                   </>
                 }
               ></Route>
@@ -106,8 +126,8 @@ const App = () => {
                 path="/liverates"
                 element={
                   <>
-                    <NavBar setUserID={setUserID} />
-                    <UserProfile userID={userID} />
+                    <NavBar clearData={clearData} />
+                    <UserProfile profileData={profileData} />
                     <LiveRatesPage />
                   </>
                 }
@@ -116,8 +136,8 @@ const App = () => {
                 path="/convert"
                 element={
                   <>
-                    <NavBar setUserID={setUserID} />
-                    <UserProfile userID={userID} />
+                    <NavBar clearData={clearData} />
+                    <UserProfile profileData={profileData} />
                     <ConvertPage
                       liveRateData={ratesArr}
                       profileData={profileData}
@@ -130,8 +150,8 @@ const App = () => {
                 path="/transfer"
                 element={
                   <>
-                    <NavBar setUserID={setUserID} />
-                    <UserProfile userID={userID} />
+                    <NavBar clearData={clearData} />
+                    <UserProfile profileData={profileData} />
                     <MakeTransferPage
                       liveRateData={ratesArr}
                       profileData={profileData}
@@ -144,8 +164,8 @@ const App = () => {
                 path="/contacts"
                 element={
                   <>
-                    <NavBar setUserID={setUserID} />
-                    <UserProfile userID={userID} />
+                    <NavBar clearData={clearData} />
+                    <UserProfile profileData={profileData} />
                     <ContactsPage />
                   </>
                 }
@@ -154,8 +174,8 @@ const App = () => {
                 path="/deposit"
                 element={
                   <>
-                    <NavBar setUserID={setUserID} />
-                    <UserProfile userID={userID} />
+                    <NavBar clearData={clearData} />
+                    <UserProfile profileData={profileData} />
                     <DepositPage
                       profileData={profileData}
                       updateProfileData={updateProfileData}
@@ -167,8 +187,8 @@ const App = () => {
                 path="/withdraw"
                 element={
                   <>
-                    <NavBar setUserID={setUserID} />
-                    <UserProfile userID={userID} />
+                    <NavBar clearData={clearData} />
+                    <UserProfile profileData={profileData} />
                     <WithdrawPage
                       profileData={profileData}
                       updateProfileData={updateProfileData}

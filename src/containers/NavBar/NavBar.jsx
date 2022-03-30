@@ -20,7 +20,7 @@ const NavBar = (props) => {
     signOut(auth)
       .then(() => {
         nav("/")
-        props.setUserID("");
+        props.clearData();
         window.sessionStorage.setItem('userID', "");
         window.sessionStorage.setItem('lastUpdateTime', 0);
       })

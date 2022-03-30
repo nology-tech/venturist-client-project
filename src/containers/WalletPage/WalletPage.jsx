@@ -6,7 +6,7 @@ import "./WalletPage.scss";
 import {Link} from "react-router-dom";
 
 const WalletPage = (props) => {
-  const { liveRateData, profileData } = props;
+  const { userHoldings } = props;
 
   return (
     <div className="wallet-page">
@@ -21,7 +21,7 @@ const WalletPage = (props) => {
         pageFunctionHeading="Wallet"
         textDescription= "Send money online fast, 24/7, from over 100 currencies. Don't see the currency you're looking for? Visit the convert page."
       />
-      <Wallet liveRateData={liveRateData} profileData={profileData} />
+      {userHoldings && <Wallet userHoldings={userHoldings} />}
     </div>
   );
 };
