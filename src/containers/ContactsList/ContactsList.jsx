@@ -1,6 +1,6 @@
 import "./ContactsList.scss";
 import contacts from "../../assets/data/contactExample";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ListItem from "../../components/ContactsPages/ContactsListItem/ContactsListItem";
 import Button from "../../components/Button/Button";
 import icons from "../../assets/icons/icons";
@@ -10,7 +10,15 @@ export default function ContactsList(props) {
 
   const { toggleAddRecipient } = props;
 
+  const getContacts = async () => {
+    const result = await fetch('https://venturist-app.nw.r.appspot.com/contacts')
+    const data = await result.json();
+    console.log(data);
+  }
 
+  useEffect(() => {
+    getContacts();
+  }, [])
 
 
   return (
