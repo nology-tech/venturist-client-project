@@ -141,6 +141,7 @@ const App = () => {
                     <ConvertPage
                       liveRateData={ratesArr}
                       profileData={profileData}
+                      userHoldings={userHoldings}
                       updateProfileData={updateProfileData}
                     />
                   </>

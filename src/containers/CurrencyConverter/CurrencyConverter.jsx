@@ -6,7 +6,7 @@ import icons from '../../assets/icons/icons'
 import Button from '../../components/Button/Button'
 
 const CurrencyConverter = (props) => {
-  const {liveRateData, profileData, handleConversion} = props;
+  const {liveRateData, profileData, userHoldings, handleConversion} = props;
 
 
   const swap = (value) => {
@@ -30,29 +30,33 @@ const CurrencyConverter = (props) => {
   const [rateFrom,setRateFrom] = useState(0);
   const [rateTo,setRateTo] = useState(0);
   const [time, setTime]=useState(0);
+  const [holdingFrom,setHoldingFrom] = useState([]);
 
   const changeTo = (selected) => {
     setTo(selected);
+    console.log(selected);
   }
   const changeFrom = (selected) => {
     setFrom(selected)
+    console.log(selected)
+    setHoldingFrom(...[...userHoldings.filter(holding => (holding.currencyCode===selected))]);
+    console.log(holdingFrom)
   }
 
   const updateAmount = (event) => {
     setAmount(event.target.value);
   }
 
-  const ownedCurrencies = Object.keys(profileData.holdings).map(code => code.toLocaleLowerCase());
+  const ownedCurrencies = userHoldings.map(holdings => holdings.currencyCode.toLocaleLowerCase());
   const convertibleCurrencies = liveRateData.map(currency => currency.currencyCode.toLowerCase());
-  console.log(liveRateData)
 
   const convertPressed = () => {
     setTime(new Date());
 
-    if (to && from && amount > 0 && amount < profileData.holdings[from]) {
+    if (to && from && amount > 0 && amount < holdingFrom.amount) {
       setConvert(true);
       performConversion();
-    } else if (Number(amount) > profileData.holdings[from]) {
+    } else if (Number(amount) > holdingFrom.amount) {
       alert ("Invalid Conversion Amount. Check Balance.")
     } else {
       setConvert(false);
