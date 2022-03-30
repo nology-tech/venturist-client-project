@@ -10,6 +10,7 @@ const MakeTransferForm = props => {
   const [exchangeAmount, setExchangeAmount] = useState(0);
   const [showCurrencyModal, setShowCurrencyModal] = useState(false); 
   const [changingCurrency, setChangingCurrency] = useState("to"); 
+  const [filteredData, setFilteredData] = useState(liveRateData);
 
   const exchangeFrom=exchangeInfo.exchangeFrom.currency;
   const exchangeTo=exchangeInfo.exchangeTo.currency;
@@ -42,6 +43,10 @@ const MakeTransferForm = props => {
     return exchangeTo.liveRate / exchangeFrom.liveRate;
   };
 
+  const handleSearch = (event) => {
+    setFilteredData(liveRateData.filter(currency => currency.currencyCode.toLowerCase().includes(event.target.value.toLowerCase())));
+  }
+
   const onlyNumber = event => {
     let amountInputField = Number(event.target.value);
     setExchangeAmount(amountInputField);
@@ -70,7 +75,7 @@ const MakeTransferForm = props => {
               onClick={handleChangingCurrency}
               data-testid="currencyFrom"
             > 
-              {exchangeFrom.currencyCode} - {exchangeFrom.currencyName}
+              {exchangeFrom.currencyCode}
             </p>
           </div>
           <p className="transfer-form-bar__amount">
@@ -103,7 +108,7 @@ const MakeTransferForm = props => {
               onClick={handleChangingCurrency}
               data-testid="currencyTo"
             >
-              {exchangeTo.currencyCode} - {exchangeTo.currencyName}
+              {exchangeTo.currencyCode}
             </p>
           </div>
           <p className="transfer-form-bar__amount" data-testid="amountOutput">
@@ -144,10 +149,10 @@ const MakeTransferForm = props => {
     </form>
     {showCurrencyModal && (
       <MakeTransferChooseModal type="Currency"
-        content={liveRateData}
+        content={filteredData}
         handleEvent={handleCurrency}
         handleShowModal={handleShowCurrencyModal}
-        handleSearch={()=>alert("Searching")}
+        handleSearch={handleSearch}
       />
     )}
     </>

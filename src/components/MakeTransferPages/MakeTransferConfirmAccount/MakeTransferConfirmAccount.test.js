@@ -113,7 +113,8 @@ describe ("Choose recipient search box", () => {
     fireEvent.click(selectButton);
     const search = screen.getByPlaceholderText("Search...");
     userEvent.type(search, "Z");
-    const chooseRecipientContainer = screen.getByTestId("choose-modal")
+    console.log(search);
+    const chooseRecipientContainer = screen.getByTestId("choose-modal");
     
     expect(chooseRecipientContainer).toHaveTextContent("Zoe Jansen")
     expect(chooseRecipientContainer).toHaveTextContent("Mateusz Seredyn")

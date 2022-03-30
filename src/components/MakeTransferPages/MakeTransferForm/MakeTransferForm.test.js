@@ -169,8 +169,8 @@ test("Check correct currency details render on page - British Pound, US Dollar",
   const currencyTo = screen.getByTestId("currencyTo");
 
   // Assert
-  expect(currencyFrom).toHaveTextContent("British Pound");
-  expect(currencyTo).toHaveTextContent("US Dollar");
+  expect(currencyFrom).toHaveTextContent("GBP");
+  expect(currencyTo).toHaveTextContent("USD");
 });
 
 test("Check correct currency details render on page - US Dollar, British Pound", () => {
@@ -190,8 +190,8 @@ test("Check correct currency details render on page - US Dollar, British Pound",
   const currencyTo = screen.getByTestId("currencyTo");
 
   // Assert
-  expect(currencyFrom).toHaveTextContent("US Dollar");
-  expect(currencyTo).toHaveTextContent("British Pound");
+  expect(currencyFrom).toHaveTextContent("USD");
+  expect(currencyTo).toHaveTextContent("GBP");
 });
 
 test("OnlyNumber prevents multiple decimal points", () => {
