@@ -22,11 +22,12 @@ const MakeTransferPage = (props) => {
     if (status === "success") {
       try {
         setMessage("Success")
+        setExchangeInfo(exchangeBase);
       } catch (err) {
         setMessage("Error getting rates. Please try again later");
       }
     }
-    setExchangeInfo(exchangeBase);
+    console.log()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 
@@ -91,7 +92,7 @@ const MakeTransferPage = (props) => {
           exchangeInfo={exchangeInfo}
           setExchangeInfo={setExchangeInfo}
           handleShowForm={handleShowForm}
-          liveRatesData={ratesArr}
+          liveRateData={ratesArr}
         />
       )}
 
