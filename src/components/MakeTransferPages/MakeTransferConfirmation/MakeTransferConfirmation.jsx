@@ -59,7 +59,7 @@ const MakeTransferConfirmation = (props) => {
           <h6 data-testid="user-from-name">{from.user.firstName} {from.user.lastName}</h6>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__subtext">
             <p>Account Number:</p>
-            <p>{from.user.accountNumber}</p>
+            <p>{from.user.bankAccountNo}</p>
           </div>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__subtext">
             <p> Sort Code:</p>

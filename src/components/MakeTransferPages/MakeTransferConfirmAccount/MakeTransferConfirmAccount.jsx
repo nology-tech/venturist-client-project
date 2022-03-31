@@ -58,7 +58,7 @@ const MakeTransferConfirmAccount = props => {
             {profileData.firstName} {profileData.lastName}
           </h6>
           <div className="transfer-page__confirm__sendContainer__details__text">
-            <p>Account Number:</p> <p>{profileData.accountNumber} </p>{" "}
+            <p>Account Number:</p> <p>{profileData.bankAccountNo} </p>{" "}
           </div>
           <div className="transfer-page__confirm__sendContainer__details__text">
             <p>Sort Code: </p> <p>{profileData.sortCode}</p>{" "}
