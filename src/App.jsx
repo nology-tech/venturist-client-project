@@ -145,7 +145,9 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <MakeTransferPage profileData={profileData} contactData={contactData} userBankAccounts={userBankAccounts[0]} userHoldings={userHoldings} />
+                    <MakeTransferPage profileData={profileData} contactData={contactData} 
+                    userBankAccounts={userBankAccounts[0]} userHoldings={userHoldings} 
+                    getUserData={getUserData} />
                   </>
                 }
               ></Route>

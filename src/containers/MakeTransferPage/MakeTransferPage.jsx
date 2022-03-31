@@ -9,7 +9,7 @@ import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 import useFxApi from "../../Hooks/FX/useFxApi";
 
 const MakeTransferPage = (props) => {
-  const { profileData, contactData, userHoldings, userBankAccounts } = props;
+  const { profileData, contactData, userHoldings, userBankAccounts, getUserData } = props;
 
   const { status, ratesArr, getData } = useFxApi();
 
@@ -106,7 +106,7 @@ const MakeTransferPage = (props) => {
       )}
 
       {showConfirmation && (
-        <MakeTransferConfirmation exchangeInfo={exchangeInfo} />
+        <MakeTransferConfirmation exchangeInfo={exchangeInfo} getUserData={getUserData} />
       )}
     </div>
     <MobileNotFound />
