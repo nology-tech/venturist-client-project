@@ -50,24 +50,6 @@ const MakeTransferPage = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 
-  useEffect(() => {
-    // getBankAccount(profileData.userID);
-  }, [profileData]);
-
-  const getBankAccount = (userID) => {
-    fetch(`https://venturist-app.nw.r.appspot.com/bank-account/${userID}`)
-      .then(response => response.json())
-      .then(data => setBankDetails(data));
-  };
-
-  useEffect(() => {
-    // updateUserBankAccount();
-  }, [bankDetails]);
-
-  const updateUserBankAccount = () => {
-    setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeFrom.user.accountNumber = bankDetails.accountNumber, exchangeInfo.exchangeFrom.user.sortCode = bankDetails.sortCode);
-  }
-
   const handleShowForm = () => {
     const amountInput = document.getElementById("amountInput").value;
     if(!(Number(amountInput)*1.01 < exchangeInfo.exchangeFrom.user.holdings[exchangeInfo.exchangeFrom.currency.currencyCode])) {
