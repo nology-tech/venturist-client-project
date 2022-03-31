@@ -1,14 +1,12 @@
 import "./ContactsList.scss";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ListItem from "../../components/ContactsPages/ContactsListItem/ContactsListItem";
 import Button from "../../components/Button/Button";
 import icons from "../../assets/icons/icons";
 
 export default function ContactsList(props) {
 
-
-  const { toggleAddRecipient, userID, getContacts, filteredData, setFilteredData} = props;
-
+  const { toggleAddRecipient, getContacts, filteredData, setFilteredData} = props;
 
   useEffect(() => {
     getContacts();

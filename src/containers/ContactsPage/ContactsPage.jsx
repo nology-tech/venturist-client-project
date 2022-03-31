@@ -4,7 +4,6 @@ import ConfirmAddContact from '../../components/ContactsPages/ConfirmAddContact/
 import Header from '../../components/Header/Header';
 import ContactsList from '../ContactsList/ContactsList';
 import MobileNotFound from '../../components/MobileNotFound/MobileNotFound';
-import contacts from "../../assets/data/contactExample";
 
 import './ContactsPage.scss'
 
@@ -25,7 +24,10 @@ const ContactsPage = (props) => {
   const [showConfirmAddContact, setShowConfirmAddContact] = useState(false)
   const [newContact, setNewContact] = useState(emptyContact)
 
- useEffect(() => {getContacts()},[newContact])
+  useEffect(() => 
+    {getContacts()}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    ,[newContact])
 
   const toggleAddRecipient = () => {
     setShowAddRecipient(!showAddRecipient);
