@@ -45,20 +45,20 @@ const WithdrawPage = (props) => {
   const toggleSuccess = () => { 
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
-    handleSubmit()
+    // handleSubmit()
   };
 
   const userID = window.sessionStorage.getItem('userID')
 
   const handleSubmit = () => {
-    fetch('http://localhost:8080/transaction', {
+    fetch('http://venturist-app.nw.r.appspot.com/transaction', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({       
-          "userToId": 6,
-          "userFromId" : 6, 
+          "userToId": `${userID}`,
+          "userFromId" : `${userID}`, 
           "currencyCodeFrom": "GBP",
           "currencyCodeTo": "GBP",
           "amountFrom": showAmount, 
