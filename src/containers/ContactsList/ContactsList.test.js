@@ -1,21 +1,21 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import ContactsList from "./ContactsList";
+// import { render, screen } from "@testing-library/react";
+// import userEvent from "@testing-library/user-event";
+// import ContactsList from "./ContactsList";
 
-const dummyData = [
-  {
-    firstName: "Zoe",
-    middleNames: "",
-    lastName: "Jansen",
-    bankName: "Venturist",
-    bankIcon: "",
-    accountNumber: 12345689,
-    sortCode: "553457",
-    IBAN: "GB56HLFX11005310840367",
-    numberOfTransaction: 100,
-    lastTransaction: 1645803922,
-  },
-];
+// const dummyData = [
+//   {
+//     firstName: "Zoe",
+//     middleNames: "",
+//     lastName: "Jansen",
+//     bankName: "Venturist",
+//     bankIcon: "",
+//     accountNumber: 12345689,
+//     sortCode: "553457",
+//     IBAN: "GB56HLFX11005310840367",
+//     numberOfTransaction: 100,
+//     lastTransaction: 1645803922,
+//   },
+// ];
 
 //These tests currently broken due to re-factor
 
