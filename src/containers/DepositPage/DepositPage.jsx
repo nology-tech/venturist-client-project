@@ -8,17 +8,13 @@ import SuccessfulMessage from "../../components/SuccessfulMessage/SuccessfulMess
 import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 
 const DepositPage = (props) => {
-
-  const { profileData, userHoldings, updateProfileData, userBankAccounts} = props;
-
+  const { profileData, userHoldings, userBankAccounts, refreshWallet } = props;
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showAmount, setShowAmount] = useState(0.0);
   const [isDisabled, setIsDisabled] = useState(false);
 
-  console.log(userBankAccounts)
-
-  const onlyNumber = event => {
+  const onlyNumber = (event) => {
     let amountInputField = event.target.value;
     setShowAmount(event.target.value);
     if (
@@ -29,63 +25,107 @@ const DepositPage = (props) => {
     }
   };
 
-  const toggleConfirm = event => {
+  const toggleConfirm = (event) => {
     const amountInput = document.getElementById("amount-input").value;
-    if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) { 
-      event.preventDefault(); 
+    if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
+      event.preventDefault();
       setIsDisabled(!isDisabled);
       setShowConfirm(!showConfirm);
     }
   };
 
-  const toggleSuccess = () => { 
-    const tempProfileData = {...profileData};
-    tempProfileData.holdings[profileData.cards[0].currencyType] += parseFloat(showAmount);
-    updateProfileData(tempProfileData);
+  const toggleSuccess = () => {
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
+    handleSubmit();
+    handlePutSubmit();
+    refreshWallet();
+  };
+
+  const userID = window.sessionStorage.getItem("userID");
+
+  const handleSubmit = () => {
+    fetch("http://venturist-app.nw.r.appspot.com/transaction", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userToId: `${userID}`,
+        userFromId: `${userID}`,
+        currencyCodeFrom: "GBP",
+        currencyCodeTo: "GBP",
+        amountFrom: showAmount,
+        amountTo: showAmount,
+        rate: 1,
+        fee: 0,
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json))
+      .catch((err) => console.log(err));
+  };
+  let newHoldings = Number(userHoldings[0].amount) + Number(showAmount);
+  const handlePutSubmit = () => {
+    fetch("http://venturist-app.nw.r.appspot.com/holdings", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userID: userID,
+        amount: newHoldings,
+        currencyCode: "GBP",
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json))
+      .catch((err) => console.log(err));
   };
 
   return (
     <>
-    <div className="deposit-page">
-      <Header
-        title="Deposit"
-        pageFunctionHeading="Deposit Funds"
-        textDescription="Need a top up? Add money to your wallet whenever you need. "
-      />
-
-      {(!userHoldings || !userBankAccounts) && <h3 className="withdraw-loading">Loading...</h3>}
-
-      {userHoldings && userBankAccounts &&
-      <TransactionForm
-        formTitle="Deposit Form"
-        buttonName="Deposit Funds"
-        profileData={profileData}
-        userBankAccounts={userBankAccounts}
-        userHoldings={userHoldings}
-        isDisabled= {isDisabled}
-        toggleConfirm={toggleConfirm}
-        onlyNumber={onlyNumber}
-      />}
-
-      {showConfirm && userHoldings && userBankAccounts &&(
-        <ConfirmDetailsPopUp
-          toggleSuccess={toggleSuccess}
-          toggleConfirm={toggleConfirm}
-          profileData={profileData}
-          totalAmount={showAmount}
-          bankDetails={userBankAccounts}
+      <div className="deposit-page">
+        <Header
+          title="Deposit"
+          pageFunctionHeading="Deposit Funds"
+          textDescription="Need a top up? Add money to your wallet whenever you need. "
         />
-      )}
-      {showSuccess && (
-        <SuccessfulMessage
-          message="Deposit has been successful"
-          toggleSuccess={toggleSuccess}
-        />
-      )}
-    </div>
-    <MobileNotFound />
+
+        {(!userHoldings || !userBankAccounts) && (
+          <h3 className="withdraw-loading">Loading...</h3>
+        )}
+
+        {userHoldings && userBankAccounts && (
+          <TransactionForm
+            formTitle="Deposit Form"
+            buttonName="Deposit Funds"
+            profileData={profileData}
+            userBankAccounts={userBankAccounts}
+            userHoldings={userHoldings}
+            isDisabled={isDisabled}
+            toggleConfirm={toggleConfirm}
+            onlyNumber={onlyNumber}
+          />
+        )}
+
+        {showConfirm && userHoldings && userBankAccounts && (
+          <ConfirmDetailsPopUp
+            toggleSuccess={toggleSuccess}
+            toggleConfirm={toggleConfirm}
+            profileData={profileData}
+            totalAmount={showAmount}
+            bankDetails={userBankAccounts}
+          />
+        )}
+        {showSuccess && (
+          <SuccessfulMessage
+            message="Deposit has been successful."
+            toggleSuccess={toggleSuccess}
+          />
+        )}
+      </div>
+      <MobileNotFound />
     </>
   );
 };
