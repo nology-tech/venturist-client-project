@@ -17,16 +17,7 @@ library.add(...iconListRegular);
 
 export default function ListItem(props) {
   const { item, index, setFilteredData, filteredData, handleDelete } = props;
-  console.log(item.id)
-
-  // const deleteItem = () => {
-  //   const removeIndex = index;
-  //   filteredData.splice(removeIndex, 1);
-  //   const updatedArr = filteredData.filter((item) => item.index !== index);
-  //   setFilteredData(updatedArr);
-  // };
-
-  // navBar 230px wide
+  console.log(item)
 
   return (
     <div key={index} className="item-grid" data-testid="item-grid">

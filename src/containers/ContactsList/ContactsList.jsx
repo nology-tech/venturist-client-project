@@ -1,5 +1,4 @@
 import "./ContactsList.scss";
-import contacts from "../../assets/data/contactExample";
 import { useEffect, useState } from "react";
 import ListItem from "../../components/ContactsPages/ContactsListItem/ContactsListItem";
 import Button from "../../components/Button/Button";
@@ -7,7 +6,6 @@ import icons from "../../assets/icons/icons";
 
 export default function ContactsList(props) {
   const [filteredData, setFilteredData] = useState([]);
-  const [toggleDelete, setToggleDelete] = useState(false);
 
   const { toggleAddRecipient, userID } = props;
 
@@ -16,16 +14,12 @@ export default function ContactsList(props) {
       `https://venturist-app.nw.r.appspot.com/contacts/${userID}`
     );
     const data = await result.json();
-    console.log(data);
     setFilteredData(data);
   };
 
-  const toggleRefresh = () => setToggleDelete(!toggleDelete);
-  console.log(toggleDelete);
-  const someFunc = id => {
+  const updateFilteredData = id => {
     const newArr = filteredData.filter(item => item.id !== id);
     setFilteredData(newArr);
-    console.log(newArr);
   };
 
   const handleDelete = contactId => {
@@ -38,16 +32,9 @@ export default function ContactsList(props) {
       .then(response => response.json())
       .then(json => console.log(json))
       .catch(err => console.log(err))
-      .then(someFunc(contactId));
+      .then(updateFilteredData(contactId));
     //
   };
-
-  // const deleteContact = async () => {
-  //   const result = await delete(`https://venturist-app.nw.r.appspot.com/contacts/${userID}`)
-  //   const data = await result.json();
-  //   console.log(data);
-  //   setFilteredData(data);
-  // }
 
   useEffect(() => {
     getContacts();
