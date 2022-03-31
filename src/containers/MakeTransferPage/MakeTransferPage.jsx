@@ -13,7 +13,26 @@ const MakeTransferPage = (props) => {
 
   const { status, ratesArr, getData } = useFxApi();
 
+  const exchangeBase = {
+    exchangeFrom: {
+      user: profileData,
+      currency: ratesArr[0],
+      amount: 0,
+      fee: 0,
+    },
+    exchangeTo: {
+      user: {},
+      currency: ratesArr[1],
+      amount: 0,
+    },
+  };
+
   const [message, setMessage] = useState("Loading live rates...");
+  const [bankDetails, setBankDetails] = useState({});
+  const [exchangeInfo, setExchangeInfo] = useState(exchangeBase);
+  const [showInitialForm, setShowInitialForm] = useState(true);
+  const [showConfirmAccount, setShowConfirmAccount] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const url = `https://venturist-app.nw.r.appspot.com/currencies/GBP`;
   
@@ -31,25 +50,23 @@ const MakeTransferPage = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 
-  const exchangeBase = {
-    exchangeFrom: {
-      user: profileData,
-      currency: ratesArr[0],
-      amount: 0,
-      fee: 0,
-    },
-    exchangeTo: {
-      user: {},
-      currency: ratesArr[1],
-      amount: 0,
-    },
+  useEffect(() => {
+    // getBankAccount(profileData.userID);
+  }, [profileData]);
+
+  const getBankAccount = (userID) => {
+    fetch(`https://venturist-app.nw.r.appspot.com/bank-account/${userID}`)
+      .then(response => response.json())
+      .then(data => setBankDetails(data));
   };
 
-  const [exchangeInfo, setExchangeInfo] = useState(exchangeBase);
+  useEffect(() => {
+    // updateUserBankAccount();
+  }, [bankDetails]);
 
-  const [showInitialForm, setShowInitialForm] = useState(true);
-  const [showConfirmAccount, setShowConfirmAccount] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
+  const updateUserBankAccount = () => {
+    setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeFrom.user.accountNumber = bankDetails.accountNumber, exchangeInfo.exchangeFrom.user.sortCode = bankDetails.sortCode);
+  }
 
   const handleShowForm = () => {
     const amountInput = document.getElementById("amountInput").value;
@@ -87,7 +104,7 @@ const MakeTransferPage = (props) => {
 
       {showInitialForm && message!=="Success" && (<p className="make-transfer__loading">{message}</p>)}
 
-      {showInitialForm && message==="Success" && (
+      {showInitialForm && message==="Success" && bankDetails !== {} && (
         <MakeTransferForm
           exchangeInfo={exchangeInfo}
           setExchangeInfo={setExchangeInfo}
