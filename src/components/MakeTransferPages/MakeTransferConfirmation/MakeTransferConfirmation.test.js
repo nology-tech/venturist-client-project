@@ -205,18 +205,3 @@ test("Check that the cancel button has a function", () => {
 
   expect(onClick).toHaveBeenCalled();
 });
-
-test("Check that the submit button works", () => {
-  const onClick = jest.fn();
-  render(
-  <Router>
-    <MakeTransferConfirmation exchangeInfo={exchangeInfo} handleCancel={onClick} />
-  </Router>
-  );
-
-  const submitButton = screen.getAllByTestId("button")[1];
-  fireEvent.click(submitButton);
-  const success = screen.getByTestId("success");
-
-  expect(success).toBeInTheDocument();
-});
