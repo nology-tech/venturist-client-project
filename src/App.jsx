@@ -21,12 +21,7 @@ const App = () => {
   const [profileData, setProfileData] = useState(false);
   const [userID, setUserID] = useState(false);
   const [userHoldings,setUserHoldings] = useState(false);
-
-  // TEMP
-  const bankDetails = {
-    accountNumber: 12345678,
-    sortCode: "553456",
-  }
+  const [userBankAccounts,setUserBankAccounts] = useState(false);
 
   const setUid = (uid) => {
     updateSessionStorage(uid);
@@ -58,6 +53,12 @@ const App = () => {
       .then(response => response.json())
       .then(data => setUserHoldings(data))
       .catch(error => alert(error));
+
+    await fetch(`https://venturist-app.nw.r.appspot.com/user-bank-account/${userID}`)
+      .then(response => response.json())
+      .then(data => setUserBankAccounts(data))
+      .catch(error => alert(error));
+  
   }
 
   const clearData = () => {
@@ -144,7 +145,7 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <MakeTransferPage profileData={profileData} contactData={contactData} userHoldings={userHoldings} />
+                    <MakeTransferPage profileData={profileData} contactData={contactData} userBankAccounts={userBankAccounts[0]} userHoldings={userHoldings} />
                   </>
                 }
               ></Route>
@@ -164,7 +165,7 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <DepositPage profileData={profileData} userHoldings={userHoldings} bankDetails={bankDetails}/>
+                    <DepositPage profileData={profileData} userHoldings={userHoldings} userBankAccounts={userBankAccounts[0]} />
                   </>
                 }
               ></Route>
@@ -174,10 +175,10 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <WithdrawPage profileData={profileData} userHoldings={userHoldings} bankDetails={bankDetails}/>
+                    <WithdrawPage profileData={profileData} userHoldings={userHoldings} userBankAccounts={userBankAccounts[0]} />
                   </>
                 }
-              ></Route>{" "}
+              ></Route>
             </>
           )}
           <Route path="/404-page" element={<ErrorPage />}></Route>

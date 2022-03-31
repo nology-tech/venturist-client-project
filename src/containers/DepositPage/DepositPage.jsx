@@ -9,12 +9,14 @@ import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 
 const DepositPage = (props) => {
 
-  const { profileData, userHoldings, updateProfileData, bankDetails} = props;
+  const { profileData, userHoldings, updateProfileData, userBankAccounts} = props;
 
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showAmount, setShowAmount] = useState(0.0);
   const [isDisabled, setIsDisabled] = useState(false);
+
+  console.log(userBankAccounts)
 
   const onlyNumber = event => {
     let amountInputField = event.target.value;
@@ -56,6 +58,7 @@ const DepositPage = (props) => {
         formTitle="Deposit Form"
         buttonName="Deposit Funds"
         profileData={profileData}
+        userBankAccounts={userBankAccounts}
         userHoldings={userHoldings}
         isDisabled= {isDisabled}
         toggleConfirm={toggleConfirm}
@@ -68,7 +71,7 @@ const DepositPage = (props) => {
           toggleConfirm={toggleConfirm}
           profileData={profileData}
           totalAmount={showAmount}
-          bankDetails={bankDetails}
+          bankDetails={userBankAccounts}
         />
       )}
       {showSuccess && (

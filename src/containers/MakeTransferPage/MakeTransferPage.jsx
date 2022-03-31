@@ -9,13 +9,13 @@ import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 import useFxApi from "../../Hooks/FX/useFxApi";
 
 const MakeTransferPage = (props) => {
-  const { profileData, contactData, userHoldings } = props;
+  const { profileData, contactData, userHoldings, userBankAccounts } = props;
 
   const { status, ratesArr, getData } = useFxApi();
 
   const exchangeBase = {
     exchangeFrom: {
-      user: {...profileData, holdings: userHoldings},
+      user: {...profileData, holdings: userHoldings, ...userBankAccounts},
       currency: ratesArr[0],
       amount: 0,
       fee: 0,
@@ -51,6 +51,7 @@ const MakeTransferPage = (props) => {
 
   const handleShowForm = () => {
     const amountInput = document.getElementById("amountInput").value;
+    console.log(exchangeInfo.exchangeFrom.user);
     const balanceOfCurrency = exchangeInfo.exchangeFrom.user.holdings.filter(curr => curr.currencyCode === exchangeInfo.exchangeFrom.currency.currencyCode)[0];
     if(!(Number(amountInput)*1.01 < balanceOfCurrency.amount)) {
       alert("You don't have enough of that currency to send.");
