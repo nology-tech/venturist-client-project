@@ -148,7 +148,7 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <ContactsPage />
+                    <ContactsPage userID={userID}/>
                   </>
                 }
               ></Route>

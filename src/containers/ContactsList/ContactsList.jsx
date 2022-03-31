@@ -6,14 +6,16 @@ import Button from "../../components/Button/Button";
 import icons from "../../assets/icons/icons";
 
 export default function ContactsList(props) {
+
   const [filteredData, setFilteredData] = useState(contacts);
 
-  const { toggleAddRecipient } = props;
+  const { toggleAddRecipient, userID } = props;
 
   const getContacts = async () => {
-    const result = await fetch('https://venturist-app.nw.r.appspot.com/contacts')
+    const result = await fetch(`https://venturist-app.nw.r.appspot.com/contacts/${userID}`)
     const data = await result.json();
     console.log(data);
+    setFilteredData(data);
   }
 
   useEffect(() => {

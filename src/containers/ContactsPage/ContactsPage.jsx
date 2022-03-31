@@ -7,12 +7,15 @@ import MobileNotFound from '../../components/MobileNotFound/MobileNotFound';
 
 import './ContactsPage.scss'
 
-const ContactsPage = () => {
+const ContactsPage = (props) => {
+
+  const { userID } = props;
 
   const emptyContact = {
+    userID: `${userID}`,
     contactName: "",
     bankName: "",
-    accountNo: "",
+    accountNumber: "",
     sortCode: ""
   }
 
@@ -39,7 +42,7 @@ const ContactsPage = () => {
     <>
     <div className='contacts-page'>
       <Header title="Contacts" pageFunctionHeading="Your Contacts" textDescription="View your contacts here." />
-      <ContactsList toggleAddRecipient={toggleAddRecipient}/>
+      <ContactsList toggleAddRecipient={toggleAddRecipient} userID={userID}/>
       {showAddRecipient && <AddContact toggleAddRecipient={toggleAddRecipient} toggleConfirmAddContact={toggleConfirmAddContact} setNewContact={setNewContact} />}
       {showConfirmAddContact && <ConfirmAddContact newContact={newContact} toggleConfirmAddContact={toggleConfirmAddContact} showConfirmAddContact={showConfirmAddContact} />}
     </div>
