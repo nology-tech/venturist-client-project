@@ -17,6 +17,7 @@ const MakeTransferForm = props => {
 
   const handleShowCurrencyModal = () => {
     setShowCurrencyModal(!showCurrencyModal);
+    setFilteredData(liveRateData);
   };
 
   const handleChangingCurrency = (event) => {

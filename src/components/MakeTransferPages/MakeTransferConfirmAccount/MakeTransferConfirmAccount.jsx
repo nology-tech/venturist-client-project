@@ -42,10 +42,9 @@ const MakeTransferConfirmAccount = props => {
 
 
   const currencySymbol = exchangeInfo.exchangeFrom.currency.currencySymbol;
-  const currencyCode = exchangeInfo.exchangeFrom.currency.currencyCode;
   const profileData = exchangeInfo.exchangeFrom.user;
-  const transferAmount =
-    Number(exchangeInfo.exchangeFrom.amount) + Number(exchangeInfo.exchangeFrom.fee);
+  const transferAmount = Number(exchangeInfo.exchangeFrom.amount) + Number(exchangeInfo.exchangeFrom.fee);
+  const fundsRemaining = (Number(profileData.holdings.filter(curr => curr.currencyCode === exchangeInfo.exchangeFrom.currency.currencyCode)[0].amount) - transferAmount).toFixed(2);
 
   return (
     <div className="transfer-page__confirm">
@@ -59,7 +58,7 @@ const MakeTransferConfirmAccount = props => {
             {profileData.firstName} {profileData.lastName}
           </h6>
           <div className="transfer-page__confirm__sendContainer__details__text">
-            <p>Account Number:</p> <p>{profileData.accountNumber} </p>{" "}
+            <p>Account Number:</p> <p>{profileData.bankAccountNo} </p>{" "}
           </div>
           <div className="transfer-page__confirm__sendContainer__details__text">
             <p>Sort Code: </p> <p>{profileData.sortCode}</p>{" "}
@@ -77,7 +76,7 @@ const MakeTransferConfirmAccount = props => {
             <p>Funds Remaining: </p>{" "}
             <p data-testid="remainingBalance">
               {currencySymbol}
-              {(Number(profileData.holdings[currencyCode]) - transferAmount).toFixed(2)}
+              {fundsRemaining}
             </p>
           </div>
         </div>

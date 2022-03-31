@@ -8,7 +8,8 @@ import SuccessfulMessage from "../../components/SuccessfulMessage/SuccessfulMess
 import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 
 const DepositPage = (props) => {
-  const { profileData, userHoldings, updateProfileData } = props;
+
+  const { profileData, userHoldings, updateProfileData, userBankAccounts} = props;
 
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -36,10 +37,11 @@ const DepositPage = (props) => {
   };
 
   const toggleSuccess = () => {
-    const tempProfileData = { ...profileData };
-    tempProfileData.holdings[profileData.cards[0].currencyType] +=
-      parseFloat(showAmount);
-    updateProfileData(tempProfileData);
+    // const tempProfileData = { ...profileData };
+    // tempProfileData.holdings[profileData.cards[0].currencyType] +=
+    //   parseFloat(showAmount);
+    // updateProfileData(tempProfileData);
+
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
     handleSubmit();
@@ -89,36 +91,37 @@ const DepositPage = (props) => {
 
   return (
     <>
-      <div className="deposit-page">
-        <Header
-          title="Deposit"
-          pageFunctionHeading="Deposit Funds"
-          textDescription="Need a top up? Add money to your wallet whenever you need. "
-        />
-        <TransactionForm
-          formTitle="Deposit Form"
-          buttonName="Deposit Funds"
-          profileData={profileData}
-          userHoldings={userHoldings}
-          isDisabled={isDisabled}
+    <div className="deposit-page">
+      <Header
+        title="Deposit"
+        pageFunctionHeading="Deposit Funds"
+        textDescription="Need a top up? Add money to your wallet whenever you need. "
+      />
+      <TransactionForm
+        formTitle="Deposit Form"
+        buttonName="Deposit Funds"
+        profileData={profileData}
+        userBankAccounts={userBankAccounts}
+        userHoldings={userHoldings}
+        isDisabled= {isDisabled}
+        toggleConfirm={toggleConfirm}
+        onlyNumber={onlyNumber}
+      />
+      {showConfirm && (
+        <ConfirmDetailsPopUp
+          toggleSuccess={toggleSuccess}
           toggleConfirm={toggleConfirm}
-          onlyNumber={onlyNumber}
+          profileData={profileData}
+          totalAmount={showAmount}
+          bankDetails={userBankAccounts}
         />
-
-        {showConfirm && (
-          <ConfirmDetailsPopUp
-            toggleSuccess={toggleSuccess}
-            toggleConfirm={toggleConfirm}
-            profileData={profileData}
-            totalAmount={showAmount}
-          />
-        )}
-        {showSuccess && (
-          <SuccessfulMessage
-            message="Deposit has been successful"
-            toggleSuccess={toggleSuccess}
-          />
-        )}
+      )}
+      {showSuccess && (
+        <SuccessfulMessage
+          message="Deposit has been successful."
+          toggleSuccess={toggleSuccess}
+        />
+      )}
       </div>
       <MobileNotFound />
     </>

@@ -1,5 +1,10 @@
 .make-transfer {
   margin: 90px 65px 0px 295px;
+
+  &__loading {
+    margin-top: 40px;
+    font-size: 24px;
+  }
 }
 
 @media screen and (max-width: 600px) {
