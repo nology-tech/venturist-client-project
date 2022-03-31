@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from '../../Button/Button';
 import "./MakeTransferConfirmation.scss";
 import SuccessfulMessage from '../../SuccessfulMessage/SuccessfulMessage';
@@ -9,19 +9,45 @@ const MakeTransferConfirmation = (props) => {
 
   const {exchangeInfo, handleCancel} = props;
 
-  const [showSuccess, setShowSuccess] = useState(false);
-
   const from=exchangeInfo.exchangeFrom;
   const to=exchangeInfo.exchangeTo;
+
+  const exchangePost = {
+    userFromId: from.user.userId,
+    userToId: (to.user.firstName + to.user.lastName),
+    currencyCodeFrom: from.currency.currencyCode,
+    currencyCodeTo: to.currency.currencyCode,
+    amountFrom: from.amount,
+    amountTo: to.amount,
+    rate: Number(from.amount / to.amount).toFixed(4),
+    fee: from.fee
+  };
+
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [postSuccess, setPostSuccess] = useState(false);
 
   const calculateConversion = () => {
     return (Number(to.currency.liveRate)/Number(from.currency.liveRate)).toFixed(4);
   };
 
-  const handleSubmit = () => {
-    // Post request?
-    setShowSuccess(true);
+  const handleSubmit = async () => {
+    fetch('https://venturist-app.nw.r.appspot.com/transaction', {
+      method: 'POST',
+      headers: {
+        "Accept": "application/JSON",
+        "Content-Type": "application/JSON"
+      },
+      body: JSON.stringify(exchangePost)
+    })
+      .then(response => setPostSuccess(response.status))
+      .catch(err => alert(err))
   };
+
+  useEffect(() => {
+    if(postSuccess === 200) {
+      setShowSuccess(true);
+    } 
+  }, [postSuccess])
 
   return (
     <div className="make-transfer__confirmation" data-testid="confirmation">
