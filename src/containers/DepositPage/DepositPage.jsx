@@ -16,9 +16,7 @@ const DepositPage = (props) => {
   const [showAmount, setShowAmount] = useState(0.0);
   const [isDisabled, setIsDisabled] = useState(false);
 
-  console.log(userBankAccounts)
-
-  const onlyNumber = event => {
+  const onlyNumber = (event) => {
     let amountInputField = event.target.value;
     setShowAmount(event.target.value);
     if (
@@ -29,21 +27,65 @@ const DepositPage = (props) => {
     }
   };
 
-  const toggleConfirm = event => {
+  const toggleConfirm = (event) => {
     const amountInput = document.getElementById("amount-input").value;
-    if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) { 
-      event.preventDefault(); 
+    if (amountInput.match(/^\d*(\.\d{0,2})?$/) && amountInput > 0) {
+      event.preventDefault();
       setIsDisabled(!isDisabled);
       setShowConfirm(!showConfirm);
     }
   };
 
-  const toggleSuccess = () => { 
-    const tempProfileData = {...profileData};
-    tempProfileData.holdings[profileData.cards[0].currencyType] += parseFloat(showAmount);
+  const toggleSuccess = () => {
+    const tempProfileData = { ...profileData };
+    tempProfileData.holdings[profileData.cards[0].currencyType] +=
+      parseFloat(showAmount);
     updateProfileData(tempProfileData);
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
+    handleSubmit();
+    handlePutSubmit();
+  };
+
+  const userID = window.sessionStorage.getItem("userID");
+
+  const handleSubmit = () => {
+    fetch("http://venturist-app.nw.r.appspot.com/transaction", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userToId: `${userID}`,
+        userFromId: `${userID}`,
+        currencyCodeFrom: "GBP",
+        currencyCodeTo: "GBP",
+        amountFrom: showAmount,
+        amountTo: showAmount,
+        rate: 1,
+        fee: 0,
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json))
+      .catch((err) => console.log(err));
+  };
+
+  const handlePutSubmit = () => {
+    fetch("http://venturist-app.nw.r.appspot.com/holdings", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userID: userID,
+        amount: showAmount,
+        currencyCode: "GBP",
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -72,16 +114,15 @@ const DepositPage = (props) => {
           profileData={profileData}
           totalAmount={showAmount}
           bankDetails={userBankAccounts}
-        />
-      )}
-      {showSuccess && (
-        <SuccessfulMessage
-          message="Deposit has been successful"
-          toggleSuccess={toggleSuccess}
-        />
-      )}
-    </div>
-    <MobileNotFound />
+        />)}
+        {showSuccess && (
+          <SuccessfulMessage
+            message="Deposit has been successful"
+            toggleSuccess={toggleSuccess}
+          />
+        )}
+      </div>
+      <MobileNotFound />
     </>
   );
 };
