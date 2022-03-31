@@ -10,7 +10,6 @@ import ContactsPage from "./containers/ContactsPage/ContactsPage";
 import DepositPage from "./containers/DepositPage/DepositPage";
 import WithdrawPage from "./containers/WithdrawPage/WithdrawPage";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import contactData from "./assets/data/contactExample";
 import HomePage from "./containers/HomePage/HomePage";
 import LoginPage from "./containers/LoginPage/LoginPage";
 import CreateAccountPage from "./containers/CreateAccountPage/CreateAccountPage";
@@ -145,7 +144,7 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <MakeTransferPage profileData={profileData} contactData={contactData} 
+                    <MakeTransferPage profileData={profileData} 
                     userBankAccounts={userBankAccounts[0]} userHoldings={userHoldings} 
                     getUserData={getUserData} />
                   </>

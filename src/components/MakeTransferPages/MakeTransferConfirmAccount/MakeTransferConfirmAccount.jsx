@@ -21,7 +21,7 @@ const MakeTransferConfirmAccount = props => {
   };
 
   const handleChooseRecipient = event => {
-    const user = data.filter(contact => contact.IBAN === event.target.id)[0];
+    const user = data.filter(contact => Number(contact.id) === Number(event.target.id))[0];
     setExchangeInfo({ ...exchangeInfo }, (exchangeInfo.exchangeTo.user = user));
     toggleChooseRecipients();
     handleShowConfirmation();

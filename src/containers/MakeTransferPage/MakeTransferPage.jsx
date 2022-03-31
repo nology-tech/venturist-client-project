@@ -9,7 +9,7 @@ import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 import useFxApi from "../../Hooks/FX/useFxApi";
 
 const MakeTransferPage = (props) => {
-  const { profileData, contactData, userHoldings, userBankAccounts, getUserData } = props;
+  const { profileData, userHoldings, userBankAccounts, getUserData } = props;
 
   const { status, ratesArr, getData } = useFxApi();
 
@@ -32,11 +32,19 @@ const MakeTransferPage = (props) => {
   const [showInitialForm, setShowInitialForm] = useState(true);
   const [showConfirmAccount, setShowConfirmAccount] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [contactData,setContactData] = useState(false);
 
   const url = `https://venturist-app.nw.r.appspot.com/currencies/GBP`;
+
+  const fetchContacts = () => {
+    fetch(`https://venturist-app.nw.r.appspot.com/contacts/${profileData.userID}`)
+      .then(response => response.json())
+      .then(data => setContactData(data));
+  }
   
   useEffect(() => {
     getData(url);
+    fetchContacts();
     if (status === "success") {
       try {
         setMessage("Success")
@@ -45,13 +53,11 @@ const MakeTransferPage = (props) => {
         setMessage("Error getting rates. Please try again later");
       }
     }
-    console.log()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 
   const handleShowForm = () => {
     const amountInput = document.getElementById("amountInput").value;
-    console.log(exchangeInfo.exchangeFrom.user);
     const balanceOfCurrency = exchangeInfo.exchangeFrom.user.holdings.filter(curr => curr.currencyCode === exchangeInfo.exchangeFrom.currency.currencyCode)[0];
     if(!(Number(amountInput)*1.01 < balanceOfCurrency.amount)) {
       alert("You don't have enough of that currency to send.");
