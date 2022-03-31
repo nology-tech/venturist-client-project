@@ -1,45 +1,35 @@
 import "./ContactsList.scss";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ListItem from "../../components/ContactsPages/ContactsListItem/ContactsListItem";
 import Button from "../../components/Button/Button";
 import icons from "../../assets/icons/icons";
 
 export default function ContactsList(props) {
+  const { toggleAddRecipient, getContacts, filteredData, setFilteredData } =
+    props;
 
-  const [filteredData, setFilteredData] = useState([]);
-
-  const { toggleAddRecipient, userID } = props;
-
-  const getContacts = async () => {
-    const result = await fetch(
-      `https://venturist-app.nw.r.appspot.com/contacts/${userID}`
-    );
-    const data = await result.json();
-    setFilteredData(data);
-  };
-
-  const updateFilteredData = id => {
-    const newArr = filteredData.filter(item => item.id !== id);
+  const updateFilteredData = (id) => {
+    const newArr = filteredData.filter((item) => item.id !== id);
     setFilteredData(newArr);
   };
 
-  const handleDelete = contactId => {
+  const handleDelete = (contactId) => {
     fetch(`https://venturist-app.nw.r.appspot.com/contact/${contactId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then(response => response.json())
-      .then(json => console.log(json))
-      .catch(err => console.log(err))
+      .then((response) => response.json())
+      .then((json) => console.log(json))
+      .catch((err) => console.log(err))
       .then(updateFilteredData(contactId));
   };
 
   useEffect(() => {
     getContacts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userID]);
+  }, []);
 
   return (
     <section className="page" data-testid="page">
