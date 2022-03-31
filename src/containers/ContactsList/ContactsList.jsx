@@ -1,5 +1,4 @@
 import "./ContactsList.scss";
-import contacts from "../../assets/data/contactExample";
 import { useEffect, useState } from "react";
 import ListItem from "../../components/ContactsPages/ContactsListItem/ContactsListItem";
 import Button from "../../components/Button/Button";
@@ -7,21 +6,15 @@ import icons from "../../assets/icons/icons";
 
 export default function ContactsList(props) {
 
-  const [filteredData, setFilteredData] = useState(contacts);
 
-  const { toggleAddRecipient, userID } = props;
+  const { toggleAddRecipient, userID, getContacts, filteredData, setFilteredData} = props;
 
-  const getContacts = async () => {
-    const result = await fetch(`https://venturist-app.nw.r.appspot.com/contacts/${userID}`)
-    const data = await result.json();
-    console.log(data);
-    setFilteredData(data);
-  }
 
   useEffect(() => {
     getContacts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
 
 
   return (
