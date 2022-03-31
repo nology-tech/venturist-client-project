@@ -16,8 +16,7 @@ const iconListRegular = Object.keys(IconsRegular)
 library.add(...iconListRegular);
 
 export default function ListItem(props) {
-  const { item, index, setFilteredData, filteredData, handleDelete } = props;
-  console.log(item)
+  const { item, index, handleDelete } = props;
 
   return (
     <div key={index} className="item-grid" data-testid="item-grid">
