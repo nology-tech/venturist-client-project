@@ -17,11 +17,12 @@ const LiveRatesItem = (props) => {
       <td>{amount}</td>
       <td>{rate} </td>
       <td className="liverate-row__button">
+      {buttonName &&
         <Button
           buttonName={buttonName}
           hasIcon={false}
           buttonFunction={buttonFunction}
-        />
+        />}
       </td>
     </tr>
   );
