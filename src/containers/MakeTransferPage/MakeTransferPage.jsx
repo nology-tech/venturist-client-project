@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MakeTransferPage.scss";
 
 import Header from "../../components/Header/Header";
@@ -6,33 +6,54 @@ import MakeTransferConfirmAccount from "../../components/MakeTransferPages/MakeT
 import MakeTransferForm from "../../components/MakeTransferPages/MakeTransferForm/MakeTransferForm";
 import MakeTransferConfirmation from "../../components/MakeTransferPages/MakeTransferConfirmation/MakeTransferConfirmation";
 import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
+import useFxApi from "../../Hooks/FX/useFxApi";
 
 const MakeTransferPage = (props) => {
-  const { liveRateData, profileData, contactData } = props;
+  const { profileData, contactData, userHoldings, userBankAccounts, getUserData } = props;
+
+  const { status, ratesArr, getData } = useFxApi();
 
   const exchangeBase = {
     exchangeFrom: {
-      user: profileData,
-      currency: liveRateData[0],
+      user: {...profileData, holdings: userHoldings, ...userBankAccounts},
+      currency: ratesArr[0],
       amount: 0,
       fee: 0,
     },
     exchangeTo: {
       user: {},
-      currency: liveRateData[1],
+      currency: ratesArr[1],
       amount: 0,
     },
   };
 
+  const [message, setMessage] = useState("Loading live rates...");
   const [exchangeInfo, setExchangeInfo] = useState(exchangeBase);
-
   const [showInitialForm, setShowInitialForm] = useState(true);
   const [showConfirmAccount, setShowConfirmAccount] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
+  const url = `https://venturist-app.nw.r.appspot.com/currencies/GBP`;
+  
+  useEffect(() => {
+    getData(url);
+    if (status === "success") {
+      try {
+        setMessage("Success")
+        setExchangeInfo(exchangeBase);
+      } catch (err) {
+        setMessage("Error getting rates. Please try again later");
+      }
+    }
+    console.log()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status]);
+
   const handleShowForm = () => {
     const amountInput = document.getElementById("amountInput").value;
-    if(!(Number(amountInput)*1.01 < exchangeInfo.exchangeFrom.user.holdings[exchangeInfo.exchangeFrom.currency.currencyCode])) {
+    console.log(exchangeInfo.exchangeFrom.user);
+    const balanceOfCurrency = exchangeInfo.exchangeFrom.user.holdings.filter(curr => curr.currencyCode === exchangeInfo.exchangeFrom.currency.currencyCode)[0];
+    if(!(Number(amountInput)*1.01 < balanceOfCurrency.amount)) {
       alert("You don't have enough of that currency to send.");
       return;
     }
@@ -64,16 +85,18 @@ const MakeTransferPage = (props) => {
         textDescription="Easily and safely transfer money in different currencies."
       />
 
-      {showInitialForm && (
+      {showInitialForm && message!=="Success" && (<p className="make-transfer__loading">{message}</p>)}
+
+      {showInitialForm && message==="Success" && (
         <MakeTransferForm
           exchangeInfo={exchangeInfo}
           setExchangeInfo={setExchangeInfo}
           handleShowForm={handleShowForm}
-          liveRateData={liveRateData}
+          liveRateData={ratesArr}
         />
       )}
 
-      {showConfirmAccount && (
+      {showConfirmAccount && exchangeInfo.exchangeFrom.user.holdings && (
         <MakeTransferConfirmAccount
           exchangeInfo={exchangeInfo}
           setExchangeInfo={setExchangeInfo}
@@ -83,7 +106,7 @@ const MakeTransferPage = (props) => {
       )}
 
       {showConfirmation && (
-        <MakeTransferConfirmation exchangeInfo={exchangeInfo} />
+        <MakeTransferConfirmation exchangeInfo={exchangeInfo} getUserData={getUserData} />
       )}
     </div>
     <MobileNotFound />

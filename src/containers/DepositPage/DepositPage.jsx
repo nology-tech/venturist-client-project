@@ -9,12 +9,14 @@ import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 
 const DepositPage = (props) => {
 
-  const { profileData, userHoldings, updateProfileData} = props;
+  const { profileData, userHoldings, updateProfileData, userBankAccounts} = props;
 
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showAmount, setShowAmount] = useState(0.0);
   const [isDisabled, setIsDisabled] = useState(false);
+
+  console.log(userBankAccounts)
 
   const onlyNumber = event => {
     let amountInputField = event.target.value;
@@ -52,22 +54,28 @@ const DepositPage = (props) => {
         pageFunctionHeading="Deposit Funds"
         textDescription="Need a top up? Add money to your wallet whenever you need. "
       />
+
+      {(!userHoldings || !userBankAccounts) && <h3 className="withdraw-loading">Loading...</h3>}
+
+      {userHoldings && userBankAccounts &&
       <TransactionForm
         formTitle="Deposit Form"
         buttonName="Deposit Funds"
         profileData={profileData}
+        userBankAccounts={userBankAccounts}
         userHoldings={userHoldings}
         isDisabled= {isDisabled}
         toggleConfirm={toggleConfirm}
         onlyNumber={onlyNumber}
-      />
+      />}
 
-      {showConfirm && (
+      {showConfirm && userHoldings && userBankAccounts &&(
         <ConfirmDetailsPopUp
           toggleSuccess={toggleSuccess}
           toggleConfirm={toggleConfirm}
           profileData={profileData}
           totalAmount={showAmount}
+          bankDetails={userBankAccounts}
         />
       )}
       {showSuccess && (

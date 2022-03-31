@@ -9,7 +9,7 @@ import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 
 const WithdrawPage = (props) => {
 
-  const { profileData, userHoldings} = props;
+  const { profileData, userHoldings, userBankAccounts } = props;
 
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -56,21 +56,27 @@ const WithdrawPage = (props) => {
         pageFunctionHeading="Withdraw Funds"
         textDescription="Withdraw money stored with us and send it elsewhere."
       />
+
+      {(!userHoldings || !userBankAccounts) && <h3 className="withdraw-loading">Loading...</h3>}
+
+      {userHoldings && userBankAccounts &&
       <TransactionForm
         formTitle="Withdrawal Form"
         buttonName="Withdraw Funds"
         profileData={profileData}
+        userBankAccounts={userBankAccounts}
         userHoldings={userHoldings}
         isDisabled= {isDisabled}
         toggleConfirm={toggleConfirm}
         onlyNumber={onlyNumber}
-      />
-      {showConfirm && (
+      />}
+      {showConfirm && userHoldings && userBankAccounts && (
         <ConfirmDetailsPopUp
           toggleSuccess={toggleSuccess}
           toggleConfirm={toggleConfirm}
           profileData={profileData}
           totalAmount={showAmount}
+          bankDetails={userBankAccounts}
         />
       )}
       {showSuccess && (
