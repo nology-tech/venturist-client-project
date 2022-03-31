@@ -2,8 +2,32 @@ import MakeTransferConfirmAccount from "./MakeTransferConfirmAccount";
 import liveRates from "../../../assets/data/liveRatesExample";
 import { fireEvent, render, screen } from "@testing-library/react";
 import contactData from "../../../assets/data/contactExample";
-import profileData from "../../../assets/data/samanthaBrooksProfile";
+// import profileData from "../../../assets/data/samanthaBrooksProfile";
 import userEvent from "@testing-library/user-event";
+
+const profileData = {
+  firstName: "Sam",
+  middleNames: "",
+  lastName: "Brooks",
+  bankAccountNo: 12345678,
+  sortCode: "553456",
+  holdings: [{
+    amount: 3651.59,
+    currencyCode: "GBP",
+    currencyName: "British Pound",
+    currencySymbol: "£",
+    id: 1,
+    userID: "OVhSjdW8chfg67ljJOOBaoKf61A2"
+  },
+  {
+    amount: 43.29,
+    currencyCode: "EUR",
+    currencyName: "Euro",
+    currencySymbol: "€",
+    id: 3,
+    userID: "OVhSjdW8chfg67ljJOOBaoKf61A2",
+  }]
+}
 
 const exchangeInfo = {
   exchangeFrom: {
@@ -72,7 +96,7 @@ describe ("Testing that elements render on screen", () => {
       
       const remainingAmount = screen.getByTestId("remainingBalance").innerHTML;
       
-      expect(remainingAmount).toBe("£721.59");
+      expect(remainingAmount).toBe("£621.59");
     });
     
 });
@@ -113,7 +137,6 @@ describe ("Choose recipient search box", () => {
     fireEvent.click(selectButton);
     const search = screen.getByPlaceholderText("Search...");
     userEvent.type(search, "Z");
-    console.log(search);
     const chooseRecipientContainer = screen.getByTestId("choose-modal");
     
     expect(chooseRecipientContainer).toHaveTextContent("Zoe Jansen")
@@ -148,6 +171,4 @@ describe ("Choose recipient search box", () => {
     expect(chooseRecipientContainer).toHaveTextContent("Zoe Jansen")
     expect(chooseRecipientContainer).not.toHaveTextContent("Mateusz Seredyn")
   });
-
-
 });

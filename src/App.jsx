@@ -145,7 +145,7 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <MakeTransferPage liveRateData={ratesArr} profileData={profileData} contactData={contactData} userBankAccounts={userBankAccounts} />
+                    <MakeTransferPage profileData={profileData} contactData={contactData} userBankAccounts={userBankAccounts[0]} userHoldings={userHoldings} />
                   </>
                 }
               ></Route>
@@ -165,7 +165,7 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <DepositPage profileData={profileData} userHoldings={userHoldings} userBankAccounts={userBankAccounts} />
+                    <DepositPage profileData={profileData} userHoldings={userHoldings} userBankAccounts={userBankAccounts[0]} />
                   </>
                 }
               ></Route>
@@ -175,10 +175,10 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <WithdrawPage profileData={profileData} userHoldings={userHoldings} userBankAccounts={userBankAccounts} />
+                    <WithdrawPage profileData={profileData} userHoldings={userHoldings} userBankAccounts={userBankAccounts[0]} />
                   </>
                 }
-              ></Route>{" "}
+              ></Route>
             </>
           )}
           <Route path="/404-page" element={<ErrorPage />}></Route>

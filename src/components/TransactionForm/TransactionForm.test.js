@@ -10,6 +10,10 @@ const userHoldings = [{
   "currencyCode": "GBP",
   "currencySymbol": "£"
 }];
+const userBankAccounts = {
+  sortCode: "553456",
+  bankAccountNo: 12345678
+}
 
 describe("Testing that elements render on screen", () => {
   
@@ -20,6 +24,7 @@ describe("Testing that elements render on screen", () => {
           buttonName="Withdraw Funds"
           profileData={profileData}
           userHoldings={userHoldings}
+          userBankAccounts={userBankAccounts}
           isDisabled= {()=>{}}
           toggleConfirm={()=>{}}
           onlyNumber={()=>{}}
@@ -31,12 +36,13 @@ describe("Testing that elements render on screen", () => {
   });
 
   test("Test that name renders on screen", () => {
-      render(
-        <TransactionForm
+    render(
+      <TransactionForm
           formTitle="Withdrawal Form"
           buttonName="Withdraw Funds"
           profileData={profileData}
           userHoldings={userHoldings}
+          userBankAccounts={userBankAccounts}
           isDisabled= {()=>{}}
           toggleConfirm={()=>{}}
           onlyNumber={()=>{}}
@@ -48,27 +54,30 @@ describe("Testing that elements render on screen", () => {
   });
     
   test("Test that account number renders on screen", () => {
-      render(
-        <TransactionForm
+    render(
+      <TransactionForm
           formTitle="Withdrawal Form"
           buttonName="Withdraw Funds"
           profileData={profileData}
           userHoldings={userHoldings}
+          userBankAccounts={userBankAccounts}
           isDisabled= {()=>{}}
           toggleConfirm={()=>{}}
           onlyNumber={()=>{}}
       />);
 
-      const accountNumber = screen.queryByText("OVhSjdW8chfg67ljJOOBaoKf61A2");
+      const accountNumber = screen.queryByText("12345678");
 
       expect(accountNumber).toBeInTheDocument();
   });
-  xtest("Test that sort code renders on screen", () => {
-      render(
-        <TransactionForm
+  test("Test that sort code renders on screen", () => {
+    render(
+      <TransactionForm
           formTitle="Withdrawal Form"
           buttonName="Withdraw Funds"
           profileData={profileData}
+          userHoldings={userHoldings}
+          userBankAccounts={userBankAccounts}
           isDisabled= {()=>{}}
           toggleConfirm={()=>{}}
           onlyNumber={()=>{}}
@@ -82,14 +91,15 @@ describe("Testing that elements render on screen", () => {
     test("Test that funds remaining renders on screen", () => {
       render(
         <TransactionForm
-          formTitle="Withdrawal Form"
-          buttonName="Withdraw Funds"
-          profileData={profileData}
-          userHoldings={userHoldings}
-          isDisabled= {()=>{}}
-          toggleConfirm={()=>{}}
-          onlyNumber={()=>{}}
-      />);
+            formTitle="Withdrawal Form"
+            buttonName="Withdraw Funds"
+            profileData={profileData}
+            userHoldings={userHoldings}
+            userBankAccounts={userBankAccounts}
+            isDisabled= {()=>{}}
+            toggleConfirm={()=>{}}
+            onlyNumber={()=>{}}
+        />);
 
       const transferAmount = screen.getByTestId("funds-remaining").innerHTML;
 
@@ -99,14 +109,15 @@ describe("Testing that elements render on screen", () => {
     test("Test that component header renders on the screen", () => {
       render(
         <TransactionForm
-          formTitle="Withdrawal Form"
-          buttonName="Withdraw Funds"
-          profileData={profileData}
-          userHoldings={userHoldings}
-          isDisabled= {()=>{}}
-          toggleConfirm={()=>{}}
-          onlyNumber={()=>{}}
-      />);
+            formTitle="Withdrawal Form"
+            buttonName="Withdraw Funds"
+            profileData={profileData}
+            userHoldings={userHoldings}
+            userBankAccounts={userBankAccounts}
+            isDisabled= {()=>{}}
+            toggleConfirm={()=>{}}
+            onlyNumber={()=>{}}
+        />);
 
       const componentHeader = screen.getByTestId("form-title");
 
@@ -120,14 +131,15 @@ describe("Testing that elements render on screen", () => {
       
       render(
         <TransactionForm
-          formTitle="Withdrawal Form"
-          buttonName="Withdraw Funds"
-          profileData={profileData}
-          userHoldings={userHoldings}
-          isDisabled= {()=>{}}
-          toggleConfirm={()=>{}}
-          onlyNumber={()=>{}}
-      />);
+            formTitle="Withdrawal Form"
+            buttonName="Withdraw Funds"
+            profileData={profileData}
+            userHoldings={userHoldings}
+            userBankAccounts={userBankAccounts}
+            isDisabled= {()=>{}}
+            toggleConfirm={()=>{}}
+            onlyNumber={()=>{}}
+        />);
     
       const buttonText = screen.getByTestId("button");
     
@@ -138,14 +150,15 @@ describe("Testing that elements render on screen", () => {
       
       render(
         <TransactionForm
-          formTitle="Withdrawal Form"
-          buttonName="Withdraw Funds"
-          profileData={profileData}
-          userHoldings={userHoldings}
-          isDisabled= {()=>{}}
-          toggleConfirm={()=>{}}
-          onlyNumber={()=>{}}
-      />);
+            formTitle="Withdrawal Form"
+            buttonName="Withdraw Funds"
+            profileData={profileData}
+            userHoldings={userHoldings}
+            userBankAccounts={userBankAccounts}
+            isDisabled= {()=>{}}
+            toggleConfirm={()=>{}}
+            onlyNumber={()=>{}}
+        />);
 
       const input = screen.getByTestId('amount-input')
       fireEvent.change(input, {target: {value: 'e565'}})
