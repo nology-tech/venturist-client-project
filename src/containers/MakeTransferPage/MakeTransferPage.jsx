@@ -27,8 +27,6 @@ const MakeTransferPage = (props) => {
     },
   };
 
-  console.log(userHoldings);
-
   const [message, setMessage] = useState("Loading live rates...");
   const [exchangeInfo, setExchangeInfo] = useState(exchangeBase);
   const [showInitialForm, setShowInitialForm] = useState(true);
