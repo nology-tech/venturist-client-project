@@ -24,7 +24,6 @@ library.add(...iconListRegular)
 const MakeTransferChooseModal = (props) => {
 
   const {type, content, handleEvent, handleSearch, handleShowModal} = props;
-  console.log(content)
   const emptyList = content.length === 0;
 
   const emptyText = <p className="transfer-page__choose__empty">No results found.</p>;
