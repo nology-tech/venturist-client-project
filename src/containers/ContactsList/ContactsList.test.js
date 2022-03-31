@@ -27,7 +27,6 @@ it("should render the contacts list", () => {
   // // 3. Assert
   // expect(contactsList).toBeInTheDocument();
 });
-<<<<<<< HEAD
 
 // it("if user presses delete button, the contact no longer appears on the screen", () => {
 //   // 1. Arrange
@@ -42,5 +41,3 @@ it("should render the contacts list", () => {
 //   // 3. Assert
 //   expect(contactsList).not.toContain(contact[0]);
 // });
-=======
->>>>>>> development
