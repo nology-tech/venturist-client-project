@@ -9,7 +9,7 @@ const profileData = {
   firstName: "Sam",
   middleNames: "",
   lastName: "Brooks",
-  accountNumber: 12345678,
+  bankAccountNo: 12345678,
   sortCode: "553456",
   holdings: [{
     amount: 3651.59,

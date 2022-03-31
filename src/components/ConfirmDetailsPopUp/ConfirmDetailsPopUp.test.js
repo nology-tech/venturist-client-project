@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userProfile from "../../assets/data/samanthaBrooksProfile";
 
 const bankDetails = {
-  accountNumber: 12345678,
+  bankAccountNo: "12345678",
   sortCode: "553456",
 }
 
