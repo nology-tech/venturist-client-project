@@ -45,7 +45,7 @@ const WithdrawPage = (props) => {
   const toggleSuccess = () => { 
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
-    // handleSubmit()
+    handleSubmit()
   };
 
   const userID = window.sessionStorage.getItem('userID')
