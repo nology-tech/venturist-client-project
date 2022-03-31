@@ -45,7 +45,8 @@ const WithdrawPage = (props) => {
   const toggleSuccess = () => { 
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
-    handleSubmit()
+    handleSubmit();
+    handlePutSubmit();
   };
 
   const userID = window.sessionStorage.getItem('userID')
@@ -71,6 +72,22 @@ const WithdrawPage = (props) => {
     .then((json => console.log(json)))
     .catch(err => console.log(err))
   }
+  const handlePutSubmit = () => {
+    fetch("http://venturist-app.nw.r.appspot.com/holdings", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userID: userID,
+        amount: showAmount,
+        currencyCode: "GBP",
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>

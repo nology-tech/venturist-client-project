@@ -106,7 +106,6 @@ const DepositPage = (props) => {
         toggleConfirm={toggleConfirm}
         onlyNumber={onlyNumber}
       />
-
       {showConfirm && (
         <ConfirmDetailsPopUp
           toggleSuccess={toggleSuccess}
@@ -114,13 +113,14 @@ const DepositPage = (props) => {
           profileData={profileData}
           totalAmount={showAmount}
           bankDetails={userBankAccounts}
-        />)}
-        {showSuccess && (
-          <SuccessfulMessage
-            message="Deposit has been successful"
-            toggleSuccess={toggleSuccess}
-          />
-        )}
+        />
+      )}
+      {showSuccess && (
+        <SuccessfulMessage
+          message="Deposit has been successful."
+          toggleSuccess={toggleSuccess}
+        />
+      )}
       </div>
       <MobileNotFound />
     </>
