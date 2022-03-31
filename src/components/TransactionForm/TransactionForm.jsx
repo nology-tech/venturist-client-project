@@ -8,7 +8,8 @@ const TransactionForm = (props) => {
     buttonName,
     profileData,
     userHoldings,
-    toggleConfirm, 
+    toggleConfirm,
+    userBankAccounts,
     onlyNumber, 
     isDisabled
   } = props;
@@ -23,11 +24,20 @@ const TransactionForm = (props) => {
           </h5>
           <tr>
             <td className="deposit-form__table__account-details" colSpan="2">
-              UserID:
+              Account number:
             </td>
             <td></td>
             <td className="deposit-form__table__user-details">
-              {profileData.userID}
+              {userBankAccounts.bankAccountNo}
+            </td>
+          </tr>
+          <tr>
+            <td className="deposit-form__table__account-details" colSpan="2">
+              Sort code:
+            </td>
+            <td></td>
+            <td className="deposit-form__table__user-details">
+              {userBankAccounts.sortCode}
             </td>
           </tr>
         </table>
