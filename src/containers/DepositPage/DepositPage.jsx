@@ -9,8 +9,7 @@ import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 
 const DepositPage = (props) => {
 
-  const { profileData, userHoldings, updateProfileData, userBankAccounts} = props;
-
+  const { profileData, userHoldings, userBankAccounts} = props;
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showAmount, setShowAmount] = useState(0.0);
@@ -36,12 +35,7 @@ const DepositPage = (props) => {
     }
   };
 
-  const toggleSuccess = () => {
-    // const tempProfileData = { ...profileData };
-    // tempProfileData.holdings[profileData.cards[0].currencyType] +=
-    //   parseFloat(showAmount);
-    // updateProfileData(tempProfileData);
-
+  const toggleSuccess = () => { 
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
     handleSubmit();
@@ -71,7 +65,7 @@ const DepositPage = (props) => {
       .then((json) => console.log(json))
       .catch((err) => console.log(err));
   };
-
+  let newHoldings = (Number(userHoldings[0].amount) + Number(showAmount));
   const handlePutSubmit = () => {
     fetch("http://venturist-app.nw.r.appspot.com/holdings", {
       method: "PUT",
@@ -80,7 +74,7 @@ const DepositPage = (props) => {
       },
       body: JSON.stringify({
         userID: userID,
-        amount: showAmount,
+        amount: newHoldings,
         currencyCode: "GBP",
       }),
     })
@@ -97,6 +91,10 @@ const DepositPage = (props) => {
         pageFunctionHeading="Deposit Funds"
         textDescription="Need a top up? Add money to your wallet whenever you need. "
       />
+
+      {(!userHoldings || !userBankAccounts) && <h3 className="withdraw-loading">Loading...</h3>}
+
+      {userHoldings && userBankAccounts &&
       <TransactionForm
         formTitle="Deposit Form"
         buttonName="Deposit Funds"
@@ -106,8 +104,9 @@ const DepositPage = (props) => {
         isDisabled= {isDisabled}
         toggleConfirm={toggleConfirm}
         onlyNumber={onlyNumber}
-      />
-      {showConfirm && (
+      />}
+
+      {showConfirm && userHoldings && userBankAccounts &&(
         <ConfirmDetailsPopUp
           toggleSuccess={toggleSuccess}
           toggleConfirm={toggleConfirm}
