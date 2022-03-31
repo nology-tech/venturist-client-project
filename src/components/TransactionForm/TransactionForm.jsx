@@ -7,6 +7,7 @@ const TransactionForm = (props) => {
     formTitle,
     buttonName,
     profileData,
+    userHoldings,
     toggleConfirm, 
     onlyNumber, 
     isDisabled
@@ -22,19 +23,12 @@ const TransactionForm = (props) => {
           </h5>
           <tr>
             <td className="deposit-form__table__account-details" colSpan="2">
-              Account Number:
+              UserID:
             </td>
             <td></td>
             <td className="deposit-form__table__user-details">
-              {profileData.accountNumber}
+              {profileData.userID}
             </td>
-          </tr>
-          <tr>
-            <td className="deposit-form__table__account-details" colSpan="2">
-              Sort Code:
-            </td>
-            <td></td>
-            <td className="deposit-form__table__user-details">{profileData.sortCode}</td>
           </tr>
         </table>
 
@@ -45,7 +39,7 @@ const TransactionForm = (props) => {
             Amount
           </label>
           <div>
-            <p>{profileData.cards[0].currencySymbol}
+            <p>{userHoldings[0].currencySymbol}
             <input
               id="amount-input"
               data-testid="amount-input"
@@ -65,10 +59,10 @@ const TransactionForm = (props) => {
 
         <table className="deposit-form__table__funds-table">
           <tr>
-            <td id="funds-remaining">Funds remaining:</td>
+            <td id="funds-remaining-header">Funds remaining:</td>
             <td></td>
             <td data-testid="funds-remaining" id="funds-remaining" className="deposit-form__table__user-details">
-              {profileData.holdings[profileData.cards[0].currencyType].toFixed(2)}
+              {userHoldings[0].amount.toFixed(2)}
             </td>
           </tr>
         </table>

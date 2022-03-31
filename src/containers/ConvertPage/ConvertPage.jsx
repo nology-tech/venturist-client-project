@@ -8,27 +8,16 @@ import MobileNotFound from "./../../components/MobileNotFound/MobileNotFound";
 
 const ConvertPage = (props) => {
 
-  const {liveRateData, profileData, updateProfileData} = props;
-
-  const handleConversion = (fromAmount, toAmount, from, to ) => {
-    const temp = {...profileData};
-    temp.holdings[from] -= fromAmount;
-    if(!Object.keys(temp.holdings).includes(to)){
-      temp.holdings[to]= toAmount;
-    } else {
-      temp.holdings[to] += toAmount;
-    } 
-    updateProfileData(temp);
-  }
+  const {liveRateData, profileData, userHoldings, getUserData} = props;
   
   return (
     <>
     <section className='convert-page'>
       <Header title="Convert" pageFunctionHeading="Currency Converter" textDescription="Buy and exchange currencies with ease." /> 
       <div className="tiles">
-      <Wallet profileData={profileData} liveRateData={liveRateData}/>
+      {userHoldings && <Wallet userHoldings={userHoldings} />}
       </div>
-      <CurrencyConverter profileData={profileData} liveRateData={liveRateData} handleConversion={handleConversion} />
+      <CurrencyConverter profileData={profileData} userHoldings={userHoldings} liveRateData={liveRateData} getUserData={getUserData} />
       <Header
         title="Live Rates"
         pageFunctionHeading="View Live Rates"

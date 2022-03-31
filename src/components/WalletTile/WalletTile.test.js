@@ -9,9 +9,9 @@ describe("Testing wallet tile", () => {
   })
 
   test("Render props given", () => {
-    render(<WalletTile currencyAmount={100} currencySymbol="$" currencyCode="A" currencyName="B"/>)
+    render(<WalletTile currencyAmount={100.00} currencySymbol="$" currencyCode="A" currencyName="B"/>)
 
-    expect(screen.getByText("$100.00")).toBeInTheDocument();
+    expect(screen.getByText("$100")).toBeInTheDocument();
     expect(screen.getByText("B")).toBeInTheDocument();
   })
 })

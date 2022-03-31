@@ -9,14 +9,7 @@ import LiveRatesPage from "./containers/LiveRatesPage/LiveRatesPage";
 import ContactsPage from "./containers/ContactsPage/ContactsPage";
 import DepositPage from "./containers/DepositPage/DepositPage";
 import WithdrawPage from "./containers/WithdrawPage/WithdrawPage";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-
-import userProfile from "./assets/data/samanthaBrooksProfile";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import contactData from "./assets/data/contactExample";
 import HomePage from "./containers/HomePage/HomePage";
 import LoginPage from "./containers/LoginPage/LoginPage";
@@ -25,11 +18,9 @@ import ErrorPage from "./containers/404Page/404Page";
 import useFxApi from "./Hooks/FX/useFxApi";
 
 const App = () => {
-  const [profileData, setProfileData] = useState({ ...userProfile });
-  const updateProfileData = (newData) => {
-    setProfileData(newData);
-  };
-  const [userID, setUserID] = useState("");
+  const [profileData, setProfileData] = useState(false);
+  const [userID, setUserID] = useState(false);
+  const [userHoldings,setUserHoldings] = useState(false);
 
   const setUid = (uid) => {
     updateSessionStorage(uid);
@@ -41,17 +32,39 @@ const App = () => {
     window.sessionStorage.setItem('lastUpdateTime', new Date().getTime());
   }
 
+  // Data persistence //
   const checkSessionStorage = () => {
     if(new Date().getTime() - Number(window.sessionStorage.getItem('lastUpdateTime')) > 600000) {
-      setUserID("");
+      setUserID(false);
     } else {
       setUserID(window.sessionStorage.getItem('userID'));
     }
   }
+
+  // API fetching user data //
+  const getUserData = async () => {
+    await fetch(`https://venturist-app.nw.r.appspot.com/user/${userID}`)
+      .then(response => response.json())
+      .then(data => setProfileData(data))
+      .catch(error => alert(error));
+
+    await fetch(`https://venturist-app.nw.r.appspot.com/user-holding/${userID}`)
+      .then(response => response.json())
+      .then(data => setUserHoldings(data))
+      .catch(error => alert(error));
+  }
+
+  const clearData = () => {
+    setUid("");
+    setProfileData(false);
+    setUserHoldings(false);
+  }
   
   useEffect(() => {
     checkSessionStorage();
-  },[]);
+    if (userID) getUserData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userID]);
 
   
 //API fetching ratesArr// 
@@ -93,12 +106,9 @@ const App = () => {
                 path="/wallet"
                 element={
                   <>
-                    <NavBar setUserID={setUserID} />
-                    <UserProfile userID={userID} />
-                    <WalletPage
-                      profileData={profileData}
-                      liveRateData={ratesArr}
-                    />
+                    <NavBar clearData={clearData} />
+                    <UserProfile profileData={profileData} />
+                    <WalletPage userHoldings={userHoldings}/>
                   </>
                 }
               ></Route>
@@ -106,8 +116,8 @@ const App = () => {
                 path="/liverates"
                 element={
                   <>
-                    <NavBar setUserID={setUserID} />
-                    <UserProfile userID={userID} />
+                    <NavBar clearData={clearData} />
+                    <UserProfile profileData={profileData} />
                     <LiveRatesPage />
                   </>
                 }
@@ -116,13 +126,9 @@ const App = () => {
                 path="/convert"
                 element={
                   <>
-                    <NavBar setUserID={setUserID} />
-                    <UserProfile userID={userID} />
-                    <ConvertPage
-                      liveRateData={ratesArr}
-                      profileData={profileData}
-                      updateProfileData={updateProfileData}
-                    />
+                    <NavBar clearData={clearData} />
+                    <UserProfile profileData={profileData} />
+                    <ConvertPage liveRateData={ratesArr} profileData={profileData} userHoldings={userHoldings} getUserData={getUserData} />
                   </>
                 }
               ></Route>
@@ -130,13 +136,9 @@ const App = () => {
                 path="/transfer"
                 element={
                   <>
-                    <NavBar setUserID={setUserID} />
-                    <UserProfile userID={userID} />
-                    <MakeTransferPage
-                      liveRateData={ratesArr}
-                      profileData={profileData}
-                      contactData={contactData}
-                    />
+                    <NavBar clearData={clearData} />
+                    <UserProfile profileData={profileData} />
+                    <MakeTransferPage liveRateData={ratesArr} profileData={profileData} contactData={contactData} />
                   </>
                 }
               ></Route>
@@ -144,8 +146,8 @@ const App = () => {
                 path="/contacts"
                 element={
                   <>
-                    <NavBar setUserID={setUserID} />
-                    <UserProfile userID={userID} />
+                    <NavBar clearData={clearData} />
+                    <UserProfile profileData={profileData} />
                     <ContactsPage />
                   </>
                 }
@@ -154,12 +156,9 @@ const App = () => {
                 path="/deposit"
                 element={
                   <>
-                    <NavBar setUserID={setUserID} />
-                    <UserProfile userID={userID} />
-                    <DepositPage
-                      profileData={profileData}
-                      updateProfileData={updateProfileData}
-                    />
+                    <NavBar clearData={clearData} />
+                    <UserProfile profileData={profileData} />
+                    <DepositPage profileData={profileData} userHoldings={userHoldings} />
                   </>
                 }
               ></Route>
@@ -167,12 +166,9 @@ const App = () => {
                 path="/withdraw"
                 element={
                   <>
-                    <NavBar setUserID={setUserID} />
-                    <UserProfile userID={userID} />
-                    <WithdrawPage
-                      profileData={profileData}
-                      updateProfileData={updateProfileData}
-                    />
+                    <NavBar clearData={clearData} />
+                    <UserProfile profileData={profileData} />
+                    <WithdrawPage profileData={profileData} userHoldings={userHoldings} />
                   </>
                 }
               ></Route>{" "}
