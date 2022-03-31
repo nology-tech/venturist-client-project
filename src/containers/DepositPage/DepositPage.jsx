@@ -37,10 +37,11 @@ const DepositPage = (props) => {
   };
 
   const toggleSuccess = () => {
-    const tempProfileData = { ...profileData };
-    tempProfileData.holdings[profileData.cards[0].currencyType] +=
-      parseFloat(showAmount);
-    updateProfileData(tempProfileData);
+    // const tempProfileData = { ...profileData };
+    // tempProfileData.holdings[profileData.cards[0].currencyType] +=
+    //   parseFloat(showAmount);
+    // updateProfileData(tempProfileData);
+
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
     handleSubmit();
