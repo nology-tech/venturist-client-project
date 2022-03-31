@@ -4,12 +4,13 @@ import DropDown from '../../components/DropDown/DropDown'
 import CircularButton from '../../components/CircularButton/CircularButton'
 import icons from '../../assets/icons/icons'
 import Button from '../../components/Button/Button'
+import {getCurrencyName} from 'currency-iso';
 
 const CurrencyConverter = (props) => {
-  const {liveRateData, profileData, handleConversion} = props;
+  const {liveRateData, profileData, userHoldings, getUserData} = props;
 
 
-  const swap = (value) => {
+  const swap = () => {
     if ((to && from) && (to !== from) && (ownedCurrencies.includes(to.toLowerCase())))  {
       const temp = to;
       setTo(from);
@@ -30,28 +31,42 @@ const CurrencyConverter = (props) => {
   const [rateFrom,setRateFrom] = useState(0);
   const [rateTo,setRateTo] = useState(0);
   const [time, setTime]=useState(0);
+  const [holdingFrom,setHoldingFrom] = useState([]);
+  const [holdingTo,setHoldingTo] = useState([]);
 
   const changeTo = (selected) => {
     setTo(selected);
+    if (ownedCurrencies.includes(selected.toLowerCase())) {
+      setHoldingTo(...[...userHoldings.filter(holding => (holding.currencyCode===selected))]);
+    }
+    else {
+      setHoldingTo({
+        userID: profileData.userID,
+        currencyName: getCurrencyName(selected),
+        currencyCode: selected,
+        currencySymbol: ""
+      })
+    };
   }
   const changeFrom = (selected) => {
     setFrom(selected)
+    setHoldingFrom(...[...userHoldings.filter(holding => (holding.currencyCode===selected))]);
   }
 
   const updateAmount = (event) => {
     setAmount(event.target.value);
   }
 
-  const ownedCurrencies = Object.keys(profileData.holdings).map(code => code.toLocaleLowerCase());
+  const ownedCurrencies = userHoldings.map(holdings => holdings.currencyCode.toLocaleLowerCase());
   const convertibleCurrencies = liveRateData.map(currency => currency.currencyCode.toLowerCase());
 
   const convertPressed = () => {
     setTime(new Date());
 
-    if (to && from && amount > 0 && amount < profileData.holdings[from]) {
+    if (to && from && amount > 0 && amount < holdingFrom.amount) {
       setConvert(true);
       performConversion();
-    } else if (Number(amount) > profileData.holdings[from]) {
+    } else if (Number(amount) > holdingFrom.amount) {
       alert ("Invalid Conversion Amount. Check Balance.")
     } else {
       setConvert(false);
@@ -80,7 +95,60 @@ const CurrencyConverter = (props) => {
     setCurrencyNames(temp);
 
   }
+  const fetchConversion = async () => {
+    await fetch(`https://venturist-app.nw.r.appspot.com/holdings`, {
+      method: "PUT",
+      headers: {
+        "Accept": "application/JSON",
+        "Content-Type": "application/JSON"
+      },
+      body: JSON.stringify({
+        userID: holdingFrom.userID,
+        currencyName: holdingFrom.currencyName,
+        amount: Number((holdingFrom.amount - amount).toFixed(2)),
+        currencyCode: holdingFrom.currencyCode,
+        currencySymbol: holdingFrom.currencySymbol
+      })
+    })
+      .catch(error => alert(error));
 
+    if (ownedCurrencies.includes(to.toLowerCase())) {
+      await fetch(`https://venturist-app.nw.r.appspot.com/holdings`, {
+        method: "PUT",
+        headers: {
+          "Accept": "application/JSON",
+          "Content-Type": "application/JSON"
+        },
+        body: JSON.stringify({
+          userID: profileData.userID,
+          currencyName: "",
+          amount: Number((holdingTo.amount + convertedAmount).toFixed(2)),
+          currencyCode: to,
+          currencySymbol: ""
+        })
+      })
+        .catch(error => alert(error));
+
+    } else {
+      await fetch(`https://venturist-app.nw.r.appspot.com/holding`, {
+      method: "POST",
+      headers: {
+        "Accept": "application/JSON",
+        "Content-Type": "application/JSON"
+      },
+      body: JSON.stringify({
+        userID: holdingTo.userID,
+        currencyName: holdingTo.currencyName,
+        amount: Number((convertedAmount).toFixed(2)),
+        currencyCode: holdingTo.currencyCode,
+        currencySymbol: holdingTo.currencySymbol
+      })
+    })
+      .catch(error => alert(error));
+    }
+
+    await getUserData();
+  }
 
   return (
     <section className='currency-converter' data-testid="currency-converter">
@@ -108,7 +176,9 @@ const CurrencyConverter = (props) => {
         <div className="currency-converter__convert--right">
           <Button buttonName="Make Transfer" hasIcon={false} buttonFunction={()=> {
             setConvert(false);
-            handleConversion(amount, Number(convertedAmount.toFixed(2)), from, to)}}/>
+            fetchConversion();
+            // handleConversion(amount, Number(convertedAmount.toFixed(2)), from, to)
+          }}/>
         </div>
         </div>}
       

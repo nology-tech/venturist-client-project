@@ -1,13 +1,14 @@
 import React from "react";
 import "./UserProfile.scss";
 
-const UserProfile = (props) => {
+const UserProfile = ({ profileData }) => {
   
   return (
     <div className="user-grid" data-testid="user">
-      <h3>
-        {props.userID}
-      </h3>
+      {!profileData && <h3>Loading...</h3>}
+      {profileData && <h3>
+        {profileData.firstName + " " + profileData.lastName}
+      </h3>}
     </div>
   );
 };
