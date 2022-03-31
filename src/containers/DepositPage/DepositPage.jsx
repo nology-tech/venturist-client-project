@@ -91,6 +91,10 @@ const DepositPage = (props) => {
         pageFunctionHeading="Deposit Funds"
         textDescription="Need a top up? Add money to your wallet whenever you need. "
       />
+
+      {(!userHoldings || !userBankAccounts) && <h3 className="withdraw-loading">Loading...</h3>}
+
+      {userHoldings && userBankAccounts &&
       <TransactionForm
         formTitle="Deposit Form"
         buttonName="Deposit Funds"
@@ -100,8 +104,9 @@ const DepositPage = (props) => {
         isDisabled= {isDisabled}
         toggleConfirm={toggleConfirm}
         onlyNumber={onlyNumber}
-      />
-      {showConfirm && (
+      />}
+
+      {showConfirm && userHoldings && userBankAccounts &&(
         <ConfirmDetailsPopUp
           toggleSuccess={toggleSuccess}
           toggleConfirm={toggleConfirm}

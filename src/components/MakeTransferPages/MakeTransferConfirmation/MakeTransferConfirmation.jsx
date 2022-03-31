@@ -7,13 +7,13 @@ import {Link} from "react-router-dom";
 
 const MakeTransferConfirmation = (props) => {
 
-  const {exchangeInfo, handleCancel} = props;
+  const {exchangeInfo, handleCancel, getUserData} = props;
 
   const from=exchangeInfo.exchangeFrom;
   const to=exchangeInfo.exchangeTo;
 
   const exchangePost = {
-    userFromId: from.user.userId,
+    userFromId: from.user.userID,
     userToId: (to.user.firstName + to.user.lastName),
     currencyCodeFrom: from.currency.currencyCode,
     currencyCodeTo: to.currency.currencyCode,
@@ -31,7 +31,7 @@ const MakeTransferConfirmation = (props) => {
   };
 
   const handleSubmit = async () => {
-    fetch('https://venturist-app.nw.r.appspot.com/transaction', {
+    await fetch('https://venturist-app.nw.r.appspot.com/transaction', {
       method: 'POST',
       headers: {
         "Accept": "application/JSON",
@@ -41,6 +41,22 @@ const MakeTransferConfirmation = (props) => {
     })
       .then(response => setPostSuccess(response.status))
       .catch(err => alert(err))
+
+    await fetch(`https://venturist-app.nw.r.appspot.com/holdings`, {
+      method: "PUT",
+      headers: {
+        "Accept": "application/JSON",
+        "Content-Type": "application/JSON"
+      },
+      body: JSON.stringify({
+        userID: exchangePost.userFromId,
+        currencyName: "",
+        amount: (Number(fundsRemaining)),
+        currencyCode: exchangePost.currencyCodeFrom,
+        currencySymbol: ""
+      })})
+      .catch(error => alert(error));
+    getUserData();    
   };
 
   useEffect(() => {
@@ -49,7 +65,7 @@ const MakeTransferConfirmation = (props) => {
     } 
   }, [postSuccess]);
 
-  const fundsRemaining = ((Number(exchangeInfo.exchangeFrom.user.holdings.filter(curr => curr.currencyCode === exchangeInfo.exchangeFrom.currency.currencyCode)[0].amount) - from.amount)-Number(from.fee)).toFixed(2).toLocaleString("en-us");
+  const fundsRemaining = ((Number(exchangeInfo.exchangeFrom.user.holdings.filter(curr => curr.currencyCode === exchangeInfo.exchangeFrom.currency.currencyCode)[0].amount) - from.amount)-Number(from.fee)).toFixed(2);
 
   return (
     <div className="make-transfer__confirmation" data-testid="confirmation">
