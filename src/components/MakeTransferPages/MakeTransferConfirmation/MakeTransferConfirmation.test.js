@@ -3,8 +3,31 @@ import MakeTransferConfirmation from "./MakeTransferConfirmation";
 import {BrowserRouter as Router} from "react-router-dom";
 
 import liveRateData from "./../../../assets/data/liveRatesExample";
-import profileData from "./../../../assets/data/samanthaBrooksProfile";
 import contacts from "../../../assets/data/contactExample";
+
+const profileData = {
+  firstName: "Sam",
+  middleNames: "",
+  lastName: "Brooks",
+  accountNumber: 12345678,
+  sortCode: "553456",
+  holdings: [{
+    amount: 3651.59,
+    currencyCode: "GBP",
+    currencyName: "British Pound",
+    currencySymbol: "£",
+    id: 1,
+    userID: "OVhSjdW8chfg67ljJOOBaoKf61A2"
+  },
+  {
+    amount: 43.29,
+    currencyCode: "EUR",
+    currencyName: "Euro",
+    currencySymbol: "€",
+    id: 3,
+    userID: "OVhSjdW8chfg67ljJOOBaoKf61A2",
+  }]
+}
 
 const exchangeInfo = {
   exchangeFrom: {
@@ -94,7 +117,7 @@ test("Check that funds remaining is correct", () => {
 
   const fundsRemaining = screen.getByTestId("funds-remaining");
 
-  expect(fundsRemaining).toHaveTextContent("3246.59");
+  expect(fundsRemaining).toHaveTextContent("£ 3146.59");
 });
 
 test("Check that funds remaining symbol is correct", () => {

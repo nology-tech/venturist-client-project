@@ -47,7 +47,9 @@ const MakeTransferConfirmation = (props) => {
     if(postSuccess === 200) {
       setShowSuccess(true);
     } 
-  }, [postSuccess])
+  }, [postSuccess]);
+
+  const fundsRemaining = ((Number(exchangeInfo.exchangeFrom.user.holdings.filter(curr => curr.currencyCode === exchangeInfo.exchangeFrom.currency.currencyCode)[0].amount) - from.amount)-Number(from.fee)).toFixed(2).toLocaleString("en-us");
 
   return (
     <div className="make-transfer__confirmation" data-testid="confirmation">
@@ -73,7 +75,7 @@ const MakeTransferConfirmation = (props) => {
               Funds Remaining After Fee:
             </p>
             <p className="make-transfer__confirmation__funds" data-testid="funds-remaining">
-              {from.currency.currencySymbol} {(Number(from.user.holdings[from.currency.currencyCode])-Number(from.amount)-Number(from.fee)).toFixed(2).toLocaleString("en-us")}
+              {from.currency.currencySymbol} {fundsRemaining}
             </p>
           </div>
         </div>

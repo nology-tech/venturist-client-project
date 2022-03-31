@@ -9,13 +9,13 @@ import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 import useFxApi from "../../Hooks/FX/useFxApi";
 
 const MakeTransferPage = (props) => {
-  const { profileData, contactData } = props;
+  const { profileData, contactData, userHoldings } = props;
 
   const { status, ratesArr, getData } = useFxApi();
 
   const exchangeBase = {
     exchangeFrom: {
-      user: profileData,
+      user: {...profileData, holdings: userHoldings},
       currency: ratesArr[0],
       amount: 0,
       fee: 0,
@@ -26,6 +26,8 @@ const MakeTransferPage = (props) => {
       amount: 0,
     },
   };
+
+  console.log(userHoldings);
 
   const [message, setMessage] = useState("Loading live rates...");
   const [exchangeInfo, setExchangeInfo] = useState(exchangeBase);
@@ -51,7 +53,8 @@ const MakeTransferPage = (props) => {
 
   const handleShowForm = () => {
     const amountInput = document.getElementById("amountInput").value;
-    if(!(Number(amountInput)*1.01 < exchangeInfo.exchangeFrom.user.holdings[exchangeInfo.exchangeFrom.currency.currencyCode])) {
+    const balanceOfCurrency = exchangeInfo.exchangeFrom.user.holdings.filter(curr => curr.currencyCode === exchangeInfo.exchangeFrom.currency.currencyCode)[0];
+    if(!(Number(amountInput)*1.01 < balanceOfCurrency.amount)) {
       alert("You don't have enough of that currency to send.");
       return;
     }
@@ -94,7 +97,7 @@ const MakeTransferPage = (props) => {
         />
       )}
 
-      {showConfirmAccount && (
+      {showConfirmAccount && exchangeInfo.exchangeFrom.user.holdings != [] && (
         <MakeTransferConfirmAccount
           exchangeInfo={exchangeInfo}
           setExchangeInfo={setExchangeInfo}

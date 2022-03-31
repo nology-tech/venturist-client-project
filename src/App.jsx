@@ -138,7 +138,7 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <MakeTransferPage liveRateData={ratesArr} profileData={profileData} contactData={contactData} />
+                    <MakeTransferPage profileData={profileData} contactData={contactData} userHoldings={userHoldings} />
                   </>
                 }
               ></Route>
