@@ -53,7 +53,8 @@ const MakeTransferPage = (props) => {
     const amountInput = document.getElementById("amountInput").value;
     console.log(exchangeInfo.exchangeFrom.user);
     const balanceOfCurrency = exchangeInfo.exchangeFrom.user.holdings.filter(curr => curr.currencyCode === exchangeInfo.exchangeFrom.currency.currencyCode)[0];
-    if(!(Number(amountInput)*1.01 < balanceOfCurrency.amount)) {
+    console.log(balanceOfCurrency);
+    if(!(balanceOfCurrency) || !(Number(amountInput)*1.01 < balanceOfCurrency.amount)) {
       alert("You don't have enough of that currency to send.");
       return;
     }

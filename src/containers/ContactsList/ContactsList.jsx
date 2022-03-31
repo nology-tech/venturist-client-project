@@ -5,6 +5,7 @@ import Button from "../../components/Button/Button";
 import icons from "../../assets/icons/icons";
 
 export default function ContactsList(props) {
+
   const [filteredData, setFilteredData] = useState([]);
 
   const { toggleAddRecipient, userID } = props;
@@ -38,7 +39,7 @@ export default function ContactsList(props) {
   useEffect(() => {
     getContacts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userID]);
 
   return (
     <section className="page" data-testid="page">
@@ -58,6 +59,7 @@ export default function ContactsList(props) {
           <p className="headers-grid__bank">Bank</p>
           <div></div>
         </div>
+        {!filteredData && <h3>Loading...</h3>}
         {filteredData.map((item, index) => {
           return (
             <ListItem
