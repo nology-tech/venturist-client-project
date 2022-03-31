@@ -104,7 +104,6 @@ const LiveRates = (props) => {
           currency={currencyName + " " + currencySymbol}
           amount={liveRate * baseAmount}
           rate={liveRate}
-          buttonName="Send"
         />
       );
     });

@@ -14,18 +14,23 @@ const ConvertPage = (props) => {
     <>
     <section className='convert-page'>
       <Header title="Convert" pageFunctionHeading="Currency Converter" textDescription="Buy and exchange currencies with ease." /> 
+      {(!userHoldings || !liveRateData || !profileData) && <h3 className="withdraw-loading">Loading...</h3>}
       <div className="tiles">
       {userHoldings && <Wallet userHoldings={userHoldings} />}
       </div>
+      {userHoldings && liveRateData && profileData && (
       <CurrencyConverter profileData={profileData} userHoldings={userHoldings} liveRateData={liveRateData} getUserData={getUserData} />
+      )}
       <Header
         title="Live Rates"
         pageFunctionHeading="View Live Rates"
         textDescription="See currency rates with your chosen currency in real time."
       />
+      {liveRateData && (
       <section className="live-rates">
         <LiveRates />
       </section>
+      )}
     </section>
     <MobileNotFound />
     </>
