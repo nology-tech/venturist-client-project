@@ -31,7 +31,7 @@ const schema = yup.object({
 
 const AddContact = (props) => {
 
-  const {toggleAddRecipient, toggleConfirmAddContact, setNewContact} = props;
+  const {toggleAddRecipient, toggleConfirmAddContact, setNewContact, userID} = props;
 
   const { register, handleSubmit, formState: { errors }} = useForm({resolver: yupResolver(schema)});
 
@@ -41,8 +41,9 @@ const AddContact = (props) => {
   
   const handleAddRecipient = (data) => {
     setNewContact({
-      firstName: data.name,
-      type: data.type,
+      userID: userID,
+      contactName: data.name,
+      bankName: data.type,
       accountNumber: data.accountNumber,
       sortCode: data.sortCode
     });
