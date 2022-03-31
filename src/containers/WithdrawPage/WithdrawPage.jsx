@@ -9,10 +9,7 @@ import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 
 const WithdrawPage = (props) => {
 
-  const {
-    profileData,
-    updateProfileData,
-  } = props;
+  const { profileData, userHoldings} = props;
 
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -32,7 +29,7 @@ const WithdrawPage = (props) => {
 
   const toggleConfirm = event => {
     const amountInput = document.getElementById("amount-input").value;
-    const hasValidHoldings = (profileData.holdings[profileData.cards[0].currencyType] - parseFloat(amountInput) >= 0)
+    const hasValidHoldings = (userHoldings[0].amount - parseFloat(amountInput) >= 0)
     if (!hasValidHoldings && amountInput) {
       alert("You don't have enough of that currency to withdraw.");
       event.preventDefault();
@@ -46,9 +43,6 @@ const WithdrawPage = (props) => {
   };
 
   const toggleSuccess = () => { 
-    const tempProfileData = {...profileData};
-    tempProfileData.holdings[profileData.cards[0].currencyType] -= parseFloat(showAmount);
-    updateProfileData(tempProfileData);
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
     handleSubmit()
@@ -90,6 +84,7 @@ const WithdrawPage = (props) => {
         formTitle="Withdrawal Form"
         buttonName="Withdraw Funds"
         profileData={profileData}
+        userHoldings={userHoldings}
         isDisabled= {isDisabled}
         toggleConfirm={toggleConfirm}
         onlyNumber={onlyNumber}
