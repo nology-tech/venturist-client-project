@@ -24,8 +24,9 @@ https://venturist-app.nw.r.appspot.com
 
 **Contacts**
 
+- /contact/{id} - DELETE - returns - string
 - /contacts - GET - returns - JSON array of objects
-- /contacts/{id} - GET - returns - JSON objects
+- /contacts/{id} - GET - returns - JSON array of objects
 - /contact - POST - returns - string
 
 **Bank Account**

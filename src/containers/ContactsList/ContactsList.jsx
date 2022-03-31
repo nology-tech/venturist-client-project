@@ -20,6 +20,7 @@ export default function ContactsList(props) {
 
   useEffect(() => {
     getContacts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
