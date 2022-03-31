@@ -157,7 +157,7 @@ const LiveRates = (props) => {
       </div>
     );
   } else {
-    return <p data-testid="liverate-loading">{message}</p>;
+    return <p className="withdraw-loading" data-testid="liverate-loading">{message}</p>;
   }
 };
 

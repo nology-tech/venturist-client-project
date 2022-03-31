@@ -155,6 +155,7 @@ const App = () => {
                         liveRateData={ratesArr}
                         profileData={profileData}
                         userHoldings={userHoldings}
+                        getUserData={getUserData}
                       />
                     </>
                   }
