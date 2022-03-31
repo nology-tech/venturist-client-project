@@ -16,14 +16,15 @@ const iconListRegular = Object.keys(IconsRegular)
 library.add(...iconListRegular);
 
 export default function ListItem(props) {
-  const { item, index, setFilteredData, filteredData } = props;
+  const { item, index, setFilteredData, filteredData, handleDelete } = props;
+  console.log(item.id)
 
-  const deleteItem = () => {
-    const removeIndex = index;
-    filteredData.splice(removeIndex, 1);
-    const updatedArr = filteredData.filter((item) => item.index !== index);
-    setFilteredData(updatedArr);
-  };
+  // const deleteItem = () => {
+  //   const removeIndex = index;
+  //   filteredData.splice(removeIndex, 1);
+  //   const updatedArr = filteredData.filter((item) => item.index !== index);
+  //   setFilteredData(updatedArr);
+  // };
 
   // navBar 230px wide
 
@@ -38,7 +39,7 @@ export default function ListItem(props) {
           data-testid="delete-button"
           className="item-grid__bin"
           icon="fa-solid fa-trash-can"
-          onClick={deleteItem}
+          onClick={() => {handleDelete(item.id)}}
         />
       </div>
     </div>

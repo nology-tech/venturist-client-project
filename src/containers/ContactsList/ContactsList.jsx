@@ -6,29 +6,64 @@ import Button from "../../components/Button/Button";
 import icons from "../../assets/icons/icons";
 
 export default function ContactsList(props) {
-
-  const [filteredData, setFilteredData] = useState(contacts);
+  const [filteredData, setFilteredData] = useState([]);
+  const [toggleDelete, setToggleDelete] = useState(false);
 
   const { toggleAddRecipient, userID } = props;
 
   const getContacts = async () => {
-    const result = await fetch(`https://venturist-app.nw.r.appspot.com/contacts/${userID}`)
+    const result = await fetch(
+      `https://venturist-app.nw.r.appspot.com/contacts/${userID}`
+    );
     const data = await result.json();
     console.log(data);
     setFilteredData(data);
-  }
+  };
+
+  const toggleRefresh = () => setToggleDelete(!toggleDelete);
+  console.log(toggleDelete);
+  const someFunc = id => {
+    const newArr = filteredData.filter(item => item.id !== id);
+    setFilteredData(newArr);
+    console.log(newArr);
+  };
+
+  const handleDelete = contactId => {
+    fetch(`https://venturist-app.nw.r.appspot.com/contact/${contactId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .catch(err => console.log(err))
+      .then(someFunc(contactId));
+    //
+  };
+
+  // const deleteContact = async () => {
+  //   const result = await delete(`https://venturist-app.nw.r.appspot.com/contacts/${userID}`)
+  //   const data = await result.json();
+  //   console.log(data);
+  //   setFilteredData(data);
+  // }
 
   useEffect(() => {
     getContacts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
+  }, []);
 
   return (
     <section className="page" data-testid="page">
       <div>
         <div className="add-contact">
-        <Button buttonName={"Add Contact"} hasIcon={true} iconSrc={icons.Contacts} buttonFunction={toggleAddRecipient}/>
+          <Button
+            buttonName={"Add Contact"}
+            hasIcon={true}
+            iconSrc={icons.Contacts}
+            buttonFunction={toggleAddRecipient}
+          />
         </div>
         <div className="headers-grid">
           <p className="headers-grid__name">Name</p>
@@ -46,6 +81,7 @@ export default function ContactsList(props) {
               key={index}
               setFilteredData={setFilteredData}
               filteredData={filteredData}
+              handleDelete={handleDelete}
             />
           );
         })}
