@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.scss";
-import img from "../../../assets/images/liveratescreenshot.png";
+import img from "../../../assets/images/venturist-currency.png";
 
 const Home = () => {
   return (
@@ -14,7 +14,7 @@ const Home = () => {
         className="home__img"
         src={img}
         alt="App screenshot"
-        width="750px"
+        width="900px"
         data-testid="home-img"
       />
     </section>
