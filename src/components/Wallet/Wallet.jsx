@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import WalletTile from '../WalletTile/WalletTile';
 import "./Wallet.scss";
 import { getAuth, signOut } from "firebase/auth";
@@ -9,8 +9,12 @@ import icons from "../../assets/icons/icons";
 
 const Wallet = (props) => {
 
-  const {profileData, liveRateData, setUserID} = props;
+  const { userHoldings, setUserID} = props;
 
+  const tiles = userHoldings.map((holding,index) => {
+      return <WalletTile key={index} currencyAmount={holding.amount} currencySymbol={holding.currencySymbol} currencyCode={holding.currencyCode} currencyName={holding.currencyName}/>
+    } )
+  
   const nav = useNavigate();
 
   const logOut = () => {
@@ -25,26 +29,11 @@ const Wallet = (props) => {
       .catch((error) => alert("Something Went Wrong"));
   }
 
-  const [tiles,setTiles] = useState([]);
-  useEffect(() => {
-    const temp = Object.keys(profileData.holdings).map((key,index) => {
-      let currencyName = "";
-      let currencySymbol = "";
-      for(let currency of liveRateData) {
-        if(currency.currencyCode === key) {
-          currencyName =  currency.currencyName
-          currencySymbol = currency.currencySymbol
-        }
-      }
-
-      return <WalletTile key={index} currencyAmount={profileData.holdings[key]} currencySymbol={currencySymbol} currencyCode={key} currencyName={currencyName}/>
-  }) 
-  setTiles(temp)
-  }, [profileData,liveRateData])
 
   return (
-    <div>
-      <div data-testid="wallet" className="wallet">{tiles}</div>
+    <div data-testid="wallet" className="wallet">
+      {!userHoldings && <h3>Loading...</h3>}
+      {tiles}
       <div className='wallet-signout'>
           <Button className="wallet-signout__button" buttonName="Sign Out" hasIcon={true} iconSrc={icons.SignOut} buttonFunction={logOut} />
       </div>
