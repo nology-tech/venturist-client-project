@@ -72,6 +72,7 @@ const WithdrawPage = (props) => {
     .then((json => console.log(json)))
     .catch(err => console.log(err))
   }
+  let newHoldings = (Number(userHoldings[0].amount) - Number(showAmount)); 
   const handlePutSubmit = () => {
     fetch("http://venturist-app.nw.r.appspot.com/holdings", {
       method: "PUT",
@@ -80,7 +81,7 @@ const WithdrawPage = (props) => {
       },
       body: JSON.stringify({
         userID: userID,
-        amount: showAmount,
+        amount: newHoldings,
         currencyCode: "GBP",
       }),
     })
