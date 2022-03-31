@@ -2,6 +2,11 @@ import ConfirmDetailsPopUp from "./ConfirmDetailsPopUp";
 import { render, screen } from "@testing-library/react";
 import userProfile from "../../assets/data/samanthaBrooksProfile";
 
+const bankDetails = {
+  accountNumber: 12345678,
+  sortCode: "553456",
+}
+
 describe("Testing that elements render on screen", () => {
   
   test("Test to render container on screen", () => {
@@ -10,6 +15,7 @@ describe("Testing that elements render on screen", () => {
         toggleSuccess={()=>{}}
         toggleConfirm={()=>{}}
         profileData={userProfile}
+        bankDetails={bankDetails}
         totalAmount="100"
       />);
 
@@ -20,12 +26,13 @@ describe("Testing that elements render on screen", () => {
 
     test("Test that name renders on screen", () => {
       render(
-      <ConfirmDetailsPopUp 
-        toggleSuccess={()=>{}}
-        toggleConfirm={()=>{}}
-        profileData={userProfile}
-        totalAmount="100"
-      />);
+        <ConfirmDetailsPopUp 
+          toggleSuccess={()=>{}}
+          toggleConfirm={()=>{}}
+          profileData={userProfile}
+          bankDetails={bankDetails}
+          totalAmount="100"
+        />);
 
       const Name = screen.queryByText("Sam Brooks");
 
@@ -34,13 +41,13 @@ describe("Testing that elements render on screen", () => {
     
     test("Test that account number renders on screen", () => {
       render(
-      <ConfirmDetailsPopUp 
-        toggleSuccess={()=>{}}
-        toggleConfirm={()=>{}}
-        profileData={userProfile}
-        totalAmount="100"
-      />
-      );
+        <ConfirmDetailsPopUp 
+          toggleSuccess={()=>{}}
+          toggleConfirm={()=>{}}
+          profileData={userProfile}
+          bankDetails={bankDetails}
+          totalAmount="100"
+        />);
 
       const accountNumber = screen.queryByText("12345678");
 
@@ -49,13 +56,13 @@ describe("Testing that elements render on screen", () => {
     
     test("Test that sort code renders on screen", () => {
       render(
-      <ConfirmDetailsPopUp 
-        toggleSuccess={()=>{}}
-        toggleConfirm={()=>{}}
-        profileData={userProfile}
-        totalAmount="100"
-      />
-      );
+        <ConfirmDetailsPopUp 
+          toggleSuccess={()=>{}}
+          toggleConfirm={()=>{}}
+          profileData={userProfile}
+          bankDetails={bankDetails}
+          totalAmount="100"
+        />);
 
       const sortCode = screen.queryByText("553456");
 
@@ -64,14 +71,13 @@ describe("Testing that elements render on screen", () => {
     
     test("Test that transfer amount renders on screen", () => {
       render(
-      <ConfirmDetailsPopUp 
-        toggleSuccess={()=>{}}
-        toggleConfirm={()=>{}}
-        profileData={userProfile}
-        totalAmount="100"
-      />
-      );
-
+        <ConfirmDetailsPopUp 
+          toggleSuccess={()=>{}}
+          toggleConfirm={()=>{}}
+          profileData={userProfile}
+          bankDetails={bankDetails}
+          totalAmount="100"
+        />);
       const transferAmount = screen.getByTestId("total-amount").innerHTML;
 
       expect(transferAmount).toContain("100");
@@ -79,13 +85,13 @@ describe("Testing that elements render on screen", () => {
 
     test("Test that component header renders on the screen", () => {
       render(
-      <ConfirmDetailsPopUp 
-        toggleSuccess={()=>{}}
-        toggleConfirm={()=>{}}
-        profileData={userProfile}
-        totalAmount="100"
-      />
-      );
+        <ConfirmDetailsPopUp 
+          toggleSuccess={()=>{}}
+          toggleConfirm={()=>{}}
+          profileData={userProfile}
+          bankDetails={bankDetails}
+          totalAmount="100"
+        />);
 
       const componentHeader = screen.queryByText("Confirm Details");
 
@@ -96,15 +102,14 @@ describe("Testing that elements render on screen", () => {
   describe("Testing that button is present", () => {
   
     test("Should render the button on the page", () => {
-      
       render(
-      <ConfirmDetailsPopUp 
-        toggleSuccess={()=>{}}
-        toggleConfirm={()=>{}}
-        profileData={userProfile}
-        totalAmount="100"
-      />
-      );
+        <ConfirmDetailsPopUp 
+          toggleSuccess={()=>{}}
+          toggleConfirm={()=>{}}
+          profileData={userProfile}
+          bankDetails={bankDetails}
+          totalAmount="100"
+        />);
     
       const goBackButton = screen.getAllByTestId("button")[0];
       const confirmButton = screen.getAllByTestId("button")[1];

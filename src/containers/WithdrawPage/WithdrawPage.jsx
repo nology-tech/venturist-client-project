@@ -9,7 +9,7 @@ import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 
 const WithdrawPage = (props) => {
 
-  const { profileData, userHoldings} = props;
+  const { profileData, userHoldings, bankDetails } = props;
 
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -71,6 +71,7 @@ const WithdrawPage = (props) => {
           toggleConfirm={toggleConfirm}
           profileData={profileData}
           totalAmount={showAmount}
+          bankDetails={bankDetails}
         />
       )}
       {showSuccess && (

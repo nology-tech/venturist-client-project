@@ -9,7 +9,7 @@ import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 
 const DepositPage = (props) => {
 
-  const { profileData, userHoldings, updateProfileData} = props;
+  const { profileData, userHoldings, updateProfileData, bankDetails} = props;
 
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -68,6 +68,7 @@ const DepositPage = (props) => {
           toggleConfirm={toggleConfirm}
           profileData={profileData}
           totalAmount={showAmount}
+          bankDetails={bankDetails}
         />
       )}
       {showSuccess && (

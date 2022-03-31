@@ -22,6 +22,12 @@ const App = () => {
   const [userID, setUserID] = useState(false);
   const [userHoldings,setUserHoldings] = useState(false);
 
+  // TEMP
+  const bankDetails = {
+    accountNumber: 12345678,
+    sortCode: "553456",
+  }
+
   const setUid = (uid) => {
     updateSessionStorage(uid);
     setUserID(uid);
@@ -158,7 +164,7 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <DepositPage profileData={profileData} userHoldings={userHoldings} />
+                    <DepositPage profileData={profileData} userHoldings={userHoldings} bankDetails={bankDetails}/>
                   </>
                 }
               ></Route>
@@ -168,7 +174,7 @@ const App = () => {
                   <>
                     <NavBar clearData={clearData} />
                     <UserProfile profileData={profileData} />
-                    <WithdrawPage profileData={profileData} userHoldings={userHoldings} />
+                    <WithdrawPage profileData={profileData} userHoldings={userHoldings} bankDetails={bankDetails}/>
                   </>
                 }
               ></Route>{" "}

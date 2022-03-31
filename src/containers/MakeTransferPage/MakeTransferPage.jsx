@@ -95,7 +95,7 @@ const MakeTransferPage = (props) => {
         />
       )}
 
-      {showConfirmAccount && exchangeInfo.exchangeFrom.user.holdings != [] && (
+      {showConfirmAccount && exchangeInfo.exchangeFrom.user.holdings && (
         <MakeTransferConfirmAccount
           exchangeInfo={exchangeInfo}
           setExchangeInfo={setExchangeInfo}
