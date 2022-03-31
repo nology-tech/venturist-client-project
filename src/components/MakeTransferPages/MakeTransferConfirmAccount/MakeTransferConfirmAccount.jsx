@@ -29,13 +29,13 @@ const MakeTransferConfirmAccount = props => {
 
   const handleInput = event => {
     setSearchedData(data.filter(person => {
-      let fullName;
-      if (person.middleNames) {
-        fullName = person.firstName + " " + person.middleNames + " " + person.lastName;
-      } else {
-        fullName = person.firstName + " " + person.lastName;
-      }
-      return fullName.toLowerCase().includes(event.target.value.toLowerCase());
+      // let fullName;
+      // if (person.middleNames) {
+      //   fullName = person.firstName + " " + person.middleNames + " " + person.lastName;
+      // } else {
+      //   fullName = person.firstName + " " + person.lastName;
+      // }
+      return person.contactName.toLowerCase().includes(event.target.value.toLowerCase());
     }));
   };
 
