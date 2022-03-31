@@ -6,9 +6,7 @@ import icons from "../../assets/icons/icons";
 
 export default function ContactsList(props) {
 
-
   const { toggleAddRecipient, getContacts, filteredData, setFilteredData} = props;
-
 
   useEffect(() => {
     getContacts();
