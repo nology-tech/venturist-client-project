@@ -11,6 +11,7 @@ const ConfirmDetailsPopUp = (props) => {
     toggleSuccess
   } = props;
 
+
   return (
     <div>
       <div className="confirm-popup-background"></div>

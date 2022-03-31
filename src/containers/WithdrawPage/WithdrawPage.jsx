@@ -51,8 +51,32 @@ const WithdrawPage = (props) => {
     updateProfileData(tempProfileData);
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
+    handleSubmit()
   };
 
+  const userID = window.sessionStorage.getItem('userID')
+
+  const handleSubmit = () => {
+    fetch('http://localhost:8080/transaction', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({       
+          "userToId": 6,
+          "userFromId" : 6, 
+          "currencyCodeFrom": "GBP",
+          "currencyCodeTo": "GBP",
+          "amountFrom": showAmount, 
+          "amountTo": showAmount,
+          "rate": 1,
+          "fee": 0
+      })
+    })
+    .then((response) => response.json())
+    .then((json => console.log(json)))
+    .catch(err => console.log(err))
+  }
 
   return (
     <>
