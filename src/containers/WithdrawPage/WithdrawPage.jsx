@@ -56,6 +56,10 @@ const WithdrawPage = (props) => {
         pageFunctionHeading="Withdraw Funds"
         textDescription="Withdraw money stored with us and send it elsewhere."
       />
+
+      {(!userHoldings || !userBankAccounts) && <h3 className="withdraw-loading">Loading...</h3>}
+
+      {userHoldings && userBankAccounts &&
       <TransactionForm
         formTitle="Withdrawal Form"
         buttonName="Withdraw Funds"
@@ -65,8 +69,8 @@ const WithdrawPage = (props) => {
         isDisabled= {isDisabled}
         toggleConfirm={toggleConfirm}
         onlyNumber={onlyNumber}
-      />
-      {showConfirm && (
+      />}
+      {showConfirm && userHoldings && userBankAccounts && (
         <ConfirmDetailsPopUp
           toggleSuccess={toggleSuccess}
           toggleConfirm={toggleConfirm}
