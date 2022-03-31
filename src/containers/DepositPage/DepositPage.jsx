@@ -8,8 +8,7 @@ import SuccessfulMessage from "../../components/SuccessfulMessage/SuccessfulMess
 import MobileNotFound from "../../components/MobileNotFound/MobileNotFound";
 
 const DepositPage = (props) => {
-
-  const { profileData, userHoldings, userBankAccounts} = props;
+  const { profileData, userHoldings, userBankAccounts, refreshWallet } = props;
   const [showConfirm, setShowConfirm] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showAmount, setShowAmount] = useState(0.0);
@@ -35,11 +34,12 @@ const DepositPage = (props) => {
     }
   };
 
-  const toggleSuccess = () => { 
+  const toggleSuccess = () => {
     setShowConfirm(!showConfirm);
     setShowSuccess(!showSuccess);
     handleSubmit();
     handlePutSubmit();
+    refreshWallet();
   };
 
   const userID = window.sessionStorage.getItem("userID");
@@ -65,7 +65,7 @@ const DepositPage = (props) => {
       .then((json) => console.log(json))
       .catch((err) => console.log(err));
   };
-  let newHoldings = (Number(userHoldings[0].amount) + Number(showAmount));
+  let newHoldings = Number(userHoldings[0].amount) + Number(showAmount);
   const handlePutSubmit = () => {
     fetch("http://venturist-app.nw.r.appspot.com/holdings", {
       method: "PUT",
@@ -85,42 +85,45 @@ const DepositPage = (props) => {
 
   return (
     <>
-    <div className="deposit-page">
-      <Header
-        title="Deposit"
-        pageFunctionHeading="Deposit Funds"
-        textDescription="Need a top up? Add money to your wallet whenever you need. "
-      />
-
-      {(!userHoldings || !userBankAccounts) && <h3 className="withdraw-loading">Loading...</h3>}
-
-      {userHoldings && userBankAccounts &&
-      <TransactionForm
-        formTitle="Deposit Form"
-        buttonName="Deposit Funds"
-        profileData={profileData}
-        userBankAccounts={userBankAccounts}
-        userHoldings={userHoldings}
-        isDisabled= {isDisabled}
-        toggleConfirm={toggleConfirm}
-        onlyNumber={onlyNumber}
-      />}
-
-      {showConfirm && userHoldings && userBankAccounts &&(
-        <ConfirmDetailsPopUp
-          toggleSuccess={toggleSuccess}
-          toggleConfirm={toggleConfirm}
-          profileData={profileData}
-          totalAmount={showAmount}
-          bankDetails={userBankAccounts}
+      <div className="deposit-page">
+        <Header
+          title="Deposit"
+          pageFunctionHeading="Deposit Funds"
+          textDescription="Need a top up? Add money to your wallet whenever you need. "
         />
-      )}
-      {showSuccess && (
-        <SuccessfulMessage
-          message="Deposit has been successful."
-          toggleSuccess={toggleSuccess}
-        />
-      )}
+
+        {(!userHoldings || !userBankAccounts) && (
+          <h3 className="withdraw-loading">Loading...</h3>
+        )}
+
+        {userHoldings && userBankAccounts && (
+          <TransactionForm
+            formTitle="Deposit Form"
+            buttonName="Deposit Funds"
+            profileData={profileData}
+            userBankAccounts={userBankAccounts}
+            userHoldings={userHoldings}
+            isDisabled={isDisabled}
+            toggleConfirm={toggleConfirm}
+            onlyNumber={onlyNumber}
+          />
+        )}
+
+        {showConfirm && userHoldings && userBankAccounts && (
+          <ConfirmDetailsPopUp
+            toggleSuccess={toggleSuccess}
+            toggleConfirm={toggleConfirm}
+            profileData={profileData}
+            totalAmount={showAmount}
+            bankDetails={userBankAccounts}
+          />
+        )}
+        {showSuccess && (
+          <SuccessfulMessage
+            message="Deposit has been successful."
+            toggleSuccess={toggleSuccess}
+          />
+        )}
       </div>
       <MobileNotFound />
     </>
