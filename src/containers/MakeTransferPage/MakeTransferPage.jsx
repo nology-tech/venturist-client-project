@@ -28,7 +28,6 @@ const MakeTransferPage = (props) => {
   };
 
   const [message, setMessage] = useState("Loading live rates...");
-  const [bankDetails, setBankDetails] = useState({});
   const [exchangeInfo, setExchangeInfo] = useState(exchangeBase);
   const [showInitialForm, setShowInitialForm] = useState(true);
   const [showConfirmAccount, setShowConfirmAccount] = useState(false);
@@ -86,7 +85,7 @@ const MakeTransferPage = (props) => {
 
       {showInitialForm && message!=="Success" && (<p className="make-transfer__loading">{message}</p>)}
 
-      {showInitialForm && message==="Success" && bankDetails !== {} && (
+      {showInitialForm && message==="Success" && (
         <MakeTransferForm
           exchangeInfo={exchangeInfo}
           setExchangeInfo={setExchangeInfo}
