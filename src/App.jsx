@@ -9,13 +9,7 @@ import LiveRatesPage from "./containers/LiveRatesPage/LiveRatesPage";
 import ContactsPage from "./containers/ContactsPage/ContactsPage";
 import DepositPage from "./containers/DepositPage/DepositPage";
 import WithdrawPage from "./containers/WithdrawPage/WithdrawPage";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-import contactData from "./assets/data/contactExample";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./containers/HomePage/HomePage";
 import LoginPage from "./containers/LoginPage/LoginPage";
 import CreateAccountPage from "./containers/CreateAccountPage/CreateAccountPage";
@@ -128,8 +122,7 @@ const App = () => {
           )}
           <Route path="/signup" element={<CreateAccountPage />}></Route>
           {new Date().getTime() -
-            window.sessionStorage.getItem("lastUpdateTime") <=
-            600000 &&
+            window.sessionStorage.getItem("lastUpdateTime") <= 600000 &&
             window.sessionStorage.getItem("userID") !== "" && (
               <>
                 <Route
@@ -162,6 +155,7 @@ const App = () => {
                         liveRateData={ratesArr}
                         profileData={profileData}
                         userHoldings={userHoldings}
+                        getUserData={getUserData}
                       />
                     </>
                   }
@@ -174,9 +168,9 @@ const App = () => {
                       <UserProfile profileData={profileData} />
                       <MakeTransferPage
                         profileData={profileData}
-                        contactData={contactData}
                         userBankAccounts={userBankAccounts[0]}
                         userHoldings={userHoldings}
+                        getUserData={getUserData}
                       />
                     </>
                   }

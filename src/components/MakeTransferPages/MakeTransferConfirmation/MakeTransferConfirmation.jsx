@@ -14,7 +14,7 @@ const MakeTransferConfirmation = (props) => {
 
   const exchangePost = {
     userFromId: from.user.userID,
-    userToId: (to.user.firstName + to.user.lastName),
+    userToId: (to.user.contactName),
     currencyCodeFrom: from.currency.currencyCode,
     currencyCodeTo: to.currency.currencyCode,
     amountFrom: from.amount,
@@ -97,7 +97,7 @@ const MakeTransferConfirmation = (props) => {
         </div>
         <h4>To</h4>
         <div className="make-transfer__confirmation__to">
-          <h6>{to.user.firstName} {to.user.lastName}</h6>
+          <h6>{to.user.contactName}</h6>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__subtext">
             <p>Account Number:</p>
             <p>{to.user.accountNumber}</p>

@@ -39,12 +39,35 @@ const MakeTransferAddRecipient = (props) => {
     toggleAddRecipient();
   };
   
+  const postData = async (data) => {
+    try {
+      await fetch("https://venturist-app.nw.r.appspot.com/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userID: exchangeInfo.exchangeFrom.user.userID,
+          contactName: data.name,
+          bankName: data.type,
+          accountNumber: data.accountNumber,
+          sortCode: data.sortCode,
+        }),
+      });
+      // alert("Successfully added!");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleAddRecipient = (data) => {
+    postData(data);
     setExchangeInfo({...exchangeInfo}, exchangeInfo.exchangeTo.user = {
-      firstName: data.name,
-      type: data.type,
+      userID: exchangeInfo.exchangeFrom.user.userID,
+      contactName: data.name,
+      bankName: data.type,
       accountNumber: data.accountNumber,
-      sortCode: data.sortCode
+      sortCode: data.sortCode,
     });
     toggleAddRecipient();
     handleShowConfirmation();
@@ -59,7 +82,7 @@ const MakeTransferAddRecipient = (props) => {
         <label htmlFor="name" className="transfer-page__add-recipient__label">Recipient Name</label>
         <input {...register("name")} className="transfer-page__add-recipient__input" type="text" />
         <p className="transfer-page__add-recipient__error">{errors.name?.message}</p>
-        <label htmlFor="type" className="transfer-page__add-recipient__label">Account Type</label>
+        <label htmlFor="type" className="transfer-page__add-recipient__label">Bank Name</label>
         <input {...register("type")} className="transfer-page__add-recipient__input" type="text" />
         <p className="transfer-page__add-recipient__error">{errors.type?.message}</p>
         <label htmlFor="accountNumber" className="transfer-page__add-recipient__label">Account Number</label>

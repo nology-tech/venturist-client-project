@@ -20,12 +20,12 @@ const MakeTransferCard = (props) => {
 
   } else if(type==="Recipient") {
 
-    let personName = cardContent.firstName + " " + ((cardContent.middleNames) ? cardContent.middleNames + " " : "") + cardContent.lastName;
-    const leftText = <p key={4}>{personName}</p>;
+    // let personName = cardContent.firstName + " " + ((cardContent.middleNames) ? cardContent.middleNames + " " : "") + cardContent.lastName;
+    const leftText = <p key={4}>{cardContent.contactName}</p>;
     leftContent = leftText;
     rightContent = [<p className="transfer-page__card__sort-code" key={5} data-testid="sort-code">{cardContent.sortCode}</p>, 
     <p className="transfer-page__card__account-number" key={6}>{cardContent.accountNumber}</p>];
-    overlayId = cardContent.IBAN;
+    overlayId = cardContent.id;
   }
 
   return (

@@ -157,7 +157,7 @@ const CurrencyConverter = (props) => {
         <h3 className='currency-converter__grid--heading'>From</h3>
         <div></div>
         <h3 className='currency-converter__grid--heading'>To</h3>
-        <input type="text" autoComplete='off' value={amount} className='currency-converter__grid--input' onInput={updateAmount}></input>
+        <input type="text" autoComplete='off' className='currency-converter__grid--input' onInput={updateAmount} placeholder="0"></input>
         <DropDown codes={ownedCurrencies} handleChange= {changeFrom} currentCode={from} />
         <CircularButton content={icons.Convert} handleClick={swap}/>
         <DropDown codes={convertibleCurrencies} handleChange= {changeTo} currentCode={to} />

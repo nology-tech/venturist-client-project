@@ -21,7 +21,7 @@ const MakeTransferConfirmAccount = props => {
   };
 
   const handleChooseRecipient = event => {
-    const user = data.filter(contact => contact.IBAN === event.target.id)[0];
+    const user = data.filter(contact => Number(contact.id) === Number(event.target.id))[0];
     setExchangeInfo({ ...exchangeInfo }, (exchangeInfo.exchangeTo.user = user));
     toggleChooseRecipients();
     handleShowConfirmation();
@@ -29,13 +29,13 @@ const MakeTransferConfirmAccount = props => {
 
   const handleInput = event => {
     setSearchedData(data.filter(person => {
-      let fullName;
-      if (person.middleNames) {
-        fullName = person.firstName + " " + person.middleNames + " " + person.lastName;
-      } else {
-        fullName = person.firstName + " " + person.lastName;
-      }
-      return fullName.toLowerCase().includes(event.target.value.toLowerCase());
+      // let fullName;
+      // if (person.middleNames) {
+      //   fullName = person.firstName + " " + person.middleNames + " " + person.lastName;
+      // } else {
+      //   fullName = person.firstName + " " + person.lastName;
+      // }
+      return person.contactName.toLowerCase().includes(event.target.value.toLowerCase());
     }));
   };
 

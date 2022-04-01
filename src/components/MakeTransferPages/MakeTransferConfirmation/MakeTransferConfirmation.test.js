@@ -29,6 +29,19 @@ const profileData = {
   }]
 }
 
+const contactData = 
+  {
+    contactName: "Zoe Jansen",
+    bankName: "Venturist",
+    bankIcon: "",
+    accountNumber: 12345689,
+    sortCode: "553457",
+    IBAN: "GB56HLFX11005310840367",
+    numberOfTransaction: 100,
+    lastTransaction: 1645803922
+  }
+
+
 const exchangeInfo = {
   exchangeFrom: {
     user: profileData,
@@ -37,7 +50,7 @@ const exchangeInfo = {
     fee: 5
   },
   exchangeTo: {
-    user:contacts[0],
+    user:contactData,
     currency: liveRateData[1],
     amount: 700
   }
@@ -51,7 +64,7 @@ const exchangeInfo2 = {
     fee: 5
   },
   exchangeTo: {
-    user:contacts[0],
+    user:contactData,
     currency: liveRateData[0],
     amount: 700
   }
