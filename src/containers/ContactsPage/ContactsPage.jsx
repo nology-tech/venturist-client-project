@@ -49,7 +49,6 @@ const ContactsPage = (props) => {
       `https://venturist-app.nw.r.appspot.com/contacts/${userID}`
     );
     const data = await result.json();
-    // console.log(data);
     setFilteredData(data);
   };
 

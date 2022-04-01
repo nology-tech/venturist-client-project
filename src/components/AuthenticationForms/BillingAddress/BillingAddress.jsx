@@ -43,8 +43,6 @@ const BillingAddress = (props) => {
     navigate("/wallet", { replace: true });
   };
 
-  console.log(userData);
-
   return (
     <div className="billingAddress" data-testid="billingAddress">
       <div className="billingAddress__header">

@@ -21,7 +21,6 @@ export default function ContactsList(props) {
       },
     })
       .then((response) => response.json())
-      .then((json) => console.log(json))
       .catch((err) => console.log(err))
       .then(updateFilteredData(contactId));
   };

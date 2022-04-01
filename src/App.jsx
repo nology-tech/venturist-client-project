@@ -88,8 +88,6 @@ const App = () => {
 
   const [message, setMessage] = useState("Loading live rates...");
 
-  console.log(message);
-
   const url = `https://venturist-app.nw.r.appspot.com/currencies/GBP`;
 
   useEffect(() => {
