@@ -7,7 +7,9 @@ const TransactionForm = (props) => {
     formTitle,
     buttonName,
     profileData,
-    toggleConfirm, 
+    userHoldings,
+    toggleConfirm,
+    userBankAccounts,
     onlyNumber, 
     isDisabled
   } = props;
@@ -21,20 +23,22 @@ const TransactionForm = (props) => {
             {profileData.firstName} {profileData.lastName}
           </h5>
           <tr>
-            <td className="deposit-form__table__account-details" colspan="2">
-              Account Number:
+            <td className="deposit-form__table__account-details" colSpan="2">
+              Account number:
             </td>
             <td></td>
             <td className="deposit-form__table__user-details">
-              {profileData.accountNumber}
+              {userBankAccounts.bankAccountNo}
             </td>
           </tr>
           <tr>
-            <td className="deposit-form__table__account-details" colspan="2">
-              Sort Code:
+            <td className="deposit-form__table__account-details" colSpan="2">
+              Sort code:
             </td>
             <td></td>
-            <td className="deposit-form__table__user-details">{profileData.sortCode}</td>
+            <td className="deposit-form__table__user-details">
+              {userBankAccounts.sortCode}
+            </td>
           </tr>
         </table>
 
@@ -45,7 +49,7 @@ const TransactionForm = (props) => {
             Amount
           </label>
           <div>
-            <p>{profileData.cards[0].currencySymbol}
+            <p>{userHoldings[0].currencySymbol}
             <input
               id="amount-input"
               data-testid="amount-input"
@@ -65,10 +69,10 @@ const TransactionForm = (props) => {
 
         <table className="deposit-form__table__funds-table">
           <tr>
-            <td id="funds-remaining">Funds remaining:</td>
+            <td id="funds-remaining-header">Funds remaining:</td>
             <td></td>
             <td data-testid="funds-remaining" id="funds-remaining" className="deposit-form__table__user-details">
-              {profileData.holdings[profileData.cards[0].currencyType].toFixed(2)}
+              {userHoldings[0].amount.toFixed(2)}
             </td>
           </tr>
         </table>

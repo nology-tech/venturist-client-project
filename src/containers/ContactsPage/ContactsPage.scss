@@ -1,3 +1,10 @@
 .contacts-page {
   margin: 90px 65px 0px 295px;
 }
+
+
+@media screen and (max-width: 600px) {
+  .contacts-page {
+    display: none;
+  }
+}

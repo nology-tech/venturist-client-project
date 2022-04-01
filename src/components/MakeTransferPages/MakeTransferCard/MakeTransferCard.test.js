@@ -3,6 +3,18 @@ import currency from "../../../assets/data/liveRatesExample";
 import contactList from "./../../../assets/data/contactExample";
 import { fireEvent, render, screen } from "@testing-library/react";
 
+const contactData = 
+  {
+    contactName: "Zoe Jansen",
+    bankName: "Venturist",
+    bankIcon: "",
+    accountNumber: 12345689,
+    sortCode: "553457",
+    IBAN: "GB56HLFX11005310840367",
+    numberOfTransaction: 100,
+    lastTransaction: 1645803922
+  }
+
 describe('Rendering components', () => {
 
   test('Check it renders the currency name', () => {
@@ -56,7 +68,7 @@ describe('Rendering components', () => {
   test('Check it renders the contacts name', () => {
     //Arrange
     const onClick = jest.fn();
-    render(<MakeTransferCard type="Recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
+    render(<MakeTransferCard type="Recipient" cardContent={contactData} handleEvent={onClick}/>);
 
     //Act
     const contactName = screen.queryByText("Zoe Jansen");
@@ -68,7 +80,7 @@ describe('Rendering components', () => {
   test('Check it renders the sort code', () => {
     //Arrange
     const onClick = jest.fn();
-    render(<MakeTransferCard type="Recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
+    render(<MakeTransferCard type="Recipient" cardContent={contactData} handleEvent={onClick}/>);
 
     //Act
     const contactSortCode = screen.getByTestId("sort-code");
@@ -80,24 +92,13 @@ describe('Rendering components', () => {
   test('Check it renders the account number', () => {
     //Arrange
     const onClick = jest.fn();
-    render(<MakeTransferCard type="Recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
+    render(<MakeTransferCard type="Recipient" cardContent={contactData} handleEvent={onClick}/>);
 
     //Act
     const contactAccountNumber = screen.queryByText("12345689");
 
     //Assert
     expect(contactAccountNumber).toBeInTheDocument();
-  });
-
-  test('Check the it renders the image', () => {
-    //Arrange
-    const onClick = jest.fn();
-    render(<MakeTransferCard type="Recipient" cardContent={contactList[0]} handleEvent={onClick}/>);
-    //Act
-    const bankImage = screen.queryByRole("img");
-
-    //Assert
-    expect(bankImage).toBeInTheDocument();
   });
 });
 

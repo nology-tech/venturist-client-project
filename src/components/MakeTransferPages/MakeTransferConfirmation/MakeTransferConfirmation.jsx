@@ -1,26 +1,71 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from '../../Button/Button';
 import "./MakeTransferConfirmation.scss";
 import SuccessfulMessage from '../../SuccessfulMessage/SuccessfulMessage';
 import icons from "./../../../assets/icons/icons.js";
+import {Link} from "react-router-dom";
 
 const MakeTransferConfirmation = (props) => {
 
-  const {exchangeInfo, handleCancel} = props;
-
-  const [showSuccess, setShowSuccess] = useState(false);
+  const {exchangeInfo, handleCancel, getUserData} = props;
 
   const from=exchangeInfo.exchangeFrom;
   const to=exchangeInfo.exchangeTo;
+
+  const exchangePost = {
+    userFromId: from.user.userID,
+    userToId: (to.user.contactName),
+    currencyCodeFrom: from.currency.currencyCode,
+    currencyCodeTo: to.currency.currencyCode,
+    amountFrom: from.amount,
+    amountTo: to.amount,
+    rate: Number(from.amount / to.amount).toFixed(4),
+    fee: from.fee
+  };
+
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [postSuccess, setPostSuccess] = useState(false);
 
   const calculateConversion = () => {
     return (Number(to.currency.liveRate)/Number(from.currency.liveRate)).toFixed(4);
   };
 
-  const handleSubmit = () => {
-    // Post request?
-    setShowSuccess(true);
+  const handleSubmit = async () => {
+    await fetch('https://venturist-app.nw.r.appspot.com/transaction', {
+      method: 'POST',
+      headers: {
+        "Accept": "application/JSON",
+        "Content-Type": "application/JSON"
+      },
+      body: JSON.stringify(exchangePost)
+    })
+      .then(response => setPostSuccess(response.status))
+      .catch(err => alert(err))
+
+    await fetch(`https://venturist-app.nw.r.appspot.com/holdings`, {
+      method: "PUT",
+      headers: {
+        "Accept": "application/JSON",
+        "Content-Type": "application/JSON"
+      },
+      body: JSON.stringify({
+        userID: exchangePost.userFromId,
+        currencyName: "",
+        amount: (Number(fundsRemaining)),
+        currencyCode: exchangePost.currencyCodeFrom,
+        currencySymbol: ""
+      })})
+      .catch(error => alert(error));
+    getUserData();    
   };
+
+  useEffect(() => {
+    if(postSuccess === 200) {
+      setShowSuccess(true);
+    } 
+  }, [postSuccess]);
+
+  const fundsRemaining = ((Number(exchangeInfo.exchangeFrom.user.holdings.filter(curr => curr.currencyCode === exchangeInfo.exchangeFrom.currency.currencyCode)[0].amount) - from.amount)-Number(from.fee)).toFixed(2);
 
   return (
     <div className="make-transfer__confirmation" data-testid="confirmation">
@@ -30,7 +75,7 @@ const MakeTransferConfirmation = (props) => {
           <h6 data-testid="user-from-name">{from.user.firstName} {from.user.lastName}</h6>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__subtext">
             <p>Account Number:</p>
-            <p>{from.user.accountNumber}</p>
+            <p>{from.user.bankAccountNo}</p>
           </div>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__subtext">
             <p> Sort Code:</p>
@@ -46,13 +91,13 @@ const MakeTransferConfirmation = (props) => {
               Funds Remaining After Fee:
             </p>
             <p className="make-transfer__confirmation__funds" data-testid="funds-remaining">
-              {from.currency.currencySymbol} {(Number(from.user.holdings[from.currency.currencyCode])-Number(from.amount)-Number(from.fee)).toFixed(2).toLocaleString("en-us")}
+              {from.currency.currencySymbol} {fundsRemaining}
             </p>
           </div>
         </div>
         <h4>To</h4>
         <div className="make-transfer__confirmation__to">
-          <h6>{to.user.firstName} {to.user.lastName}</h6>
+          <h6>{to.user.contactName}</h6>
           <div className="make-transfer__confirmation__split make-transfer__confirmation__subtext">
             <p>Account Number:</p>
             <p>{to.user.accountNumber}</p>
@@ -89,18 +134,10 @@ const MakeTransferConfirmation = (props) => {
           </div>
         </div>
         <div className="make-transfer__confirmation__buttons">
-          <Button 
-            buttonName="Cancel" 
-            buttonFunction={handleCancel} 
-            buttonStyle="clear"  
-          />
-          <Button 
-            buttonName="Submit" 
-            hasIcon={true} 
-            iconSrc={icons.Transfer} 
-            iconPosition="left"
-            buttonFunction={handleSubmit}
-          />
+          <Link to="/wallet">
+          <Button buttonName="Cancel" buttonFunction={handleCancel} buttonStyle="clear" />
+          </Link>
+          <Button buttonName="Submit" hasIcon={true} iconSrc={icons.Transfer} iconPosition="left" buttonFunction={handleSubmit} />
         </div>
       </div>
       {showSuccess && <SuccessfulMessage message={"Transaction Successful."} />}

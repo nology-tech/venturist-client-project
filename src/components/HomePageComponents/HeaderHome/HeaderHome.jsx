@@ -12,7 +12,7 @@ const HeaderHome = () => {
         <h2>Venturist</h2>
       </div>
       <div className="headerHome__buttons">
-        <Link to="/login">
+        <Link to="/signin">
           <Button buttonName="Sign in" />
         </Link>
         <Link to="/signup">

@@ -1,9 +1,66 @@
 import MakeTransferConfirmAccount from "./MakeTransferConfirmAccount";
 import liveRates from "../../../assets/data/liveRatesExample";
 import { fireEvent, render, screen } from "@testing-library/react";
-import contactData from "../../../assets/data/contactExample";
-import profileData from "../../../assets/data/samanthaBrooksProfile";
+// import contactData from "../../../assets/data/contactExample";
+// import profileData from "../../../assets/data/samanthaBrooksProfile";
 import userEvent from "@testing-library/user-event";
+
+const contactData = 
+  [{
+    contactName: "Zoe Jansen",
+    bankName: "Venturist",
+    bankIcon: "",
+    accountNumber: 12345689,
+    sortCode: "553457",
+    IBAN: "GB56HLFX11005310840367",
+    numberOfTransaction: 100,
+    lastTransaction: 1645803922
+  },
+  {
+    contactName: "Robert Hooper",
+    bankName: "Bank of New Zealand",
+    bankIcon: "https://pbs.twimg.com/profile_images/1295470695321726976/GtLcinlv_400x400.jpg",
+    accountNumber: 89621597,
+    sortCode: "123456",
+    IBAN: "GB56HLFX11005310840366",
+    numberOfTransaction: 58,
+    lastTransaction: 1645548731658
+  },
+  {
+    contactName: "Mateusz Seredyn",
+    bankName: "Plus Bank SA",
+    bankIcon: "https://plusbank.pl/video/Plus_Bank_animacja_logo_v3.jpg",
+    accountNumber: 39524562,
+    sortCode: "594923",
+    IBAN: "GB56HLFX11005310840465",
+    numberOfTransaction: 20,
+    lastTransaction: 1645548738321
+  }
+]
+
+const profileData = {
+  firstName: "Sam",
+  middleNames: "",
+  lastName: "Brooks",
+  bankAccountNo: 12345678,
+  sortCode: "553456",
+  holdings: [{
+    amount: 3651.59,
+    currencyCode: "GBP",
+    currencyName: "British Pound",
+    currencySymbol: "£",
+    id: 1,
+    userID: "OVhSjdW8chfg67ljJOOBaoKf61A2"
+  },
+  {
+    amount: 43.29,
+    currencyCode: "EUR",
+    currencyName: "Euro",
+    currencySymbol: "€",
+    id: 3,
+    userID: "OVhSjdW8chfg67ljJOOBaoKf61A2",
+  }]
+}
 
 const exchangeInfo = {
   exchangeFrom: {
@@ -72,7 +129,7 @@ describe ("Testing that elements render on screen", () => {
       
       const remainingAmount = screen.getByTestId("remainingBalance").innerHTML;
       
-      expect(remainingAmount).toBe("£721.59");
+      expect(remainingAmount).toBe("£621.59");
     });
     
 });
@@ -113,7 +170,7 @@ describe ("Choose recipient search box", () => {
     fireEvent.click(selectButton);
     const search = screen.getByPlaceholderText("Search...");
     userEvent.type(search, "Z");
-    const chooseRecipientContainer = screen.getByTestId("choose-modal")
+    const chooseRecipientContainer = screen.getByTestId("choose-modal");
     
     expect(chooseRecipientContainer).toHaveTextContent("Zoe Jansen")
     expect(chooseRecipientContainer).toHaveTextContent("Mateusz Seredyn")
@@ -147,6 +204,4 @@ describe ("Choose recipient search box", () => {
     expect(chooseRecipientContainer).toHaveTextContent("Zoe Jansen")
     expect(chooseRecipientContainer).not.toHaveTextContent("Mateusz Seredyn")
   });
-
-
 });

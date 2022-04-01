@@ -1,8 +1,20 @@
 import MakeTransferChooseModal from "./MakeTransferChooseModal";
 import liveRateData from "../../../assets/data/liveRatesExample";
-import contactData from "./../../../assets/data/contactExample";
+// import contactData from "./../../../assets/data/contactExample";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
+const contactData = 
+  [{
+    contactName: "Zoe Jansen",
+    bankName: "Venturist",
+    bankIcon: "",
+    accountNumber: 12345689,
+    sortCode: "553457",
+    IBAN: "GB56HLFX11005310840367",
+    numberOfTransaction: 100,
+    lastTransaction: 1645803922
+  }]
 
 describe("Render components, currency", () => {
   test("Render the component", () => {
@@ -124,7 +136,7 @@ describe("Functionality tests, currency", () => {
         type="Currency"
         content={liveRateData}
         handleEvent={onClick}
-        handleInput={onSearch}
+        handleSearch={onSearch}
         handleShowModal={onClick}
       />
     );

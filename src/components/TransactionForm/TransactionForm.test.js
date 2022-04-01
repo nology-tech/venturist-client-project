@@ -1,6 +1,19 @@
 import TransactionForm from "./TransactionForm";
 import { fireEvent, render, screen, userEvent } from "@testing-library/react";
-import profileData from "../../assets/data/samanthaBrooksProfile";
+
+const profileData = {userID: "OVhSjdW8chfg67ljJOOBaoKf61A2" ,firstName:"test", lastName:"test"}
+const userHoldings = [{
+  "id": 1,
+  "userID": "OVhSjdW8chfg67ljJOOBaoKf61A2",
+  "currencyName": "British Pound",
+  "amount": 3751.59,
+  "currencyCode": "GBP",
+  "currencySymbol": "£"
+}];
+const userBankAccounts = {
+  sortCode: "553456",
+  bankAccountNo: 12345678
+}
 
 describe("Testing that elements render on screen", () => {
   
@@ -10,6 +23,8 @@ describe("Testing that elements render on screen", () => {
           formTitle="Withdrawal Form"
           buttonName="Withdraw Funds"
           profileData={profileData}
+          userHoldings={userHoldings}
+          userBankAccounts={userBankAccounts}
           isDisabled= {()=>{}}
           toggleConfirm={()=>{}}
           onlyNumber={()=>{}}
@@ -20,28 +35,32 @@ describe("Testing that elements render on screen", () => {
     expect(container).toBeInTheDocument();
   });
 
-    test("Test that name renders on screen", () => {
-      render(
-        <TransactionForm
+  test("Test that name renders on screen", () => {
+    render(
+      <TransactionForm
           formTitle="Withdrawal Form"
           buttonName="Withdraw Funds"
           profileData={profileData}
+          userHoldings={userHoldings}
+          userBankAccounts={userBankAccounts}
           isDisabled= {()=>{}}
           toggleConfirm={()=>{}}
           onlyNumber={()=>{}}
       />);
 
-      const Name = screen.queryByText("Sam Brooks");
+      const Name = screen.queryByText("test test");
 
       expect(Name).toBeInTheDocument();
-    });
+  });
     
-    test("Test that account number renders on screen", () => {
-      render(
-        <TransactionForm
+  test("Test that account number renders on screen", () => {
+    render(
+      <TransactionForm
           formTitle="Withdrawal Form"
           buttonName="Withdraw Funds"
           profileData={profileData}
+          userHoldings={userHoldings}
+          userBankAccounts={userBankAccounts}
           isDisabled= {()=>{}}
           toggleConfirm={()=>{}}
           onlyNumber={()=>{}}
@@ -50,14 +69,15 @@ describe("Testing that elements render on screen", () => {
       const accountNumber = screen.queryByText("12345678");
 
       expect(accountNumber).toBeInTheDocument();
-    });
-    
-    test("Test that sort code renders on screen", () => {
-      render(
-        <TransactionForm
+  });
+  test("Test that sort code renders on screen", () => {
+    render(
+      <TransactionForm
           formTitle="Withdrawal Form"
           buttonName="Withdraw Funds"
           profileData={profileData}
+          userHoldings={userHoldings}
+          userBankAccounts={userBankAccounts}
           isDisabled= {()=>{}}
           toggleConfirm={()=>{}}
           onlyNumber={()=>{}}
@@ -71,13 +91,15 @@ describe("Testing that elements render on screen", () => {
     test("Test that funds remaining renders on screen", () => {
       render(
         <TransactionForm
-          formTitle="Withdrawal Form"
-          buttonName="Withdraw Funds"
-          profileData={profileData}
-          isDisabled= {()=>{}}
-          toggleConfirm={()=>{}}
-          onlyNumber={()=>{}}
-      />);
+            formTitle="Withdrawal Form"
+            buttonName="Withdraw Funds"
+            profileData={profileData}
+            userHoldings={userHoldings}
+            userBankAccounts={userBankAccounts}
+            isDisabled= {()=>{}}
+            toggleConfirm={()=>{}}
+            onlyNumber={()=>{}}
+        />);
 
       const transferAmount = screen.getByTestId("funds-remaining").innerHTML;
 
@@ -87,13 +109,15 @@ describe("Testing that elements render on screen", () => {
     test("Test that component header renders on the screen", () => {
       render(
         <TransactionForm
-          formTitle="Withdrawal Form"
-          buttonName="Withdraw Funds"
-          profileData={profileData}
-          isDisabled= {()=>{}}
-          toggleConfirm={()=>{}}
-          onlyNumber={()=>{}}
-      />);
+            formTitle="Withdrawal Form"
+            buttonName="Withdraw Funds"
+            profileData={profileData}
+            userHoldings={userHoldings}
+            userBankAccounts={userBankAccounts}
+            isDisabled= {()=>{}}
+            toggleConfirm={()=>{}}
+            onlyNumber={()=>{}}
+        />);
 
       const componentHeader = screen.getByTestId("form-title");
 
@@ -107,13 +131,15 @@ describe("Testing that elements render on screen", () => {
       
       render(
         <TransactionForm
-          formTitle="Withdrawal Form"
-          buttonName="Withdraw Funds"
-          profileData={profileData}
-          isDisabled= {()=>{}}
-          toggleConfirm={()=>{}}
-          onlyNumber={()=>{}}
-      />);
+            formTitle="Withdrawal Form"
+            buttonName="Withdraw Funds"
+            profileData={profileData}
+            userHoldings={userHoldings}
+            userBankAccounts={userBankAccounts}
+            isDisabled= {()=>{}}
+            toggleConfirm={()=>{}}
+            onlyNumber={()=>{}}
+        />);
     
       const buttonText = screen.getByTestId("button");
     
@@ -124,13 +150,15 @@ describe("Testing that elements render on screen", () => {
       
       render(
         <TransactionForm
-          formTitle="Withdrawal Form"
-          buttonName="Withdraw Funds"
-          profileData={profileData}
-          isDisabled= {()=>{}}
-          toggleConfirm={()=>{}}
-          onlyNumber={()=>{}}
-      />);
+            formTitle="Withdrawal Form"
+            buttonName="Withdraw Funds"
+            profileData={profileData}
+            userHoldings={userHoldings}
+            userBankAccounts={userBankAccounts}
+            isDisabled= {()=>{}}
+            toggleConfirm={()=>{}}
+            onlyNumber={()=>{}}
+        />);
 
       const input = screen.getByTestId('amount-input')
       fireEvent.change(input, {target: {value: 'e565'}})

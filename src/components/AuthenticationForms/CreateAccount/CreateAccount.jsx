@@ -53,9 +53,9 @@ const CreateAccount = (props) => {
           </Link>
           <h2>Venturist</h2>
         </div>
-        <Link to="/login">
+        <Link to="/signin">
           <Button
-            buttonName={"Login"}
+            buttonName={"Sign in"}
             buttonStyle={"blue"}
             hasIcon={false}
             buttonFunction={() => {}}
@@ -108,7 +108,7 @@ const CreateAccount = (props) => {
               <p className="createAccount__container__form__signin">
                 Already have an account?{" "}
               </p>
-              <Link to="/login">
+              <Link to="/signin">
                 <Button buttonName="Sign in" buttonStyle="clear" />
               </Link>              
             </div>

@@ -23,8 +23,7 @@ library.add(...iconListRegular)
 
 const MakeTransferChooseModal = (props) => {
 
-  const {type, content, handleEvent, handleInput, handleShowModal, searchTerm} = props;
-
+  const {type, content, handleEvent, handleSearch, handleShowModal} = props;
   const emptyList = content.length === 0;
 
   const emptyText = <p className="transfer-page__choose__empty">No results found.</p>;
@@ -36,17 +35,19 @@ const MakeTransferChooseModal = (props) => {
     headers = [<h5 key={1}>Currency</h5>,
     <h5 className="transfer-page__choose__list__headers__rate" key={2} >Rate</h5>]
   } else if(type==="Recipient") {
-    headers = [<h5 key={1} >Name</h5>,           <h5 className="transfer-page__choose__list__headers__sort-code" key={2} >Sort Code</h5>,           <h5 className="transfer-page__choose__list__headers__account-no" key={3} >Account No</h5>]
+    headers = [<h5 key={1} >Name</h5>,
+    <h5 className="transfer-page__choose__list__headers__sort-code" key={2} >Sort Code</h5>,
+    <h5 className="transfer-page__choose__list__headers__account-no" key={3} >Account No</h5>]
   }
 
   return (
     <>
     <div className="transfer-page__choose" data-testid="choose-modal">
       <h2 className="transfer-page__choose__header">Choose {type}</h2>
-      <img src={cross} alt="Close menu" className="transfer-page__choose__close-menu" onClick={handleShowModal}/>
+      <img src={cross} alt="Close menu" className="transfer-page__choose__close-menu" onClick={handleShowModal} />
       <h4 className="transfer-page__choose__subheader">Search</h4>
       {icons.Search}
-      <input type="text" placeholder="Search..." className="transfer-page__choose__search" onInput={handleInput} value={searchTerm} />
+      <input type="text" placeholder="Search..." className="transfer-page__choose__search" onChange={handleSearch} />
 
       <div className="transfer-page__choose__list">
         <div className="transfer-page__choose__list__headers">

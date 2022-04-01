@@ -1,5 +1,5 @@
 import MakeTransferForm from "./MakeTransferForm";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import liveRateData from "./../../../assets/data/liveRatesExample";
@@ -169,8 +169,8 @@ test("Check correct currency details render on page - British Pound, US Dollar",
   const currencyTo = screen.getByTestId("currencyTo");
 
   // Assert
-  expect(currencyFrom).toHaveTextContent("British Pound");
-  expect(currencyTo).toHaveTextContent("US Dollar");
+  expect(currencyFrom).toHaveTextContent("GBP");
+  expect(currencyTo).toHaveTextContent("USD");
 });
 
 test("Check correct currency details render on page - US Dollar, British Pound", () => {
@@ -190,8 +190,8 @@ test("Check correct currency details render on page - US Dollar, British Pound",
   const currencyTo = screen.getByTestId("currencyTo");
 
   // Assert
-  expect(currencyFrom).toHaveTextContent("US Dollar");
-  expect(currencyTo).toHaveTextContent("British Pound");
+  expect(currencyFrom).toHaveTextContent("USD");
+  expect(currencyTo).toHaveTextContent("GBP");
 });
 
 test("OnlyNumber prevents multiple decimal points", () => {
@@ -292,4 +292,82 @@ test("Test the delivery time is correct", () => {
 
   // Assert
   expect(deliveryText).toBeInTheDocument();
+});
+
+// Move to form
+test('Test the pop-up appears for currency from', () => {
+  const onClick = jest.fn();
+  render(
+    <MakeTransferForm
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
+    />
+  );
+
+  const currencyFromButton = screen.getByTestId("currencyFrom");
+  fireEvent.click(currencyFromButton);
+  const currencyPopUp = screen.getByTestId("choose-modal");
+
+  expect(currencyPopUp).toBeInTheDocument();
+});
+
+// Move to form
+test('Test the pop-up appears for currency to', () => {
+  const onClick = jest.fn();
+  render(
+    <MakeTransferForm
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
+    />
+  );
+
+  const currencyToButton = screen.getByTestId("currencyTo");
+  fireEvent.click(currencyToButton);
+  const currencyPopUp = screen.getByTestId("choose-modal");
+
+  expect(currencyPopUp).toBeInTheDocument();
+});
+
+// Move to form
+test('Test currency changes properly when clicking currency from', () => {
+  const onClick = jest.fn();
+  render(
+    <MakeTransferForm
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
+    />
+  );
+  const currencyFromButton = screen.getByTestId("currencyFrom");
+  fireEvent.click(currencyFromButton);
+  const currencyCHF = screen.getAllByTestId("overlay")[3];
+  fireEvent.click(currencyCHF);
+  const changedCurrency = screen.getByText("CHF");
+
+  expect(changedCurrency).toBeInTheDocument();
+});
+
+// Move to form
+test('Test currency changes properly when clicking currency to', () => {
+  const onClick = jest.fn();
+  render(
+    <MakeTransferForm
+      exchangeInfo={exchangeInfo}  
+      setExchangeInfo={setExchangeInfo} 
+      handleShowForm={onClick} 
+      liveRateData={liveRateData} 
+    />
+  );
+
+  const currencyToButton = screen.getByTestId("currencyTo");
+  fireEvent.click(currencyToButton);
+  const currencyCHF = screen.getAllByTestId("overlay")[3];
+  fireEvent.click(currencyCHF);
+
+  expect(currencyToButton).toHaveTextContent(/CHF/i);
 });

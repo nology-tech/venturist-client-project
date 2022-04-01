@@ -1,0 +1,106 @@
+@use "./../../../assets/sass/global_variables" as *;
+
+.contact-page__add-recipient {
+  padding: 50px 50px 0 65px;
+  box-sizing: border-box;
+  z-index: 2;
+  overflow: hidden;
+
+  position: fixed;
+  width: 595px;
+  height: 655px;
+  left: 50%;
+  top: 50%;
+  margin-left: -297px;
+  margin-top: -327px;
+  background-color: #ffffff;
+  border-radius: 8px;
+
+  &__close-menu {
+    position: absolute;
+    right: 50px;
+    top: 35px;
+    cursor: pointer;
+  }
+
+  &__error {
+    height: 22px;
+    color: red;
+  }
+
+  &__header {
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 26px;
+    width: 465px;
+    margin-bottom: 37px;
+    font-family: $outfit;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  &__content {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    border-bottom: 1px solid #eeeeee;
+    justify-content: space-evenly;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+  }
+
+  &__input {
+    width: 337px;
+    height: 45px;
+    background: #fbfbfc;
+    border: 1px solid #e2e2e2;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 20px;
+    // margin-bottom: 20px;
+    padding-left: 10px;
+  }
+
+  &__label {
+    font-family: $outfit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    color: #06020a;
+  }
+
+  &__buttons {
+    border-top: 1px solid #eeeeee;
+    padding-top: 26px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  &__contactInfo {
+    color: #8896a3;
+  }
+
+  &__container {
+    height: 400px;
+  }
+
+  p {
+    font-size: 20px;
+    padding: 4px 0px;
+  }
+}
+
+.overlay-background {
+  z-index: 1;
+  fill: $colourTwo;
+  background-color: rgba(0, 0, 0, 0.15);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}

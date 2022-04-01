@@ -16,33 +16,20 @@ const iconListRegular = Object.keys(IconsRegular)
 library.add(...iconListRegular);
 
 export default function ListItem(props) {
-  const { item, index, setFilteredData, filteredData } = props;
-
-  const deleteItem = () => {
-    const removeIndex = index;
-    filteredData.splice(removeIndex, 1);
-    const updatedArr = filteredData.filter((item) => item.index !== index);
-    setFilteredData(updatedArr);
-  };
-
-  // navBar 230px wide
+  const { item, index, handleDelete } = props;
 
   return (
     <div key={index} className="item-grid" data-testid="item-grid">
-      <div className="item-grid__align-img">
-        <img src={item.bankIcon} alt={item.bankName} width="50px" />
-      </div>
-      <p data-testid="name-test">{`${item.firstName} ${item.lastName}`}</p>
+      <p data-testid="name-test">{item.contactName}</p>
       <p>{item.sortCode}</p>
       <p>{item.accountNumber}</p>
       <p>{item.bankName}</p>
-      <p>{item.IBAN}</p>
       <div className="item-grid__align-img">
         <FontAwesomeIcon
           data-testid="delete-button"
           className="item-grid__bin"
           icon="fa-solid fa-trash-can"
-          onClick={deleteItem}
+          onClick={() => {handleDelete(item.id)}}
         />
       </div>
     </div>

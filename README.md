@@ -34,10 +34,10 @@ All fonts used can be found at https://fonts.google.com/
 
 ## Screenshots
 
-![landingPage](./src/assets/images/landingPage.png)
-![currencyConverter](./src/assets/images/convert.png)
-![liveRates](./src/assets/images/liveratescreenshot.png)
-![currencyRates](./src/assets/images/rates.png)
+<img src=".\src\assets\images\venturist-landing.png" width="900px"/>
+<img src="./src/assets/images/convert.png" width="900px"/>
+<img src="./src/assets/images/venturist-currency.png" width="900px"/>
+<img src="./src/assets/images/rates.png" width="900px"/>
 
 
 

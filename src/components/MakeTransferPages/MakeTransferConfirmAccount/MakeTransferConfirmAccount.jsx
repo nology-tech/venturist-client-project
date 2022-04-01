@@ -9,10 +9,11 @@ const MakeTransferConfirmAccount = props => {
 
   const [showChooseRecipients, setShowChooseRecipients] = useState(false);
   const [showAddRecipient, setShowAddRecipient] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchedData, setSearchedData] = useState(data);
 
   const toggleChooseRecipients = () => {
     setShowChooseRecipients(!showChooseRecipients);
+    setSearchedData(data);
   };
 
   const toggleAddRecipient = () => {
@@ -20,32 +21,30 @@ const MakeTransferConfirmAccount = props => {
   };
 
   const handleChooseRecipient = event => {
-    const user = data.filter(contact => contact.IBAN === event.target.id)[0];
+    const user = data.filter(contact => Number(contact.id) === Number(event.target.id))[0];
     setExchangeInfo({ ...exchangeInfo }, (exchangeInfo.exchangeTo.user = user));
     toggleChooseRecipients();
     handleShowConfirmation();
   };
 
   const handleInput = event => {
-    const cleanInput = event.target.value;
-    setSearchTerm(cleanInput);
+    setSearchedData(data.filter(person => {
+      // let fullName;
+      // if (person.middleNames) {
+      //   fullName = person.firstName + " " + person.middleNames + " " + person.lastName;
+      // } else {
+      //   fullName = person.firstName + " " + person.lastName;
+      // }
+      return person.contactName.toLowerCase().includes(event.target.value.toLowerCase());
+    }));
   };
 
-  const searchedData = data.filter(person => {
-    let fullName;
-    if (person.middleNames) {
-      fullName = person.firstName + " " + person.middleNames + " " + person.lastName;
-    } else {
-      fullName = person.firstName + " " + person.lastName;
-    }
-    return fullName.toLowerCase().includes(searchTerm.toLowerCase());
-  });
+
 
   const currencySymbol = exchangeInfo.exchangeFrom.currency.currencySymbol;
-  const currencyCode = exchangeInfo.exchangeFrom.currency.currencyCode;
   const profileData = exchangeInfo.exchangeFrom.user;
-  const transferAmount =
-    Number(exchangeInfo.exchangeFrom.amount) + Number(exchangeInfo.exchangeFrom.fee);
+  const transferAmount = Number(exchangeInfo.exchangeFrom.amount) + Number(exchangeInfo.exchangeFrom.fee);
+  const fundsRemaining = (Number(profileData.holdings.filter(curr => curr.currencyCode === exchangeInfo.exchangeFrom.currency.currencyCode)[0].amount) - transferAmount).toFixed(2);
 
   return (
     <div className="transfer-page__confirm">
@@ -59,7 +58,7 @@ const MakeTransferConfirmAccount = props => {
             {profileData.firstName} {profileData.lastName}
           </h6>
           <div className="transfer-page__confirm__sendContainer__details__text">
-            <p>Account Number:</p> <p>{profileData.accountNumber} </p>{" "}
+            <p>Account Number:</p> <p>{profileData.bankAccountNo} </p>{" "}
           </div>
           <div className="transfer-page__confirm__sendContainer__details__text">
             <p>Sort Code: </p> <p>{profileData.sortCode}</p>{" "}
@@ -77,7 +76,7 @@ const MakeTransferConfirmAccount = props => {
             <p>Funds Remaining: </p>{" "}
             <p data-testid="remainingBalance">
               {currencySymbol}
-              {(Number(profileData.holdings[currencyCode]) - transferAmount).toFixed(2)}
+              {fundsRemaining}
             </p>
           </div>
         </div>
@@ -91,7 +90,7 @@ const MakeTransferConfirmAccount = props => {
         </div>
       </div>
 
-        {showChooseRecipients && <MakeTransferChooseModal type="Recipient" content={searchedData} handleShowModal={toggleChooseRecipients} handleInput={handleInput} searchTerm={searchTerm} handleEvent={handleChooseRecipient}/>}
+        {showChooseRecipients && <MakeTransferChooseModal type="Recipient" content={searchedData} handleShowModal={toggleChooseRecipients} handleSearch={handleInput} handleEvent={handleChooseRecipient}/>}
 
         {showAddRecipient && <MakeTransferAddRecipient toggleAddRecipient={toggleAddRecipient} exchangeInfo={exchangeInfo} setExchangeInfo={setExchangeInfo} handleShowConfirmation={handleShowConfirmation} />}
     </div>
