@@ -30,21 +30,19 @@ const App = () => {
 
   const updateSessionStorage = (uid) => {
     window.sessionStorage.setItem("userID", uid);
-    window.sessionStorage.setItem("lastUpdateTime", new Date().getTime());
+    (uid !== "") ? window.sessionStorage.setItem("lastUpdateTime", new Date().getTime()) : "";
   };
 
-  // Data persistence //
+  // User persistence //
   const checkSessionStorage = () => {
-    if (
-      new Date().getTime() -
-        Number(window.sessionStorage.getItem("lastUpdateTime")) >
-      600000
-    ) {
+    if (new Date().getTime() - Number(window.sessionStorage.getItem("lastUpdateTime")) > 600000) {
       setUserID(false);
     } else {
       setUserID(window.sessionStorage.getItem("userID"));
     }
   };
+  
+  // End user persistence //
 
   // API fetching user data //
   const getUserData = async () => {
@@ -65,6 +63,8 @@ const App = () => {
       .then((data) => setUserBankAccounts(data))
       .catch((error) => alert(error));
   };
+
+  // End user fetch //
 
   const refreshWallet = () => {
     setWalletRefresh(!walletRefresh);

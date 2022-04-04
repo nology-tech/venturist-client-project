@@ -8,8 +8,7 @@ import {getCurrencyName} from 'currency-iso';
 
 const CurrencyConverter = (props) => {
   const {liveRateData, profileData, userHoldings, getUserData} = props;
-
-
+  
   const swap = () => {
     if ((to && from) && (to !== from) && (ownedCurrencies.includes(to.toLowerCase())))  {
       const temp = to;
