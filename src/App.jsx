@@ -14,7 +14,6 @@ import HomePage from "./containers/HomePage/HomePage";
 import LoginPage from "./containers/LoginPage/LoginPage";
 import CreateAccountPage from "./containers/CreateAccountPage/CreateAccountPage";
 import ErrorPage from "./containers/404Page/404Page";
-import useFxApi from "./Hooks/FX/useFxApi";
 
 const App = () => {
   const [profileData, setProfileData] = useState(false);
@@ -30,7 +29,7 @@ const App = () => {
 
   const updateSessionStorage = (uid) => {
     window.sessionStorage.setItem("userID", uid);
-    (uid !== "") ? window.sessionStorage.setItem("lastUpdateTime", new Date().getTime()) : "";
+    window.sessionStorage.setItem("lastUpdateTime", new Date().getTime());
   };
 
   // User persistence //
@@ -82,28 +81,6 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userID, walletRefresh]);
 
-  //API fetching ratesArr//
-
-  const { status, ratesArr, getData } = useFxApi();
-
-  const [message, setMessage] = useState("Loading live rates...");
-
-  const url = `https://venturist-app.nw.r.appspot.com/currencies/GBP`;
-
-  useEffect(() => {
-    getData(url);
-    if (status === "success") {
-      try {
-        setMessage("Success");
-      } catch (err) {
-        setMessage("Error getting rates. Please try again later");
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [status]);
-
-  //API END//
-
   return (
     <div className="App">
       <Router>
@@ -150,7 +127,7 @@ const App = () => {
                       <NavBar clearData={clearData} />
                       <UserProfile profileData={profileData} />
                       <ConvertPage
-                        liveRateData={ratesArr}
+                        // liveRateData={ratesArr}
                         profileData={profileData}
                         userHoldings={userHoldings}
                         getUserData={getUserData}
