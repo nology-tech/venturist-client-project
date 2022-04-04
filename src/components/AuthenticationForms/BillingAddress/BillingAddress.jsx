@@ -30,6 +30,8 @@ const BillingAddress = (props) => {
   const { handleReturnBillingToBank } = props;
   let navigate = useNavigate();
 
+  console.log(userData);
+
   const {
     register,
     handleSubmit,
@@ -42,8 +44,6 @@ const BillingAddress = (props) => {
     setUserData(data);
     navigate("/wallet", { replace: true });
   };
-
-  console.log(userData);
 
   return (
     <div className="billingAddress" data-testid="billingAddress">

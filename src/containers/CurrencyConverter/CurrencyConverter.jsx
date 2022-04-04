@@ -1,15 +1,24 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './CurrencyConverter.scss'
 import DropDown from '../../components/DropDown/DropDown'
 import CircularButton from '../../components/CircularButton/CircularButton'
 import icons from '../../assets/icons/icons'
 import Button from '../../components/Button/Button'
 import {getCurrencyName} from 'currency-iso';
+import useFxApi from "../../Hooks/FX/useFxApi";
 
 const CurrencyConverter = (props) => {
-  const {liveRateData, profileData, userHoldings, getUserData} = props;
+  const {profileData, userHoldings, getUserData} = props;
 
+  const { status, ratesArr, getData } = useFxApi();
 
+  const url = `https://venturist-app.nw.r.appspot.com/currencies/GBP`;
+
+  useEffect(() => {
+    getData(url);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status]);
+  
   const swap = () => {
     if ((to && from) && (to !== from) && (ownedCurrencies.includes(to.toLowerCase())))  {
       const temp = to;
@@ -33,6 +42,7 @@ const CurrencyConverter = (props) => {
   const [time, setTime]=useState(0);
   const [holdingFrom,setHoldingFrom] = useState([]);
   const [holdingTo,setHoldingTo] = useState([]);
+  const [convertibleCurrencies, setConvertibleCurrencies] = useState([]);
 
   const changeTo = (selected) => {
     setTo(selected);
@@ -58,7 +68,10 @@ const CurrencyConverter = (props) => {
   }
 
   const ownedCurrencies = userHoldings.map(holdings => holdings.currencyCode.toLocaleLowerCase());
-  const convertibleCurrencies = liveRateData.map(currency => currency.currencyCode.toLowerCase());
+
+  useEffect(() => {
+    setConvertibleCurrencies(ratesArr.map(currency => currency.currencyCode.toLowerCase()));
+  }, [ratesArr]);
 
   const convertPressed = () => {
     setTime(new Date());
@@ -79,7 +92,7 @@ const CurrencyConverter = (props) => {
     let tempFrom = 1;
     const temp = [...currencyNames];
 
-    for (let rateObject of liveRateData) {
+    for (let rateObject of ratesArr) {
       if (rateObject.currencyCode === to) {
         tempTo = rateObject.liveRate;
         temp[1] = rateObject.currencyName;
@@ -151,6 +164,7 @@ const CurrencyConverter = (props) => {
   }
 
   return (
+    <>{ratesArr &&
     <section className='currency-converter' data-testid="currency-converter">
       <div className='currency-converter__grid'>
         <h3 className='currency-converter__grid--heading'>Amount</h3>
@@ -177,13 +191,10 @@ const CurrencyConverter = (props) => {
           <Button buttonName="Make Transfer" hasIcon={false} buttonFunction={()=> {
             setConvert(false);
             fetchConversion();
-            // handleConversion(amount, Number(convertedAmount.toFixed(2)), from, to)
           }}/>
         </div>
         </div>}
-      
-
-    </section>
+    </section>}</>
   )
 }
 
