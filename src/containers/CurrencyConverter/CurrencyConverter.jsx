@@ -73,10 +73,6 @@ const CurrencyConverter = (props) => {
     setConvertibleCurrencies(ratesArr.map(currency => currency.currencyCode.toLowerCase()));
   }, [ratesArr]);
 
-  useEffect(() => {
-  console.log(convertibleCurrencies)
-  },[convertibleCurrencies]);
-
   const convertPressed = () => {
     setTime(new Date());
 
