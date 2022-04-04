@@ -30,6 +30,8 @@ const BillingAddress = (props) => {
   const { handleReturnBillingToBank } = props;
   let navigate = useNavigate();
 
+  console.log(userData);
+
   const {
     register,
     handleSubmit,

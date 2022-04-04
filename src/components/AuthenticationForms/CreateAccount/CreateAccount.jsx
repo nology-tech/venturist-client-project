@@ -29,6 +29,8 @@ const CreateAccount = (props) => {
   const [userData, setUserData] = useState(null);
   const { handleShowBankDetails } = props;
 
+  console.log(userData);
+
   const {
     register,
     handleSubmit,
