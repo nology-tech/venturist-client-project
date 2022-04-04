@@ -32,7 +32,6 @@ const Wallet = (props) => {
 
   return (
     <div data-testid="wallet" className="wallet">
-      {(!userHoldings) && <h3 className="withdraw-loading">Loading...</h3>}
       {tiles}
       <div className='wallet-signout'>
           <Button className="wallet-signout__button" buttonName="Sign Out" hasIcon={true} iconSrc={icons.SignOut} buttonFunction={logOut} />

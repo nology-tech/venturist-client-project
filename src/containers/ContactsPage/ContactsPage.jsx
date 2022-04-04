@@ -49,7 +49,6 @@ const ContactsPage = (props) => {
       `https://venturist-app.nw.r.appspot.com/contacts/${userID}`
     );
     const data = await result.json();
-    // console.log(data);
     setFilteredData(data);
   };
 
@@ -82,6 +81,7 @@ const ContactsPage = (props) => {
           pageFunctionHeading="Your Contacts"
           textDescription="View your contacts here."
         />
+        {!filteredData && <h3 className="withdraw-loading">Loading contacts...</h3>}
         {filteredData && (
           <ContactsList
             setFilteredData={setFilteredData}

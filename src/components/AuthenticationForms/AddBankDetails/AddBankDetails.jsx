@@ -33,6 +33,8 @@ const AddBankDetails = (props) => {
   const [userData, setUserData] = useState(null);
   const { handleShowBillingAddress, handleReturn } = props;
 
+  console.log(userData);
+
   const {
     register,
     handleSubmit,
@@ -45,9 +47,7 @@ const AddBankDetails = (props) => {
     setUserData(data);
     handleShowBillingAddress();
   };
-
-  console.log(userData);
-
+  
   return (
     <div className="createAccount" data-testid="addBankDetails-form">
       <div className="createAccount__header">

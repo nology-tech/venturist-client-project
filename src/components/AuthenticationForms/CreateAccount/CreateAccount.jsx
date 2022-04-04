@@ -29,6 +29,8 @@ const CreateAccount = (props) => {
   const [userData, setUserData] = useState(null);
   const { handleShowBankDetails } = props;
 
+  console.log(userData);
+
   const {
     register,
     handleSubmit,
@@ -41,8 +43,6 @@ const CreateAccount = (props) => {
     setUserData(data);
     handleShowBankDetails();
   };
-
-  console.log(userData)
 
   return (
     <div className="createAccount" data-testid="createAccount-form">
