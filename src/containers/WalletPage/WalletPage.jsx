@@ -22,6 +22,7 @@ const WalletPage = (props) => {
         textDescription= "Send money online fast, 24/7, from over 100 currencies. Don't see the currency you're looking for? Visit the convert page."
       />
       {userHoldings && <Wallet userHoldings={userHoldings} setUserID={setUserID} />}
+      {!userHoldings && <h3 className="withdraw-loading">Loading...</h3>}
     </div>
   );
 };

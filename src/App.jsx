@@ -106,7 +106,7 @@ const App = () => {
                     <>
                       <NavBar clearData={clearData} />
                       <UserProfile profileData={profileData} />
-                      <WalletPage userHoldings={userHoldings} />
+                      <WalletPage userHoldings={userHoldings} setUserID={setUserID} />
                     </>
                   }
                 ></Route>
@@ -127,7 +127,6 @@ const App = () => {
                       <NavBar clearData={clearData} />
                       <UserProfile profileData={profileData} />
                       <ConvertPage
-                        // liveRateData={ratesArr}
                         profileData={profileData}
                         userHoldings={userHoldings}
                         getUserData={getUserData}
