@@ -46,21 +46,14 @@ const WithdrawPage = (props) => {
     }
   };
 
-  const toggleSuccess = () => {
-    setShowConfirm(!showConfirm);
-    setShowSuccess(!showSuccess);
-    handleSubmit();
-    handlePutSubmit();
-    refreshWallet();
-  };
-
   const userID = window.sessionStorage.getItem("userID");
 
   const handleSubmit = () => {
-    fetch("http://venturist-app.nw.r.appspot.com/transaction", {
+    fetch("https://venturist-app.nw.r.appspot.com/transaction", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Accept": "application/JSON",
+        "Content-Type": "application/JSON"
       },
       body: JSON.stringify({
         userToId: `${userID}`,
@@ -78,20 +71,30 @@ const WithdrawPage = (props) => {
   };
   
   const handlePutSubmit = () => {
-    let newHoldings = Number(userHoldings[0].amount) - Number(showAmount);
-    fetch("http://venturist-app.nw.r.appspot.com/holdings", {
+    fetch("https://venturist-app.nw.r.appspot.com/holdings", {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
+        "Accept": "application/JSON",
+        "Content-Type": "application/JSON"
       },
       body: JSON.stringify({
-        userID: userID,
-        amount: newHoldings,
+        userID: String(userID),
+        currencyName: "",
+        amount: Number(userHoldings[0].amount) - Number(showAmount),
         currencyCode: "GBP",
+        currencySymbol: ""
       }),
     })
       .then((response) => response.json())
       .catch((err) => console.log(err));
+  };
+
+  const toggleSuccess = () => {
+    setShowConfirm(!showConfirm);
+    setShowSuccess(!showSuccess);
+    handleSubmit();
+    handlePutSubmit();
+    refreshWallet();
   };
 
   return (
